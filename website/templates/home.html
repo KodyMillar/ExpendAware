@@ -57,16 +57,18 @@
 
       <div id="expense-container">
         <h2>Expenses</h2>
-        <form id="expense-form">
+        <form method="POST" id="expense-form">
           <div class="group-input">
+            
             <input
               type="text"
               id="expense-description"
               placeholder="Description"
+              name="descr"
             />
-            <input type="number" id="expense-amount" placeholder="Amount" />
+            <input type="number" id="expense-amount" name="amount" placeholder="Amount"/>
           </div>
-          <select id="expense-category"></select>
+          <select id="expense-category" name="category"></select>
           <button type="submit">Add Expense</button>
         </form>
         <ul id="expense-list"></ul>
