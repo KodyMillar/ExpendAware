@@ -12,17 +12,24 @@ def home():
         # -----------------------------------
         n_descr = request.form.get('descr') 
         n_amount = request.form.get('amount') 
-        n_category = request.form.get('category')
+        n_category = request.form.get('name')
+        n_category_exp = request.form.get('category_name')
+        n_budget = request.form.get('budget')
 
         # -----------------------------------
         # Provides the schema for the expense
         # -----------------------------------
-        new_expense = Expense(descr=n_descr, amount=n_amount)
+        if n_descr and n_category_exp and n_amount:
+            new_expense = Expense(descr=n_descr, amount=n_amount, category_name=n_category_exp)
+            db.session.add(new_expense)
+        
+        if n_category and n_budget:
+            new_category = Category(name=n_category, budget=n_budget)
+            db.session.add(new_category)    
         
         # -----------------------------------
         # Adds new expense to the database
         # -----------------------------------
-        db.session.add(new_expense)
         db.session.commit()
 
         return redirect(url_for('views.home'))
@@ -31,5 +38,6 @@ def home():
     # Extracts data from database
     # -----------------------------------
     expenses = Expense.query.all()
+    categories = Category.query.all()
 
-    return render_template("home.html", expenses=expenses)
+    return render_template("home.html", expenses=expenses, categories=categories)

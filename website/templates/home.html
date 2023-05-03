@@ -45,10 +45,10 @@
     <div class="container">
       <div id="category-container">
         <h2>Category</h2>
-        <form id="category-form">
+        <form method="POST" id="category-form">
           <div class="group-input">
-            <input type="text" id="category-name" placeholder="Category" />
-            <input type="number" id="budget-amount" placeholder="Budget Amount" />
+            <input type="text" id="category-name" placeholder="Category" name="name"/>
+            <input type="number" id="budget-amount" placeholder="Budget Amount" name="budget"/>
           </div>
           <button type="submit">Add Category</button>
         </form>
@@ -68,7 +68,12 @@
             />
             <input type="number" id="expense-amount" name="amount" placeholder="Amount"/>
           </div>
-          <select id="expense-category" name="category"></select>
+          <!-- <input type="string" id="expense-category" name="category_name" placeholder="category"/> -->
+          <select id="expense-category" name="category_name">
+            {% for category in categories %}
+              <option value="{{ category.name }}"> {{ category.name }} </option>
+            {% endfor %}
+          </select>
           <button type="submit">Add Expense</button>
         </form>
         <ul id="expense-list"></ul>

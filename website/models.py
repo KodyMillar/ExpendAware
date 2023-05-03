@@ -3,7 +3,7 @@ from . import db
 class Category(db.Model):
     name = db.Column(db.String(50), primary_key=True)
     budget = db.Column(db.Integer)
-    expenses = db.relationship('Expense')
+    expenses = db.relationship('Expense', backref='category')
 
 
 class Expense(db.Model):
