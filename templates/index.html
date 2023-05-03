@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
-  <script src="../static/script.js" defer></script>
   <title>ExpendAware</title>
 </head>
 <body>
@@ -23,7 +22,7 @@
     </div>
 
     <div>
-      <img src="../images/account-icon.png" alt="account-icon">
+      <img src="{{ url_for('static', filename='/images/account-icon.png')}}" alt="account-icon">
     </div>
   </header>
 
