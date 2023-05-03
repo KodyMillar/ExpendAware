@@ -66,9 +66,8 @@
               placeholder="Description"
               name="descr"
             />
-            <input type="number" id="expense-amount" name="amount" placeholder="Amount"/>
+            <input type="number" id="expense-amount" name="price" placeholder="Price"/>
           </div>
-          <!-- <input type="string" id="expense-category" name="category_name" placeholder="category"/> -->
           <select id="expense-category" name="category_name">
             {% for category in categories %}
               <option value="{{ category.name }}"> {{ category.name }} </option>
@@ -76,7 +75,14 @@
           </select>
           <button type="submit">Add Expense</button>
         </form>
-        <ul id="expense-list"></ul>
+        <ul id="expense-list">
+          {% for expense in expenses %}
+            <li> 
+              <p> {{ expense.descr }} </p> 
+              <p> ${{ expense.price }} </p>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
 
 

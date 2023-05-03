@@ -9,6 +9,6 @@ class Category(db.Model):
 class Expense(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     descr = db.Column(db.String(100))
-    amount = db.Column(db.Integer)
+    price = db.Column(db.Integer)
     category_name = db.Column(db.String(50), db.ForeignKey('category.name'))
 

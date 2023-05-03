@@ -11,7 +11,7 @@ def home():
         # Gets the expense from the HTML
         # -----------------------------------
         n_descr = request.form.get('descr') 
-        n_amount = request.form.get('amount') 
+        n_price = request.form.get('price') 
         n_category = request.form.get('name')
         n_category_exp = request.form.get('category_name')
         n_budget = request.form.get('budget')
@@ -19,8 +19,8 @@ def home():
         # -----------------------------------
         # Provides the schema for the expense
         # -----------------------------------
-        if n_descr and n_category_exp and n_amount:
-            new_expense = Expense(descr=n_descr, amount=n_amount, category_name=n_category_exp)
+        if n_descr and n_category_exp and n_price:
+            new_expense = Expense(descr=n_descr, price=n_price, category_name=n_category_exp)
             db.session.add(new_expense)
         
         if n_category and n_budget:
