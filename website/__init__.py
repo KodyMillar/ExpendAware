@@ -18,7 +18,7 @@ def create_app():
     #----------------------------
     # 'Expense' is a class name
     #----------------------------
-    from .models import Expense
+    from .models import Expense, Category
     with app.app_context():
         db.create_all()
     return app
