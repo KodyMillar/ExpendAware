@@ -78,7 +78,7 @@
         <ul id="expense-list">
           {% for expense in expenses %}
             <li> 
-              <p> {{ expense.descr }} </p> 
+              <p> {{ expense.category_name }} - {{ expense.descr }} </p> 
               <p> ${{ expense.price }} </p>
             </li>
           {% endfor %}
