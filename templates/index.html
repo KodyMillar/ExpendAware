@@ -1,86 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
-  <script src="../static/script.js" defer></script>
-  <title>ExpendAware</title>
-</head>
-<body>
-  <header class="title">
-    <div class="title-container">
-      <h1>ExpendAware</h1>  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../static/script.js" defer></script>
+    <title>ExpendAware</title>
+  </head>
+  <body>
+    <header class="title">
+      <div class="title-container">
+        <h1>ExpendAware</h1>
+      </div>
+
+      <div class="menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+
+      <div>
+        <img
+          src="{{ url_for('static', filename='/images/account-icon.png')}}"
+          alt="account-icon"
+        />
+      </div>
+    </header>
+
+    <div id="menu-expand">
+      <a href="#" id="side-menu-close">&timesbar;</a>
+      <a href="#">Category</a>
+      <a href="#">Expenses</a>
+      <a href="#">Costs</a>
+      <a href="#">Transfer</a>
+      <a href="#">History</a>
+      <a href="#">Statistic</a>
     </div>
 
-    <div class="menu">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-
-    <div>
-      <img 
-        src="{{ url_for('static', filename='/images/account-icon.png')}}"
-        alt="account-icon">
-    </div>
-  </header>
-
-  <div id="menu-expand">
-    <a href="#" id="side-menu-close">&timesbar;</a>
-    <a href="#">Category</a>
-    <a href="#">Expenses</a>
-    <a href="#">Costs</a>
-    <a href="#">Transfer</a>
-    <a href="#">History</a>
-    <a href="#">Statistic</a>
-  </div>
-  
     <div class="container">
+      <div id="budget-container">
+        <h2>Budget</h2>
+        <form method="POST" id="budget-form">
+          <div class="form-group">
+            <input
+              type="text"
+              id="budget-name"
+              placeholder="Budget name"
+              name="name"
+            />
+            <input
+              type="number"
+              id="budget-amount"
+              placeholder="Amount"
+              name="amount"
+            />
+          </div>
+          <label>Choose a category</label>
+          <select id="budget-category" name="category">
+            {% for category in categories %}
+            <option value="{{ category.category }}">
+              {{ category.category }}
+            </option>
+            {% endfor %}
+          </select>
+          <button type="submit">Add Budget</button>
+        </form>
+        <ul id="budget-list">
+          {% for b in budgets %}
+          <li>
+            <p>{{b.category}} - {{ b.name }}</p>
+            <p>${{ b.amount }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
 
-    <div id="budget-container">
-      <h2>Budget</h2>
-      <form id="budget-form">
-        <div class="form-group">
-          <input type="text" id="budget-name" placeholder="Budget name">
-          <input type="number" id="budget-amount" placeholder="Amount">
-        </div>
-        <label>Choose a category</label>
-        <select id="budget-category"></select>
-        <button type="submit">Add Budget</button>
-      </form>
-      <ul id="budget-list"></ul>
-    </div>
+      <div id="expense-container">
+        <h2>Expense</h2>
+        <form method="POST" id="expense-form">
+          <div class="form-group">
+            <input
+              type="text"
+              id="expense-description"
+              placeholder="Description"
+              name="descr"
+            />
+            <input
+              type="number"
+              id="expense-amount"
+              placeholder="Amount"
+              name="amount"
+            />
+          </div>
+          <label>Choose a category</label>
+          <select id="expense-category" name="category">
+            {% for category in categories %}
+            <option value="{{ category.category }}">
+              {{ category.category }}
+            </option>
+            {% endfor %}
+          </select>
+          <button type="submit">Add Expense</button>
+        </form>
+        <ul id="expense-list">
+          {% for e in expenses %}
+          <li>
+            <p>{{ e.category }} - {{ e.descr }}</p>
+            <p>${{ e.amount }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
 
-    <div id="expense-container">
-      <h2>Expenses</h2>
-      <form id="expense-form">
-        <div class="form-group">
-          <input type="text" id="expense-description" placeholder="Description">
-          <input type="number" id="expense-amount" placeholder="Amount">
-        </div>
-        <label>Choose a category</label>
-        <select id="expense-category"></select>
-        <button type="submit">Add Expense</button>
-      </form>
-      <ul id="expense-list"></ul>
+      <div id="category-container">
+        <h2>Category</h2>
+        <form method="POST" id="category-form">
+          <div class="form-group">
+            <input
+              type="text"
+              id="category-name"
+              placeholder="Category name"
+              name="category"
+            />
+          </div>
+          <button type="submit">Add Category</button>
+        </form>
+        <ul id="category-list">
+          {% for category in categories %}
+          <li>
+            <p>{{ category.category }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
-
-    <div id="category-container">
-      <h2>Categories</h2>
-      <form id="category-form">
-        <div class="form-group">
-          <input type="text" id="category-name" placeholder="Category name">
-        </div>
-        <button type="submit">Add Category</button>
-      </form>
-      <ul id="category-list"></ul>
-    </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="/static/script.js"></script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/script.js"></script>
+  </body>
 </html>
