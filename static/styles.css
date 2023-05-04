@@ -38,6 +38,12 @@ h1 {
   margin-top: 30px;
 }
 
+h2 {
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+}
+
 .bar {
   width: 30px;
   height: 5px;
@@ -51,7 +57,7 @@ h1 {
 }
 
 
-img {
+#account-icon {
   width: 50px;
   height: 50px;
   position: relative;
@@ -60,14 +66,21 @@ img {
   cursor: pointer;
 }
 
+#home-icon {
+  position: relative;
+  left: 0;
+  bottom: 100px;
+}
 
-h2 {
+
+.add-type {
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   margin-bottom: 20px;
   text-align: left;
   color: #F9F9F9;
 }
+
 
 form {
   display: flex;

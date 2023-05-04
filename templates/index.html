@@ -23,13 +23,17 @@
     </div>
 
     <div>
-      <img src="../images/account-icon.png" alt="account-icon">
+      <img src="../images/account-icon.png" alt="account-icon" id="account-icon">
+    </div>
+
+    <div id="home-icon">
+      <a href="index.html"><img src="../images/home-button.png" width="50" height="50" alt="home-button"></a>
     </div>
   </header>
 
   <div id="menu-expand">
     <a href="#" id="side-menu-close">&timesbar;</a>
-    <a href="#">Category</a>
+    <a href="categories.html">Category</a>
     <a href="#">Expenses</a>
     <a href="#">Costs</a>
     <a href="#">Transfer</a>
@@ -39,7 +43,7 @@
   
     <div class="container">
     <div id="budget-container">
-      <h2>Budget</h2>
+      <h2 class="add-type">Budget</h2>
       <form id="budget-form">
         <div class="form-group">
           <input type="text" id="budget-name" placeholder="Budget name">
@@ -50,7 +54,7 @@
       <ul id="budget-list"></ul>
     </div>
     <div id="expense-container">
-      <h2>Expenses</h2>
+      <h2 class="add-type">Expenses</h2>
       <form id="expense-form">
         <div class="form-group">
           <input type="text" id="expense-description" placeholder="Description">
@@ -62,7 +66,7 @@
       <ul id="expense-list"></ul>
     </div>
     <div id="category-container">
-      <h2>Categories</h2>
+      <h2 class="add-type">Categories</h2>
       <form id="category-form">
         <div class="form-group">
           <input type="text" id="category-name" placeholder="Category name">
