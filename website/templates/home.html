@@ -47,41 +47,77 @@
         <h2>Category</h2>
         <form method="POST" id="category-form">
           <div class="group-input">
-            <input type="text" id="category-name" placeholder="Category" name="name"/>
-            <input type="number" id="budget-amount" placeholder="Budget Amount" name="budget" step="0.01"/>
+            <input type="text" id="category-name" placeholder="Category" name="category_name"/>
           </div>
           <button type="submit">Add Category</button>
         </form>
+
+
+
         <ul id="category-list">
           {% for category in categories %}
             <li> 
-              <p> {{ category.name }}'s budget is </p> 
-              <p> ${{ category.budget }} </p>
+              <p> {{ category.name }} </p> 
             </li>
           {% endfor %}          
         </ul>
       </div>
 
+
+
+      <div id="budget-container">
+        <h2>Budget</h2>
+        <form method="POST" id="budget-form">
+          <div class="group-input">
+            <input type="text" id="budget-name" placeholder="Budget name" name="budget_name">
+            <input type="number" id="budget-amount" placeholder="Amount" name="budget_amount">
+          </div>
+          <label>Choose a category</label>
+          <select id="budget-category" name="budget_fk_category">
+            {% for category in categories %}
+              <option value="{{ category.name }}"> {{ category.name }} </option>
+            {% endfor %}
+          </select>
+          <button type="submit">Add Budget</button>
+        </form>
+
+        <ul id="budget-list">
+          {% for budget in budgets %}
+            <li> 
+              <p> {{budget.category_name}} - {{ budget.name }} </p> 
+              <p> ${{ budget.amount }} </p>
+            </li>
+          {% endfor %}          
+        </ul>
+
+      </div>
+
       <div id="expense-container">
         <h2>Expenses</h2>
+
+
+        
         <form method="POST" id="expense-form">
           <div class="group-input">
-            
             <input
               type="text"
               id="expense-description"
               placeholder="Description"
-              name="descr"
+              name="exp_descr"
             />
-            <input type="number" id="expense-amount" name="price" placeholder="Price" step="0.01"/>
+            <input type="number" id="expense-amount" name="exp_price" placeholder="Price" step="0.01"/>
           </div>
-          <select id="expense-category" name="category_name">
+          <label>Choose a category</label>
+          <select id="expense-category" name="exp_fk_category">
             {% for category in categories %}
               <option value="{{ category.name }}"> {{ category.name }} </option>
             {% endfor %}
           </select>
           <button type="submit">Add Expense</button>
         </form>
+
+
+
         <ul id="expense-list">
           {% for expense in expenses %}
             <li> 
