@@ -40,6 +40,7 @@
   </div>
   
     <div class="container">
+
     <div id="budget-container">
       <h2>Budget</h2>
       <form id="budget-form">
@@ -47,10 +48,13 @@
           <input type="text" id="budget-name" placeholder="Budget name">
           <input type="number" id="budget-amount" placeholder="Amount">
         </div>
+        <label>Choose a category</label>
+        <select id="budget-category"></select>
         <button type="submit">Add Budget</button>
       </form>
       <ul id="budget-list"></ul>
     </div>
+
     <div id="expense-container">
       <h2>Expenses</h2>
       <form id="expense-form">
@@ -58,11 +62,13 @@
           <input type="text" id="expense-description" placeholder="Description">
           <input type="number" id="expense-amount" placeholder="Amount">
         </div>
+        <label>Choose a category</label>
         <select id="expense-category"></select>
         <button type="submit">Add Expense</button>
       </form>
       <ul id="expense-list"></ul>
     </div>
+
     <div id="category-container">
       <h2>Categories</h2>
       <form id="category-form">
