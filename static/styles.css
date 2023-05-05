@@ -428,3 +428,8 @@ a:visited, a:link{
   padding: 10px;
 }
 
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
