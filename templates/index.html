@@ -26,16 +26,17 @@
       </div>
 
       <div>
-        <img
-          src="{{ url_for('static', filename='/images/account-icon.png')}}"
-          alt="account-icon"
-        />
+        <a><img src="../static/images/account-icon.png" alt="account-icon" id="account-icon"/></a>
+      </div>
+
+      <div id="home-icon">
+        <a href="/"><img src="../static/images/home-button.png" width="50" height="50" alt="home-button"></a>
       </div>
     </header>
 
     <div id="menu-expand">
       <a href="#" id="side-menu-close">&timesbar;</a>
-      <a href="#">Category</a>
+      <a href="/categories">Category</a>
       <a href="#">Expenses</a>
       <a href="#">Costs</a>
       <a href="#">Transfer</a>
@@ -45,7 +46,7 @@
 
     <div class="container">
       <div id="budget-container">
-        <h2>Budget</h2>
+        <h2 class="add-type">Budget</h2>
         <form method="POST" id="budget-form">
           <div class="form-group">
             <input
@@ -82,7 +83,7 @@
       </div>
 
       <div id="expense-container">
-        <h2>Expense</h2>
+        <h2 class="add-type">Expense</h2>
         <form method="POST" id="expense-form">
           <div class="form-group">
             <input
@@ -119,7 +120,7 @@
       </div>
 
       <div id="category-container">
-        <h2>Category</h2>
+        <h2 class="add-type">Category</h2>
         <form method="POST" id="category-form">
           <div class="form-group">
             <input
@@ -131,7 +132,7 @@
           </div>
           <button type="submit">Add Category</button>
         </form>
-        <ul id="category-list">
+        <ul id="added-category-list">
           {% for category in categories %}
           <li>
             <p>{{ category.category }}</p>
