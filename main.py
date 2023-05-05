@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 import json
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -62,13 +63,25 @@ def index():
     return render_template('index.html', expenses=expenses, categories=categories, budgets=budgets)
 
 
+@app.route('/categories', methods=['GET', 'POST'])
+def categories():
+    with open("category.json", "r") as file:
+        category_list = json.load(file)
+    categories = category_list
+    total_budget_list = category_list
 
+    with open("budget.json", "r") as file:
+        budget_list = json.load(file)
 
+    for category in total_budget_list:
+        category["total budget"] = 0
+        for budget in budget_list:
+            if budget["category"] == category["category"]:
+                category["total budget"] += int(budget["amount"])
+    
+    current_date = datetime.now()
+    return render_template("categories.html", categories=categories, budgets=total_budget_list, current_date=current_date)
 
-
-@app.route('/categories')
-def categories():    
-    return render_template('categories.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

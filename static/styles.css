@@ -58,11 +58,11 @@ h2 {
 
 
 #account-icon {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   position: relative;
-  left: 85%;
-  bottom: 115px;
+  left: 86%;
+  bottom: 125px;
   cursor: pointer;
 }
 
@@ -252,6 +252,7 @@ li button:hover {
 
 #category-list {
   margin-top: 20px;
+  margin-right: 2%;
   width: 95vw;
   display: flex;
   flex-direction: column;
@@ -327,4 +328,39 @@ a {
   a {
     margin-left: -108%;
   }
+
+  #account-icon {
+    position: absolute;
+    left: 95%;
+    bottom: 91%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+  
+  #home-icon {
+    position: absolute;
+    left: 4%;
+    bottom: 82%;
+  }
+
+  #category-list {
+    width: 45%;
+    margin-left: 50%;
+    justify-content: center;
+  }
+
+  .category {
+    height: 120px;
+    margin-bottom: 20px;
+  }
+
+  .name-date {
+    margin-left: 100px;
+  }
+
+  .category-budget {
+    margin-right: 100px;
+  }
+  
 }

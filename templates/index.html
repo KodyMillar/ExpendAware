@@ -26,20 +26,17 @@
       </div>
 
       <div>
-        <img
-          src="{{ url_for('static', filename='/images/account-icon.png')}}"
-          alt="account-icon"
-        />
+        <a><img src="../static/images/account-icon.png" alt="account-icon" id="account-icon"/></a>
       </div>
 
       <div id="home-icon">
-        <a href="index.html"><img src="../images/home-button.png" width="50" height="50" alt="home-button"></a>
+        <a href="/"><img src="../static/images/home-button.png" width="50" height="50" alt="home-button"></a>
       </div>
     </header>
 
     <div id="menu-expand">
       <a href="#" id="side-menu-close">&timesbar;</a>
-      <a href="categories.html">Category</a>
+      <a href="/categories">Category</a>
       <a href="#">Expenses</a>
       <a href="#">Costs</a>
       <a href="#">Transfer</a>
@@ -135,7 +132,7 @@
           </div>
           <button type="submit">Add Category</button>
         </form>
-        <ul id="category-list">
+        <ul id="added-category-list">
           {% for category in categories %}
           <li>
             <p>{{ category.category }}</p>

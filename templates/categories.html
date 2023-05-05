@@ -24,17 +24,17 @@
         </div>
     
         <div>
-          <img src="../images/account-icon.png" alt="account-icon" id="account-icon">
+          <img src="../static/images/account-icon.png" alt="account-icon" id="account-icon">
         </div>
 
         <div id="home-icon">
-            <a href="index.html"><img src="../images/home-button.png" width="50" height="50" alt="home-button"></a>
+            <a href="/"><img src="../static/images/home-button.png" width="50" height="50" alt="home-button"></a>
         </div>
     </header>
 
     <div id="menu-expand">
         <a href="#" id="side-menu-close">&timesbar;</a>
-        <a href="categories.html">Category</a>
+        <a href="/categories">Category</a>
         <a href="#">Expenses</a>
         <a href="#">Costs</a>
         <a href="#">Transfer</a>
@@ -47,7 +47,21 @@
     </main>
 
     <div id="category-list">
+        {% for category in categories %}
         <a href="#"><div class="category">
+            <div class="name-date">
+                <h4 class="category-name">{{ category['category'] }}</h4>
+                <p>Created 03 May 2023</p>
+            </div>
+            {% for budget in budgets %}
+            {% if budget['category'] == category['category'] %}
+            <p class="category-budget">Budget: ${{ budget['total budget'] }}</p>
+            {% endif %}
+            {% endfor %}
+        </div></a>
+        {% endfor %}
+
+        <!-- <a href="#"><div class="category">
             <div class="name-date">
                 <h4 class="category-name">Housing</h4>
                 <p>Created 03 May 2023</p>
@@ -67,7 +81,7 @@
                 <p>Created 03 May 2023</p>
             </div>
             <p class="category-budget">Budget: $500</p>
-        </div></a>
+        </div></a> -->
     </div>
 
 </body>
