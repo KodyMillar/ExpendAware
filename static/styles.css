@@ -291,6 +291,20 @@ a {
 
 
 
+/* For expenses page */
+
+.expense-list {
+  margin-left: 25px;
+  color: black;
+}
+
+.expense-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4px;
+}
+
+
 
 /* Mobile-first styles */
 #budget-container, #expense-container, #category-container {
