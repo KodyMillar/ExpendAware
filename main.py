@@ -65,5 +65,10 @@ def index():
 
 
 
+
+@app.route('/categories')
+def categories():    
+    return render_template('categories.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

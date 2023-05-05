@@ -38,6 +38,12 @@ h1 {
   margin-top: 30px;
 }
 
+h2 {
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+}
+
 .bar {
   width: 30px;
   height: 5px;
@@ -51,7 +57,7 @@ h1 {
 }
 
 
-img {
+#account-icon {
   width: 50px;
   height: 50px;
   position: relative;
@@ -60,14 +66,21 @@ img {
   cursor: pointer;
 }
 
+#home-icon {
+  position: relative;
+  left: 0;
+  bottom: 100px;
+}
 
-h2 {
+
+.add-type {
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   margin-bottom: 20px;
   text-align: left;
   color: #F9F9F9;
 }
+
 
 form {
   display: flex;
@@ -234,9 +247,48 @@ li button:hover {
   right: 30px;
 }
 
-.dim {
-  opacity: .5;
+
+/* Categories list */
+
+#category-list {
+  margin-top: 20px;
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
 }
+
+.category {
+  background-color:rgb(229, 242, 247);
+  height: 70px;
+  border-radius: 30px;
+  box-shadow: 1px 1px 5px rgb(189, 212, 217);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.name-date {
+  margin-left: 25px;
+  color: black;
+}
+
+.category-name {
+  text-align: start;
+  font-size: 18px;
+}
+
+.category-budget {
+  margin-right: 20px;
+  color: rgb(45, 155, 126);
+  font-weight: bold;
+}
+
+
 
 
 /* Mobile-first styles */
