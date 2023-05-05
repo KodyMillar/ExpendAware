@@ -247,9 +247,48 @@ li button:hover {
   right: 30px;
 }
 
-.dim {
-  opacity: .5;
+
+/* Categories list */
+
+#category-list {
+  margin-top: 20px;
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
 }
+
+.category {
+  background-color:rgb(229, 242, 247);
+  height: 70px;
+  border-radius: 30px;
+  box-shadow: 1px 1px 5px rgb(189, 212, 217);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.name-date {
+  margin-left: 25px;
+  color: black;
+}
+
+.category-name {
+  text-align: start;
+  font-size: 18px;
+}
+
+.category-budget {
+  margin-right: 20px;
+  color: rgb(45, 155, 126);
+  font-weight: bold;
+}
+
+
 
 
 /* Mobile-first styles */
