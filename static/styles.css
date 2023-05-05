@@ -380,7 +380,7 @@ a {
 }
 
 
-/* Button Styles */
+/* Button Styles and Other CSS by Peter*/
 nav {
   background-color: #94E0C9;
   padding: 10px;
@@ -425,7 +425,6 @@ a:visited, a:link{
 
 .login-link, .logout-link {
   margin: 0;
-  padding: 10px;
 }
 
 .login-container {
@@ -433,3 +432,5 @@ a:visited, a:link{
   flex-direction: column;
   align-items: center;
 }
+
+/* Ends of CSS codes by Peter*/
