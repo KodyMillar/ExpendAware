@@ -421,3 +421,10 @@ button:active {
 a:visited, a:link{
   color: white;
 }
+
+
+.login-link, .logout-link {
+  margin: 0;
+  padding: 10px;
+}
+
