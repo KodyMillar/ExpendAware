@@ -59,10 +59,16 @@ def index():
     categories = existing_category
     budgets = existing_budget
 
-    return render_template('index.html', expenses=expenses, categories=categories, budgets=budgets)
+    return render_template('home.html', expenses=expenses, categories=categories, budgets=budgets)
 
 
+@app.route('/')
+def home():
+    return render_template('home.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 
 if __name__ == '__main__':

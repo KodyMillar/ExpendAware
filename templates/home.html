@@ -1,37 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap"
-      rel="stylesheet"
-    />
-    <script src="../static/script.js" defer></script>
-    <title>ExpendAware</title>
-  </head>
-  <body>
-    <header class="title">
-      <div class="title-container">
-        <h1>ExpendAware</h1>
-      </div>
-
-      <div class="menu">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-
-      <div>
-        <img
-          src="{{ url_for('static', filename='/images/account-icon.png')}}"
-          alt="account-icon"
-        />
-      </div>
-    </header>
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+  %}
 
     <div id="menu-expand">
       <a href="#" id="side-menu-close">&timesbar;</a>
@@ -140,7 +108,9 @@
         </ul>
       </div>
     </div>
+
+    <button><a href="/login">Logout</a></button>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/static/script.js"></script>
-  </body>
-</html>
+    {% endblock %}
