@@ -37,7 +37,7 @@
     <div id="menu-expand">
       <a href="#" id="side-menu-close">&timesbar;</a>
       <a href="/categories">Category</a>
-      <a href="#">Expenses</a>
+      <a href="/expenses">Expenses</a>
       <a href="#">Costs</a>
       <a href="#">Transfer</a>
       <a href="#">History</a>
@@ -145,6 +145,10 @@
       <p>Total Budget: {{ total_budget }}</p>
       <p>Total Expenses: {{ total_expenses }}</p>
     </div>
+
+    <a href="/login" class="logout-link">
+      <button>Logout</button>
+    </a>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/static/script.js"></script>

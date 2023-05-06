@@ -4,6 +4,20 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+
+def update_categories_budgets(categories, budgets, expenses):
+    for category in categories:
+        category['total_budget'] = 0
+        category['remaining_budget'] = 0
+        for budget in budgets:
+            if budget['category'] == category['category']:
+                category['total_budget'] += int(budget['amount'])
+                category['remaining_budget'] += int(budget['amount'])
+        for expense in expenses:
+            if expense['category'] == category['category']:
+                category['remaining_budget'] -= int(expense['amount'])
+    return categories
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     with open("expense.json", "r") as f:
@@ -48,7 +62,6 @@ def index():
             }
             existing_category.append(new_category)
 
-
     # Write the entire data object back to the file
     with open("expense.json", "w") as f:
         json.dump(existing_expense, f)
@@ -69,8 +82,9 @@ def index():
     for category in categories:
         total_budget += category['total budget']
 
+    categories = update_categories_budgets(categories, budgets, expenses)
     return render_template('index.html', expenses=expenses, categories=categories, budgets=budgets, total_budget=total_budget, total_expenses=total_expenses)
-
+    
 
 @app.route('/categories', methods=['GET', 'POST'])
 def categories():
@@ -94,6 +108,28 @@ def categories():
     current_date = datetime.now()
     return render_template("categories.html", categories=categories, budgets=total_budget_list, current_date=current_date)
 
+
+@app.route('/expenses')
+def expenses():
+    with open("expense.json", "r") as f:
+        existing_expense = json.load(f)
+    with open("category.json", "r") as f:
+        existing_category = json.load(f)
+    with open("budget.json", "r") as f:
+        existing_budget = json.load(f)
+
+    expenses = existing_expense
+    categories = existing_category
+    budgets = existing_budget
+
+    categories = update_categories_budgets(categories, budgets, expenses)
+
+    return render_template('expenses.html', categories=categories)
+
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
