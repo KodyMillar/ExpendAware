@@ -1,0 +1,26 @@
+{% extends "base.html" %} 
+
+{% block title %}Home{% endblock %} 
+{% block menu %}
+<nav class=>
+    <button type="button" class="btn-login">Login</button>
+    <button type="button" class="btn-signup">Sign Up</button>
+    <button type="button" class="btn-home">Home</button>
+    <button type="button" class="btn-logout">Logout</button>
+</nav>
+{% endblock %}
+
+{% block content%}
+    <div class="login-container">
+        <form class="login-info">
+            <h1> Login </h1>
+            <label for="email">Email Address</label>
+            <input type="text" id="email"></input>
+            <label for="password">Password</label>
+            <input type="text" id="password"></input>
+        </form>
+        <a href="/" class="login-link">
+            <button type="button" type="submit">Login</button>
+        </a>
+    </div>
+{% endblock %}
