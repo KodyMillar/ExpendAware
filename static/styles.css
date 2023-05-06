@@ -261,7 +261,7 @@ li button:hover {
 .category {
   background-color:rgb(229, 242, 247);
   height: 70px;
-  border-radius: 30px;
+  border-radius: 27px;
   box-shadow: 1px 1px 5px rgb(189, 212, 217);
   display: flex;
   justify-content: space-between;
@@ -353,6 +353,7 @@ a {
   .category {
     height: 120px;
     margin-bottom: 20px;
+    border-radius: 50px;
   }
 
   .name-date {

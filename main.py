@@ -60,7 +60,16 @@ def index():
     categories = existing_category
     budgets = existing_budget
 
-    return render_template('index.html', expenses=expenses, categories=categories, budgets=budgets)
+    #get total budget and total expenses
+    total_budget = 0
+    total_expenses = 0
+    with open("category.json", "r") as file:
+        categories = json.load(file)
+    
+    for category in categories:
+        total_budget += category['total budget']
+
+    return render_template('index.html', expenses=expenses, categories=categories, budgets=budgets, total_budget=total_budget, total_expenses=total_expenses)
 
 
 @app.route('/categories', methods=['GET', 'POST'])
@@ -78,6 +87,9 @@ def categories():
         for budget in budget_list:
             if budget["category"] == category["category"]:
                 category["total budget"] += int(budget["amount"])
+    
+    with open("category.json", "w") as file:
+        json.dump(total_budget_list, file)
     
     current_date = datetime.now()
     return render_template("categories.html", categories=categories, budgets=total_budget_list, current_date=current_date)
