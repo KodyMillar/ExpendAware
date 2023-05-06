@@ -25,14 +25,29 @@
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        {% endblock %}
-
+        
         <div>
-        <img
-            src="{{ '../static/images/account-icon.png' }}"
-            alt="account-icon"
-            id="account-icon"
-        />
+            <img
+                src="../static/images/account-icon.png"
+                alt="account-icon"
+                id="account-icon"
+            />
         </div>
+
+        <div id="home-icon">
+            <a href="/"><img src="../static/images/home-button.png" width="50" height="50" alt="home-button"></a>
+        </div>
+        {% endblock %}
     </header>
-<div class="container">{% block content %} {% endblock %}</div>
+
+    <div id="menu-expand">
+        <a href="#" id="side-menu-close">&timesbar;</a>
+        <a href="/categories">Category</a>
+        <a href="/expenses">Expenses</a>
+        <a href="#">Costs</a>
+        <a href="/transfer">Transfer</a>
+        <a href="#">History</a>
+        <a href="#">Statistic</a>
+    </div>
+
+    {% block content %} {% endblock %}
