@@ -124,5 +124,18 @@ def login():
 def transfer():
     return render_template('transfer.html')
 
+@app.route('/cost')
+def cost():
+    return render_template('cost.html')
+
+@app.route('/history')
+def history():
+    return render_template('history.html')
+
+@app.route('/statistic')
+def statistic():
+    return render_template('statistic.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
