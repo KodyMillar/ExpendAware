@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #f7f7f7;
+  background-color: #e1F5ff;
   color: #333;
   line-height: 1.6;
   display: flex;
@@ -81,6 +81,7 @@ h2 {
   color: #F9F9F9;
 }
 
+/* budget, expense, and category forms */
 
 form {
   display: flex;
@@ -261,7 +262,7 @@ li button:hover {
 .category {
   background-color:rgb(229, 242, 247);
   height: 70px;
-  border-radius: 30px;
+  border-radius: 27px;
   box-shadow: 1px 1px 5px rgb(189, 212, 217);
   display: flex;
   justify-content: space-between;
@@ -305,6 +306,138 @@ a {
 }
 
 
+/*login page */
+
+#login-logo {
+  height: 30vh;
+  margin-top: 20%;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#login-register {
+  
+}
+
+
+#login-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 12vh;
+  justify-content: space-between;
+}
+
+#login-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login-h1 {
+  margin-right: 3%;
+  margin-bottom: 5%;
+}
+
+#login-settings {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 70px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#remember-me {
+  width: 30px;
+  transform: scale(2);
+}
+
+#remember-label {
+  font-size: 20px;
+}
+
+#forgot-password {
+  color: blue;
+  font-size: 18px;
+}
+
+#login-link {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-right: 10%;
+}
+
+#login-button {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+
+/* #login-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+} */
+
+
+#login-button {
+  margin-top: 20px;
+  background-color: #ed344c;
+  /* box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6); */
+  border-radius: 5px;
+  margin-left: 7%;
+  width: calc(60vw + 30px);
+  box-shadow: 1px 7px 6px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  border: 0;
+  line-height: 3;
+  color: #fff;
+  padding: 0 15px;
+  background-color: #375f68;
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6);
+}
+
+#login-register {
+  display: flex;
+  /* background-color: white; */
+  margin-top: 30%;
+  justify-content: space-between;
+}
+
+#login-register li {
+  margin: 0 20px;
+  width: 100px;
+  border: none;
+  background-color: rgb(248, 247, 247);
+}
+
+#login-register li a {
+  width: 100%;
+  color: rgb(131, 131, 131);
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+#login-register li.active {
+  background-color: rgb(167, 223, 255);
+}
+
+#login-register li.active a {
+  color: rgb(19, 68, 152);
+}
+
+
 
 /* Mobile-first styles */
 #budget-container, #expense-container, #category-container {
@@ -315,6 +448,7 @@ a {
 .container {
   flex-direction: column;
 }
+
 
 /* Media queries for larger screens */
 @media screen and (min-width: 768px) {
@@ -367,6 +501,7 @@ a {
   .category {
     height: 120px;
     margin-bottom: 20px;
+    border-radius: 50px;
   }
 
   .name-date {
@@ -386,24 +521,8 @@ nav {
   padding: 10px;
 }
 
-.login-info {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-}
-
 input {
   width: 30vw;
-}
-
-button {
-  border: 0;
-  line-height: 3;
-  color: #fff;
-  padding: 0 15px;
-  background-color: #375f68;
-  border-radius: 10px;
-  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.5);
 }
 
 button:hover {
@@ -418,9 +537,9 @@ button:active {
   margin-left: 10px;
 }
 
-a:visited, a:link{
+/* a:visited, a:link{
   color: white;
-}
+} */
 
 
 .login-link, .logout-link {

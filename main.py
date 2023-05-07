@@ -58,7 +58,8 @@ def index():
         elif 'category' in request.form:
             category = request.form['category']
             new_category = {
-                'category': category
+                'category': category,
+                'total budget': 0
             }
             existing_category.append(new_category)
 
@@ -73,9 +74,18 @@ def index():
     categories = existing_category
     budgets = existing_budget
 
-    categories = update_categories_budgets(categories, budgets, expenses)
+    #get total budget and total expenses
+    total_budget = 0
+    total_expenses = 0
+    with open("category.json", "r") as file:
+        categories = json.load(file)
+    
+    for category in categories:
+        total_budget += category['total budget']
 
-    return render_template('index.html', expenses=expenses, categories=categories, budgets=budgets)
+    categories = update_categories_budgets(categories, budgets, expenses)
+    return render_template('index.html', expenses=expenses, categories=categories, budgets=budgets, total_budget=total_budget, total_expenses=total_expenses)
+    
 
 @app.route('/categories', methods=['GET', 'POST'])
 def categories():
@@ -92,6 +102,9 @@ def categories():
         for budget in budget_list:
             if budget["category"] == category["category"]:
                 category["total budget"] += int(budget["amount"])
+    
+    with open("category.json", "w") as file:
+        json.dump(total_budget_list, file)
     
     current_date = datetime.now()
     return render_template("categories.html", categories=categories, budgets=total_budget_list, current_date=current_date)
