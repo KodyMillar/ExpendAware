@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #f7f7f7;
+  background-color: #e3f9ff;
   color: #333;
   line-height: 1.6;
   display: flex;
@@ -81,6 +81,7 @@ h2 {
   color: #F9F9F9;
 }
 
+/* budget, expense, and category forms */
 
 form {
   display: flex;
@@ -305,6 +306,57 @@ a {
 }
 
 
+/*login page */
+
+#login-logo {
+  height: 30vh;
+  margin-top: 20%;
+  display: flex;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10%;
+}
+
+#login-button {
+  margin-top: 20px;
+  background-color: #ed344c;
+  /* box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6); */
+  border-radius: 5px;
+  margin-left: 7%;
+  width: calc(60vw + 30px);
+  box-shadow: 1px 7px 6px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  border: 0;
+  line-height: 3;
+  color: #fff;
+  padding: 0 15px;
+  background-color: #375f68;
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6);
+}
+
+#login-register {
+  display: flex;
+  /* background-color: white; */
+  margin-top: 30%;
+  justify-content: space-between;
+}
+
+#login-register li {
+  margin: 0 20px;
+  width: 100px;
+}
+
+
 
 /* Mobile-first styles */
 #budget-container, #expense-container, #category-container {
@@ -315,6 +367,7 @@ a {
 .container {
   flex-direction: column;
 }
+
 
 /* Media queries for larger screens */
 @media screen and (min-width: 768px) {
@@ -387,24 +440,8 @@ nav {
   padding: 10px;
 }
 
-.login-info {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-}
-
 input {
   width: 30vw;
-}
-
-button {
-  border: 0;
-  line-height: 3;
-  color: #fff;
-  padding: 0 15px;
-  background-color: #375f68;
-  border-radius: 10px;
-  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.5);
 }
 
 button:hover {
