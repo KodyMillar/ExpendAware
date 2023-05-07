@@ -23,7 +23,9 @@ body {
 }
 
 .title {
-  background-color: #5CA7D6;
+  /* background-color: #5CA7D6; */
+  background-color: #2C99ED;
+  color: rgb(255, 255, 255);
   margin: 0;
   padding: 0;
   width: 100%;
@@ -80,6 +82,7 @@ h2 {
   text-align: left;
   color: #F9F9F9;
 }
+
 
 /* budget, expense, and category forms */
 
@@ -253,14 +256,13 @@ li button:hover {
 
 #category-list {
   margin-top: 20px;
-  margin-right: 2%;
   width: 95vw;
   display: flex;
   flex-direction: column;
 }
 
 .category {
-  background-color:rgb(229, 242, 247);
+  background-color:rgb(255, 252, 241);
   height: 70px;
   border-radius: 27px;
   box-shadow: 1px 1px 5px rgb(189, 212, 217);
@@ -281,13 +283,16 @@ a {
 
 .category-name {
   text-align: start;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #DA0063;
 }
 
 .category-budget {
   margin-right: 20px;
-  color: rgb(45, 155, 126);
+  color: rgb(45, 147, 89);
   font-weight: bold;
+  font-size: 20px;
 }
 
 
@@ -321,7 +326,6 @@ a {
 #login-register {
   
 }
-
 
 #login-info {
   display: flex;

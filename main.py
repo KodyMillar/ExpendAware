@@ -46,6 +46,9 @@ def index():
                 "category": category
             }
             existing_expense.append(new_expense)
+            for category in existing_category:
+                if category['category'] == new_expense['category']:
+                    category['total expenses'] += int(new_expense['amount'])
         elif 'name' in request.form and 'amount' in request.form and 'category' in request.form:
             name = request.form['name']
             amount = request.form['amount']
@@ -61,6 +64,7 @@ def index():
             new_category = {
                 'category': category,
                 'total budget': 0,
+                'total expenses': 0,
                 'date': current_date
             }
             existing_category.append(new_category)
@@ -76,14 +80,19 @@ def index():
     categories = existing_category
     budgets = existing_budget
 
-    #get total budget and total expenses
+    #get total budget 
     total_budget = 0
-    total_expenses = 0
     with open("category.json", "r") as file:
         categories = json.load(file)
     
     for category in categories:
         total_budget += category['total budget']
+
+    #get total expenses
+    total_expenses = 0
+
+    for category in categories:
+        total_expenses += category['total expenses']
 
     categories = update_categories_budgets(categories, budgets, expenses)
     return render_template('index.html', expenses=expenses, categories=categories, budgets=budgets, total_budget=total_budget, total_expenses=total_expenses)
@@ -108,8 +117,7 @@ def categories():
     with open("category.json", "w") as file:
         json.dump(total_budget_list, file)
     
-    current_date = datetime.now()
-    return render_template("categories.html", categories=categories, budgets=total_budget_list, current_date=current_date)
+    return render_template("categories.html", categories=categories, budgets=total_budget_list)
 
 
 @app.route('/expenses')
