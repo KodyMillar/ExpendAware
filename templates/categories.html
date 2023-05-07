@@ -2,12 +2,11 @@
 {% block title %}ExpendAware - Category{% endblock %}
 {% block content %}
 <main>
-    <h2>Categories</h2>
-</main>
+    <h2 id="categories-title">Categories</h2>
 
 <div id="category-list">
     {% for category in categories %}
-    <a href="#"><div class="category">
+    <a href="#" class="category-link"><div class="category">
         <div class="name-date">
             <h4 class="category-name">{{ category['category'] }}</h4>
             <p>Created {{ category['date'] }}</p>
@@ -21,5 +20,7 @@
     {% endfor %}
 
 </div>
+
+</main>
 
 {% endblock %}
