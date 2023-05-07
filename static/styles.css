@@ -158,7 +158,7 @@ ul {
   max-width: 600px;
 }
 
-li {
+.transaction-list {
   background-color: #fff;
   padding: 15px;
   border: 1px solid #ddd;
@@ -267,28 +267,38 @@ li button:hover {
   background: linear-gradient(240deg, rgb(232, 255, 238) 15ch, #e1F5ff 11.05ch);
 }
 
+#categorylist-container {
+  border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
 #category-list {
   margin-top: 20px;
   width: 95vw;
   display: flex;
   flex-direction: column;
   /* margin-left: 2.5%; */
+  z-index: 0;
 }
 
 .category {
   background-color:rgb(255, 252, 241);
   height: 110px;
-  border-radius: 35px;
+  border-radius: 33px;
   box-shadow: 1px 1px 5px rgb(189, 212, 217);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 0;
+  margin-bottom: 0;
 }
 
 .category-link {
-  border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
+  /* border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
   padding-bottom: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; */
+  z-index: 0;
 }
 
 a {
@@ -316,8 +326,31 @@ a {
 
 .category-clicked {
   box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.1), 0px -10px 15px rgba(0, 0, 0, 0.1);
+  z-index: 3;
 }
 
+.budget-dropdown {
+  z-index: 1;
+  background-color: rgb(244, 244, 244);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 0;
+  width: 78vw;
+  box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.1);
+  transition: .6s;
+  overflow-x: hidden;
+}
+
+#dropdown-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown-display {
+  overflow-x: visible;
+}
 
 
 /* For expenses page */

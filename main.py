@@ -100,6 +100,8 @@ def index():
 
 @app.route('/categories', methods=['GET', 'POST'])
 def categories():
+
+    # Get information from category and budget json files
     with open("category.json", "r") as file:
         category_list = json.load(file)
     categories = category_list
@@ -117,7 +119,7 @@ def categories():
     with open("category.json", "w") as file:
         json.dump(total_budget_list, file)
     
-    return render_template("categories.html", categories=categories, budgets=total_budget_list)
+    return render_template("categories.html", categories=categories, total_budgets=total_budget_list, budget=budget_list)
 
 
 @app.route('/expenses')

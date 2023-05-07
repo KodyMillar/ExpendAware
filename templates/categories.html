@@ -6,17 +6,28 @@
 
 <div id="category-list">
     {% for category in categories %}
+    <div id="categorylist-container">
+    <div>
     <a href="#" class="category-link"><div class="category">
         <div class="name-date">
             <h4 class="category-name">{{ category['category'] }}</h4>
             <p>Created {{ category['date'] }}</p>
         </div>
-        {% for budget in budgets %}
+        {% for budget in total_budgets %}
         {% if budget['category'] == category['category'] %}
-        <p class="category-budget">Budget: ${{ budget['total budget'] }}</p>
+        <p class="category-budget {{ category['category'] }}">Budget: ${{ budget['total budget'] }}</p>
         {% endif %}
         {% endfor %}
     </div></a>
+    </div>
+    <div id="dropdown-container">
+    <ul class="budget-dropdown" id="{{ category['category'] }}">
+        <li class="budget-item"><a>Groceries</a></li>
+        <li class="budget-item"><a>Dine Out</a></li>
+        <li class="budget-item"><a>Baking</a></li>
+    </ul>
+    </div>
+    </div>
     {% endfor %}
 
 </div>
