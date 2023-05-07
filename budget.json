@@ -1,1 +1,1 @@
-[{"name": "Groceries", "amount": "500", "category": "Food"}, {"name": "Dine Out", "amount": "200", "category": "Food"}, {"name": "Formal", "amount": "1000", "category": "Clothing"}]
+[{"name": "Groceries", "amount": "500", "category": "Food"}, {"name": "Dine Out", "amount": "200", "category": "Food"}, {"name": "Formal", "amount": "1000", "category": "Clothing"}, {"name": "Delivery", "amount": "100", "category": "Food"}, {"name": "Bakery", "amount": "300", "category": "Food"}, {"name": "Casual", "amount": "2000", "category": "Clothing"}]

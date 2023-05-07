@@ -379,6 +379,13 @@ a {
   flex-direction: column;
 }
 
+.login-tab {
+  height: 60px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
 
 #login-info {
   display: flex;
