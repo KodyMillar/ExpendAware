@@ -58,7 +58,8 @@ def index():
         elif 'category' in request.form:
             category = request.form['category']
             new_category = {
-                'category': category
+                'category': category,
+                'total budget': 0
             }
             existing_category.append(new_category)
 

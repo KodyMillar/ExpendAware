@@ -25,22 +25,23 @@
     <header id="login-logo">
         <img src="../static/images/logo.png" width="150" height="150"/>
         <ul id="login-register">
-            <li><a href="#" role="tab">Login</a></li>
+            <li><a data-mdb-toggle="pill" href="#" role="tab" aria-controls="pills-login" aria-selected="true">Login</a></li>
             <li><a href="#" role="tab">Register</a></li>
         </ul>
     </header>
 
     <div id="login-container">
+        <h1 id="login-h1">Login</h1>
         <form id="login-info">
-            <h1> Login </h1>
-            <label for="email">Email Address</label>
-            <input type="text" id="email"></input>
-            <label for="password">Password</label>
-            <input type="text" id="password"></input>
+            <input type="text" placeholder="Email Address" id="loginEmail"/>
+            <input type="text" placeholder="Password" id="password">
         </form>
-        <div>
-            <input type="checkbox" id="remember-me"/>
-            <label for="remember-me">Remember Me</label>
+        <div id="login-settings">
+            <div>
+                <input type="checkbox" id="remember-me" name="rememberMe"/>
+                <label for="remember-me" id="remember-label">Remember Me</label>
+            </div>
+            <a href="#" id="forgot-password">Forgot Password?</a>
         </div>
         <a href="/" id="login-link">
             <button type="submit" id="login-button">Login</button>
