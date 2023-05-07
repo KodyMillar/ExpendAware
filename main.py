@@ -32,6 +32,7 @@ def index():
     amount = 0
     category = ''
     name = ''
+    current_date = datetime.now().strftime("%d %b %Y")
 
     # Append the new data to the existing data
     if request.method == 'POST':
@@ -59,7 +60,8 @@ def index():
             category = request.form['category']
             new_category = {
                 'category': category,
-                'total budget': 0
+                'total budget': 0,
+                'date': current_date
             }
             existing_category.append(new_category)
 
