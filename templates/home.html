@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Braah+One&display=swap" rel="stylesheet">
-    <script src="/static/script.js"></script>
+    <script src="/static/script.js" differ></script>
 </head>
 
 <body>
@@ -47,22 +47,33 @@
         </div>
         <a href="/login" class="logout-link">
             <button style="background-color: white; color:crimson; font-family: 'Braah One', sans-serif; font-weight: bolder; border-radius: 50%;
-            width: 60px; height: 60px; padding: 5px;">Log out</button>
+            width: 60px; height: 60px; padding: 2px">Log out</button>
         </a>
     </div>
         
-        
-    <div>
-        <h3><img src="/static/images/budget.png" alt="budget-icon">Add Budget</h3>
-        <h3><img src="/static/images/expense.png" alt="expense-icon">Add Expense</h3>
-        <h3><img src="/static/images/category.png" alt="category-icon">Add Category</h3>
-    </div>
-    
+    <!-- <div class="">
+        <img src="/static/images/budget-icon.png">
+        <h3>Add Budget</h3>
 
-    <!-- <a href="/login" class="logout-link">
-        <button style="background-color: white; color:crimson; font-family: 'Braah One', sans-serif; font-weight: bolder; border-radius: 50%;
-         width: 60px; height: 60px; padding: 5px;">Log out</button>
-    </a> -->
+        <img src="/static/images/expense.png">
+        <h3>Add Expense</h3>
+        
+        <img src="/static/images/category.png">
+        <h3>Add Category</h3>
+    </div> -->
+    <div class="view-section">
+        <div id="total">
+            <h3>Overview/Summary</h3>
+            <h4>Total</h4>
+            <h4>Total Budget</h4>
+            <h4>Total Expenses</h4>
+        </div>
+
+        <div id="transaction"></div>        
+
+        <div>Category Overview</div>
+    </div>
+
 
     <div id="menu-expand">
         <a href="#" id="side-menu-close">&timesbar;</a>

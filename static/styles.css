@@ -17,7 +17,7 @@ body {
 }
 
 .title-container {
-  text-align: left;
+  text-align: center;
   width: 100%;
   max-width: 1200px;
 }
@@ -26,8 +26,8 @@ body {
   background-color: #5CA7D6;
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 110px;
+  width: 105%;
+  height: 100px;
 }
 
 h1 {
@@ -52,7 +52,7 @@ h2 {
   border-radius: 5px;
   margin: 3px;
   bottom: 80px;
-  left: 10px;
+  left: 20px;
   cursor: pointer;
 }
 
@@ -61,7 +61,7 @@ h2 {
   width: 45px;
   height: 45px;
   position: relative;
-  left: 87%;
+  left: 88%;
   bottom: 120px;
   cursor: pointer;
 }
@@ -80,7 +80,7 @@ h2 {
 
 #home-icon {
   margin-top: 5px;
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 #subheadings {
@@ -93,11 +93,35 @@ h2 {
 
 h3 {
   font-family: 'Montserrat', sans-serif;
+  font-weight: bolder;
 }
 
 
 a.logout-link {
   margin-right: 15px;  
+}
+
+#total {
+  margin-top: 20px;
+}
+
+.view-section {
+  background-color: white;
+  border-radius: 50px;
+  height: 600px;
+  width: 80%;
+  margin-top: 20px;
+}
+
+.view-section h3 {
+  font-size: 25px;
+  font-weight: bolder;
+  margin-left: 10px;
+  margin-bottom: 30px;
+}
+
+h4 {
+  font-family: 'Braah One', sans-serif;
 }
 
 .add-type {
