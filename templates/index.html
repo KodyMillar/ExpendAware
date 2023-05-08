@@ -31,7 +31,7 @@
     </form>
     <ul id="budget-list">
       {% for b in budgets %}
-      <li>
+      <li class="transaction-list">
         <p>{{b.category}} - {{ b.name }}</p>
         <p>${{ b.amount }}</p>
       </li>
@@ -68,7 +68,7 @@
     </form>
     <ul id="expense-list">
       {% for e in expenses %}
-      <li>
+      <li class="transaction-list">
         <p>{{ e.category }} - {{ e.descr }}</p>
         <p>${{ e.amount }}</p>
       </li>
@@ -91,7 +91,7 @@
     </form>
     <ul id="added-category-list">
       {% for category in categories %}
-      <li>
+      <li class="transaction-list">
         <p>{{ category.category }}</p>
       </li>
       {% endfor %}
@@ -106,5 +106,8 @@
 <a href="/login" class="logout-link">
   <button>Logout</button>
 </a>
+
+<footer>
+</footer>
 
 {% endblock %}
