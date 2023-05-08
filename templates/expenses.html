@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}ExpendAware - Expense{% endblock %}
+{% block content %}
+<main>
+    <h2>Expenses</h2>
+</main>
+
+<div id="category-list">
+    {% for category in categories %}
+    <a href="#"><div class="category">
+        <div class="name-date">
+            <h4 class="category-name">{{ category['category'] }}</h4>
+            <p>Created 03 May 2023</p>
+        </div>
+        <p class="category-budget">Remaining Budget: ${{ category['remaining_budget'] }}</p>
+    </div></a>
+    {% endfor %}
+</div>
+{% endblock %}

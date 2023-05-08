@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap"
+        rel="stylesheet"
+    />
+    <script src="../static/script.js" defer></script>
+    <title>Login</title>
+</head>
+<body>
+
+    <!-- <nav class=>
+        <button type="button" class="btn-login">Login</button>
+        <button type="button" class="btn-signup">Sign Up</button>
+        <button type="button" class="btn-home">Home</button>
+        <button type="button" class="btn-logout">Logout</button>
+    </nav> -->
+    <header id="login-logo">
+        <img src="../static/images/logo.png" width="150" height="150"/>
+        <ul id="login-register">
+            <li class="login-tab active"><a data-mdb-toggle="pill" href="#login-container" role="tab" aria-controls="pills-login" aria-selected="true">Login</a></li>
+            <li class="login-tab"><a href="#" role="tab">Register</a></li>
+        </ul>
+    </header>
+
+    <div id="login-container">
+        <h1 id="login-h1">Login</h1>
+        <form id="login-info">
+            <input type="text" placeholder="Email Address" id="loginEmail"/>
+            <input type="text" placeholder="Password" id="password">
+        </form>
+        <div id="login-settings">
+            <div>
+                <input type="checkbox" id="remember-me" name="rememberMe"/>
+                <label for="remember-me" id="remember-label">Remember Me</label>
+            </div>
+            <a href="#" id="forgot-password">Forgot Password?</a>
+        </div>
+        <a href="/" id="login-link">
+            <button type="submit" id="login-button">Login</button>
+        </a>
+    </div>
+</body>
