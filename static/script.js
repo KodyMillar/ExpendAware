@@ -37,7 +37,9 @@ for(let category of categoriesList){
         if (category.classList.contains("category-clicked")){
             for(let budget of budgetDropDown) {
                 if (categoryName === budget.id){
-                    document.querySelector("#" + budget.id).style.height = "200px";
+                    dropDownItems = document.querySelector("#" + budget.id).querySelectorAll(".budget-item")
+                    dropDownHeight = 100 * dropDownItems.length
+                    document.querySelector("#" + budget.id).style.height = `${dropDownHeight}px`;
                 }
             }
         }
