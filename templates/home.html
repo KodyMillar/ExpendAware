@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="../static/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet"/>
+</head>
+
+<body>
+    <header class="title">
+        <div class="title-container">
+            <h1>ExpendAware</h1>
+        </div>
+
+        <div class="menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        
+        <div>
+            <img
+                src="../static/images/account-icon.png"
+                alt="account-icon"
+                id="account-icon"
+            />
+        </div>
+
+        <div id="home-icon">
+            <a href="/"><img src="../static/images/home-button.png" width="50" height="50" alt="home-button"></a>
+        </div>
+    </header>
+
+    <div id="menu-expand">
+        <a href="#" id="side-menu-close">&timesbar;</a>
+        <a href="/categories">Category</a>
+        <a href="/expenses">Expenses</a>
+        <a href="/cost">Costs</a>
+        <a href="/transfer">Transfer</a>
+        <a href="/history">History</a>
+        <a href="/statistic">Statistic</a>
+    </div>
+
+    <a href="/login" class="logout-link">
+        <button>Logout</button>
+      </a>
+</body>
+</html>
