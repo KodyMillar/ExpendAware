@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 import json
 from datetime import datetime
+import pprint
 
 app = Flask(__name__)
 
@@ -145,7 +146,7 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/transfer')
+@app.route('/transfer', methods=['GET', 'POST'])
 def transfer():
     with open("expense.json", "r") as f:
         existing_expense = json.load(f)
@@ -156,6 +157,35 @@ def transfer():
     expenses = existing_expense
     categories = existing_category
     budgets = existing_budget
+
+    if request.method == 'POST':
+        # Get user input
+        budget_from_str = request.form["budget-from"]
+        budget_to_str = request.form["budget-to"]
+        transfer_amount = request.form['transfer-amount']
+
+        # Fix syntax issue replacing single to double quote
+        budget_from_str_fixed = budget_from_str.replace("'", "\"")
+        budget_to_str_fixed = budget_to_str.replace("'", "\"")
+
+        # Convert string to dictionary
+        budget_from_dict = json.loads(budget_from_str_fixed)
+        budget_to_dict = json.loads(budget_to_str_fixed)
+
+        # Change budget
+        budget_from_dict["amount"] = int(budget_from_dict["amount"]) - int(transfer_amount)
+        budget_to_dict["amount"] = int(budget_to_dict["amount"]) + int(transfer_amount)
+
+        # Update budgets
+        for budget in budgets:
+            if budget["name"] == budget_from_dict["name"] and budget["category"] == budget_from_dict["category"]:
+                budget["amount"] = budget_from_dict["amount"]
+            if budget["name"] == budget_to_dict["name"] and budget["category"] == budget_to_dict["category"]:
+                budget["amount"] = budget_to_dict["amount"]
+    
+    # Update budgets.json
+    with open("budget.json", "w") as f:
+        json.dump(budgets, f)
     return render_template('transfer.html', expenses=expenses, categories=categories, budgets=budgets)
 
 @app.route('/cost')

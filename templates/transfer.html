@@ -3,11 +3,11 @@
 {% block title %}ExpendAware - Transfer{% endblock %}
 
 {% block content %}
-<form>
+<form method="POST">
     <p>From</p>
-    <select id="" name="budget">
+    <select id="" name="budget-from">
         {% for budget in budgets %}
-            <option value="{{ budget.name }}">
+            <option value="{{ budget }}">
                 {{ budget.category }} -
                 {{ budget.name }} has
                 ${{ budget.amount }}
@@ -16,9 +16,9 @@
     </select>
 
     <p>To</p>
-    <select id="" name="budget">
+    <select id="" name="budget-to">
         {% for budget in budgets %}
-            <option value="{{ budget.name }}">
+            <option value="{{ budget }}">
                 {{ budget.category }} -
                 {{ budget.name }} has
                 ${{ budget.amount }}
@@ -29,11 +29,12 @@
         <p>Amount</p>
         <input
         type="text"
-        id="budget-name"
-        placeholder="Budget name"
-        name="name"
+        id=""
+        placeholder="Transfer Amount"
+        name="transfer-amount"
         />
     </div>
+    <button type="submit">Transfer/Submit</button>
 </form>
 
 {% endblock %}
