@@ -3,8 +3,37 @@
 {% block title %}ExpendAware - Transfer{% endblock %}
 
 {% block content %}
+<form>
+    <p>From</p>
+    <select id="" name="budget">
+        {% for budget in budgets %}
+            <option value="{{ budget.name }}">
+                {{ budget.category }} -
+                {{ budget.name }} has
+                ${{ budget.amount }}
+            </option>
+        {% endfor %}
+    </select>
 
-<!--
-    Enter your code inside this block.
--->
+    <p>To</p>
+    <select id="" name="budget">
+        {% for budget in budgets %}
+            <option value="{{ budget.name }}">
+                {{ budget.category }} -
+                {{ budget.name }} has
+                ${{ budget.amount }}
+            </option>
+        {% endfor %}
+    </select>
+    <div>
+        <p>Amount</p>
+        <input
+        type="text"
+        id="budget-name"
+        placeholder="Budget name"
+        name="name"
+        />
+    </div>
+</form>
+
 {% endblock %}

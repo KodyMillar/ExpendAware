@@ -147,7 +147,16 @@ def login():
 
 @app.route('/transfer')
 def transfer():
-    return render_template('transfer.html')
+    with open("expense.json", "r") as f:
+        existing_expense = json.load(f)
+    with open("category.json", "r") as f:
+        existing_category = json.load(f)    
+    with open("budget.json", "r") as f:
+        existing_budget = json.load(f)
+    expenses = existing_expense
+    categories = existing_category
+    budgets = existing_budget
+    return render_template('transfer.html', expenses=expenses, categories=categories, budgets=budgets)
 
 @app.route('/cost')
 def cost():
