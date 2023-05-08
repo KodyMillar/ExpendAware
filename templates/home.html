@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Braah+One&display=swap" rel="stylesheet">
+    <script src="/static/script.js"></script>
 </head>
 
 <body>
@@ -22,7 +26,7 @@
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        
+
         <div>
             <img
                 src="../static/images/account-icon.png"
@@ -30,14 +34,35 @@
                 id="account-icon"
             />
         </div>
+    </header>    
 
+    <div class="subtitle">
         <div id="home-icon">
-            <a href="/"><img src="../static/images/home-button.png" width="50" height="50" alt="home-button"></a>
+            <a href="/"><img src="../static/images/home-button.png" width="30" height="30" alt="home-button"></a>
+        </div>    
+        <div id="subheadings">
             <h3>Category</h3>
             <h3>Transfer</h3>
             <h3>Costs</h3>
         </div>
-    </header>
+        <a href="/login" class="logout-link">
+            <button style="background-color: white; color:crimson; font-family: 'Braah One', sans-serif; font-weight: bolder; border-radius: 50%;
+            width: 60px; height: 60px; padding: 5px;">Log out</button>
+        </a>
+    </div>
+        
+        
+    <div>
+        <h3><img src="/static/images/budget.png" alt="budget-icon">Add Budget</h3>
+        <h3><img src="/static/images/expense.png" alt="expense-icon">Add Expense</h3>
+        <h3><img src="/static/images/category.png" alt="category-icon">Add Category</h3>
+    </div>
+    
+
+    <!-- <a href="/login" class="logout-link">
+        <button style="background-color: white; color:crimson; font-family: 'Braah One', sans-serif; font-weight: bolder; border-radius: 50%;
+         width: 60px; height: 60px; padding: 5px;">Log out</button>
+    </a> -->
 
     <div id="menu-expand">
         <a href="#" id="side-menu-close">&timesbar;</a>
@@ -49,8 +74,7 @@
         <a href="/statistic">Statistic</a>
     </div>
 
-    <a href="/login" class="logout-link">
-        <button>Logout</button>
-    </a>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/script.js"></script>
 </body>
 </html>

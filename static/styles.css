@@ -66,18 +66,39 @@ h2 {
   cursor: pointer;
 }
 
+.subtitle {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+  background-color: #fff;
+  padding-bottom: 10px;
+  justify-content: space-evenly;
+  height: 60px;
+}
+
 #home-icon {
-  width: 50px;
-  position: relative;
-  left: 0;
-  bottom: 100px;
-  
+  margin-top: 5px;
+  margin-left: 15px;
+}
+
+#subheadings {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  right: 10px;
 }
 
 h3 {
   font-family: 'Montserrat', sans-serif;
 }
 
+
+a.logout-link {
+  margin-right: 15px;  
+}
 
 .add-type {
   font-family: 'Montserrat', sans-serif;
@@ -140,7 +161,7 @@ select {
   margin-right: 10px;
 }
 
-button {
+/* button {
   background-color: #65647C;
   color: white;
   padding: 10px 20px;
@@ -148,7 +169,7 @@ button {
   border-radius: 3px;
   cursor: pointer;
   font-size: 16px;
-}
+} */
 
 button:hover {
   background-color: #8EA7E9;
