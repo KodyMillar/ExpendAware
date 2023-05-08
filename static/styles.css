@@ -252,7 +252,7 @@ li button:hover {
 }
 
 
-/* Categories list */
+/* Categories Page */
 
 #categories-title {
   text-align: center;
@@ -264,13 +264,20 @@ li button:hover {
   z-index: 0;
   margin-top: 0;
   /* box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1); */
-  background: linear-gradient(240deg, rgb(232, 255, 238) 15ch, #e1F5ff 11.05ch);
+  background: linear-gradient(240deg, rgb(232, 255, 238) 90%, #e1F5ff 10%);
 }
 
-#categorylist-container {
+.categorylist-container {
   border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
-  padding-bottom: 20px;
+  padding: 20px;
   margin-bottom: 20px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.category-container {
+  margin: 0;
+  padding: 0;
 }
 
 #category-list {
@@ -292,6 +299,7 @@ li button:hover {
   align-items: center;
   z-index: 0;
   margin-bottom: 0;
+  transition: .6s;
 }
 
 .category-link {
@@ -337,13 +345,21 @@ a {
   align-items: center;
   justify-content: space-evenly;
   height: 0;
-  width: 78vw;
+  width: 83%;
   box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.1);
   transition: .6s;
   overflow-x: hidden;
 }
 
-#dropdown-container {
+.budget-item {
+  display: flex;
+  width: 75%;
+  justify-content: space-between;
+  border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
+  padding-bottom: 5%;
+}
+
+.dropdown-container {
   display: flex;
   justify-content: center;
 }
@@ -555,26 +571,56 @@ button {
     bottom: 82%;
   }
 
+ /* category page 
+ ------------------------------*/
+
   #category-list {
-    width: 45%;
-    margin-left: 50%;
-    justify-content: center;
+    /* width: 45%;
+    margin-left: 50%; */
+    align-items: center;
+  }
+
+  .categorylist-container {
+    border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
+    padding-bottom: 4%;
+    margin-bottom: 2%;
   }
 
   .category {
-    height: 120px;
-    margin-bottom: 20px;
+    height: 250px;
+    width: 70vw;
     border-radius: 50px;
+    margin: 0;
   }
 
   .name-date {
-    margin-left: 100px;
+    margin-left: 12%;
+  }
+
+  .name-date > h4 {
+    font-size: 2.5em;
+    margin-bottom: 5%;
+  }
+
+  .name-date > p {
+    font-size: 1.5em;
   }
 
   .category-budget {
-    margin-right: 100px;
+    margin-right: 10%;
+    font-size: 2em;
+  }
+
+  .budget-item {
+    font-size: 1.5em;
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
+    padding-bottom: 5%;
   }
   
+
 }
 
 
