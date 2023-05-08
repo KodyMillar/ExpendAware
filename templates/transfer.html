@@ -3,9 +3,10 @@
 {% block title %}ExpendAware - Transfer{% endblock %}
 
 {% block content %}
-<form method="POST">
+<form method="POST" id="budget-container">
     <p>From</p>
-    <select id="" name="budget-from">
+    <select id="budget-from" name="budget-from">
+        <option value="defaultOption">Select an option</option>
         {% for budget in budgets %}
             <option value="{{ budget }}">
                 {{ budget.category }} -
@@ -16,7 +17,8 @@
     </select>
 
     <p>To</p>
-    <select id="" name="budget-to">
+    <select id="budget-to" name="budget-to">
+        <option value="defaultOption">Select an option</option>
         {% for budget in budgets %}
             <option value="{{ budget }}">
                 {{ budget.category }} -
@@ -25,16 +27,117 @@
             </option>
         {% endfor %}
     </select>
-    <div>
-        <p>Amount</p>
-        <input
-        type="text"
-        id=""
-        placeholder="Transfer Amount"
-        name="transfer-amount"
-        />
-    </div>
+    
+    <p>Amount</p>    
+    <input
+    type="text"
+    id="transfer-amount"
+    placeholder="Transfer Amount"
+    name="transfer-amount"
+    />
     <button type="submit">Transfer/Submit</button>
 </form>
+
+<form>
+    <label>Result</label>
+    <ul>
+        <li>
+        </li>
+    </ul>
+
+</form>
+
+<div id="result-from"></div>
+<div id="result-to"></div>
+<div id="result-amount"></div>
+
+<script>
+    const budgetFrom = document.getElementById('budget-from');
+    const budgetTo = document.getElementById('budget-to');
+    const resultFrom = document.getElementById('result-from');
+    const resultTo = document.getElementById('result-to');
+    const transferAmount = document.getElementById('transfer-amount')
+    const resultAmount = document.getElementById('result-amount')
+
+    /* defintions for getting input from the selected option*/
+    /*
+    const budgetFromOption = budgetFrom.options[budgetFrom.selectedIndex];
+    const budgetFromValue = budgetFromOption.value;
+    const budgetFromValueFix = budgetFromValue.replace(/'/g, '"');
+    //const budgetFromObject = JSON.parse(budgetFromValueFix);
+    const budgetToOption = budgetTo.options[budgetTo.selectedIndex];
+    const budgetToValue = budgetToOption.value;
+    const budgetToValueFix = budgetToValue.replace(/'/g, '"');
+    //const budgetToObject = JSON.parse(budgetToValueFix);
+    */
+    const transferAmountValue = parseFloat(transferAmount.value);
+    let previousOption = null;
+    budgetFrom.addEventListener('change', function() {
+        const budgetFromOption = budgetFrom.options[budgetFrom.selectedIndex];
+        const budgetFromValue = budgetFromOption.value;
+        const budgetFromValueFix = budgetFromValue.replace(/'/g, '"');
+        const budgetFromObject = JSON.parse(budgetFromValueFix);
+        transferAmount.value = 0;
+        resultAmount.innerHTML = ""
+        if (budgetFromOption.value !== '') {
+            const selectedValue = budgetFromOption.value;
+            // Enable the previously disabled option
+            if (previousOption !== null) {
+                previousOption.disabled = false;
+            }
+            // Disable the newly selected option
+            const defaultOption = budgetFrom.querySelector(`option[value="defaultOption"]`)
+            const budgetToOption = budgetTo.querySelector(`option[value="${selectedValue}"]`);
+            defaultOption.disabled = true;
+            budgetToOption.disabled = true;
+        
+            previousOption = budgetToOption;
+        }
+
+        if (isNaN(transferAmountValue) || budgetFromOption.value === budgetToOption.value) {
+            resultAmount.innerHTML = ""
+        } else {
+            resultAmount.innerHTML = 
+            `${budgetFromObject['category']} - ${budgetFromObject['name']} now has $${budgetFromObject['amount'] - transferAmountValue} <br>
+            ${budgetToObject['category']} - ${budgetToObject['name']} now has $${budgetToObject['amount'] + transferAmountValue}`;
+        }
+    });
+
+    budgetTo.addEventListener('change', function() {
+        const budgetToOption = budgetTo.options[budgetTo.selectedIndex];
+        const budgetToValue = budgetToOption.value;
+        const budgetToValueFix = budgetToValue.replace(/'/g, '"');
+        const budgetToObject = JSON.parse(budgetToValueFix);
+        const defaultOption = budgetTo.querySelector(`option[value="defaultOption"]`)
+        defaultOption.disabled = true;
+        transferAmount.value = 0;
+        if (isNaN(transferAmountValue) || budgetFromOption.value === budgetToOption.value) {
+            resultAmount.innerHTML = ""
+        } else {
+            resultAmount.innerHTML = 
+            `${budgetFromObject['category']} - ${budgetFromObject['name']} now has $${budgetFromObject['amount'] - transferAmountValue} <br>
+            ${budgetToObject['category']} - ${budgetToObject['name']} now has $${budgetToObject['amount'] + transferAmountValue}`;
+        }
+    });
+
+    transferAmount.addEventListener('input', function() {
+        const transferAmountValue = parseFloat(transferAmount.value);
+        const budgetFromOption = budgetFrom.options[budgetFrom.selectedIndex];
+        const budgetFromValue = budgetFromOption.value;
+        const budgetFromValueFix = budgetFromValue.replace(/'/g, '"');
+        const budgetFromObject = JSON.parse(budgetFromValueFix);
+        const budgetToOption = budgetTo.options[budgetTo.selectedIndex];
+        const budgetToValue = budgetToOption.value;
+        const budgetToValueFix = budgetToValue.replace(/'/g, '"');
+        const budgetToObject = JSON.parse(budgetToValueFix);
+        if (isNaN(transferAmountValue) || budgetFromOption.value === budgetToOption.value) {
+            resultAmount.innerHTML = ""
+        } else {
+            resultAmount.innerHTML = 
+            `${budgetFromObject['category']} - ${budgetFromObject['name']} now has $${budgetFromObject['amount'] - transferAmountValue} <br>
+            ${budgetToObject['category']} - ${budgetToObject['name']} now has $${parseInt(budgetToObject['amount']) + transferAmountValue}`;
+        }
+    });
+</script>
 
 {% endblock %}
