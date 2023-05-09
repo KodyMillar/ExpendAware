@@ -71,7 +71,7 @@ h2 {
   margin: 0;
   display: flex;
   flex-direction: row;
-  gap: 70px;
+  gap: 25px;
   background-color: #fff;
   padding-bottom: 10px;
   justify-content: space-evenly;
@@ -89,6 +89,7 @@ h2 {
   gap: 20px;
   align-items: center;
   right: 10px;
+  font-size: 20px;
 }
 
 h3 {
@@ -99,6 +100,7 @@ h3 {
 
 a.logout-link {
   margin-right: 15px;  
+  margin-top: 5px;
 }
 
 #total {
@@ -182,7 +184,7 @@ hr {
   justify-content: space-around;
   align-items: center;
   background-color: #65A5E2;
-  border: solid 2px violet;
+  border: solid 2px cyan;
   width: 170px;
   border-radius: 20px;
   height: 120px;
@@ -205,7 +207,7 @@ hr {
   width: 170px;
   background-color: #65A5E2;
   border-radius: 15px;
-  border: 2px solid violet;
+  border: 2px solid cyan;
   margin-bottom: 28px;
 }
 
@@ -227,7 +229,7 @@ hr {
   justify-content: space-around;
   align-items: center;
   background-color: #65A5E2;
-  border: solid 2px violet;
+  border: solid 2px cyan;
   width: 170px;
   border-radius: 20px;
   height: 120px;
@@ -239,7 +241,7 @@ hr {
   width: 170px;
   background-color: #65A5E2;
   border-radius: 15px;
-  border: 2px solid violet;
+  border: 2px solid cyan;
   margin-bottom: 28px;
 }
 
@@ -510,11 +512,6 @@ a {
   flex-direction: column;
 }
 
-#login-register {
-  
-}
-
-
 #login-info {
   display: flex;
   flex-direction: column;
@@ -657,8 +654,31 @@ button {
     left: 96%;
   }
 
+  body,html {
+    width: 99%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
   h1 {
-    margin-left: 30%;
+    margin-left: 80%;
+    font-weight: bolder;
+  }
+
+  .subtitle {
+    width: 105%;
+    display: flex;
+    flex-direction: row;
+    gap: 400px;
+    font-weight: bolder;
+  }
+
+  #subheadings {
+    margin-left: 700px;
+    font-size: 30px;
+    text-align: center;
+    gap: 50px;
   }
 
   .container {
@@ -671,8 +691,8 @@ button {
 
   #account-icon {
     position: absolute;
-    left: 95%;
-    bottom: 91%;
+    left: 96%;
+    bottom: 94%;
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -680,8 +700,33 @@ button {
   
   #home-icon {
     position: absolute;
-    left: 4%;
-    bottom: 82%;
+    left: 7%;
+    bottom: 86%;
+  }
+
+  .view-section {
+    width: 96%;
+    height: 800px;
+  }
+
+  .first-h4 {
+    font-size: 30px;
+    background-color: lightgrey;
+    height: 40px;
+    width: 90px;
+    border-radius: 10px;
+  }
+
+  .expenses-section {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .expenses-section h4 {
+    font-size: 30px;
   }
 
   #category-list {
@@ -704,6 +749,12 @@ button {
     margin-right: 100px;
   }
   
+  .bar {
+    left: 5%;
+    margin: 3px;
+    width: 30px;
+    height: 6px;
+  }
 }
 
 
