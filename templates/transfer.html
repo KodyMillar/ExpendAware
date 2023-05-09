@@ -1,10 +1,100 @@
 {% extends "base.html" %} 
-
 {% block title %}ExpendAware - Transfer{% endblock %}
-
 {% block content %}
+<h2 id="">Transfer</h2>
+<form method="POST" id="budget-container">
+    <p>From</p>
+    <select id="budget-from" name="budget-from">
+        <option value="defaultOption">Select an option</option>
+        {% for budget in budgets %}
+            <option value="{{ budget }}">
+                {{ budget.category }} -
+                {{ budget.name }} has
+                ${{ budget.amount }}
+            </option>
+        {% endfor %}
+    </select>
 
-<!--
-    Enter your code inside this block.
--->
+    <p>To</p>
+    <select id="budget-to" name="budget-to">
+        <option value="defaultOption">Select an option</option>
+        {% for budget in budgets %}
+            <option value="{{ budget }}">
+                {{ budget.category }} -
+                {{ budget.name }} has
+                ${{ budget.amount }}
+            </option>
+        {% endfor %}
+    </select>
+    
+    <p>Amount</p>    
+    <input
+    type="text"
+    id="transfer-amount"
+    placeholder="Transfer Amount"
+    name="transfer-amount"
+    />
+    <button type="submit">Transfer/Submit</button>
+</form>
+
+<form>
+    <label>Result</label>
+    <div id="result-amount"></div>
+</form>
+
+
+<script>
+    const budgetFrom = document.getElementById('budget-from');
+    const budgetTo = document.getElementById('budget-to');
+    const transferAmount = document.getElementById('transfer-amount');
+    const resultAmount = document.getElementById('result-amount');
+    const defaultOptionFrom = budgetFrom.querySelector(`option[value="defaultOption"]`)
+    const defaultOptionTo = budgetTo.querySelector(`option[value="defaultOption"]`);
+    
+    let previousOption = null;
+    defaultOptionFrom.disabled = true;
+    defaultOptionTo.disabled = true;
+    budgetTo.disabled = true;
+
+    budgetFrom.addEventListener('change', function() {
+        const budgetFromOption = budgetFrom.options[budgetFrom.selectedIndex];
+        transferAmount.value = "";
+        resultAmount.innerHTML = "";
+        budgetTo.value = 'defaultOption';
+        budgetTo.disabled = false;
+
+        if (budgetFromOption.value !== '') {
+            const selectedValue = budgetFromOption.value;
+            // Enable the previously disabled option
+            if (previousOption !== null) {
+                previousOption.disabled = false;
+            }
+            // Disable the currently selected option
+            const budgetToOption = budgetTo.querySelector(`option[value="${selectedValue}"]`);
+            budgetToOption.disabled = true;
+            previousOption = budgetToOption;
+        }
+    });
+
+    budgetTo.addEventListener('change', function() {
+        transferAmount.value = "";
+        resultAmount.innerHTML = "";
+    });
+
+    transferAmount.addEventListener('input', function() {
+        const transferAmountValue = parseFloat(transferAmount.value);
+        const budgetFromOption = budgetFrom.options[budgetFrom.selectedIndex];
+        const budgetToOption = budgetTo.options[budgetTo.selectedIndex];
+
+        if (isNaN(transferAmountValue)) {
+            resultAmount.innerHTML = ""
+        } else {
+            const budgetFromObject = JSON.parse(budgetFromOption.value.replace(/'/g, '"'));
+            const budgetToObject = JSON.parse(budgetToOption.value.replace(/'/g, '"'));
+            resultAmount.innerHTML = 
+            `${budgetFromObject['category']} - ${budgetFromObject['name']}: $${budgetFromObject['amount'] - transferAmountValue} <br>
+            ${budgetToObject['category']} - ${budgetToObject['name']}: $${parseInt(budgetToObject['amount']) + transferAmountValue}`;
+        }
+    });
+</script>
 {% endblock %}

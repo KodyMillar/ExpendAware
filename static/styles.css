@@ -661,4 +661,8 @@ button:active {
   align-items: center;
 }
 
+#transfer-amount{
+  width: auto;
+}
+
 /* Ends of CSS codes by Peter*/
