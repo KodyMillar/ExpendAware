@@ -17,19 +17,17 @@
   }
   
   .title-container {
-    text-align: left;
+    text-align: center;
     width: 100%;
     max-width: 1200px;
   }
   
   .title {
-    /* background-color: #5CA7D6; */
-    background-color: #2C99ED;
-    color: rgb(255, 255, 255);
+    background-color: #5CA7D6;
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 140px;
+    width: 105%;
+    height: 90px;
   }
   
   h1 {
@@ -37,7 +35,7 @@
     font-weight: bold;
     font-size: 44px;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
   }
   
   h2 {
@@ -54,7 +52,7 @@
     border-radius: 5px;
     margin: 3px;
     bottom: 80px;
-    left: 10px;
+    left: 20px;
     cursor: pointer;
   }
   
@@ -63,17 +61,211 @@
     width: 45px;
     height: 45px;
     position: relative;
-    left: 86%;
-    bottom: 125px;
+    left: 88%;
+    bottom: 110px;
     cursor: pointer;
   }
   
-  #home-icon {
-    position: relative;
-    left: 0;
-    bottom: 100px;
+  .subtitle {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    background-color: #fff;
+    padding-bottom: 10px;
+    justify-content: space-evenly;
+    height: 60px;
   }
   
+  #home-icon {
+    margin-top: 5px;
+    margin-left: 20px;
+  }
+  
+  #subheadings {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    right: 10px;
+    font-size: 20px;
+  }
+  
+  h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+  }
+  
+  
+  a.logout-link {
+    margin-right: 15px;  
+    margin-top: 5px;
+  }
+  
+  #total {
+    margin-top: 20px;
+  }
+  
+  .summary {
+    height: 15px;
+    padding-left: 15px;
+  }
+  
+  .view-section {
+    background-color: white;
+    border-radius: 50px;
+    height: 650px;
+    width: 87%;
+    margin-top: 20px;
+  }
+  
+  .view-section h3 {
+    font-size: 25px;
+    font-weight: bolder;
+    margin-left: 10px;
+    margin-bottom: 30px;
+  }
+  
+  hr {
+    width: 85%;
+    border: 1px solid black;
+    margin-left: 25px;
+  }
+  
+  .first-h4 {
+    margin-top: 20px;
+    margin-left: 25px;
+    color: crimson;
+    background-color: lightgrey;
+    border-radius: 5px;
+    width: 80px;
+    height: 25px;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  .expenses-section {
+    background-color: #BAF2E9;
+    width: 90%;
+    margin-left: 25px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+  }
+  
+  #transaction {
+    margin-top: 20px;
+    margin-left: 25px;
+    color: crimson;
+    background-color: lightgrey;
+    border-radius: 5px;
+    width: 220px;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  .transaction-section {
+    background-color: #BAF2E9;
+    height: 200px;
+    width: 90%;
+    margin-left: 25px;
+    border-radius: 20px;
+    margin-bottom: 30px
+  }
+  
+  #category-section {
+    margin-top: 20px;
+    margin-left: 25px;
+    color: crimson;
+    background-color: lightgrey;
+    border-radius: 5px;
+    width: 220px;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  .category-overview1 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #65A5E2;
+    border: solid 2px cyan;
+    width: 170px;
+    border-radius: 20px;
+    height: 120px;
+    margin-left: 20px;
+  }
+  
+  .category1 {
+    height: 90px;
+    width: 170px;
+    background-color: #65A5E2;
+    border-radius: 15px;
+    border: 2px solid cyan;
+    margin-bottom: 28px;
+  }
+  
+  #percentage1 {
+    height: 40px;
+    border: 2px solid black;
+    background-color: yellow;
+    width: 120px;
+    height: 10px;
+    margin-top: 95px;
+    margin-left: 37px;
+    border-radius: 5px;
+  }
+  
+  .category-overview2 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #65A5E2;
+    border: solid 2px cyan;
+    width: 170px;
+    border-radius: 20px;
+    height: 120px;
+    margin-left: 10px;
+  }
+  
+  .category2 {
+    height: 90px;
+    width: 170px;
+    background-color: #65A5E2;
+    border-radius: 15px;
+    border: 2px solid cyan;
+    margin-bottom: 28px;
+  }
+  
+  #percentage2 {
+    height: 40px;
+    border: 2px solid black;
+    background-color: yellow;
+    width: 120px;
+    height: 10px;
+    margin-top: 95px;
+    margin-left: 37px;
+    border-radius: 5px;
+  }
+  
+  .categories-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5px;
+    gap: 20px;
+  }
+  
+  h4 {
+    font-family: 'Braah One', sans-serif;
+  }
   
   .add-type {
     font-family: 'Montserrat', sans-serif;
@@ -82,7 +274,6 @@
     text-align: left;
     color: #F9F9F9;
   }
-  
   
   /* budget, expense, and category forms */
   
@@ -137,7 +328,7 @@
     margin-right: 10px;
   }
   
-  button {
+  /* button {
     background-color: #65647C;
     color: white;
     padding: 10px 20px;
@@ -145,7 +336,7 @@
     border-radius: 3px;
     cursor: pointer;
     font-size: 16px;
-  }
+  } */
   
   button:hover {
     background-color: #8EA7E9;
@@ -158,7 +349,7 @@
     max-width: 600px;
   }
   
-  .transaction-list {
+  li {
     background-color: #fff;
     padding: 15px;
     border: 1px solid #ddd;
@@ -252,61 +443,25 @@
   }
   
   
-  /* Categories Page */
-  
-  #categories-title {
-    text-align: center;
-    margin-left: 5%;
-    padding-top: 15px;
-    background-color: rgb(232, 255, 238);
-    height: 80px;
-    width: 90%;
-    z-index: 0;
-    margin-top: 0;
-    /* box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1); */
-    background: linear-gradient(240deg, rgb(232, 255, 238) 90%, #e1F5ff 10%);
-  }
-  
-  .categorylist-container {
-    border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
-    padding: 20px;
-    margin-bottom: 20px;
-    margin-top: 0;
-    padding-top: 0;
-  }
-  
-  .category-container {
-    margin: 0;
-    padding: 0;
-  }
+  /* Categories list */
   
   #category-list {
     margin-top: 20px;
+    margin-right: 2%;
     width: 95vw;
     display: flex;
     flex-direction: column;
-    /* margin-left: 2.5%; */
-    z-index: 0;
   }
   
   .category {
-    background-color:rgb(255, 252, 241);
-    height: 110px;
-    border-radius: 33px;
+    background-color:rgb(229, 242, 247);
+    height: 70px;
+    border-radius: 27px;
     box-shadow: 1px 1px 5px rgb(189, 212, 217);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 0;
-    margin-bottom: 0;
-    transition: .6s;
-  }
-  
-  .category-link {
-    /* border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
-    padding-bottom: 20px;
-    margin-bottom: 20px; */
-    z-index: 0;
+    margin-bottom: 10px;
   }
   
   a {
@@ -320,53 +475,15 @@
   
   .category-name {
     text-align: start;
-    font-size: 24px;
-    font-weight: bold;
-    color: #DA0063;
+    font-size: 18px;
   }
   
   .category-budget {
     margin-right: 20px;
-    color: rgb(45, 147, 89);
+    color: rgb(45, 155, 126);
     font-weight: bold;
-    font-size: 20px;
   }
   
-  .category-clicked {
-    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.1), 0px -10px 15px rgba(0, 0, 0, 0.1);
-    z-index: 3;
-  }
-  
-  .budget-dropdown {
-    z-index: 1;
-    background-color: rgb(244, 244, 244);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 0;
-    width: 83%;
-    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.1);
-    transition: .6s;
-    overflow-x: hidden;
-  }
-  
-  .budget-item {
-    display: flex;
-    width: 75%;
-    justify-content: space-between;
-    border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
-    padding-bottom: 5%;
-  }
-  
-  .dropdown-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .dropdown-display {
-    overflow-x: visible;
-  }
   
   
   /* For expenses page */
@@ -394,14 +511,6 @@
     display: flex;
     flex-direction: column;
   }
-  
-  .login-tab {
-    height: 60px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-  }
-  
   
   #login-info {
     display: flex;
@@ -489,6 +598,7 @@
   
   #login-register {
     display: flex;
+    /* background-color: white; */
     margin-top: 30%;
     justify-content: space-between;
   }
@@ -544,8 +654,31 @@
       left: 96%;
     }
   
+    body,html {
+      width: 99%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  
     h1 {
-      margin-left: 30%;
+      margin-left: 80%;
+      font-weight: bolder;
+    }
+  
+    .subtitle {
+      width: 105%;
+      display: flex;
+      flex-direction: row;
+      gap: 400px;
+      font-weight: bolder;
+    }
+  
+    #subheadings {
+      margin-left: 700px;
+      font-size: 30px;
+      text-align: center;
+      gap: 50px;
     }
   
     .container {
@@ -558,8 +691,8 @@
   
     #account-icon {
       position: absolute;
-      left: 95%;
-      bottom: 91%;
+      left: 96%;
+      bottom: 94%;
       width: 50px;
       height: 50px;
       cursor: pointer;
@@ -567,60 +700,171 @@
     
     #home-icon {
       position: absolute;
-      left: 4%;
-      bottom: 82%;
+      left: 7%;
+      bottom: 86%;
     }
   
-   /* category page 
-   ------------------------------*/
-  
-    #category-list {
-      /* width: 45%;
-      margin-left: 50%; */
-      align-items: center;
+    .view-section {
+      width: 96%;
+      height: 830px;
+      
     }
   
-    .categorylist-container {
-      border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
-      padding-bottom: 4%;
-      margin-bottom: 2%;
+    .summary {
+      padding-left: 100px;
     }
   
-    .category {
+    hr {
+      margin-left: 100px;
+      width: 9;
+    }
+  
+    .first-h4 {
+      font-size: 30px;
+      background-color: lightgrey;
+      height: 40px;
+      width: 90px;
+      border-radius: 10px;
+      margin-left: 100px;
+    }
+  
+    #transaction {
+      font-size: 30px;
+      width: 300px;
+      padding-top: 5px;
+      margin-left: 100px;
+      border-radius: 14px;
+    }
+  
+    .transaction-section {
+      margin-left: 100px;
       height: 250px;
-      width: 70vw;
-      border-radius: 50px;
-      margin: 0;
+      margin-bottom: 10px;
     }
   
-    .name-date {
-      margin-left: 12%;
+    #category-section {
+      font-size: 30px;
+      width: 300px;
+      border-radius: 14px;
+      margin-left: 100px;
+      padding-top: 10px;
     }
   
-    .name-date > h4 {
-      font-size: 2.5em;
-      margin-bottom: 5%;
-    }
-  
-    .name-date > p {
-      font-size: 1.5em;
-    }
-  
-    .category-budget {
-      margin-right: 10%;
-      font-size: 2em;
-    }
-  
-    .budget-item {
-      font-size: 1.5em;
+    .expenses-section {
+      height: 100px;
       display: flex;
-      width: 80%;
-      justify-content: space-between;
-      border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
-      padding-bottom: 5%;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      margin-left: 100px;
+    }
+  
+    .categories-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+  
+    .category-overview1 {
+      display: flex;
+      flex-direction: row;
+      margin-top: 15px;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #65A5E2;
+      border: solid 2px cyan;
+      width: 500px;
+      border-radius: 20px;
+      height: 160px;
+      margin-left: 20px;
+    }
+    
+    .category1 {
+      height: 120px;
+      width: 500px;
+      background-color: #65A5E2;
+      border-radius: 15px;
+      border: 2px solid cyan;
+      margin-bottom: 38px;
+    }
+    
+    #percentage1 {
+      height: 40px;
+      border: 2px solid black;
+      background-color: yellow;
+      width: 300px;
+      height: 10px;
+      margin-top: 130px;
+      margin-left: 180px;
+      border-radius: 5px;
     }
     
   
+    .category-overview2 {
+      display: flex;
+      flex-direction: row;
+      margin-top: 15px;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #65A5E2;
+      border: solid 2px cyan;
+      width: 500px;
+      border-radius: 20px;
+      height: 160px;
+      margin-left: 20px;
+    }
+    
+    .category2 {
+      height: 120px;
+      width: 500px;
+      background-color: #65A5E2;
+      border-radius: 15px;
+      border: 2px solid cyan;
+      margin-bottom: 38px;
+    }
+    
+    #percentage2 {
+      height: 40px;
+      border: 2px solid black;
+      background-color: yellow;
+      width: 300px;
+      height: 10px;
+      margin-top: 130px;
+      margin-left: 180px;
+      border-radius: 5px;
+    }
+    
+  
+    .expenses-section h4 {
+      font-size: 30px;
+    }
+  
+    #category-list {
+      width: 45%;
+      margin-left: 50%;
+      justify-content: center;
+    }
+  
+    .category {
+      height: 120px;
+      margin-bottom: 20px;
+      border-radius: 50px;
+    }
+  
+    .name-date {
+      margin-left: 100px;
+    }
+  
+    .category-budget {
+      margin-right: 100px;
+    }
+    
+    .bar {
+      left: 5%;
+      margin: 3px;
+      width: 30px;
+      height: 6px;
+    }
   }
   
   
@@ -661,8 +905,4 @@
     align-items: center;
   }
   
-  #transfer-amount{
-    width: auto;
-  }
-  
-  /* Ends of CSS codes by Peter */
+  /* Ends of CSS codes by Peter*/
