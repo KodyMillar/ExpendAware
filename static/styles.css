@@ -217,7 +217,9 @@ a.logout-link {
 .view-section {
     width: 96%;
     height: 830px;
-    
+    margin-top: 40px;
+    background-color: white;
+    border-radius: 20px;
 }
 
 .summary {
@@ -388,8 +390,25 @@ font-size: 30px;
     text-align: center;
     font-size: 20px;
   }
+
 /* End of New Home/Index design by Bon -------- 
 ----------------------------------------*/
+
+/* alert */
+
+#alert-box {
+  background-color: rgb(190, 214, 253);
+  height: 50px;
+  width: 300px; 
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 10;
+  position: fixed;
+  top: 90;
+  transition: .6s;
+}
 
 
 /* Side Menu ----------------

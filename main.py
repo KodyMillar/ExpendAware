@@ -19,6 +19,17 @@ def update_categories_budgets(categories, budgets, expenses):
                 category['remaining_budget'] -= int(expense['amount'])
     return categories
 
+# Check for errors in user input
+def validate_amount(amount):
+    try:
+        int(amount)
+    except ValueError:
+        return False
+    if int(amount) < 0 or amount == "":
+        return False
+    return True
+    
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     with open("expense.json", "r") as f:
@@ -41,34 +52,43 @@ def index():
             descr = request.form['descr']
             amount = request.form['amount']
             category = request.form['category']
-            new_expense = {
-                "descr": descr,
-                "amount": amount,
-                "category": category
-            }
-            existing_expense.append(new_expense)
-            for category in existing_category:
-                if category['category'] == new_expense['category']:
-                    category['total expenses'] += int(new_expense['amount'])
+
+            if validate_amount(amount) == True:
+            
+                new_expense = {
+                    "descr": descr,
+                    "amount": amount,
+                    "category": category
+                }
+                existing_expense.append(new_expense)
+                for category in existing_category:
+                    if category['category'] == new_expense['category']:
+                        category['total expenses'] += int(new_expense['amount'])
         elif 'name' in request.form and 'amount' in request.form and 'category' in request.form:
             name = request.form['name']
             amount = request.form['amount']
             category = request.form['category']
-            new_budget = {
-                'name': name,
-                'amount': amount,
-                'category': category
-            }
-            existing_budget.append(new_budget)
+
+            if validate_amount(amount) == True and name != "":
+            
+                new_budget = {
+                    'name': name,
+                    'amount': amount,
+                    'category': category
+                }
+                existing_budget.append(new_budget)
         elif 'category' in request.form:
             category = request.form['category']
-            new_category = {
-                'category': category,
-                'total budget': 0,
-                'total expenses': 0,
-                'date': current_date
-            }
-            existing_category.append(new_category)
+            
+            if category != "":
+            
+                new_category = {
+                    'category': category,
+                    'total budget': 0,
+                    'total expenses': 0,
+                    'date': current_date
+                }
+                existing_category.append(new_category)
 
     # Write the entire data object back to the file
     with open("expense.json", "w") as f:
@@ -97,7 +117,7 @@ def index():
 
     categories = update_categories_budgets(categories, budgets, expenses)
     return render_template('index.html', expenses=expenses, categories=categories, budgets=budgets, total_budget=total_budget, total_expenses=total_expenses)
-    
+
 
 @app.route('/categories', methods=['GET', 'POST'])
 def categories():
@@ -111,6 +131,7 @@ def categories():
     with open("budget.json", "r") as file:
         budget_list = json.load(file)
 
+    # add budgets to category files
     for category in total_budget_list:
         category["total budget"] = 0
         for budget in budget_list:
