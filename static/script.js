@@ -32,7 +32,21 @@ let compareIndex = 0;
 
 for(let category of categoriesList){
     category.addEventListener("click", (e) => {
-        let categoryName = e.target.querySelector("h4").textContent
+        let categoryName = ""
+        console.log(e.target)
+        if (e.target.classList.contains("category")) {
+            categoryName = e.target.querySelector("h4").textContent
+        }
+
+        else if (e.target.classList.contains("category-budget")){
+            categoryName = e.target.parentElement.querySelector("h4").textContent
+            console.log(categoryName)
+        }
+
+        else {
+            categoryName = e.target.parentElement.parentElement.querySelector("h4").textContent
+        }
+
         category.classList.toggle("category-clicked");
         if (category.classList.contains("category-clicked")){
             for(let budget of budgetDropDown) {
@@ -46,7 +60,7 @@ for(let category of categoriesList){
 
         else {
         for(let budget of budgetDropDown) {
-            if (e.target.querySelector("h4").textContent === budget.id){
+            if (categoryName === budget.id){
                 document.querySelector("#" + budget.id).style.height = "0";
             }
         }
