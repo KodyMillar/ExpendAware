@@ -589,9 +589,7 @@ align-items: center;
 #transfer-amount{
 width: auto;
 } */
-
 /* Ends of Button Sytle and Login CSS*/
-
 
 #transfer-form {
     max-width: 50vw;
@@ -687,3 +685,5 @@ select option[value="defaultOption"] {
 #transfer-btn {
     width: auto;
 }
+/* Ends of Button Sytle and Login CSS */
+
