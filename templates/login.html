@@ -22,8 +22,8 @@
             <li class="login-tab"><a href="#" role="tab">Register</a></li>
         </ul>
         <ul id="login-register-btn">
-            <li class="login-tab"><button>Login</button></li>
-            <li class="login-tab"><button>Register</button></li>
+            <li id="login-tab"><button>Login</button></li>
+            <li id="register-tab"><button>Register</button></li>
         </ul>
     </header>
 
@@ -40,9 +40,38 @@
             </div>
             <a href="#" id="forgot-password">Forgot Password?</a>
         </div>
-
-        <a href="/" id="login-link">
-            <button type="submit" id="login-button">Login</button>
-        </a>
     </div>
+
+    <div id="register-container">
+        <h1 id="register-h1">Register</h1>
+        <form id="register-info">
+            <input type="text" placeholder="Email Address" id="loginEmail"/>
+            <input type="text" placeholder="Password" id="password">
+            <input type="text" placeholder="Confirm Password" id="password">
+        </form>
+        <a href="#" id="forgot-password">Forgot Password?</a>
+    </div>
+
+    <a href="/" id="login-link">
+        <button type="submit" id="login-button">Login</button>
+    </a>
+
+    <script>
+        const loginContainer = document.getElementById('login-container');
+        const registerContainer = document.getElementById('register-container');
+        registerContainer.style.display = "none";
+
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+
+        loginTab.addEventListener('click', function() {
+            registerContainer.style.display = "none";
+            loginContainer.style.display = "flex";
+        });
+
+        registerTab.addEventListener('click', function() {
+            registerContainer.style.display = "flex";
+            loginContainer.style.display = "none";
+        });
+    </script>
 </body>
