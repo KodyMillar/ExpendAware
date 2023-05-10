@@ -86,7 +86,7 @@ form {
     margin-bottom: 0;
 }
 input[type="text"] {
-    /* width: calc(120%); */
+    width: calc(120%);
     padding: 10px;
     margin-right: 10px;
     border: 1px solid #ccc;
