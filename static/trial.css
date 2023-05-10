@@ -23,7 +23,7 @@ header {
     display: grid;
     grid-template-areas: 
         "menu title ."
-        "home title account";
+        "home . account";
     row-gap: 20px;
     width: 100%;
 }
@@ -33,6 +33,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 8vw;
 }
 
 .menu-btn {
@@ -58,7 +59,7 @@ header {
 }
 
 h1 {
-    font-size: 45px;
+    /* font-size: 45px; */
 }
 
 h2 {
@@ -487,6 +488,10 @@ color: rgb(19, 68, 152);
     margin-bottom: 30px;
 }
 
+h1 {
+    font-size: 45px;
+}
+
 
 /* Category Page 
 ------------------------------*/
@@ -538,6 +543,12 @@ color: rgb(19, 68, 152);
 /* End of Category Page*/
 }
 
+@media screen and (max-width: 767px) {
+    h1 {
+        font-size: smaller;
+    }
+}
+
 /* Button Styles and Login Page CSS
 ---------------------------------------*/
 /* nav {
@@ -580,3 +591,99 @@ width: auto;
 } */
 
 /* Ends of Button Sytle and Login CSS*/
+
+
+#transfer-form {
+    max-width: 50vw;
+    margin: 0 auto;
+    margin-top: 45px;
+}
+
+#transfer-form p {
+    margin: 10px 0;
+    font-size: larger;
+    font-weight:bold;
+    font-weight: bold;
+}
+
+#result {
+    /* font-weight: bold; */
+}
+
+#budget-from, #budget-to, #transfer-amount[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #833434;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    /* background-color: #4CAF50;
+    color: white;
+    cursor: pointer; */
+}
+
+button:hover {
+    /* background-color: #45a049; */
+}
+
+select option[value="defaultOption"] {
+    display: none;
+}
+
+.menu-container:hover .summary-list {
+    display: block;
+}
+
+#summary-result {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#summary-list {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: grey;
+    border: solid grey 3px;
+    border-radius: 20px;
+    overflow: hidden;
+    grid-template-columns: 3fr 1fr;
+    gap: 3px;
+    width: 40vw;
+    align-self: center;
+}
+
+#summary-descr-from, #summary-descr-to {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    line-height: 2;
+    background-color: #c4e7ef;
+    padding: 10px;
+}
+
+#summary-amount-from, #summary-amount-to {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px;
+    line-height: 2;
+    background-color: #c4e7ef;
+    padding: 10px;
+}
+
+#transfer-btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#transfer-btn {
+    width: auto;
+}

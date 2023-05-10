@@ -1,8 +1,9 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
+{% block head %}<link rel="stylesheet" href="../static/trial.css" /> {% endblock%}
 {% block title %}ExpendAware - Transfer{% endblock %}
+{% block h1 %}<h1>ExpendAware - Transfer</h1>{% endblock %}
 {% block content %}
-<h2 id="">Transfer</h2>
-<form method="POST" id="budget-container">
+<form method="POST" id="transfer-form">
     <p>From</p>
     <select id="budget-from" name="budget-from">
         <option value="defaultOption">Select an option</option>
@@ -29,17 +30,27 @@
     
     <p>Amount</p>    
     <input
-    type="text"
+    type="number"
     id="transfer-amount"
     placeholder="Transfer Amount"
     name="transfer-amount"
+    step="0.01"
+    min='0'
+    disabled
     />
-    <button type="submit">Transfer/Submit</button>
+    <div id="transfer-btn-container">
+    <button type="submit" id="transfer-btn">Transfer/Submit</button>
+    </div>
 </form>
 
-<form>
-    <label>Result</label>
-    <div id="result-amount"></div>
+<form id="summary-result">
+    <p id="result">Result</p>
+    <ul id="summary-list">
+        <li id="summary-descr-from"></li>
+        <li id="summary-amount-from"></li>
+        <li id="summary-descr-to"></li>
+        <li id="summary-amount-to"></li>
+    </ul>
 </form>
 
 
@@ -47,9 +58,18 @@
     const budgetFrom = document.getElementById('budget-from');
     const budgetTo = document.getElementById('budget-to');
     const transferAmount = document.getElementById('transfer-amount');
-    const resultAmount = document.getElementById('result-amount');
-    const defaultOptionFrom = budgetFrom.querySelector(`option[value="defaultOption"]`)
+
+    const summaryAmountFrom = document.getElementById('summary-amount-from');
+    const summaryDescrFrom = document.getElementById('summary-descr-from');
+    const summaryAmountTo = document.getElementById('summary-amount-to');
+    const summaryDescrTo = document.getElementById('summary-descr-to');
+
+    const defaultOptionFrom = budgetFrom.querySelector(`option[value="defaultOption"]`);
     const defaultOptionTo = budgetTo.querySelector(`option[value="defaultOption"]`);
+
+    const summaryList = document.getElementById('summary-list');
+    const transferBtn = document.getElementById('transfer-btn');
+
     
     let previousOption = null;
     defaultOptionFrom.disabled = true;
@@ -59,9 +79,10 @@
     budgetFrom.addEventListener('change', function() {
         const budgetFromOption = budgetFrom.options[budgetFrom.selectedIndex];
         transferAmount.value = "";
-        resultAmount.innerHTML = "";
         budgetTo.value = 'defaultOption';
         budgetTo.disabled = false;
+        transferAmount.disabled = true;
+        summaryList.style.display = 'none';
 
         if (budgetFromOption.value !== '') {
             const selectedValue = budgetFromOption.value;
@@ -78,7 +99,8 @@
 
     budgetTo.addEventListener('change', function() {
         transferAmount.value = "";
-        resultAmount.innerHTML = "";
+        transferAmount.disabled = false;
+        summaryList.style.display = 'none';
     });
 
     transferAmount.addEventListener('input', function() {
@@ -86,14 +108,24 @@
         const budgetFromOption = budgetFrom.options[budgetFrom.selectedIndex];
         const budgetToOption = budgetTo.options[budgetTo.selectedIndex];
 
-        if (isNaN(transferAmountValue)) {
-            resultAmount.innerHTML = ""
-        } else {
-            const budgetFromObject = JSON.parse(budgetFromOption.value.replace(/'/g, '"'));
-            const budgetToObject = JSON.parse(budgetToOption.value.replace(/'/g, '"'));
-            resultAmount.innerHTML = 
-            `${budgetFromObject['category']} - ${budgetFromObject['name']}: $${budgetFromObject['amount'] - transferAmountValue} <br>
-            ${budgetToObject['category']} - ${budgetToObject['name']}: $${parseInt(budgetToObject['amount']) + transferAmountValue}`;
+        summaryList.style.display = 'grid';
+        const budgetFromObject = JSON.parse(budgetFromOption.value.replace(/'/g, '"'));
+        const budgetToObject = JSON.parse(budgetToOption.value.replace(/'/g, '"'));
+        summaryDescrFrom.innerHTML = 
+        `${budgetFromObject['category']} - ${budgetFromObject['name']}`
+        summaryAmountFrom.innerHTML = 
+        `$${budgetFromObject['amount'] - transferAmountValue}`;
+
+        summaryDescrTo.innerHTML =
+        `${budgetToObject['category']} - ${budgetToObject['name']}`;
+        summaryAmountTo.innerHTML = 
+        `$${parseInt(budgetToObject['amount']) + transferAmountValue}`;
+    });
+
+    transferBtn.addEventListener('click', function() {
+        if (transferAmount.value === "") {
+            alert('not ready yet');
+            event.preventDefault();
         }
     });
 </script>
