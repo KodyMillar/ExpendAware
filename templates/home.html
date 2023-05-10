@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="../static/home-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Braah+One&display=swap" rel="stylesheet">
+    <script src="/static/script.js" differ></script>
+</head>
+
+<body>
+    <header class="title">
+        <div class="title-container">
+            <h1>ExpendAware</h1>
+        </div>
+
+        <div class="menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <div>
+            <img
+                src="../static/images/account-icon.png"
+                alt="account-icon"
+                id="account-icon"
+            />
+        </div>
+    </header>    
+
+    <div class="subtitle">
+        <div id="home-icon">
+            <a href="/"><img src="../static/images/home-button.png" width="30" height="30" alt="home-button"></a>
+        </div>    
+        <div id="subheadings">
+            <h3>Category</h3>
+            <h3>Transfer</h3>
+            <h3>Costs</h3>
+        </div>
+        <a href="/login" class="logout-link">
+            <button style="background-color: #F2E2BA; color:crimson; font-family: 'Braah One', sans-serif; font-weight: bolder; font-size: 17px; border-radius: 20px;
+            width: 95px; height: 40px; text-align: center;">Log out</button>
+        </a>
+    </div>
+        
+    <!-- <div class="">
+        <img src="/static/images/budget-icon.png">
+        <h3>Add Budget</h3>
+
+        <img src="/static/images/expense.png">
+        <h3>Add Expense</h3>
+        
+        <img src="/static/images/category.png">
+        <h3>Add Category</h3>
+    </div> -->
+    <div class="view-section">
+        <div id="total">
+            <h3 class="summary">Overview/Summary</h3>
+            <hr />
+        </div>
+            
+        <h4 class="first-h4">Total</h4>
+        
+        <div class="expenses-section">     
+            <h4>Budget: </h4>
+            <h4>Expenses: </h4>
+        </div>
+
+        <div id="transaction">
+            <h4>Latest Transaction</h4>
+        </div>      
+        
+        <div class="transaction-section"></div>
+
+        <div>
+            <h4 id="category-section">Category Overview</h4>
+        </div>
+
+        <div class="categories-container">
+            <div class="category-overview1">    
+                <div class="category1">
+                    <div class="budget1"></div>
+                    <div id="percentage1"></div>
+                </div>
+            </div>
+
+            <div class="category-overview2">      
+                <div class="category2">
+                    <div class="budget2"></div>
+                    <div id="percentage2"></div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+
+    <div id="menu-expand">
+        <a href="#" id="side-menu-close">&timesbar;</a>
+        <a href="/categories">Category</a>
+        <a href="/expenses">Expenses</a>
+        <a href="/cost">Costs</a>
+        <a href="/transfer">Transfer</a>
+        <a href="/history">History</a>
+        <a href="/statistic">Statistic</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
