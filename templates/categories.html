@@ -8,7 +8,7 @@
     {% for category in categories %}
     <div class="categorylist-container">
     <div class="category-container">
-    <a href="#" class="category-link"><div class="category">
+    <div class="category-link"><div class="category">
         <div class="name-date">
             <h4 class="category-name">{{ category['category'] }}</h4>
             <p>Created {{ category['date'] }}</p>
@@ -18,7 +18,7 @@
         <p class="category-budget {{ category['category'] }}">Budget: ${{ budget['total budget'] }}</p>
         {% endif %}
         {% endfor %}
-    </div></a>
+    </div></div>
     </div>
     <div class="dropdown-container">
     <ul class="budget-dropdown" id="{{ category['category'] }}">
