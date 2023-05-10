@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block head %}<link rel="stylesheet" href="../static/trial.css" /> {% endblock%}
 {% block title %}ExpendAware - Transfer{% endblock %}
-{% block h1 %}<h1>ExpendAware - Transfer</h1>{% endblock %}
+{% block h1 %}<h1>ExpendAware</h1>{% endblock %}
 {% block content %}
+<h2> Transfer </h2>
 <form method="POST" id="transfer-form">
     <p>From</p>
     <select id="budget-from" name="budget-from">
@@ -44,7 +45,7 @@
 </form>
 
 <form id="summary-result">
-    <p id="result">Result</p>
+    <h2 id="summary-result-title">Result</h2>
     <ul id="summary-list">
         <li id="summary-descr-from"></li>
         <li id="summary-amount-from"></li>
