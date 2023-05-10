@@ -3,40 +3,49 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/styles.css" />
+    <link rel="stylesheet" href="../static/trial.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap"
         rel="stylesheet"
     />
-    <script src="../static/script.js" defer></script>
+    <script src="../static/trial.js" defer></script>
     <title>{% block title %}Base{% endblock %}</title>
 </head>
 <body>
     <header class="title">
-        <div class="title-container">
-            <h1>ExpendAware</h1>
+        <div class="h1 title-container">
+            {% block h1 %}<h1>ExpendAware</h1>{% endblock %}
         </div>
 
         {% block menu %}
-        <div class="menu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        
-        <div>
-            <img
-                src="../static/images/account-icon.png"
-                alt="account-icon"
-                id="account-icon"
-            />
-        </div>
+            <div class="menu-btn menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            
+            <div class="account-btn">
+                <img
+                    src="../static/images/account-icon.png"
+                    alt="account-button"
+                    id="account-icon"
+                    width="50" 
+                    height="50"
+                />
+            </div>
 
-        <div id="home-icon">
-            <a href="/"><img src="../static/images/home-button.png" width="50" height="50" alt="home-button"></a>
-        </div>
+            <div class="home-btn" id="home-icon">
+                <a href="/">
+                    <img 
+                        src="../static/images/home-button.png" 
+                        alt="home-button"
+                        width="50" 
+                        height="50" 
+                    />
+                </a>
+            </div>
         {% endblock %}
     </header>
 
