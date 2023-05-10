@@ -123,9 +123,9 @@ button {
     cursor: pointer;
     font-size: 16px;
 }
-button:hover {
+/* button:hover {
     background-color: #8EA7E9;
-}
+} */
 ul {
     list-style-type: none;
     padding-left: 0;
@@ -148,9 +148,11 @@ li button {
     padding: 8px 12px;
     margin-left: 10px;
 }
+
+/*
 li button:hover {
     background-color: #e53935;
-}
+} */
 #budget-container, #expense-container, #category-container {
     padding: 20px;
     border: 1px solid #ddd;
@@ -499,13 +501,9 @@ font-size: 30px;
     z-index: 0;
     margin-bottom: 0;
     transition: .6s;
+    cursor: pointer;
 }
-.category-link {
-    /* border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
-    padding-bottom: 20px;
-    margin-bottom: 20px; */
-    z-index: 0;
-}
+
 a {
     text-decoration: none;
 }
@@ -542,6 +540,7 @@ a {
     transition: .6s;
     overflow-x: hidden;
 }
+
 .budget-item {
     display: flex;
     width: 75%;
@@ -549,6 +548,17 @@ a {
     border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
     padding-bottom: 5%;
 }
+
+.budget-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.budget-link {
+  width: 100%;
+  height: 150%;
+}
+
 .dropdown-container {
     display: flex;
     justify-content: center;
@@ -586,12 +596,8 @@ align-items: center;
 flex-direction: column;
 background-color: transparent;
 }
-.login-tab {
-height: 60px;
-border-radius: 30px;
-display: flex;
-align-items: center;
-}
+
+
 #login-info, #register-info {
 display: flex;
 flex-direction: column;
@@ -599,22 +605,27 @@ align-items: center;
 height: 12vh;
 justify-content: space-around;
 }
+
 #login-container, #register-container{
 /* width: 100%; */
 display: flex;
 flex-direction: column;
 align-items: center;
 }
+
 #register-info {
     height: 100%;
 }
+
 #register-info input {
     margin-top: 10px;
 }
+
 #login-h1, #register-h1 {
 /* margin-right: 3%;
 margin-bottom: 5%; */
 }
+
 #login-settings {
 display: flex;
 flex-direction: column;
@@ -623,28 +634,32 @@ height: 70px;
 align-items: center;
 justify-content: space-between;
 }
+
 #remember-me {
 width: 30px;
 transform: scale(2);
 }
+
 #remember-label {
 font-size: 20px;
 }
+
 #forgot-password {
 color: blue;
 font-size: 18px;
 }
+
 #login-link {
 width: 100%;
 display: flex;
 justify-content: center;
 margin-right: 10%;
 }
+
+
 #login-button {
 font-size: 18px;
 font-weight: bold;
-}
-#login-button {
 margin-top: 20px;
 background-color: #ed344c;
 border-radius: 5px;
@@ -652,6 +667,7 @@ margin-left: 7%;
 width: calc(60vw + 30px);
 box-shadow: 1px 7px 6px rgba(0, 0, 0, 0.1);
 }
+
 button {
 border: 0;
 line-height: 3;
@@ -659,22 +675,40 @@ color: #fff;
 padding: 0 15px;
 background-color: #375f68;
 border-radius: 10px;
-box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6);
+/* box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6); */
 }
+
 #login-register, #login-register-btn {
 display: flex;
 margin-top: 30px;
 justify-content: center;
 }
-#login-tab > button, #register-tab > button {
-    width: 88px;
+
+#login-register-btn {
+  justify-content: space-between;
+  width: 15rem;
 }
+
+.login-tab {
+    width: 88px;
+    background-color: white;
+    color: rgb(131, 131, 131);
+    border-radius: 5px;
+}
+
+.active {
+  background-color: rgb(167, 223, 255);
+  color: rgb(19, 68, 152);
+}
+
+
 #login-register li {
 margin: 0 20px;
 width: 100px;
 border: none;
 background-color: rgb(248, 247, 247);
 }
+
 #login-register li a {
 width: 100%;
 color: rgb(131, 131, 131);
@@ -682,12 +716,8 @@ text-align: center;
 font-family: sans-serif;
 font-weight: bold;
 }
-#login-register li.active {
-background-color: rgb(167, 223, 255);
-}
-#login-register li.active a {
-color: rgb(19, 68, 152);
-}
+
+
 /* End of Log In Page --------
 --------------------------------*/
 
@@ -716,14 +746,15 @@ color: rgb(19, 68, 152);
     }
     .categorylist-container {
         border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
-        padding-bottom: 4%;
-        margin-bottom: 2%;
+        padding: 4px;
+        margin: 1px;
     }
     .category {
-        height: 250px;
-        width: 70vw;
-        border-radius: 50px;
+        height: 100px;
+        width: 75vw;
+        border-radius: 10px;
         margin: 0;
+        font-size: 10px;
     }
     .name-date {
         margin-left: 12%;
@@ -745,8 +776,14 @@ color: rgb(19, 68, 152);
         width: 80%;
         justify-content: space-between;
         border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
-        padding-bottom: 5%;
+        /* padding-bottom: 5%; */
     }
+    
+    .budget-div {
+      font-size: 16px;
+    }
+
+
     /* End of Category Page*/
     }
 @media screen and (max-width: 767px) {

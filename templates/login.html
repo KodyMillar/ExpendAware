@@ -17,13 +17,13 @@
 <body id="login-page">
     <header id="login-logo">
         <img src="../static/images/logo.png" width="150" height="150"/>
-        <ul id="login-register">
+        <!-- <ul id="login-register">
             <li class="login-tab active"><a data-mdb-toggle="pill" href="#login-container" role="tab" aria-controls="pills-login" aria-selected="true">Login</a></li>
             <li class="login-tab"><a href="#" role="tab">Register</a></li>
-        </ul>
+        </ul> -->
         <ul id="login-register-btn">
-            <li id="login-tab"><button>Login</button></li>
-            <li id="register-tab"><button>Register</button></li>
+            <li ><button id="login-tab" class="login-tab active">Login</button></li>
+            <li ><button id="register-tab" class="login-tab">Register</button></li>
         </ul>
     </header>
 
@@ -56,7 +56,7 @@
         <button type="submit" id="login-button">Login</button>
     </a>
 
-    <script>
+    <!-- <script>
         const loginContainer = document.getElementById('login-container');
         const registerContainer = document.getElementById('register-container');
         registerContainer.style.display = "none";
@@ -73,5 +73,5 @@
             registerContainer.style.display = "flex";
             loginContainer.style.display = "none";
         });
-    </script>
+    </script> -->
 </body>
