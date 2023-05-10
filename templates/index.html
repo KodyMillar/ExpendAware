@@ -1,6 +1,62 @@
 {% extends "base.html" %}
 {% block title %}ExpendAware - Home{% endblock %}
 {% block content %}
+<div class="subtitle">
+  <div id="home-icon">
+      <a href="/"><img src="../static/images/home-button.png" width="30" height="30" alt="home-button"></a>
+  </div>    
+  <div id="subheadings">
+      <h3>Category</h3>
+      <h3>Transfer</h3>
+      <h3>Costs</h3>
+  </div>
+  <a href="/login" class="logout-link">
+      <button style="background-color: #F2E2BA; color:crimson; font-family: 'Braah One', sans-serif; font-weight: bolder; font-size: 17px; border-radius: 20px;
+      width: 95px; height: 40px; text-align: center;">Log out</button>
+  </a>
+</div>
+
+<div class="view-section">
+  <div id="total">
+      <h3 class="summary">Overview/Summary</h3>
+      <hr />
+  </div>
+      
+  <h4 class="first-h4">Total</h4>
+  
+  <div class="expenses-section">     
+      <h4>Budget: </h4>
+      <h4>Expenses: </h4>
+  </div>
+
+  <div id="transaction">
+      <h4>Latest Transaction</h4>
+  </div>      
+  
+  <div class="transaction-section"></div>
+
+  <div>
+      <h4 id="category-section">Category Overview</h4>
+  </div>
+
+  <div class="categories-container">
+      <div class="category-overview1">    
+          <div class="category1">
+              <div class="budget1"></div>
+              <div id="percentage1"></div>
+          </div>
+      </div>
+
+      <div class="category-overview2">      
+          <div class="category2">
+              <div class="budget2"></div>
+              <div id="percentage2"></div>
+          </div>
+      </div>
+  </div>    
+</div>
+
+
 <div class="container">
   <div id="budget-container">
     <h2 class="add-type">Budget</h2>
@@ -98,6 +154,8 @@
     </ul>
   </div>
 </div>
+
+
 <div id="homepage-totals">
   <p>Total Budget: {{ total_budget }}</p>
   <p>Total Expenses: {{ total_expenses }}</p>
