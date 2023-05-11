@@ -114,13 +114,28 @@
         const budgetToObject = JSON.parse(budgetToOption.value.replace(/'/g, '"'));
         summaryDescrFrom.innerHTML = 
         `${budgetFromObject['category']} - ${budgetFromObject['name']}`
-        summaryAmountFrom.innerHTML = 
-        `$${budgetFromObject['amount'] - transferAmountValue}`;
+
+        if (`${budgetFromObject['amount'] - transferAmountValue}` < 0) {
+            summaryAmountFrom.innerHTML = "Not enough funds!";
+        }
+        else if (isNaN(transferAmountValue) === true) {
+            summaryAmountFrom.innerHTML = "$0";
+        }
+        else {(`${budgetFromObject['amount'] - transferAmountValue}` < 0)
+            summaryAmountFrom.innerHTML = 
+            `$${budgetFromObject['amount'] - transferAmountValue}`;
+        }
 
         summaryDescrTo.innerHTML =
         `${budgetToObject['category']} - ${budgetToObject['name']}`;
-        summaryAmountTo.innerHTML = 
-        `$${parseInt(budgetToObject['amount']) + transferAmountValue}`;
+
+        if (isNaN(transferAmountValue) === true) {
+            summaryAmountTo.innerHTML = "$0";
+        }
+        else {
+            summaryAmountTo.innerHTML = 
+            `$${parseInt(budgetToObject['amount']) + transferAmountValue}`;
+        }
     });
 
     transferBtn.addEventListener('click', function() {
