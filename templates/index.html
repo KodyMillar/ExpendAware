@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block title %}ExpendAware - Home{% endblock %}
 {% block content %}
+
+
+<!-- this is just a test button for the alert message, do not delete! -->
+<!-- <div id="liveAlertPlaceholder"></div>
+<button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button> -->
+
 <div class="subtitle">
   <div id="home-icon">
       <a href="/"><img src="../static/images/home-button.png" width="30" height="30" alt="home-button"></a>
@@ -25,8 +31,8 @@
   <h4 class="first-h4">Total</h4>
   
   <div class="expenses-section">     
-      <h4>Budget: </h4>
-      <h4>Expenses: </h4>
+      <h4>Budget: ${{ total_budget }}</h4>
+      <h4>Expenses: ${{ total_expenses }}</h4>
   </div>
 
   <div id="transaction">
@@ -42,8 +48,15 @@
   <div class="categories-container">
       <div class="category-overview1">    
           <div class="category1">
-              <div class="budget1"></div>
+              <!-- <div class="budget1"></div> -->
+              <div class="percent-label">
+              {% for category in categories %}
+              {% if category['total budget'] != 0 %}
+              <label> {{ '%0.0f' | format((category['total expenses'] / category['total budget']) * 100) | int}}%</label>
+              {% endif %}
+              {% endfor %}
               <div id="percentage1"></div>
+              </div>
           </div>
       </div>
 
@@ -88,7 +101,7 @@
     <ul id="budget-list">
       {% for b in budgets %}
       <li class="transaction-list">
-        <p>{{b.category}} - {{ b.name }}</p>
+        <p>{{ b.category }} - {{ b.name }}</p>
         <p>${{ b.amount }}</p>
       </li>
       {% endfor %}
