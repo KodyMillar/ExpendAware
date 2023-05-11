@@ -273,6 +273,10 @@ align-items: center;
 margin-left: 100px;
 }
 
+.expenses-section h4 {
+  font-size: 16px;
+}
+
 .categories-container {
 display: flex;
 flex-direction: row;
@@ -300,17 +304,26 @@ background-color: #65A5E2;
 border-radius: 15px;
 border: 2px solid cyan;
 margin-bottom: 38px;
+display: flex;
+align-items: flex-end;
 }
 
 #percentage1 {
-height: 40px;
+height: 10px;
 border: 2px solid black;
 background-color: yellow;
-width: 300px;
+width: 200%;
 height: 10px;
-margin-top: 130px;
-margin-left: 180px;
+margin-top: 0;
+margin-left: 40%;
 border-radius: 5px;
+}
+
+.percent-label {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 100%;
 }
 
 
@@ -348,9 +361,7 @@ margin-left: 180px;
 border-radius: 5px;
 }
 
-.expenses-section h4 {
-font-size: 30px;
-}
+
 .expenses-section {
     background-color: #BAF2E9;
     width: 90%;
@@ -737,6 +748,14 @@ font-weight: bold;
     h1 {
         font-size: 45px;
     }
+
+    .view-section {
+      width: 75%;
+      height: 830px;
+      margin-top: 75px;
+      background-color: white;
+      border-radius: 20px;
+  }
 
 
     /* Category Page 

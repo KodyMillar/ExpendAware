@@ -111,12 +111,20 @@ def index():
 
     #get total expenses
     total_expenses = 0
+    category_usage_percentage = 0
 
     for category in categories:
         total_expenses += category['total expenses']
+    
 
     categories = update_categories_budgets(categories, budgets, expenses)
-    return render_template('index.html', expenses=expenses, categories=categories, budgets=budgets, total_budget=total_budget, total_expenses=total_expenses)
+    return render_template('index.html', 
+        expenses=expenses, 
+        categories=categories, 
+        budgets=budgets, 
+        total_budget=total_budget, 
+        total_expenses=total_expenses
+        )
 
 
 @app.route('/categories', methods=['GET', 'POST'])
@@ -180,10 +188,12 @@ def transfer():
     budgets = existing_budget
 
     if request.method == 'POST':
+
         # Get user input
         budget_from_str = request.form["budget-from"]
         budget_to_str = request.form["budget-to"]
         transfer_amount = request.form['transfer-amount']
+
 
         # Fix syntax issue replacing single to double quote
         budget_from_str_fixed = budget_from_str.replace("'", "\"")
@@ -193,20 +203,22 @@ def transfer():
         budget_from_dict = json.loads(budget_from_str_fixed)
         budget_to_dict = json.loads(budget_to_str_fixed)
 
-        # Change budget
-        budget_from_dict["amount"] = int(budget_from_dict["amount"]) - int(transfer_amount)
-        budget_to_dict["amount"] = int(budget_to_dict["amount"]) + int(transfer_amount)
+        if int(budget_from_dict["amount"]) - int(transfer_amount) >= 0:
 
-        # Update budgets
-        for budget in budgets:
-            if budget["name"] == budget_from_dict["name"] and budget["category"] == budget_from_dict["category"]:
-                budget["amount"] = budget_from_dict["amount"]
-            if budget["name"] == budget_to_dict["name"] and budget["category"] == budget_to_dict["category"]:
-                budget["amount"] = budget_to_dict["amount"]
+            # Change budget
+            budget_from_dict["amount"] = int(budget_from_dict["amount"]) - int(transfer_amount)
+            budget_to_dict["amount"] = int(budget_to_dict["amount"]) + int(transfer_amount)
+
+            # Update budgets
+            for budget in budgets:
+                if budget["name"] == budget_from_dict["name"] and budget["category"] == budget_from_dict["category"]:
+                    budget["amount"] = budget_from_dict["amount"]
+                if budget["name"] == budget_to_dict["name"] and budget["category"] == budget_to_dict["category"]:
+                    budget["amount"] = budget_to_dict["amount"]
     
-    # Update budgets.json
-    with open("budget.json", "w") as f:
-        json.dump(budgets, f)
+        # Update budgets.json
+        with open("budget.json", "w") as f:
+            json.dump(budgets, f)
     return render_template('transfer.html', expenses=expenses, categories=categories, budgets=budgets)
 
 @app.route('/cost')
