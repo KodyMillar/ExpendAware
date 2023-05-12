@@ -28,7 +28,12 @@ def validate_amount(amount):
     if int(amount) < 0 or amount == "":
         return False
     return True
-    
+
+def check_for_existing(name_input, existing_list, criteria):
+    for listing in existing_list:
+        if name_input.lower() == listing[criteria].lower():
+            return False
+    return True
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -80,7 +85,7 @@ def index():
         elif 'category' in request.form:
             category = request.form['category']
             
-            if category != "":
+            if category != "" and check_for_existing(category, existing_category, "category"):
             
                 new_category = {
                     'category': category,
@@ -134,11 +139,30 @@ def categories():
     with open("category.json", "r") as file:
         category_list = json.load(file)
     categories = category_list
-    total_budget_list = category_list
 
     with open("budget.json", "r") as file:
         budget_list = json.load(file)
 
+    category_to_delete = ""
+
+    # delete category
+    if request.method == "POST":
+        category_list = categories
+        for category in category_list:
+            if category['category'] == list(request.form)[0]:
+                budgets = budget_list
+                for budget in budgets:
+                    if budget["category"] == category["category"]:
+                        budget_list.remove(budget)
+                category_to_delete = category
+                categories.remove(category_to_delete)
+                with open("category.json", "w") as file:
+                    json.dump(categories, file)
+                with open("budget.json", "w") as file:
+                    json.dump(budget_list, file)
+                break
+
+    total_budget_list = categories
     # add budgets to category files
     for category in total_budget_list:
         category["total budget"] = 0
@@ -148,7 +172,7 @@ def categories():
     
     with open("category.json", "w") as file:
         json.dump(total_budget_list, file)
-    
+
     return render_template("categories.html", categories=categories, total_budgets=total_budget_list, budgets=budget_list)
 
 
@@ -220,6 +244,7 @@ def transfer():
         with open("budget.json", "w") as f:
             json.dump(budgets, f)
     return render_template('transfer.html', expenses=expenses, categories=categories, budgets=budgets)
+
 
 @app.route('/cost')
 def cost():

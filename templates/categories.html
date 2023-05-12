@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block title %}ExpendAware - Category{% endblock %}
 {% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <main>
     <h2 id="categories-title">Categories</h2>
+
 
 <div id="category-list">
     {% for category in categories %}
@@ -31,6 +33,7 @@
         {% endfor %}
     </ul>
     </div>
+    <form method="POST"><input type="submit" class="btn btn-danger btn-sm" value="delete category" name="{{ category['category'] }}"></form>
     </div>
     {% endfor %}
 
