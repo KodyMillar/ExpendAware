@@ -150,16 +150,17 @@ def categories():
         category_list = categories
         for category in category_list:
             if category['category'] == list(request.form)[0]:
-                budgets = budget_list
-                for budget in budgets:
-                    if budget["category"] == category["category"]:
-                        budget_list.remove(budget)
+                new_budget_list = []
+                for budget in budget_list:
+                    if budget["category"] != category["category"]:
+                        new_budget_list.append(budget)
+                budget_list = new_budget_list
                 category_to_delete = category
                 categories.remove(category_to_delete)
                 with open("category.json", "w") as file:
                     json.dump(categories, file)
                 with open("budget.json", "w") as file:
-                    json.dump(budget_list, file)
+                    json.dump(new_budget_list, file)
                 break
 
     total_budget_list = categories
