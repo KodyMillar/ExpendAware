@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% block title %}ExpendAware - Category{% endblock %}
 {% block content %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<main>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<main id="categories-main">
     <h2 id="categories-title">Categories</h2>
-    <!-- <h3>{{ test }}</h3>
-    <h4>{{ test2 }}</h4> -->
 
+<div id="edit-categories">
+    <button>Edit Categories</button>
+</div>
 
 <div id="category-list">
     {% for category in categories %}
@@ -35,7 +36,7 @@
         {% endfor %}
     </ul>
     </div>
-    <form method="POST"><input type="submit" class="btn btn-danger btn-sm" value="delete category" name="{{ category['category'] }}"></form>
+    <form method="POST" class="category-btns"><input type="submit" class="btn btn-secondary btn-sm" value="Edit category" name=""><input type="submit" class="btn btn-danger btn-sm" value="Delete category" name="{{ category['category'] }}"></form>
     </div>
     {% endfor %}
 

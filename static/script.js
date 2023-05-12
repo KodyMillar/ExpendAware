@@ -105,3 +105,16 @@ for(let category of categoriesList){
         }
     });
 }
+
+editCategories = document.getElementById("edit-categories")
+
+function categoryEditMode() {
+  
+}
+
+
+categoryButtons = document.getElementById("category-btns")
+
+function editOrDeleteCategory(e) {
+
+}
