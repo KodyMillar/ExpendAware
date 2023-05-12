@@ -342,16 +342,16 @@ body,html {
     height: 120px;
     margin-left: 20px;
     margin-bottom: 20px;
-    box-shadow: 10px 10px 10px 5px #65A5E2;
+    box-shadow: 1px 1px 6px 2px darkblue inset;
   }
   
   .category1 {
     height: 90px;
     width: 150px;
     background-color: #65A5E2;
-    border: 2px solid #65A5E2;
     border-radius: 5px;
     margin-bottom: 28px;
+    box-shadow: 1px 1px 6px 2px darkblue inset;
   }
   
   #percentage1 {
@@ -378,16 +378,16 @@ body,html {
     height: 120px;
     margin-left: 10px;
     margin-bottom: 20px;
-    box-shadow: 10px 10px 10px 5px #65A5E2;
+    box-shadow: 1px 1px 6px 2px darkblue inset;
   }
   
   .category2 {
     height: 90px;
     width: 150px;
     background-color: #65A5E2;
-    border: 2px solid #65A5E2;
     border-radius: 5px;
-    margin-bottom: 28px;
+    margin-bottom: 29px;
+    box-shadow: 1px 1px 6px 2px darkblue inset;
   }
   
   #percentage2 {
@@ -1035,7 +1035,6 @@ select option[value="defaultOption"] {
       justify-content: space-around;
       align-items: center;
       background-color: #a2d2ff;
-      border: solid 1px #a2d2ff;
       width: 400px;
       border-radius: 8px;
       height: 160px;
@@ -1046,7 +1045,6 @@ select option[value="defaultOption"] {
       height: 120px;
       width: 400px;
       background-color: #65A5E2;
-      border: 2px solid #65A5E2;
       border-radius: 8px;
       margin-bottom: 39px;
     }
@@ -1071,7 +1069,6 @@ select option[value="defaultOption"] {
         justify-content: space-around;
         align-items: center;
         background-color: #a2d2ff;
-        border: solid 1px #a2d2ff;
         width: 400px;
         border-radius: 8px;
         height: 160px;
@@ -1084,7 +1081,6 @@ select option[value="defaultOption"] {
         width: 400px;
         background-color: #65A5E2;
         border-radius: 8px;
-        border: 2px solid #65A5E2;
         margin-bottom: 39px;
     }
     
