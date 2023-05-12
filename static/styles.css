@@ -645,7 +645,13 @@ a {
 .category-btns {
     display: flex;
     flex-direction: row;
-    visibility: hidden;
+}
+
+.cat-btns-div {
+    overflow: hidden;
+    height: 0;
+    transition: 0.1s;
+    
 }
 
 .btn-danger {
@@ -654,6 +660,8 @@ a {
     width: 50%;
     height: 30px;
     cursor: pointer;
+    border-radius: 3px;
+    border: none;
 }
 
 .btn-secondary {
@@ -661,6 +669,8 @@ a {
     color: white;
     background-color: rgb(137, 153, 137);
     cursor: pointer;
+    border-radius: 3px;
+    border: none;
 }
 
 /* End of Categories Page --------
