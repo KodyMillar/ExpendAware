@@ -32,9 +32,11 @@ header {
     background-color: #2C99ED;
     color: rgb(255, 255, 255);
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-template-areas: 
         "menu title ."
-        "home . account";
+        "subtitle subtitle subtitle";
     width: 100%;
 }
 .h1 {
@@ -62,6 +64,17 @@ header {
     grid-area: account;
     display: flex;
     justify-content: flex-end;
+}
+.subtitle {
+  grid-area:subtitle;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  background-color: #fff;
+  padding-bottom: 10px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 /* End of Header Grid CSS ---------------
 --------------------------------------------*/
@@ -205,16 +218,7 @@ body,html {
     margin-top: 5px;
   }
   
-  .subtitle {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    background-color: #fff;
-    padding-bottom: 10px;
-    align-items: center;
-    height: 60px;
-    width: 100%;
-  }
+
   
   #home-icon {
     margin-left: 10px;
@@ -229,6 +233,7 @@ body,html {
     font-size: 20px;
     margin-right: 0px;
     margin-left: 70px;
+    color:#333;
   }
   
   h3 {
