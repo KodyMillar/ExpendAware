@@ -105,3 +105,37 @@ for(let category of categoriesList){
         }
     });
 }
+
+editCategories = document.getElementById("edit-categories")
+categoryButtons = document.querySelectorAll(".cat-btns-div")
+
+
+function categoryEditMode() {
+  for(let button of categoryButtons){
+    if (button.style.overflow === "hidden"){
+      button.style.overflow = "visible"
+      button.style.height = "50px"
+      button.querySelector(".btn-secondary").style.height = "50px"
+      button.querySelector(".btn-danger").style.height = "50px"
+      editCategories.querySelector("button").textContent = "Quit Edit Mode"
+
+    }
+    else{
+      button.style.overflow = "hidden"
+      button.style.height = "0"
+      button.querySelector(".btn-secondary").style.height = "0"
+      button.querySelector(".btn-danger").style.height = "0"
+      editCategories.querySelector("button").textContent = "Edit Categories"
+    }
+
+  }
+
+
+}
+
+editCategories.addEventListener("click", categoryEditMode)
+
+
+function editOrDeleteCategory(e) {
+
+}
