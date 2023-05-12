@@ -185,223 +185,227 @@ li button:hover {
 
 /* New Home/Index design by Bon -----
 -----------------------------------*/
-.subtitle {
-    padding: 0;
+body,html {
+    width: 100%;
+    height: 100%;
     margin: 0;
+    padding: 0;
+  } 
+
+  h1 {
+    margin-right: 20px;
+  }
+  
+  #account-icon {
+    width: 45px;
+    height: 45px;
+    left: 17%;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: 5px;
+  }
+  
+  .subtitle {
     display: flex;
     flex-direction: row;
-    gap: 25px;
+    gap: 10px;
     background-color: #fff;
     padding-bottom: 10px;
-    justify-content: space-evenly;
+    align-items: center;
     height: 60px;
-}
-#home-icon {
-    margin-top: 5px;
-    margin-left: 20px;
-}
-#subheadings {
+    width: 100%;
+  }
+  
+  #home-icon {
+    margin-left: 10px;
+  }
+  
+  #subheadings {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
     right: 10px;
     font-size: 20px;
-}
-h3 {
+    margin-right: 0px;
+    margin-left: 70px;
+  }
+  
+  h3 {
     font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
-}
-a.logout-link {
+  }
+  
+  
+  a.logout-link {
     margin-right: 15px;  
     margin-top: 5px;
-}
-.view-section {
-    width: 96%;
-    height: 830px;
-    margin-top: 40px;
+  }
+  
+  #total {
+    margin-top: 20px;
+  }
+  
+  .summary {
+    height: 15px;
+    padding-left: 15px;
+  }
+  
+  .view-section {
     background-color: white;
     border-radius: 20px;
-}
-
-.summary {
-padding-left: 100px;
-}
-
-hr {
-margin-left: 100px;
-width: 9;
-}
-
-.first-h4 {
-font-size: 30px;
-background-color: lightgrey;
-height: 40px;
-width: 90px;
-border-radius: 10px;
-margin-left: 100px;
-}
-
-#transaction {
-font-size: 30px;
-width: 300px;
-padding-top: 5px;
-margin-left: 100px;
-border-radius: 14px;
-}
-
-.transaction-section {
-margin-left: 100px;
-height: 250px;
-margin-bottom: 10px;
-}
-
-#category-section {
-font-size: 30px;
-width: 300px;
-border-radius: 14px;
-margin-left: 100px;
-padding-top: 10px;
-}
-
-.expenses-section {
-height: 100px;
-display: flex;
-flex-direction: row;
-justify-content: space-around;
-align-items: center;
-margin-left: 100px;
-}
-
-.expenses-section h4 {
-  font-size: 16px;
-}
-
-.categories-container {
-display: flex;
-flex-direction: row;
-justify-content: space-evenly;
-}
-
-.category-overview1 {
-display: flex;
-flex-direction: row;
-margin-top: 15px;
-justify-content: space-around;
-align-items: center;
-background-color: #65A5E2;
-border: solid 2px cyan;
-width: 500px;
-border-radius: 20px;
-height: 160px;
-margin-left: 20px;
-}
-
-.category1 {
-height: 120px;
-width: 500px;
-background-color: #65A5E2;
-border-radius: 15px;
-border: 2px solid cyan;
-margin-bottom: 38px;
-display: flex;
-align-items: flex-end;
-}
-
-#percentage1 {
-height: 10px;
-border: 2px solid black;
-background-color: yellow;
-width: 200%;
-height: 10px;
-margin-top: 0;
-margin-left: 40%;
-border-radius: 5px;
-}
-
-.percent-label {
-  display: flex;
-  align-items: center;
-  height: 50px;
-  width: 100%;
-}
-
-
-.category-overview2 {
-display: flex;
-flex-direction: row;
-margin-top: 15px;
-justify-content: space-around;
-align-items: center;
-background-color: #65A5E2;
-border: solid 2px cyan;
-width: 500px;
-border-radius: 20px;
-height: 160px;
-margin-left: 20px;
-}
-
-.category2 {
-height: 120px;
-width: 500px;
-background-color: #65A5E2;
-border-radius: 15px;
-border: 2px solid cyan;
-margin-bottom: 38px;
-}
-
-#percentage2 {
-height: 40px;
-border: 2px solid black;
-background-color: yellow;
-width: 300px;
-height: 10px;
-margin-top: 130px;
-margin-left: 180px;
-border-radius: 5px;
-}
-
-
-.expenses-section {
+    height: 650px;
+    width: 80%;
+    margin-top: 20px;
+  }
+  
+  .view-section h3 {
+    font-size: 25px;
+    font-weight: bolder;
+    margin-left: 10px;
+    margin-bottom: 30px;
+  }
+  
+  hr {
+    width: 90%;
+    border: 1px solid black;
+    margin-left: 25px;
+  }
+  
+  .first-h4 {
+    margin-top: 20px;
+    margin-left: 25px;
+    color: black;
+    background-color: lightgrey;
+    width: 80px;
+    height: 35px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 4px;
+  }
+  
+  .expenses-section {
     background-color: #BAF2E9;
     width: 90%;
     margin-left: 25px;
-    border-radius: 15px;
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     height: 60px;
   }
-    
+  
   #transaction {
     margin-top: 20px;
     margin-left: 25px;
-    color: crimson;
+    color: black;
     background-color: lightgrey;
-    border-radius: 5px;
+    border-radius: 0px;
     width: 220px;
     text-align: center;
     font-size: 20px;
+    border-radius: 4px;
   }
+  
   .transaction-section {
     background-color: #BAF2E9;
     height: 200px;
     width: 90%;
     margin-left: 25px;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-bottom: 30px
   }
   
   #category-section {
     margin-top: 20px;
     margin-left: 25px;
-    color: crimson;
+    color: black;
     background-color: lightgrey;
-    border-radius: 5px;
+    border-radius: 0px;
     width: 220px;
     text-align: center;
     font-size: 20px;
+    border-radius: 3px;
+  }
+  
+  .category-overview1 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #a2d2ff;
+    border: solid 1px #a2d2ff;
+    width: 150px;
+    border-radius: 5px;
+    height: 120px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    box-shadow: 10px 10px 10px 5px #65A5E2;
+  }
+  
+  .category1 {
+    height: 90px;
+    width: 150px;
+    background-color: #65A5E2;
+    border: 2px solid #65A5E2;
+    border-radius: 5px;
+    margin-bottom: 28px;
+  }
+  
+  #percentage1 {
+    height: 40px;
+    border: 2px solid black;
+    background-color: yellow;
+    width: 100px;
+    height: 10px;
+    margin-top: 70px;
+    margin-left: 37px;
+    border-radius: 5px;
+  }
+  
+  .category-overview2 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #a2d2ff;
+    border: solid 0px #a2d2ff;
+    width: 150px;
+    border-radius: 5px;
+    height: 120px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    box-shadow: 10px 10px 10px 5px #65A5E2;
+  }
+  
+  .category2 {
+    height: 90px;
+    width: 150px;
+    background-color: #65A5E2;
+    border: 2px solid #65A5E2;
+    border-radius: 5px;
+    margin-bottom: 28px;
+  }
+  
+  #percentage2 {
+    height: 40px;
+    border: 2px solid black;
+    background-color: yellow;
+    width: 100px;
+    height: 10px;
+    margin-top: 95px;
+    margin-left: 37px;
+    border-radius: 5px;
+  }
+  
+  .categories-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5px;
+    gap: 20px;
   }
 
 /* End of New Home/Index design by Bon -------- 
@@ -632,10 +636,11 @@ align-items: center;
     margin-top: 10px;
 }
 
-#login-h1, #register-h1 {
+/* #login-h1, #register-h1 {
 /* margin-right: 3%;
-margin-bottom: 5%; */
-}
+margin-bottom: 5%; 
+} */
+
 
 #login-settings {
 display: flex;
@@ -747,6 +752,7 @@ font-weight: bold;
     }
     h1 {
         font-size: 45px;
+        margin-left: 50px ;
     }
 
     .view-section {
@@ -892,3 +898,210 @@ select option[value="defaultOption"] {
 }
 /* Ends of Transfer Page ----------------
 ------------------------------------*/
+
+/* Home page desktop design */
+@media screen and (min-width: 768px) {
+    body,html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  
+    h1 {
+      text-align: center;
+    }
+
+    .bar {
+        width: 25px;
+        height: 5px;
+        margin: 2px;
+        margin-left: 40px;
+    }
+    
+    /* .menu-btn {
+        width: 20px;
+        height: 5px;
+        margin: 2px;
+        margin-left: 30px;
+    } */
+
+    .subtitle {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 400px;
+      font-weight: bolder;
+    }
+  
+    #subheadings {
+      margin-left: 39%;
+      font-size: 25px;
+      text-align: center;
+      gap: 50px;
+    }
+  
+    #account-icon {
+      position: absolute;
+      margin-left: 75%;
+      margin-bottom: -10px;
+    }
+    
+    #home-icon {
+      position: absolute;
+      margin-left: 35px;
+      margin-top: 10px;
+    }
+  
+    .view-section {
+      width: 80%;
+      height: 1000px;
+      border-radius: 10px;
+    }
+  
+    .summary {
+      padding-left: 80px;
+      margin-bottom: 10px;
+      font-size: 30px;
+      margin-top: 10px;
+      text-align: start;
+    }
+  
+    hr {
+      margin-left: 80px;
+      width: 90%;
+      margin-bottom: 30px;
+    }
+  
+    .first-h4 {
+      font-size: 25px;
+      background-color: lightgrey;
+      height: 40px;
+      width: 90px;
+      border-radius: 10px;
+      margin-left: 80px;
+      text-align: center;
+      color: black;
+    }
+
+    .expenses-section {
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin-left: 80px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+    
+    #transaction {
+      font-size: 25px;
+      width: 240px;
+      height: 55px;
+      padding-top: 5px;
+      margin-left: 80px;
+      border-radius: 10px;
+      color: black;
+    }
+  
+    .transaction-section {
+      margin-left: 80px;
+      height: 250px;
+      margin-bottom: 25px;
+      border-radius: 10px;
+    }
+  
+    #category-section {
+      font-size: 25px;
+      width: 240px;
+      height: 60px;
+      border-radius: 10px;
+      margin-left: 80px;
+      padding-top: 10px;
+      color: black;
+    }
+  
+    .categories-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+  
+    .category-overview1 {
+      display: flex;
+      flex-direction: row;
+      margin-top: 10px;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #a2d2ff;
+      border: solid 1px #a2d2ff;
+      width: 400px;
+      border-radius: 8px;
+      height: 160px;
+      margin-left: 20px;
+    }
+    
+    .category1 {
+      height: 120px;
+      width: 400px;
+      background-color: #65A5E2;
+      border: 2px solid #65A5E2;
+      border-radius: 8px;
+      margin-bottom: 39px;
+    }
+    
+    #percentage1 {
+      height: 40px;
+      border: 2px solid black;
+      background-color: yellow;
+      height: 10px;
+      margin-top: 110px;
+      margin-left: 190px;
+      margin-right: 10px;
+      border-radius: 5px;
+      width: 190px;
+    }
+    
+  
+    .category-overview2 {
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #a2d2ff;
+        border: solid 1px #a2d2ff;
+        width: 400px;
+        border-radius: 8px;
+        height: 160px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+      
+    .category2 {
+        height: 120px;
+        width: 400px;
+        background-color: #65A5E2;
+        border-radius: 8px;
+        border: 2px solid #65A5E2;
+        margin-bottom: 39px;
+    }
+    
+    #percentage2 {
+        height: 40px;
+        border: 2px solid black;
+        background-color: yellow;
+        height: 10px;
+        margin-top: 135px;
+        width: 190px;
+        margin-left: 195px;
+        border-radius: 5px;
+      }
+    
+  
+    .expenses-section h4 {
+      font-size: 30px;
+    }
+}
+/* End of home page desktop design */
