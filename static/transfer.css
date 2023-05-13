@@ -1,0 +1,141 @@
+/* Transfer Page */
+
+/* User Input */
+#transfer-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 50vw;
+    min-width: 260px;
+}
+
+#transfer-container label {
+    margin: 8px 0;
+    font-size: 20px;
+}
+
+#budget-from, #budget-to, #transfer-amount {
+    padding: 8px;
+    margin-bottom: 8px;
+    height: 39px;
+    border: 3px solid #662020;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+select option[value="defaultOption"] {
+    display: none;
+}
+
+#transfer-btn {
+    width: fit-content;
+    align-self: flex-end;
+}
+/* End of User Input */
+
+
+
+/* Select and Input Color */
+#budget-to:disabled {
+    background-color: #000;
+    color: #4c4c4c;
+}
+
+#transfer-amount:disabled {
+    background-color: #43494c;
+}
+
+#transfer-amount::placeholder {
+    color: #787e81;
+}
+
+#budget-from, #budget-to, #transfer-amount {
+    background-color: #f8f9fa;
+}
+/* End of Select and Input Color */
+
+
+
+/* Summary Display */
+#summary-result {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: 
+    "result result result"
+    "category budget amount"
+    "categoryF budgetF amountF"
+    "categoryT budgetT amountT";
+    width: 100%;
+    max-width: 35vw;
+    min-width: 250px;
+    border: solid grey 3px;
+    border-radius: 30px;
+    gap: 3px;
+    overflow: hidden;
+    margin-top: 30px;
+}
+
+#summary-result div {
+    background-color: #c4e7ef;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+}
+
+#summary-first-row {
+    grid-area: result;
+    text-align: center;
+    > h2 {
+        margin: 0;
+    };
+}
+
+#category-sc {
+    grid-area: category;
+}
+
+#budget-sc{
+    grid-area: budget;
+}
+
+#amount-sc {
+    grid-area: amount;
+}
+
+#category-sf {
+    grid-area: categoryF;
+}
+
+#budget-sf {
+    grid-area: budgetF;
+}
+
+#amount-sf {
+    grid-area: amountF;
+}
+
+#category-st {
+    grid-area: categoryT;
+}
+
+#budget-st {
+    grid-area: budgetT;
+}
+
+#amount-st {
+    grid-area: amountT;
+}
+/* Ends of Summary Display */
+
+
+/* Transfer Button */
+#transfer-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/* End of Transfer Button */
