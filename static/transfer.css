@@ -1,4 +1,12 @@
 /* Transfer Page */
+/* Overwrite */
+body {
+    height: auto;
+}
+input[type="number"] {
+    width: 100%;
+}
+/* End of Overwrite */
 
 /* User Input */
 #transfer-container {
