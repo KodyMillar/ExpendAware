@@ -1,149 +1,170 @@
 {% extends "base.html" %}
-{% block head %}<link rel="stylesheet" href="../static/trial.css" /> {% endblock%}
+{% block head %}<link rel="stylesheet" href="../static/transfer.css" /> {% endblock%}
 {% block title %}ExpendAware - Transfer{% endblock %}
 {% block h1 %}<h1>ExpendAware</h1>{% endblock %}
 {% block content %}
-<h2> Transfer </h2>
-    <p>Enter an amount to transfer from one budget to another.</p>
-    <form method="POST" id="transfer-form">
-    <p>From</p>
+<h3> Budget Transfer </h3>
+
+<form method="POST" id="transfer-container">
+    <label>From</label>
     <select id="budget-from" name="budget-from">
-        <option value="defaultOption">Select an option</option>
+        <option value="defaultOption" >Select an option</option>
         {% for budget in budgets %}
             <option value="{{ budget }}">
-                {{ budget.category }} -
-                {{ budget.name }} has
-                ${{ budget.amount }}
+                {{ budget.category }} - {{ budget.name }} : ${{ budget.amount }}
             </option>
         {% endfor %}
     </select>
 
-    <p>To</p>
-    <select id="budget-to" name="budget-to">
+    <label>To</label>
+    <select id="budget-to" name="budget-to" disabled>
         <option value="defaultOption">Select an option</option>
         {% for budget in budgets %}
             <option value="{{ budget }}">
-                {{ budget.category }} -
-                {{ budget.name }} has
-                ${{ budget.amount }}
+                {{ budget.category }} - {{ budget.name }} : ${{ budget.amount }}
             </option>
         {% endfor %}
     </select>
     
-    <p>Amount</p>    
+    <label>Amount</label>
     <input
-    type="number"
-    id="transfer-amount"
-    placeholder="Transfer Amount"
-    name="transfer-amount"
-    step="0.01"
-    min='0'
-    disabled
-    />
-    <div id="transfer-btn-container">
-    <button type="submit" id="transfer-btn">Transfer/Submit</button>
+        type="number"
+        id="transfer-amount"
+        placeholder="Transfer Amount"
+        name="transfer-amount"
+        step="0.01"
+        min='0'
+        disabled>
+    </input>
+    
+    <input  
+        type="submit" 
+        id="transfer-btn" 
+        class='submit-button'>
+    </input>
     </div>
 </form>
 
 <form id="summary-result">
-    <h2 id="summary-result-title">Result</h2>
-    <ul id="summary-list">
-        <li id="summary-descr-from"></li>
-        <li id="summary-amount-from"></li>
-        <li id="summary-descr-to"></li>
-        <li id="summary-amount-to"></li>
-    </ul>
+    <div id="summary-first-row">
+        <h2>Result</h2>
+    </div>
+    <div id="category-sc">Category</div>
+    <div id="budget-sc">Budget</div>
+    <div id="amount-sc">Amount</div>
+    <div id="category-sf"></div>
+    <div id="budget-sf"></div>
+    <div id="amount-sf"></div>
+    <div id="category-st"></div>
+    <div id="budget-st"></div>
+    <div id="amount-st"></div>
 </form>
 
 
+
+
 <script>
-    const budgetFrom = document.getElementById('budget-from');
+    const budgetFr = document.getElementById('budget-from');
     const budgetTo = document.getElementById('budget-to');
-    const transferAmount = document.getElementById('transfer-amount');
-
-    const summaryAmountFrom = document.getElementById('summary-amount-from');
-    const summaryDescrFrom = document.getElementById('summary-descr-from');
-    const summaryAmountTo = document.getElementById('summary-amount-to');
-    const summaryDescrTo = document.getElementById('summary-descr-to');
-
-    const defaultOptionFrom = budgetFrom.querySelector(`option[value="defaultOption"]`);
-    const defaultOptionTo = budgetTo.querySelector(`option[value="defaultOption"]`);
-
-    const summaryList = document.getElementById('summary-list');
+    const amountTr = document.getElementById('transfer-amount');
+    
+    const categorySF = document.querySelector("#category-sf");
+    const budgetSF = document.querySelector("#budget-sf");
+    const amountSF = document.querySelector("#amount-sf");
+    const categoryST = document.querySelector("#category-st");
+    const budgetST = document.querySelector("#budget-st");
+    const amountST = document.querySelector("#amount-st");
+    
+    const summaryR = document.getElementById('summary-result');
     const transferBtn = document.getElementById('transfer-btn');
-
     
     let previousOption = null;
-    defaultOptionFrom.disabled = true;
-    defaultOptionTo.disabled = true;
-    budgetTo.disabled = true;
-
-    budgetFrom.addEventListener('change', function() {
-        const budgetFromOption = budgetFrom.options[budgetFrom.selectedIndex];
-        transferAmount.value = "";
+    
+    budgetFr.addEventListener('change', function() {
+        // Reset when change budget from 
         budgetTo.value = 'defaultOption';
         budgetTo.disabled = false;
-        transferAmount.disabled = true;
-        summaryList.style.display = 'none';
-
-        if (budgetFromOption.value !== '') {
-            const selectedValue = budgetFromOption.value;
-            // Enable the previously disabled option
-            if (previousOption !== null) {
-                previousOption.disabled = false;
-            }
-            // Disable the currently selected option
-            const budgetToOption = budgetTo.querySelector(`option[value="${selectedValue}"]`);
-            budgetToOption.disabled = true;
-            previousOption = budgetToOption;
+        amountTr.disabled = true;
+        amountTr.value = "";
+        categorySF.innerHTML = ``;
+        budgetSF.innerHTML = ``;
+        amountSF.innerHTML = ``;
+        categoryST.innerHTML = ``;
+        budgetST.innerHTML = ``;
+        amountST.innerHTML = ``;
+        
+        // Enable the previously disabled option (previousOption = budgetToOption)
+        if (previousOption !== null) {
+            previousOption.disabled = false;
         }
+
+        // Chose <option> and then <option>.value
+        const selectedValue = budgetFr.options[budgetFr.selectedIndex].value;
+        // Disable the currently selected option
+        const budgetToOption = budgetTo.querySelector(`option[value="${selectedValue}"]`);
+        budgetToOption.disabled = true;
+        previousOption = budgetToOption;
     });
 
     budgetTo.addEventListener('change', function() {
-        transferAmount.value = "";
-        transferAmount.disabled = false;
-        summaryList.style.display = 'none';
+        amountTr.value = "";
+        amountTr.disabled = false;
+        categorySF.innerHTML = ``;
+        budgetSF.innerHTML = ``;
+        amountSF.innerHTML = ``;
+        categoryST.innerHTML = ``;
+        budgetST.innerHTML = ``;
+        amountST.innerHTML = ``;
     });
 
-    transferAmount.addEventListener('input', function() {
-        const transferAmountValue = parseFloat(transferAmount.value);
-        const budgetFromOption = budgetFrom.options[budgetFrom.selectedIndex];
+    amountTr.addEventListener('input', function() {
+        const amountTrValue = parseFloat(amountTr.value);
+        const budgetFrOption = budgetFr.options[budgetFr.selectedIndex];
         const budgetToOption = budgetTo.options[budgetTo.selectedIndex];
 
-        summaryList.style.display = 'grid';
-        const budgetFromObject = JSON.parse(budgetFromOption.value.replace(/'/g, '"'));
+        const budgetFrObject = JSON.parse(budgetFrOption.value.replace(/'/g, '"'));
         const budgetToObject = JSON.parse(budgetToOption.value.replace(/'/g, '"'));
-        summaryDescrFrom.innerHTML = 
-        `${budgetFromObject['category']} - ${budgetFromObject['name']}`
+        
+        categorySF.innerHTML = `${budgetFrObject['category']}`
+        budgetSF.innerHTML = `${budgetFrObject['name']}`
 
-        if (`${budgetFromObject['amount'] - transferAmountValue}` < 0) {
-            summaryAmountFrom.innerHTML = "Not enough funds!";
-        }
-        else if (isNaN(transferAmountValue) === true) {
-            summaryAmountFrom.innerHTML = "$0";
-        }
-        else {(`${budgetFromObject['amount'] - transferAmountValue}` < 0)
-            summaryAmountFrom.innerHTML = 
-            `$${budgetFromObject['amount'] - transferAmountValue}`;
-        }
+        categoryST.innerHTML = `${budgetToObject['category']}`
+        budgetST.innerHTML = `${budgetToObject['name']}`
 
-        summaryDescrTo.innerHTML =
-        `${budgetToObject['category']} - ${budgetToObject['name']}`;
-
-        if (isNaN(transferAmountValue) === true) {
-            summaryAmountTo.innerHTML = "$0";
+        if (`${budgetFrObject['amount'] - amountTrValue}` >= 0) {
+            amountSF.innerHTML = `$${budgetFrObject['amount'] - amountTrValue}`
+            amountST.innerHTML = `$${budgetToObject['amount'] + amountTrValue}`
+        } else {
+            amountSF.innerHTML = `Insufficient\nfunds`
+            amountST.innerHTML = `$${budgetToObject['amount'] + budgetFrObject['amount']}`
         }
-        else {
-            summaryAmountTo.innerHTML = 
-            `$${parseInt(budgetToObject['amount']) + transferAmountValue}`;
-        }s
     });
 
     transferBtn.addEventListener('click', function() {
-        if (transferAmount.value === "") {
-            alert('not ready yet');
+        if (amountTr.value === "") {
+            alert('Missing Values');
             event.preventDefault();
         }
+
+        const amountTrValue = parseFloat(amountTr.value);
+        const budgetFrOption = budgetFr.options[budgetFr.selectedIndex];
+        const budgetToOption = budgetTo.options[budgetTo.selectedIndex];
+
+        const budgetFrObject = JSON.parse(budgetFrOption.value.replace(/'/g, '"'));
+        const budgetToObject = JSON.parse(budgetToOption.value.replace(/'/g, '"'));
+        
+        categorySF.innerHTML = `${budgetFrObject['category']}`
+        budgetSF.innerHTML = `${budgetFrObject['name']}`
+
+        categoryST.innerHTML = `${budgetToObject['category']}`
+        budgetST.innerHTML = `${budgetToObject['name']}`
+
+
+        if (`${budgetFrObject['amount'] - amountTrValue}` < 0) {
+            alert('Insufficient Funds');
+            event.preventDefault();
+        }
+
     });
 </script>
 {% endblock %}
