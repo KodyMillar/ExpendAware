@@ -153,13 +153,6 @@
         const budgetFrObject = JSON.parse(budgetFrOption.value.replace(/'/g, '"'));
         const budgetToObject = JSON.parse(budgetToOption.value.replace(/'/g, '"'));
         
-        categorySF.innerHTML = `${budgetFrObject['category']}`
-        budgetSF.innerHTML = `${budgetFrObject['name']}`
-
-        categoryST.innerHTML = `${budgetToObject['category']}`
-        budgetST.innerHTML = `${budgetToObject['name']}`
-
-
         if (`${budgetFrObject['amount'] - amountTrValue}` < 0) {
             alert('Insufficient Funds');
             event.preventDefault();
