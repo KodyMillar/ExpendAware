@@ -177,8 +177,8 @@ def categories():
     return render_template("categories.html", categories=categories, total_budgets=total_budget_list, budgets=budget_list)
 
 
-@app.route('/expenses')
-def expenses():
+@app.route('/expenses/<int:id>')
+def expenses(id):
     with open("expense.json", "r") as f:
         existing_expense = json.load(f)
     with open("category.json", "r") as f:
