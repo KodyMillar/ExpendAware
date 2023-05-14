@@ -26,38 +26,52 @@
         <h1 class="info-title">Login</h1>
 
         <label for="email">Email Address</label>
-        <input type="text" placeholder="Email Address" id="email" name="email" required/>
+        <input type="text" placeholder="Email Address" id="email" name="email" autocomplete="email" required/>
 
         <label for="password">Password</label>
         <input type="password" placeholder="Password" id="password" name="password" required/>
 
+        <div>
+            <ul id="flash-messages" class="show">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </ul>
+        </div>
         <label for="remember-me">
             <input type="checkbox" id="remember-me" name="rememberMe"> 
             Remember Me
         </label>
 
+        
+        
         <button type="submit" id="login-button">Login</button>
-
+        
+        
         <a href="#" id="forgot-password">Forgot Password?</a>
     </form>
-
+    
     
     <form method="POST" action=" " class="info-to-fill" id="reg-form">
         <h1 class="info-title">Register</h1>
         
         <label for="email">Email Address</label>
-        <input type="text" placeholder="Email Address" id="email" name="email" required/>
+        <input type="text" placeholder="Email Address" id="reg-Email" name="email" required/>
 
-        <label for="nickName">Name</label>
-        <input type="text" placeholder="Name" id="nickName" name="nickName" required/>
+        <label for="nickname">Name</label>
+        <input type="text" placeholder="Name" id="nickname" name="nicnName" required/>
 
-        <label for="pwd">Password</label>
+        <label for="pwd1">Password</label>
         <input type="password" placeholder="Password" id="pwd1" name="pwd1" required/>
 
-        <label for="pwd">Confirm Password</label>
+        <label for="pwd2">Confirm Password</label>
         <input type="password" placeholder="Confirm Password" id="pwd2" name="pwd2" required/>
 
-        <button type="submit" id="login-button">Register</button>
+        <button type="submit" id="reg-button">Register</button>
     </form>
 
     <script>
@@ -83,5 +97,19 @@
             regTab.classList.add("active")
             loginTab.classList.remove("active")
         });
+
+        // Wait for the page to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the flash message element
+            const flashMessage = document.getElementById('flash-messages');
+            
+            // Check if the flash message exists
+            if (flashMessage) {
+                // Remove show in 0 seconds (need it to show in the beginning)
+                setTimeout(function() {flashMessage.classList.remove('show');}, 0);
+                // Set a timeout to remove flashout display
+                setTimeout(function() {flashMessage.style.display = 'none';}, 5000);
+        }
+    });
     </script>
 </body>

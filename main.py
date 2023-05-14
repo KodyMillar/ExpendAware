@@ -1,9 +1,10 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for
+from flask import Flask, request, jsonify, render_template, redirect, url_for, flash
 import json
 from datetime import datetime
 import pprint
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'
 
 
 def update_categories_budgets(categories, budgets, expenses):
@@ -256,7 +257,10 @@ def login():
         passwordInput = request.form.get("password")
 
         if user[0]["password"] == passwordInput and user[0]["email"] == emailInput:
+            # flash('Logged in sucessfully!', category="success")
             return redirect(url_for("index"))
+        else:
+            flash(' Incorrect email or password ', category="error")
 
     return render_template("login.html")
 
