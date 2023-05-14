@@ -18,7 +18,7 @@
     <img id="login-logo" src="../static/images/logo.png" width="150" height="150"/>
 
     <div id="login-register-btn">
-        <button id="login-tab" class="login-tab active">Login</button>
+        <button id="login-tab" class="login-tab active" name="login-tab">Login</button>
         <button id="reg-tab" class="login-tab">Register</button>
     </div>
 
@@ -42,7 +42,7 @@
                 {% endwith %}
             </ul>
         </div>
-
+        
         <label for="remember-me">
             <input type="checkbox" id="remember-me" name="rememberMe"> 
             Remember Me
@@ -52,11 +52,20 @@
     </form>
     
     
-    <form method="POST" action=" " class="info-to-fill" id="reg-form">
+    <form method="POST" action="{{ url_for('login') }}" class="info-to-fill" id="reg-form">
         <h1 class="info-title">Register</h1>
+
+        <div id = "overlay">
+            <div id="custom-alert" class="alert">
+                <div class="alert-content">
+                    <span id="alert-message"></span>
+                    <button id="alert-okay">x</button>
+                </div>
+            </div>
+        </div>
         
         <label for="email">Email Address</label>
-        <input type="text" placeholder="Email Address" id="reg-Email" name="reg-email" required/>
+        <input type="text" placeholder="Email Address" id="reg-email" name="reg-email" required/>
 
         <label for="nickname">Name</label>
         <input type="text" placeholder="Name" id="nickname" name="nickname" required/>
@@ -69,6 +78,7 @@
 
         <button type="submit" id="reg-button">Register</button>
     </form>
+
 
     <script>
         const loginForm = document.getElementById('login-form');
@@ -106,6 +116,67 @@
                 // Set a timeout to remove flashout display
                 setTimeout(function() {flashMessage.style.display = 'none';}, 4000);
         }
-    });
+
+
+        const regBtn = document.getElementById('reg-button');
+        const pwd1 = document.getElementById('pwd1');
+        const pwd2 = document.getElementById('pwd2');
+        const regEmail = document.getElementById('reg-email');
+        const overlay = document.getElementById('overlay');
+        const alert = document.querySelector('.alert');
+        const body = document.querySelector('body');
+
+
+
+        function showAlert(message) {
+            var alertBox = document.getElementById('custom-alert');
+            var alertMessage = document.getElementById('alert-message');
+            
+            alertMessage.textContent = message;
+            alertBox.style.display = 'block';
+            
+            var alertOkayButton = document.getElementById('alert-okay');
+            alertOkayButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                overlay.style.display = 'none';
+            });
+        }
+
+
+    
+        fetch('login.json')
+        .then(response => response.json())
+        .then(data => {
+            // Handle the retrieved JSON data
+            regBtn.addEventListener('click', function(event) {
+                for (let x of data) {
+                    if (x["email"] == regEmail.value) {
+                        event.preventDefault();
+                        overlay.style.display = "flex";
+                        showAlert("user alreayd exists")
+                    }
+                }
+                if (pwd1.value !== pwd2.value) {
+                    event.preventDefault();
+                    overlay.style.display = "flex";
+                    showAlert("not matched");
+                } else if (!(regEmail.value.includes("@"))) {
+                    event.preventDefault();
+                    overlay.style.display = "flex";
+                    showAlert("no @");
+                }
+                console.log(regEmail.value.includes("@"))
+            });
+        })
+        .catch(error => {
+            // Handle any errors
+        });
+            });
+
+        overlay.addEventListener('click', function(event) {
+            if (event.target === overlay) {
+                overlay.style.display = 'none';
+            }
+            });
     </script>
 </body>

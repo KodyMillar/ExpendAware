@@ -262,8 +262,7 @@ def login():
         pwd1Reg = request.form.get("pwd1")
         pwd2Reg = request.form.get("pwd2")
 
-
-        if nameReg == "":
+        if emailInput:
             for user in users:
                 if user["password"] == passwordInput and user["email"] == emailInput:
                     return redirect(url_for("index"))
@@ -271,14 +270,17 @@ def login():
             flash('Incorrect email or password')
             return redirect(url_for('empty'))
         else:
+            for user in users:
+                if emailReg == user['email']:
+                    flash(f'{nameReg} already exists')
+                    return redirect(url_for('empty'))
             newUser['name'] = nameReg
             newUser['password'] = pwd1Reg
             newUser['email'] = emailReg
             users.append(newUser)
             with open("login.json", "w") as file:
                 json.dump(users, file, indent=2)
-            flash(f'${ nameReg } is registered')
-            # return redirect(url_for("index"))
+            flash(f'{nameReg} is registered')
 
     return render_template("login.html")
 
@@ -298,6 +300,14 @@ def statistic():
 @app.route('/empty')
 def empty():
     return render_template('login.html')
+
+@app.route('/login.json')
+def get_json():
+    with open("login.json", "r") as f:
+        existing_user = json.load(f)
+
+    # Return the JSON data as a response
+    return jsonify(existing_user)
 
 if __name__ == '__main__':
     app.run(debug=True)
