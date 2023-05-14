@@ -7,6 +7,7 @@
 
 <div id="edit-categories">
     <button>Edit Categories</button>
+    <p>{{ budget_name }}</p>
 </div>
 
 <div id="category-list">
@@ -44,25 +45,25 @@
         <h4><b>Edit Category</b></h4>
         <label>Rename Category</label>
         <form method="POST">
-            <input type="text" placeholder="Rename" name="rename category {{ category['category'] }}">
-            <input type="submit" value="Rename" class="rename-category">
+            <input type="text" placeholder="Rename" name="rename category {{ category['category'] }}" class="rename-category-input">
+            <input type="submit" value="Rename" class="rename-category-btn">
         </form>
         <h4>Edit or delete budgets</h4>
         {% for budget in budgets %}
         {% if budget['category'] == category['category'] %}
         <h5>{{ budget['name'] }}</h5>
+        <div class="edit-budget-forms">
+            <form method="POST">
+            <input type="text" placeholder="Rename" name="rename budget" class="edit-budget-input">
+            <input type="submit" value="Rename" class="edit-budget-btn">
+            </form>
+            <form method="POST">
+            <input type="number" placeholder="Edit Amount" name="edit budget {{ budget['name'] }}" class="edit-budget-input">
+            <input type="submit" value="Update" class="edit-budget-btn">
+            </form>
+        </div>
         <form method="POST">
-            <div>
-            <input type="text" placeholder="Rename" name="rename budget" class="edit-budget-text">
-            <input type="submit" value="Rename" class="edit-budget">
-            </div>
-            <div>
-            <input type="number" placeholder="Edit Amount" name="edit budget {{ budget['name'] }}" class="edit-budget-text">
-            <input type="submit" value="Update" class="edit-budget">
-            </div>
-        </form>
-        <form method="POST">
-        <input type="submit" name="{{ budget['name'] }}" value="Remove Budget" class="remove-budget"></button>
+            <input type="submit" name="{{ budget['name'] }}" value="Remove Budget" class="remove-budget">
         </form>
         {% endif %}
         {% endfor %}
