@@ -135,7 +135,32 @@ function categoryEditMode() {
 
 editCategories.addEventListener("click", categoryEditMode)
 
+const editButton = document.querySelectorAll(".edit-btn")
 
-function editOrDeleteCategory(e) {
+for (let button of editButton){
+  button.addEventListener("click", (e)=> {
+    if (e.target.id.includes(" ")) {
+      e.target.id = e.target.id.replace(" ", "-")
+    }
 
+    if(e.target.id.includes("'")) {
+      e.target.id = e.target.id.replace("'", "")
+    }
+
+    let idName = e.target.id
+    let categoryNameToEdit = idName.replace("edit-", "").trim()
+
+    if (categoryNameToEdit.includes(" ")) {
+      categoryNameToEdit = categoryNameToEdit.replaceAll(" ", "-")
+    }
+
+    if(categoryNameToEdit.includes("'")) {
+      categoryNameToEdit = categoryNameToEdit.replaceAll("'", "")
+    }
+
+    let editPopUp = document.querySelector("#edit-popup-" + categoryNameToEdit)
+    let editBackground = document.querySelector("#edit-background-" + categoryNameToEdit)
+    editPopUp.classList.toggle("category-edit-clicked")
+    editBackground.classList.toggle("category-edit-clicked")
+  })
 }
