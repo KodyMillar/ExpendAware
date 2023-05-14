@@ -200,12 +200,10 @@ def categories():
                 json.dump(new_budget_list, file)
             budget_list = new_budget_list
 
-        
-
-        else:
+        elif "delete category" in list(request.form)[0]:
             category_list = categories
             for category in category_list:
-                if category['category'] == list(request.form)[0]:
+                if category['category'] == list(request.form)[0][16:]:
                     new_budget_list = []
                     for budget in budget_list:
                         if budget["category"] != category["category"]:

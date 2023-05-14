@@ -109,8 +109,6 @@ for(let category of categoriesList){
 editCategories = document.getElementById("edit-categories")
 categoryButtons = document.querySelectorAll(".cat-btns-div")
 
-// category page popup menus
-
 function categoryEditMode() {
   for(let button of categoryButtons){
     if (button.style.overflow === "hidden"){
@@ -135,6 +133,9 @@ function categoryEditMode() {
 }
 
 editCategories.addEventListener("click", categoryEditMode)
+
+
+// category page popup menus
 
 const editButton = document.querySelectorAll(".edit-btn")
 
