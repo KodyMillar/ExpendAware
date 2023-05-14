@@ -2,26 +2,31 @@
   {
     "name": "teemo",
     "password": "teemo",
-    "email": "teemo"
-  },
-  {
-    "name": "teemo",
-    "password": "teemo1",
-    "email": "teemo1"
-  },
-  {
-    "name": "we",
-    "password": "11",
-    "email": "ewrwersd"
+    "email": "teemo@riot.com"
   },
   {
     "name": "sdf",
-    "password": "sd",
-    "email": "sdfsdsd"
+    "password": "123",
+    "email": "sdf@"
   },
   {
-    "name": "sd",
-    "password": "sd",
-    "email": "sd"
+    "name": "teemo",
+    "password": "123",
+    "email": "beemo@riot.com"
+  },
+  {
+    "name": "1",
+    "password": "1",
+    "email": "sd@"
+  },
+  {
+    "name": "1",
+    "password": "1",
+    "email": "sdf@sdf"
+  },
+  {
+    "name": "1",
+    "password": "1",
+    "email": "sdf@sfsfsdfsd"
   }
 ]

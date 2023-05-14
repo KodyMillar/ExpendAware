@@ -70,7 +70,7 @@
         <button type="submit" id="reg-button">Register</button>
 
         <div id = "overlay">
-            <div id="custom-alert" class="alert">
+            <div id="custom-alert" class="alert1">
                 <div class="alert-content">
                     <span id="alert-message"></span>
                     <button id="alert-okay">x</button>
@@ -79,13 +79,13 @@
         </div>
     </form>
 
-
     <script>
+    
     // Active Tab //
+    const regForm = document.getElementById('reg-form');
         const loginTab = document.getElementById('login-tab');
         const regTab = document.getElementById('reg-tab');
         const loginForm = document.getElementById('login-form');
-        const regForm = document.getElementById('reg-form');
         regForm.style.display = "none";
 
         // Show Login Form & Hide Register Form//
@@ -129,23 +129,26 @@
         // User input in Register Form //
         const pwd1 = document.getElementById('pwd1');
         const pwd2 = document.getElementById('pwd2');
+        const nickname = document.getElementById('nickname');
         const regEmail = document.getElementById('reg-email');
         const regBtn = document.getElementById('reg-button');
         
         // Alert Display IDs //
         const overlay = document.getElementById('overlay');
-        const alert = document.querySelector('.alert');
         const alertBox = document.getElementById('custom-alert');
         const alertMessage = document.getElementById('alert-message');
         const alertOkayButton = document.getElementById('alert-okay');
-        
         // Alert Function //
         function showAlert(message) {
-            alertMessage.textContent = message;
+            alertMessage.innerHTML = message;
+            //console.log(message + "outside");
             alertBox.style.display = 'block';
-            
+
             alertOkayButton.addEventListener('click', function(event) {
-                event.preventDefault();
+                if (message !== "Success!") {
+                    //console.log(message + "insdie");   
+                    event.preventDefault();
+                }
                 overlay.style.display = 'none';
             });
 
@@ -156,21 +159,22 @@
             });
         }
 
-
         // Fetch login JSON and Use Alert Function
         fetch('login.json')
         .then(response => response.json())
         .then(data => {
             // Handle the retrieved JSON data
             regBtn.addEventListener('click', function(event) {
-                for (let x of data) {
-                    if (x["email"] == regEmail.value) {
-                        event.preventDefault();
-                        overlay.style.display = "flex";
-                        showAlert("This email is already used")
-                    }
-                }
-                if (pwd1.value !== pwd2.value) {
+                const emailExists = data.some(x => x.email === regEmail.value);
+                if (pwd1.value === "" || pwd2.value === "" || nickname.value === "" || regEmail.value == "") {
+                    //event.preventDefault();
+                    //overlay.style.display = "flex";
+                    //showAlert("Missing Values");
+                } else if (emailExists) {
+                    event.preventDefault();
+                    overlay.style.display = "flex";
+                    showAlert("This email is already used")
+                } else if (pwd1.value !== pwd2.value) {
                     event.preventDefault();
                     overlay.style.display = "flex";
                     showAlert("Both passwords are not matched");
@@ -178,8 +182,12 @@
                     event.preventDefault();
                     overlay.style.display = "flex";
                     showAlert("Incorrect Email format: no @");
+                } else {
+                    event.preventDefault();
+                    overlay.style.display = "flex";
+                    alertOkayButton.innerHTML = "login";
+                    showAlert("Success!");
                 }
-                console.log(regEmail.value.includes("@"))
             });
         })
         .catch(error => {
