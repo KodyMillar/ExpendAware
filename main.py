@@ -148,8 +148,6 @@ def categories():
 
     # delete category
 
-    budget_name = list(request.form)[0]
-
     category_to_delete = ""
     if request.method == "POST":
         if "rename category" in list(request.form)[0]:
@@ -173,6 +171,15 @@ def categories():
                 json.dump(budget_list, file)
             with open("expense.json", "w") as file:
                 json.dump(expenses, file)
+
+        elif "rename budget" in list(request.form)[0]:
+            budget_name = list(request.form)[0][14:]
+            new_budget_name = request.form[list(request.form)[0]]
+            for budget in budget_list:
+                if budget_name == budget['name']:
+                    budget['name'] = new_budget_name
+            with open("budget.json", "w") as file:
+                json.dump(budget_list, file)
 
         elif "edit budget" in list(request.form)[0]:
             budget_name = list(request.form)[0][12:]
@@ -224,7 +231,7 @@ def categories():
     with open("budget.json", "r") as file:
         budgets = json.load(file)
 
-    return render_template("categories.html", categories=categories, total_budgets=total_budget_list, budgets=budgets, budget_name=budget_name)
+    return render_template("categories.html", categories=categories, total_budgets=total_budget_list, budgets=budgets)
 
 
 @app.route('/expenses/<int:id>')

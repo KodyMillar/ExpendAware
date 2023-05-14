@@ -54,7 +54,7 @@
         <h5>{{ budget['name'] }}</h5>
         <div class="edit-budget-forms">
             <form method="POST">
-            <input type="text" placeholder="Rename" name="rename budget" class="edit-budget-input">
+            <input type="text" placeholder="Rename" name="rename budget {{ budget['name'] }}" class="edit-budget-input">
             <input type="submit" value="Rename" class="edit-budget-btn">
             </form>
             <form method="POST">
