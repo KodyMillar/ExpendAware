@@ -109,6 +109,7 @@ for(let category of categoriesList){
 editCategories = document.getElementById("edit-categories")
 categoryButtons = document.querySelectorAll(".cat-btns-div")
 
+// category page popup menus
 
 function categoryEditMode() {
   for(let button of categoryButtons){
@@ -163,4 +164,38 @@ for (let button of editButton){
     editPopUp.classList.toggle("category-edit-clicked")
     editBackground.classList.toggle("category-edit-clicked")
   })
+}
+
+const deleteCategoryButton = document.querySelectorAll(".delete-category")
+const deleteCategoryPopup = document.querySelectorAll(".category-delete-popup")
+
+for (let button of deleteCategoryButton) {
+  button.addEventListener("click", (e) => {
+    if (e.target.id.includes(" ")) {
+      e.target.id = e.target.id.replace(" ", "-")
+    }
+
+    if(e.target.id.includes("'")) {
+      e.target.id = e.target.id.replace("'", "")
+    }
+
+    let idName = e.target.id
+    let categoryNameToDelete = idName.replace("delete-", "").trim()
+
+    if (categoryNameToDelete.includes(" ")) {
+      categoryNameToDelete = categoryNameToDelete.replaceAll(" ", "-")
+    }
+
+    if(categoryNameToDelete.includes("'")) {
+      categoryNameToDelete = categoryNameToDelete.replaceAll("'", "")
+    }
+
+    console.log(categoryNameToDelete)
+
+    let deletePopUp = document.querySelector("#delete-category-" + categoryNameToDelete)
+    let deleteBackground = document.querySelector("#delete-background-" + categoryNameToDelete)
+    deletePopUp.classList.toggle("category-delete-clicked")
+    deleteBackground.classList.toggle("category-delete-clicked")
+
+  }) 
 }

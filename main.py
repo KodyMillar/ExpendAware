@@ -200,6 +200,8 @@ def categories():
                 json.dump(new_budget_list, file)
             budget_list = new_budget_list
 
+        
+
         else:
             category_list = categories
             for category in category_list:

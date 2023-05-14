@@ -700,6 +700,8 @@ a {
     border: none;
 }
 
+/* category edit popup*/
+
 .category-edit-popup {
     position: fixed;
     bottom: 35%;
@@ -809,6 +811,59 @@ a {
     grid-template-rows: 10% 6% 10% 10%;
     grid-auto-rows: 6% 20% 8%;
 }
+
+/*Are you sure? category deletion popup */
+
+.category-delete-popup {
+    position: fixed;
+    bottom: 35%;
+    z-index: 999;
+    width: 90vw;
+    height: 60vh;
+    padding: calc(5% - 20px);
+    background-color: white;
+    display: none;
+    padding-top: 10%;
+}
+
+.btn-danger-div {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.delete-category-2nd {
+    width: 100%;
+}
+
+.btn-cancel-div {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: 10% 0;
+}
+
+.category-delete-clicked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.category-delete-clicked h3, .category-delete-clicked h4 {
+    text-align: center;
+}
+
+.cancel-btn {
+    color: grey;
+    height: 100%;
+}
+
+.cancel-form {
+    width: 100%;
+    height: 100%;
+}
+
 
 
 /* End of Categories Page --------

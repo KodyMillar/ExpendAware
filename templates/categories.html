@@ -37,8 +37,12 @@
         {% endfor %}
     </ul>
     </div>
-    <div class="cat-btns-div"><div class="category-btns"><button class="btn btn-secondary btn-sm edit-btn" id="edit-{{ category['category'] }}">Edit Category</button><form method="POST" class="btn-danger-form"><input type="submit" class="btn btn-danger btn-sm" value="Delete category" name="{{ category['category'] }}"></form></div></div>
+    <div class="cat-btns-div"><div class="category-btns">
+        <button class="btn btn-secondary btn-sm edit-btn" id="edit-{{ category['category'] }}">Edit Category</button>
+        <button class="btn btn-danger btn-sm delete-category" id="delete-{{ category['category'] }}">Delete Category</button>
     </div>
+</div>
+</div>
     <div id="edit-background-{{ category['category'].strip().replace(' ', '-').replace('\'', '') }}" class="category-edit-background">
     </div>
     <div class="category-edit-popup" id="edit-popup-{{ category['category'].strip().replace(' ', '-').replace('\'', '') }}">
@@ -67,6 +71,24 @@
         </form>
         {% endif %}
         {% endfor %}
+    </div>
+    <div id="delete-background-{{ category['category'].strip().replace(' ', '-').replace('\'', '') }}" class="category-edit-background">
+    </div>
+    <div class="category-delete-popup" id="delete-category-{{ category['category'] }}"> 
+        <div>
+        <h3>Delete {{ category['category'] }} category?</h3>
+        <h4><strong>This will delete all the budgets and expenses in this category.</strong></h4>
+        </div>
+        <div class="btn-cancel-div">
+        <form method="POST" class="cancel-form">
+            <input type="submit" class="cancel-btn" value="Cancel" name="{{ category['category'] }}">
+        </form>
+        </div>
+        <div class="btn-danger-div">
+        <form method="POST" class="btn-danger-form">
+            <input type="submit" class="btn btn-danger btn-sm delete-category-2nd" value="Delete Category" name="delete category {{ category['category'] }}">
+        </form>
+    </div>
     </div>
     {% endfor %}
 
