@@ -183,6 +183,16 @@ def categories():
             with open("budget.json", "w") as file:
                 json.dump(budget_list, file)
 
+        elif "delete budget" in list(request.form)[0]:
+            budget_to_delete = list(request.form)[0][14:]
+            new_budget_list = []
+            for budget in budget_list:
+                if budget_to_delete != budget["name"]:
+                    new_budget_list.append(budget)
+            with open("budget.json", "w") as file:
+                json.dump(new_budget_list, file)
+            budget_list = new_budget_list
+
         else:
             category_list = categories
             for category in category_list:

@@ -63,7 +63,7 @@
             </form>
         </div>
         <form method="POST">
-            <input type="submit" name="{{ budget['name'] }}" value="Remove Budget" class="remove-budget">
+            <input type="submit" name="delete budget {{ budget['name'] }}" value="Remove Budget" class="remove-budget">
         </form>
         {% endif %}
         {% endfor %}
