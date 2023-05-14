@@ -11,7 +11,6 @@
     rel="stylesheet"
     />
     <link rel="stylesheet" href="../static/login.css" />
-    <script src="../static/login.js" defer></script>
     <title>Login</title>
 </head>
 
@@ -20,13 +19,12 @@
 
     <div id="login-register-btn">
         <button id="login-tab" class="login-tab active">Login</button>
-        <button id="register-tab" class="login-tab">Register</button>
+        <button id="reg-tab" class="login-tab">Register</button>
     </div>
 
-        
-    <h1 id="login-h1">Login</h1>
+    <form method="POST" action=" /login " class="info-to-fill" id="login-form">
+        <h1 class="info-title">Login</h1>
 
-    <form method="POST" action=" /login " id="login-info">
         <label for="email">Email Address</label>
         <input type="text" placeholder="Email Address" id="email" name="email" required/>
 
@@ -43,23 +41,47 @@
         <a href="#" id="forgot-password">Forgot Password?</a>
     </form>
 
+    
+    <form method="POST" action=" " class="info-to-fill" id="reg-form">
+        <h1 class="info-title">Register</h1>
+        
+        <label for="email">Email Address</label>
+        <input type="text" placeholder="Email Address" id="email" name="email" required/>
 
-    <!--
-    <div id="login-container">
+        <label for="nickName">Name</label>
+        <input type="text" placeholder="Name" id="nickName" name="nickName" required/>
 
+        <label for="pwd">Password</label>
+        <input type="password" placeholder="Password" id="pwd1" name="pwd1" required/>
 
-        <h1 id="login-h1">Login</h1>
+        <label for="pwd">Confirm Password</label>
+        <input type="password" placeholder="Confirm Password" id="pwd2" name="pwd2" required/>
 
+        <button type="submit" id="login-button">Register</button>
+    </form>
 
-        <form method="POST" action="{{ url_for('login') }}" id="login-info">
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const regForm = document.getElementById('reg-form');
+        regForm.style.display = "none";
 
-            <input type="text" placeholder="Email Address" name="email"/>
+        const loginTab = document.getElementById('login-tab');
+        const regTab = document.getElementById('reg-tab');
 
-            <input type="text" placeholder="Password" name="password" />
+        loginTab.addEventListener('click', function() {
+            regForm.style.display = "none";
+            loginForm.style.display = "flex";
 
-            <button type="submit" id="login-button">Login</button>
-        </form>
+            regTab.classList.remove("active")
+            loginTab.classList.add("active")
+        });
 
-    </div>
-    -->
+        regTab.addEventListener('click', function() {
+            regForm.style.display = "flex";
+            loginForm.style.display = "none";
+
+            regTab.classList.add("active")
+            loginTab.classList.remove("active")
+        });
+    </script>
 </body>
