@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, url_for
 import json
 from datetime import datetime
 import pprint
@@ -195,9 +195,6 @@ def expenses():
     return render_template('expenses.html', categories=categories)
 
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
 
 
 @app.route('/transfer', methods=['GET', 'POST'])
@@ -218,7 +215,6 @@ def transfer():
         budget_from_str = request.form["budget-from"]
         budget_to_str = request.form["budget-to"]
         transfer_amount = request.form['transfer-amount']
-
 
         # Fix syntax issue replacing single to double quote
         budget_from_str_fixed = budget_from_str.replace("'", "\"")
@@ -247,6 +243,24 @@ def transfer():
     return render_template('transfer.html', expenses=expenses, categories=categories, budgets=budgets)
 
 
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    with open("login.json", "r") as f:
+        existing_user = json.load(f)
+
+    user = existing_user
+
+    if request.method == 'POST':
+        emailInput = request.form.get("email")
+        passwordInput = request.form.get("password")
+
+        if user[0]["password"] == passwordInput and user[0]["email"] == emailInput:
+            return redirect(url_for("index"))
+
+    return render_template("login.html")
+
+
 @app.route('/cost')
 def cost():
     return render_template('cost.html')
@@ -258,6 +272,7 @@ def history():
 @app.route('/statistic')
 def statistic():
     return render_template('statistic.html')
+
 
 
 if __name__ == '__main__':
