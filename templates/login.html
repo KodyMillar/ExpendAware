@@ -55,6 +55,20 @@
     <form method="POST" action="{{ url_for('login') }}" class="info-to-fill" id="reg-form">
         <h1 class="info-title">Register</h1>
 
+        <label for="email">Email Address</label>
+        <input type="text" placeholder="Email Address" id="reg-email" name="reg-email" required/>
+        
+        <label for="nickname">Name</label>
+        <input type="text" placeholder="Name" id="nickname" name="nickname" required/>
+        
+        <label for="pwd1">Password</label>
+        <input type="password" placeholder="Password" id="pwd1" name="pwd1" required/>
+        
+        <label for="pwd2">Confirm Password</label>
+        <input type="password" placeholder="Confirm Password" id="pwd2" name="pwd2" required/>
+        
+        <button type="submit" id="reg-button">Register</button>
+
         <div id = "overlay">
             <div id="custom-alert" class="alert">
                 <div class="alert-content">
@@ -63,31 +77,18 @@
                 </div>
             </div>
         </div>
-        
-        <label for="email">Email Address</label>
-        <input type="text" placeholder="Email Address" id="reg-email" name="reg-email" required/>
-
-        <label for="nickname">Name</label>
-        <input type="text" placeholder="Name" id="nickname" name="nickname" required/>
-
-        <label for="pwd1">Password</label>
-        <input type="password" placeholder="Password" id="pwd1" name="pwd1" required/>
-
-        <label for="pwd2">Confirm Password</label>
-        <input type="password" placeholder="Confirm Password" id="pwd2" name="pwd2" required/>
-
-        <button type="submit" id="reg-button">Register</button>
     </form>
 
 
     <script>
+    // Active Tab //
+        const loginTab = document.getElementById('login-tab');
+        const regTab = document.getElementById('reg-tab');
         const loginForm = document.getElementById('login-form');
         const regForm = document.getElementById('reg-form');
         regForm.style.display = "none";
 
-        const loginTab = document.getElementById('login-tab');
-        const regTab = document.getElementById('reg-tab');
-
+        // Show Login Form & Hide Register Form//
         loginTab.addEventListener('click', function() {
             regForm.style.display = "none";
             loginForm.style.display = "flex";
@@ -96,6 +97,7 @@
             loginTab.classList.add("active")
         });
 
+        // Show Register Form & Hide Login Form//
         regTab.addEventListener('click', function() {
             regForm.style.display = "flex";
             loginForm.style.display = "none";
@@ -103,47 +105,59 @@
             regTab.classList.add("active")
             loginTab.classList.remove("active")
         });
+    // End of Active Tab //
 
-        // Wait for the page to load
+
+
+    // Login Alert //
         document.addEventListener('DOMContentLoaded', function() {
-            // Get the flash message element
+            // Get the flash message
             const flashMessage = document.getElementById('flash-messages');
             
             // Check if the flash message exists
             if (flashMessage) {
-                // Remove show in 0 seconds (need it to show in the beginning)
+                // Show & Remove message in 0 second (need this to display message first)
                 setTimeout(function() {flashMessage.classList.remove('show');}, 0);
                 // Set a timeout to remove flashout display
                 setTimeout(function() {flashMessage.style.display = 'none';}, 4000);
-        }
+            }
+        });
+    // End of Login Alert //
 
 
-        const regBtn = document.getElementById('reg-button');
+    // Register Alert //
+        // User input in Register Form //
         const pwd1 = document.getElementById('pwd1');
         const pwd2 = document.getElementById('pwd2');
         const regEmail = document.getElementById('reg-email');
+        const regBtn = document.getElementById('reg-button');
+        
+        // Alert Display IDs //
         const overlay = document.getElementById('overlay');
         const alert = document.querySelector('.alert');
-        const body = document.querySelector('body');
-
-
-
+        const alertBox = document.getElementById('custom-alert');
+        const alertMessage = document.getElementById('alert-message');
+        const alertOkayButton = document.getElementById('alert-okay');
+        
+        // Alert Function //
         function showAlert(message) {
-            var alertBox = document.getElementById('custom-alert');
-            var alertMessage = document.getElementById('alert-message');
-            
             alertMessage.textContent = message;
             alertBox.style.display = 'block';
             
-            var alertOkayButton = document.getElementById('alert-okay');
             alertOkayButton.addEventListener('click', function(event) {
                 event.preventDefault();
                 overlay.style.display = 'none';
             });
+
+            overlay.addEventListener('click', function(event) {
+                if (event.target === overlay) {
+                    overlay.style.display = 'none';
+                }
+            });
         }
 
 
-    
+        // Fetch login JSON and Use Alert Function
         fetch('login.json')
         .then(response => response.json())
         .then(data => {
@@ -153,17 +167,17 @@
                     if (x["email"] == regEmail.value) {
                         event.preventDefault();
                         overlay.style.display = "flex";
-                        showAlert("user alreayd exists")
+                        showAlert("This email is already used")
                     }
                 }
                 if (pwd1.value !== pwd2.value) {
                     event.preventDefault();
                     overlay.style.display = "flex";
-                    showAlert("not matched");
+                    showAlert("Both passwords are not matched");
                 } else if (!(regEmail.value.includes("@"))) {
                     event.preventDefault();
                     overlay.style.display = "flex";
-                    showAlert("no @");
+                    showAlert("Incorrect Email format: no @");
                 }
                 console.log(regEmail.value.includes("@"))
             });
@@ -171,12 +185,6 @@
         .catch(error => {
             // Handle any errors
         });
-            });
-
-        overlay.addEventListener('click', function(event) {
-            if (event.target === overlay) {
-                overlay.style.display = 'none';
-            }
-            });
+    // End of Register Alert //
     </script>
 </body>
