@@ -251,17 +251,34 @@ def login():
         existing_user = json.load(f)
 
     users = existing_user
+    newUser = {}
 
     if request.method == 'POST':
         emailInput = request.form.get("email")
         passwordInput = request.form.get("password")
 
-        for user in users:
-            if user["password"] == passwordInput and user["email"] == emailInput:
-                return redirect(url_for("index"))
-        
-        flash('Incorrect email or password')
-        return redirect(url_for('empty'))
+        nameReg = request.form.get("nickname")
+        emailReg = request.form.get("reg-email")
+        pwd1Reg = request.form.get("pwd1")
+        pwd2Reg = request.form.get("pwd2")
+
+
+        if nameReg == "":
+            for user in users:
+                if user["password"] == passwordInput and user["email"] == emailInput:
+                    return redirect(url_for("index"))
+            
+            flash('Incorrect email or password')
+            return redirect(url_for('empty'))
+        else:
+            newUser['name'] = nameReg
+            newUser['password'] = pwd1Reg
+            newUser['email'] = emailReg
+            users.append(newUser)
+            with open("login.json", "w") as file:
+                json.dump(users, file, indent=2)
+            flash(f'${ nameReg } is registered')
+            # return redirect(url_for("index"))
 
     return render_template("login.html")
 
