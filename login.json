@@ -3,5 +3,10 @@
         "name": "teemo",
         "password": "teemo",
         "email": "teemo"
+    },
+    {
+        "name": "teemo",
+        "password": "teemo1",
+        "email": "teemo1"
     }
 ]

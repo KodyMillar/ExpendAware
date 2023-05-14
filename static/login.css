@@ -107,7 +107,7 @@ button {
 /* Alert Message for Login */
 #flash-messages {
     opacity: 0;
-    transition: opacity 5s ease-in-out;
+    transition: opacity 4s ease-in-out;
     background-color: lightcoral;
     width: 230px;
     text-align: center;

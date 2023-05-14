@@ -42,16 +42,12 @@
                 {% endwith %}
             </ul>
         </div>
+
         <label for="remember-me">
             <input type="checkbox" id="remember-me" name="rememberMe"> 
             Remember Me
         </label>
-
-        
-        
         <button type="submit" id="login-button">Login</button>
-        
-        
         <a href="#" id="forgot-password">Forgot Password?</a>
     </form>
     
@@ -108,7 +104,7 @@
                 // Remove show in 0 seconds (need it to show in the beginning)
                 setTimeout(function() {flashMessage.classList.remove('show');}, 0);
                 // Set a timeout to remove flashout display
-                setTimeout(function() {flashMessage.style.display = 'none';}, 5000);
+                setTimeout(function() {flashMessage.style.display = 'none';}, 4000);
         }
     });
     </script>

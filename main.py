@@ -250,17 +250,18 @@ def login():
     with open("login.json", "r") as f:
         existing_user = json.load(f)
 
-    user = existing_user
+    users = existing_user
 
     if request.method == 'POST':
         emailInput = request.form.get("email")
         passwordInput = request.form.get("password")
 
-        if user[0]["password"] == passwordInput and user[0]["email"] == emailInput:
-            # flash('Logged in sucessfully!', category="success")
-            return redirect(url_for("index"))
-        else:
-            flash(' Incorrect email or password ', category="error")
+        for user in users:
+            if user["password"] == passwordInput and user["email"] == emailInput:
+                return redirect(url_for("index"))
+        
+        flash('Incorrect email or password')
+        return redirect(url_for('empty'))
 
     return render_template("login.html")
 
@@ -277,7 +278,9 @@ def history():
 def statistic():
     return render_template('statistic.html')
 
-
+@app.route('/empty')
+def empty():
+    return render_template('login.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
