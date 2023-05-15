@@ -111,20 +111,21 @@ categoryButtons = document.querySelectorAll(".cat-btns-div")
 
 function categoryEditMode() {
   for(let button of categoryButtons){
-    if (button.style.overflow === "hidden"){
-      button.style.overflow = "visible"
-      button.style.height = "50px"
-      button.querySelector(".btn-secondary").style.height = "50px"
-      button.querySelector(".btn-danger").style.height = "50px"
-      editCategories.querySelector("button").textContent = "Quit Edit Mode"
-
-    }
-    else{
+    console.log(button.style.overflow)
+    if (button.style.overflow === "visible"){
       button.style.overflow = "hidden"
       button.style.height = "0"
       button.querySelector(".btn-secondary").style.height = "0"
       button.querySelector(".btn-danger").style.height = "0"
       editCategories.querySelector("button").textContent = "Edit Categories"
+
+    }
+    else{
+      button.style.overflow = "visible"
+      button.style.height = "50px"
+      button.querySelector(".btn-secondary").style.height = "50px"
+      button.querySelector(".btn-danger").style.height = "50px"
+      editCategories.querySelector("button").textContent = "Quit Edit Mode"
     }
 
   }
