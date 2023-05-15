@@ -195,6 +195,8 @@ li button:hover {
     max-width: 1200px;
     padding: 30px;
 }
+
+
 /* End of Home/Index Page ---------------- 
 ----------------------------------------*/
 
@@ -315,7 +317,7 @@ body,html {
   
   #transaction {
     margin-top: 20px;
-    margin-left: 25px;
+    margin-left: 5.5%;
     /* font-family: 'Montserrat', sans-serif; */
     background-color: rgb(60, 123, 218);
     border-radius: 0px;
@@ -332,12 +334,32 @@ body,html {
   .transaction-section {
     /* background-color: #d4f3fa; */
     background-color: #afe3e7;
-    height: 200px;
+    height: 300px;
     width: 90%;
-    margin-left: 25px;
+    margin-left: 5.5%;
     border-radius: 10px;
     margin-bottom: 30px
   }
+
+  #transaction-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    height: 100%;
+    padding: 2%;
+    text-align: center;
+}
+
+.transaction {
+    font-size: 12px;
+    height: 20%;
+    width: 100%;
+    border-bottom:#333 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
   
   #category-section {
     margin-top: 20px;
