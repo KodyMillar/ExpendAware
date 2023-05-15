@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for, flash
 import json
 from datetime import datetime
-import pprint
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -260,20 +261,23 @@ def login():
         nameReg = request.form.get("nickname")
         emailReg = request.form.get("reg-email")
         pwd1Reg = request.form.get("pwd1")
+        
 
         if emailInput:
             for user in users:
-                if user["password"] == passwordInput and user["email"] == emailInput:
+                ##check_password_hash(user["password"], passwordInput)
+                if check_password_hash(user["password"], passwordInput) and user["email"] == emailInput:
                     return redirect(url_for("index"))
             flash('Incorrect email or password')
             return redirect(url_for('login'))
         else:
+            hashPwd = generate_password_hash(pwd1Reg, method="sha256")
             newUser['name'] = nameReg
-            newUser['password'] = pwd1Reg
+            newUser['password'] = hashPwd
             newUser['email'] = emailReg
             users.append(newUser)
             with open("login.json", "w") as file:
-                json.dump(users, file, indent=2)
+                json.dump(users, file, indent=4)
             return redirect(url_for('index'))
 
     return render_template("login.html")
