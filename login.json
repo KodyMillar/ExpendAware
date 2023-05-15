@@ -1,12 +1,7 @@
 [
   {
-    "name": "teemo",
-    "password": "teemo",
-    "email": "teemo@riot.com"
-  },
-  {
-    "name": "beemo",
-    "password": "12345678",
-    "email": "beemo@riot.com"
+    "name": "asf",
+    "password": "sha256$KtbwEvhMmA6C95lf$f1b67c8a1df200e3feb6616e80b28efdc8bb70315ee46f9f9f1d147b151a0df8",
+    "email": "af@"
   }
 ]
