@@ -138,53 +138,55 @@
         const alertBox = document.getElementById('custom-alert');
         const alertMessage = document.getElementById('alert-message');
         const alertOkayButton = document.getElementById('alert-okay');
+        
         // Alert Function //
         function showAlert(message) {
             alertMessage.innerHTML = message;
-            //console.log(message + "outside");
             alertBox.style.display = 'block';
-
-            alertOkayButton.addEventListener('click', function(event) {
-                if (message !== "Success!") {
-                    //console.log(message + "insdie");   
-                    event.preventDefault();
-                }
-                overlay.style.display = 'none';
-            });
-
-            overlay.addEventListener('click', function(event) {
-                if (event.target === overlay) {
-                    overlay.style.display = 'none';
-                }
-            });
+            overlay.style.display = "flex";
         }
 
-        // Fetch login JSON and Use Alert Function
+        // Click the button to either login or exit alert // 
+        alertOkayButton.addEventListener('click', function(event) {
+            if (alertMessage.innerHTML !== "Success!") {
+                event.preventDefault();
+            }
+            overlay.style.display = 'none';
+        });
+        
+        // Click overlay to exit alert  //
+        overlay.addEventListener('click', function(event) {
+            if (event.target === overlay) {
+                overlay.style.display = 'none';
+            }
+        });
+
+        // Fetch login JSON and Use Alert Function //
         fetch('login.json')
         .then(response => response.json())
         .then(data => {
             // Handle the retrieved JSON data
             regBtn.addEventListener('click', function(event) {
                 const emailExists = data.some(x => x.email === regEmail.value);
+                alertOkayButton.innerHTML = "x";
                 if (pwd1.value === "" || pwd2.value === "" || nickname.value === "" || regEmail.value == "") {
                     //event.preventDefault();
                     //overlay.style.display = "flex";
                     //showAlert("Missing Values");
-                } else if (emailExists) {
-                    event.preventDefault();
-                    overlay.style.display = "flex";
-                    showAlert("This email is already used")
-                } else if (pwd1.value !== pwd2.value) {
-                    event.preventDefault();
-                    overlay.style.display = "flex";
-                    showAlert("Both passwords are not matched");
                 } else if (!(regEmail.value.includes("@"))) {
                     event.preventDefault();
-                    overlay.style.display = "flex";
                     showAlert("Incorrect Email format: no @");
+                } else if (emailExists) {
+                    event.preventDefault();
+                    showAlert("This email is already used")
+                } else if (pwd1.value.length < 8) {
+                    event.preventDefault();
+                    showAlert("Password must be longer than 7 characters");
+                } else if (pwd1.value !== pwd2.value) {
+                    event.preventDefault();
+                    showAlert("Both passwords are not matched");
                 } else {
                     event.preventDefault();
-                    overlay.style.display = "flex";
                     alertOkayButton.innerHTML = "login";
                     showAlert("Success!");
                 }

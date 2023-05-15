@@ -5,28 +5,8 @@
     "email": "teemo@riot.com"
   },
   {
-    "name": "sdf",
-    "password": "123",
-    "email": "sdf@"
-  },
-  {
-    "name": "teemo",
-    "password": "123",
+    "name": "beemo",
+    "password": "12345678",
     "email": "beemo@riot.com"
-  },
-  {
-    "name": "1",
-    "password": "1",
-    "email": "sd@"
-  },
-  {
-    "name": "1",
-    "password": "1",
-    "email": "sdf@sdf"
-  },
-  {
-    "name": "1",
-    "password": "1",
-    "email": "sdf@sfsfsdfsd"
   }
 ]
