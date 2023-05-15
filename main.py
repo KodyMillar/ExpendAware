@@ -45,6 +45,8 @@ def index():
         existing_category = json.load(f)    
     with open("budget.json", "r") as f:
         existing_budget = json.load(f)
+    with open("history.json", "r") as file:
+        history = json.load(file)
 
     # Initialize the variables with default values
     descr = ''
@@ -71,6 +73,19 @@ def index():
                 for category in existing_category:
                     if category['category'] == new_expense['category']:
                         category['total expenses'] += int(new_expense['amount'])
+
+                new_action = {
+                    "action": "Created Expense",
+                    "budget": category['category'],
+                    "amount": amount,
+                    "description": descr,
+                    "date": current_date
+                }
+
+                history.append(new_action)
+                if len(history) > 5:
+                    history.pop(0)
+
         elif 'name' in request.form and 'amount' in request.form and 'category' in request.form:
             name = request.form['name']
             amount = request.form['amount']
@@ -104,6 +119,8 @@ def index():
         json.dump(existing_category, f)
     with open("budget.json", "w") as f:
         json.dump(existing_budget, f)
+    with open("history.json", "w") as file:
+        json.dump(history, file)
     expenses = existing_expense
     categories = existing_category
     budgets = existing_budget
@@ -118,7 +135,6 @@ def index():
 
     #get total expenses
     total_expenses = 0
-    category_usage_percentage = 0
 
     for category in categories:
         total_expenses += category['total expenses']
@@ -130,7 +146,8 @@ def index():
         categories=categories, 
         budgets=budgets, 
         total_budget=total_budget, 
-        total_expenses=total_expenses
+        total_expenses=total_expenses,
+        history=history
         )
 
 
