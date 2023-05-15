@@ -160,6 +160,9 @@ h2 {
         margin: 0;
         padding: 0;
         background-color: #e1F5ff;
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #e1F5ff, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
     }
 
     .cross-icon {
@@ -234,6 +237,7 @@ h2 {
         gap: 40px;
         font-size: 20px;
         margin-bottom: 10px;
+        cursor: pointer;
     }
     
     h2 {
@@ -255,6 +259,7 @@ h2 {
         gap: 40px;
         font-size: 20px;
         margin-bottom: 10px;
+        cursor: pointer;
     }
     
     .horizontal-line3 {
@@ -270,6 +275,7 @@ h2 {
         gap: 40px;
         font-size: 20px;
         margin-bottom: 10px;
+        cursor: pointer;
     }
     
     .horizontal-line4 {
@@ -285,6 +291,7 @@ h2 {
         gap: 40px;
         font-size: 20px;
         margin-bottom: 10px;
+        cursor: pointer;
     }
     
     .horizontal-line5 {
@@ -300,5 +307,6 @@ h2 {
         gap: 40px;
         font-size: 20px;
         margin-bottom: 10px;
+        cursor: pointer;
     }
 }
