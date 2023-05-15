@@ -26,11 +26,9 @@
   
   <div class="transaction-section">
     <ul id="transaction-list">
-      <li class="transaction">Created Expense  |  Groceries - $89.79 | May 15, 2023</li>
-      <li class="transaction">Created Expense  |  Groceries - $89.79 | May 15, 2023</li>
-      <li class="transaction">Created Expense  |  Groceries - $89.79</li>
-      <li class="transaction">Created Expense  |  Groceries - $89.79</li>
-      <li class="transaction">Created Expense  |  Groceries - $89.79</li>
+      {% for action in history %}
+      <li class="transaction"> {{ action['action'] }} | {{ action['name'] }} - ${{ action['amount'] }} | {{ action['date'] }} | {{ action['description'] }}</li>
+      {% endfor %}
     </ul>
   </div>
 

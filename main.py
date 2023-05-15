@@ -76,15 +76,15 @@ def index():
 
                 new_action = {
                     "action": "Created Expense",
-                    "budget": category['category'],
+                    "name": category['category'],
                     "amount": amount,
                     "description": descr,
                     "date": current_date
                 }
 
-                history.append(new_action)
+                history.insert(0, new_action)
                 if len(history) > 5:
-                    history.pop(0)
+                    history.pop(4)
 
         elif 'name' in request.form and 'amount' in request.form and 'category' in request.form:
             name = request.form['name']
