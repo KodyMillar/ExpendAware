@@ -1,7 +1,7 @@
 [
-  {
-    "name": "asf",
-    "password": "sha256$KtbwEvhMmA6C95lf$f1b67c8a1df200e3feb6616e80b28efdc8bb70315ee46f9f9f1d147b151a0df8",
-    "email": "af@"
-  }
+    {
+        "name": "teemo",
+        "password": "sha256$qi9YAgcALA3svwSQ$937edff9e695784499832daf59eebdc0723f22edc868a512a1c5c64fb9dee6a9",
+        "email": "teemo@riot.com"
+    }
 ]

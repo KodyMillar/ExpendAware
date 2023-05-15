@@ -1,0 +1,76 @@
+[
+    {
+        "name": "asf",
+        "password": "sha256$KtbwEvhMmA6C95lf$f1b67c8a1df200e3feb6616e80b28efdc8bb70315ee46f9f9f1d147b151a0df8",
+        "email": "af@",
+        "category": [
+            {
+                "name": "Food",
+                "budget": [
+                    {
+                        "name": "Grocery",
+                        "amount": "123",
+                        "expense": [
+                            {
+                                "descr": "T&T",
+                                "amount": "50"
+                            },
+                            {
+                                "descr": "Superstore",
+                                "amount": "70"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Restaurant",
+                        "amount": "600",
+                        "expense": [
+                            {
+                                "descr": "KFC",
+                                "amount": "20"
+                            },
+                            {
+                                "descr": "McDonalod",
+                                "amount": "30"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Dressing",
+                "budget": [
+                    {
+                        "name": "Hat",
+                        "amount": "150",
+                        "expense": [
+                            {
+                                "descr": "Adidas",
+                                "amount": "50"
+                            },
+                            {
+                                "descr": "Barts",
+                                "amount": "60"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Shoe",
+                        "amount": "600",
+                        "expense": [
+                            {
+                                "descr": "Adidas",
+                                "amount": "300"
+                            },
+                            {
+                                "descr": "Nike",
+                                "amount": "200"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
+

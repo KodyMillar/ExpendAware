@@ -277,7 +277,7 @@ def login():
             newUser['email'] = emailReg
             users.append(newUser)
             with open("login.json", "w") as file:
-                json.dump(users, file, indent=2)
+                json.dump(users, file, indent=4)
             return redirect(url_for('index'))
 
     return render_template("login.html")
