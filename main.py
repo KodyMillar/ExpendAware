@@ -360,5 +360,9 @@ def get_json():
     # Return the JSON data as a response
     return jsonify(existing_user)
 
+@app.route('/account-page')
+def account():
+    return render_template('account-page.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
