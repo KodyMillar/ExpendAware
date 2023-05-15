@@ -109,23 +109,23 @@ for(let category of categoriesList){
 editCategories = document.getElementById("edit-categories")
 categoryButtons = document.querySelectorAll(".cat-btns-div")
 
-
 function categoryEditMode() {
   for(let button of categoryButtons){
-    if (button.style.overflow === "hidden"){
-      button.style.overflow = "visible"
-      button.style.height = "50px"
-      button.querySelector(".btn-secondary").style.height = "50px"
-      button.querySelector(".btn-danger").style.height = "50px"
-      editCategories.querySelector("button").textContent = "Quit Edit Mode"
-
-    }
-    else{
+    console.log(button.style.overflow)
+    if (button.style.overflow === "visible"){
       button.style.overflow = "hidden"
       button.style.height = "0"
       button.querySelector(".btn-secondary").style.height = "0"
       button.querySelector(".btn-danger").style.height = "0"
       editCategories.querySelector("button").textContent = "Edit Categories"
+
+    }
+    else{
+      button.style.overflow = "visible"
+      button.style.height = "50px"
+      button.querySelector(".btn-secondary").style.height = "50px"
+      button.querySelector(".btn-danger").style.height = "50px"
+      editCategories.querySelector("button").textContent = "Quit Edit Mode"
     }
 
   }
@@ -136,6 +136,68 @@ function categoryEditMode() {
 editCategories.addEventListener("click", categoryEditMode)
 
 
-function editOrDeleteCategory(e) {
+// category page popup menus
 
+const editButton = document.querySelectorAll(".edit-btn")
+
+for (let button of editButton){
+  button.addEventListener("click", (e)=> {
+    if (e.target.id.includes(" ")) {
+      e.target.id = e.target.id.replace(" ", "-")
+    }
+
+    if(e.target.id.includes("'")) {
+      e.target.id = e.target.id.replace("'", "")
+    }
+
+    let idName = e.target.id
+    let categoryNameToEdit = idName.replace("edit-", "").trim()
+
+    if (categoryNameToEdit.includes(" ")) {
+      categoryNameToEdit = categoryNameToEdit.replaceAll(" ", "-")
+    }
+
+    if(categoryNameToEdit.includes("'")) {
+      categoryNameToEdit = categoryNameToEdit.replaceAll("'", "")
+    }
+
+    let editPopUp = document.querySelector("#edit-popup-" + categoryNameToEdit)
+    let editBackground = document.querySelector("#edit-background-" + categoryNameToEdit)
+    editPopUp.classList.toggle("category-edit-clicked")
+    editBackground.classList.toggle("category-edit-clicked")
+  })
+}
+
+const deleteCategoryButton = document.querySelectorAll(".delete-category")
+const deleteCategoryPopup = document.querySelectorAll(".category-delete-popup")
+
+for (let button of deleteCategoryButton) {
+  button.addEventListener("click", (e) => {
+    if (e.target.id.includes(" ")) {
+      e.target.id = e.target.id.replace(" ", "-")
+    }
+
+    if(e.target.id.includes("'")) {
+      e.target.id = e.target.id.replace("'", "")
+    }
+
+    let idName = e.target.id
+    let categoryNameToDelete = idName.replace("delete-", "").trim()
+
+    if (categoryNameToDelete.includes(" ")) {
+      categoryNameToDelete = categoryNameToDelete.replaceAll(" ", "-")
+    }
+
+    if(categoryNameToDelete.includes("'")) {
+      categoryNameToDelete = categoryNameToDelete.replaceAll("'", "")
+    }
+
+    console.log(categoryNameToDelete)
+
+    let deletePopUp = document.querySelector("#delete-category-" + categoryNameToDelete)
+    let deleteBackground = document.querySelector("#delete-background-" + categoryNameToDelete)
+    deletePopUp.classList.toggle("category-delete-clicked")
+    deleteBackground.classList.toggle("category-delete-clicked")
+
+  }) 
 }
