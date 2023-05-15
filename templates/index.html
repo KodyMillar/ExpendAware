@@ -65,12 +65,15 @@
           id="budget-name"
           placeholder="Budget name"
           name="name"
+          class="text"
         />
         <input
           type="number"
           id="budget-amount"
           placeholder="Amount"
           name="amount"
+          min="0"
+          class="number"
         />
       </div>
       <label>Choose a category</label>
@@ -102,12 +105,15 @@
           id="expense-description"
           placeholder="Description"
           name="descr"
+          class="text"
         />
         <input
           type="number"
           id="expense-amount"
           placeholder="Amount"
           name="amount"
+          min="0"
+          class="number"
         />
       </div>
       <label>Choose a category</label>
@@ -118,6 +124,7 @@
         </option>
         {% endfor %}
       </select>
+      <!--select budget category can go here-->
       <button type="submit">Add Expense</button>
     </form>
     <ul id="expense-list">
@@ -139,6 +146,7 @@
           id="category-name"
           placeholder="Category name"
           name="category"
+          class="text"
         />
       </div>
       <button type="submit">Add Category</button>

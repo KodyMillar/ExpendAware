@@ -1,1 +1,1 @@
-[{"name": "Formal", "amount": 1555, "category": "Clothing"}, {"name": "Casual", "amount": 2123, "category": "Clothing"}, {"name": "Utilities", "amount": "200", "category": "Housing"}]
+[{"name": "Utilities", "amount": "1000", "category": "Housing"}, {"name": "Furniture", "amount": "1000", "category": "Housing"}, {"name": "Groceries", "amount": "500", "category": "Food"}, {"name": "Dine Out", "amount": "200", "category": "Food"}, {"name": "Appliances", "amount": "6000", "category": "Housing"}]
