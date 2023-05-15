@@ -1,0 +1,12 @@
+[
+  {
+    "name": "teemo",
+    "password": "teemo",
+    "email": "teemo@riot.com"
+  },
+  {
+    "name": "beemo",
+    "password": "12345678",
+    "email": "beemo@riot.com"
+  }
+]

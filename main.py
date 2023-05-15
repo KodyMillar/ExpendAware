@@ -1,9 +1,10 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, url_for, flash
 import json
 from datetime import datetime
 import pprint
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'
 
 
 def update_categories_budgets(categories, budgets, expenses):
@@ -195,9 +196,6 @@ def expenses():
     return render_template('expenses.html', categories=categories)
 
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
 
 
 @app.route('/transfer', methods=['GET', 'POST'])
@@ -218,7 +216,6 @@ def transfer():
         budget_from_str = request.form["budget-from"]
         budget_to_str = request.form["budget-to"]
         transfer_amount = request.form['transfer-amount']
-
 
         # Fix syntax issue replacing single to double quote
         budget_from_str_fixed = budget_from_str.replace("'", "\"")
@@ -247,6 +244,41 @@ def transfer():
     return render_template('transfer.html', expenses=expenses, categories=categories, budgets=budgets)
 
 
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    with open("login.json", "r") as f:
+        existing_user = json.load(f)
+
+    users = existing_user
+    newUser = {}
+
+    if request.method == 'POST':
+        emailInput = request.form.get("email")
+        passwordInput = request.form.get("password")
+
+        nameReg = request.form.get("nickname")
+        emailReg = request.form.get("reg-email")
+        pwd1Reg = request.form.get("pwd1")
+
+        if emailInput:
+            for user in users:
+                if user["password"] == passwordInput and user["email"] == emailInput:
+                    return redirect(url_for("index"))
+            flash('Incorrect email or password')
+            return redirect(url_for('login'))
+        else:
+            newUser['name'] = nameReg
+            newUser['password'] = pwd1Reg
+            newUser['email'] = emailReg
+            users.append(newUser)
+            with open("login.json", "w") as file:
+                json.dump(users, file, indent=2)
+            return redirect(url_for('index'))
+
+    return render_template("login.html")
+
+
 @app.route('/cost')
 def cost():
     return render_template('cost.html')
@@ -259,6 +291,13 @@ def history():
 def statistic():
     return render_template('statistic.html')
 
+@app.route('/login.json')
+def get_json():
+    with open("login.json", "r") as f:
+        existing_user = json.load(f)
+
+    # Return the JSON data as a response
+    return jsonify(existing_user)
 
 if __name__ == '__main__':
     app.run(debug=True)
