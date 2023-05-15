@@ -1,0 +1,312 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #e1F5ff;
+}
+
+.cross-icon {
+    position: absolute;
+    right: 25px;
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+    border-radius: 10px;
+}
+
+.cross-icon:hover {
+    opacity: 0.5;
+}
+
+.cross-icon:before, .cross-icon:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 40px;
+    top: 10px;
+    width: 7px;
+    border-radius:  3px;
+    background-color: #333;
+}
+
+.cross-icon:before {
+    transform: rotate(45deg);
+}
+
+.cross-icon:after {
+    transform: rotate(-45deg);
+}
+
+.avatar {
+    text-align: center;
+    padding-top: 30px;
+}
+
+h1 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-family: 'Wix Madefor Display', sans-serif; 
+    font-weight: bolder;
+}
+
+h3 {
+    font-family: 'Wix Madefor Display', sans-serif; 
+    font-weight: 550;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+#location {
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+    margin-left: 180px;
+}
+
+.location-icon {
+    padding-top: 20px;
+}
+
+.horizontal-line1 {
+    border: 1px solid black;
+    width: 90%;
+    margin-left: 30px;
+    margin-bottom: 25px;
+}
+
+.person-icon {
+    margin-left: 60px;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-top: 0px;
+    font-family: 'Wix Madefor Display', sans-serif;
+    font-weight: bolder;
+}
+
+.horizontal-line2 {
+    border: 1px solid black;
+    width: 90%;
+    margin-left: 30px;
+    margin-bottom: 25px;
+}
+
+#notification-icon {
+    margin-left: 60px;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.horizontal-line3 {
+    border: 1px solid black;
+    width: 90%;
+    margin-left: 30px;
+    margin-bottom: 25px;
+}
+
+.wishlist-icon {
+    margin-left: 60px;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    font-family: 'Wix Madefor Display', sans-serif; 
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.horizontal-line4 {
+    border: 1px solid black;
+    width: 90%;
+    margin-left: 30px;
+    margin-bottom: 25px;
+}
+
+.saved-icon {
+    margin-left: 60px;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    font-family: 'Wix Madefor Display', sans-serif; 
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.horizontal-line5 {
+    border: 1px solid black;
+    width: 90%;
+    margin-left: 30px;
+    margin-bottom: 25px;
+}
+
+#settings-icon {
+    margin-left: 60px;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    font-family: 'Wix Madefor Display', sans-serif; 
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    body, html {
+        margin: 0;
+        padding: 0;
+        background-color: #e1F5ff;
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #e1F5ff, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+    }
+
+    .cross-icon {
+        position: absolute;
+        right: 25px;
+        width: 32px;
+        height: 32px;
+        opacity: 1;
+    }
+    
+    .cross-icon:hover {
+        opacity: 0.5;
+    }
+    
+    .cross-icon:before, .cross-icon:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 33px;
+        width: 2px;
+        background-color: #333;
+    }
+    
+    .cross-icon:before {
+        transform: rotate(45deg);
+    }
+    
+    .cross-icon:after {
+        transform: rotate(-45deg);
+    }
+
+    .avatar {
+        text-align: center;
+        padding-top: 15px;
+    }
+    
+    h1 {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-family: 'Wix Madefor Display', sans-serif; 
+        font-weight: bolder;
+    }
+    
+    h3 {
+        font-family: 'Wix Madefor Display', sans-serif; 
+        font-weight: 550;
+        margin-bottom: 30px;
+        position: relative;
+    }
+    
+    #location {
+        display: flex;
+        flex-direction: row;
+        gap: 7px;
+        margin-left: 47%;
+    }
+    
+    .location-icon {
+        padding-top: 20px;
+    }
+    
+    .horizontal-line1 {
+        border: 1px solid black;
+        width: 40%;
+        margin-left: 30%;
+    }
+    
+    .person-icon {
+        margin-left: 33%;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        font-size: 20px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+    
+    h2 {
+        margin-top: 0px;
+        font-family: 'Wix Madefor Display', sans-serif;
+        font-weight: bolder;
+    }
+    
+    .horizontal-line2 {
+        border: 1px solid black;
+        width: 40%;
+        margin-left: 30%;
+    }
+    
+    #notification-icon {
+        margin-left: 33%;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        font-size: 20px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+    
+    .horizontal-line3 {
+        border: 1px solid black;
+        width: 40%;
+        margin-left: 30%;
+    }
+    
+    .wishlist-icon {
+        margin-left: 33%;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        font-size: 20px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+    
+    .horizontal-line4 {
+        border: 1px solid black;
+        width: 40%;
+        margin-left: 30%;
+    }
+    
+    .saved-icon {
+        margin-left: 33%;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        font-size: 20px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+    
+    .horizontal-line5 {
+        border: 1px solid black;
+        width: 40%;
+        margin-left: 30%;   
+    }
+    
+    #settings-icon {
+        margin-left: 33%;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        font-size: 20px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+}
