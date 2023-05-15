@@ -2,10 +2,15 @@ from flask import Flask, request, jsonify, render_template, redirect, url_for, f
 import json
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+
 
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
+login_manager = LoginManager()
+login_manager.login_view = 'login'
+login_manager.init_app(app)
 
 
 def update_categories_budgets(categories, budgets, expenses):
@@ -38,6 +43,7 @@ def check_for_existing(name_input, existing_list, criteria):
     return True
 
 @app.route('/', methods=['GET', 'POST'])
+@login_required
 def index():
     with open("expense.json", "r") as f:
         existing_expense = json.load(f)
