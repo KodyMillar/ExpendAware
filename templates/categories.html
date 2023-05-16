@@ -31,8 +31,6 @@
         {% for budget in budgets %}
         {% if budget['category'] == category['category'] %}
         <li class="budget-item"><a href="#" class="budget-link"><div class="budget-div"><p>{{ budget['name'] }}</p><p>Budget: ${{ budget['amount'] }}</p></div></a></li>
-        <!-- <li class="budget-item"><a>Dine Out</a></li>
-        <li class="budget-item"><a>Baking</a></li> -->
         {% endif %}
         {% endfor %}
     </ul>
