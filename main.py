@@ -112,15 +112,16 @@ def index():
                 }
                 existing_category.append(new_category)
 
-    # Write the entire data object back to the file
-    with open("expense.json", "w") as f:
-        json.dump(existing_expense, f)
-    with open("category.json", "w") as f:
-        json.dump(existing_category, f)
-    with open("budget.json", "w") as f:
-        json.dump(existing_budget, f)
-    with open("history.json", "w") as file:
-        json.dump(history, file)
+        # Write the entire data object back to the file
+        with open("expense.json", "w") as f:
+            json.dump(existing_expense, f, indent=4)
+        with open("category.json", "w") as f:
+            json.dump(existing_category, f, indent=4)
+        with open("budget.json", "w") as f:
+            json.dump(existing_budget, f, indent=4)
+        with open("history.json", "w") as file:
+            json.dump(history, file, indent=4)
+            return redirect(url_for("index"))
     expenses = existing_expense
     categories = existing_category
     budgets = existing_budget
@@ -185,11 +186,11 @@ def categories():
                 if category_name == expense['category']:
                     expense['category'] = new_category_name
             with open("category.json", "w") as file:
-                json.dump(categories, file)
+                json.dump(categories, file, indent=4)
             with open("budget.json", "w") as file:
-                json.dump(budget_list, file)
+                json.dump(budget_list, file, indent=4)
             with open("expense.json", "w") as file:
-                json.dump(expenses, file)
+                json.dump(expenses, file, indent=4)
 
         elif "rename budget" in list(request.form)[0]:
             budget_name = list(request.form)[0][14:]
@@ -198,7 +199,7 @@ def categories():
                 if budget_name == budget['name']:
                     budget['name'] = new_budget_name
             with open("budget.json", "w") as file:
-                json.dump(budget_list, file)
+                json.dump(budget_list, file, indent=4)
 
         elif "edit budget" in list(request.form)[0]:
             budget_name = list(request.form)[0][12:]

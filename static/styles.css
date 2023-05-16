@@ -730,10 +730,10 @@ a {
 
 .category-edit-popup {
     position: fixed;
-    bottom: 35%;
+    bottom: 10%;
     z-index: 999;
     width: 90vw;
-    height: 60vh;
+    /* height: 60vh; */
     padding: calc(5% - 20px);
     background-color: white;
     display: none;
@@ -832,10 +832,11 @@ a {
 
 
 .category-edit-clicked {
-    display: grid;
+    display: block;
+    /* display: grid;
     grid-template-columns: 30% 40% 30%;
-    grid-template-rows: 10% 6% 10% 10%;
-    grid-auto-rows: 6% 20% 8%;
+    grid-template-rows: 10% 6% 10% 10%; */
+    /* grid-auto-rows: 6% 20% 8%; */
 }
 
 /*Are you sure? category deletion popup */
