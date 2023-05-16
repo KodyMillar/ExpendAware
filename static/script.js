@@ -11,6 +11,57 @@ for(let category of categoryPercentLabel) {
   }
 }
 
+/* Homepage button functionality
+-------------------------------------------*/
+const budgetButton = document.getElementById('add-budget');
+const budgetForm = document.getElementById('budget-container');
+const expenseButton = document.getElementById('add-expense');
+const expenseForm = document.getElementById('expense-container');
+const catButton = document.getElementById('add-category');
+const catForm = document.getElementById('category-container');
+const overview = document.getElementsByClassName('view-section');
+const forms = document.getElementsByClassName('container')
+forms[0].style.display = "none"
+
+// Show budget form
+budgetButton.addEventListener('click', function() {
+    budgetForm.style.display = "block";
+    expenseForm.style.display = "none";
+    catForm.style.display = "none";
+    overview[0].style.display = "none";
+    forms[0].style.display = "flex"
+
+    budgetButton.classList.add("active")
+    expenseButton.classList.remove("active")
+    catButton.classList.remove("active")
+});
+
+// Show expense form
+expenseButton.addEventListener('click', function() {
+    budgetForm.style.display = "none";
+    expenseForm.style.display = "block";
+    catForm.style.display = "none";
+    overview[0].style.display = "none";
+    forms[0].style.display = "flex"
+
+    expenseButton.classList.add("active")
+    budgetButton.classList.remove("active")
+    catButton.classList.remove("active")
+});
+
+// Show category form
+catButton.addEventListener('click', function() {
+    budgetForm.style.display = "none";
+    expenseForm.style.display = "none";
+    catForm.style.display = "block";
+    overview[0].style.display = "none";
+    forms[0].style.display = "flex"
+
+    catButton.classList.add("active")
+    budgetButton.classList.remove("active")
+    expenseButton.classList.remove("active")
+});
+
 
 /* side bar menu
 -------------------------------------------*/
