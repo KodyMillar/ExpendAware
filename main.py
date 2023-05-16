@@ -51,33 +51,38 @@ def index():
     amount = 0
     category = ''
     name = ''
+    budget = ''
     current_date = datetime.now().strftime("%d %b %Y")
 
     # Append the new data to the existing data
     if request.method == 'POST':
-        if 'descr' in request.form and 'amount' in request.form and 'category' in request.form:
+        if 'descr' in request.form and 'amount' in request.form and 'category' in request.form and 'budget' in request.form:
             descr = request.form['descr']
             amount = request.form['amount']
             category = request.form['category']
+            budget = request.form['budget']
 
             if validate_amount(amount) == True:
-            
-                new_expense = {
-                    "descr": descr,
-                    "amount": amount,
-                    "category": category
-                }
-                existing_expense.append(new_expense)
-                for category in existing_category:
-                    if category['category'] == new_expense['category']:
-                        category['total expenses'] += int(new_expense['amount'])
+                # Check if the budget exists
+                budget_exists = any(budget_item['name'] == budget for budget_item in existing_budget)
+
+                if budget_exists:
+                    new_expense = {
+                        "descr": descr,
+                        "amount": amount,
+                        "category": category,
+                        "budget": budget
+                    }
+                    existing_expense.append(new_expense)
+                    for category in existing_category:
+                        if category['category'] == new_expense['category']:
+                            category['total expenses'] += int(new_expense['amount'])
         elif 'name' in request.form and 'amount' in request.form and 'category' in request.form:
             name = request.form['name']
             amount = request.form['amount']
             category = request.form['category']
 
             if validate_amount(amount) == True and name != "":
-            
                 new_budget = {
                     'name': name,
                     'amount': amount,
@@ -88,7 +93,6 @@ def index():
             category = request.form['category']
             
             if category != "" and check_for_existing(category, existing_category, "category"):
-            
                 new_category = {
                     'category': category,
                     'total budget': 0,
@@ -132,6 +136,8 @@ def index():
         total_budget=total_budget, 
         total_expenses=total_expenses
         )
+
+
 
 
 @app.route('/categories', methods=['GET', 'POST'])
@@ -236,23 +242,23 @@ def categories():
     return render_template("categories.html", categories=categories, total_budgets=total_budget_list, budgets=budgets)
 
 
-@app.route('/expenses/<int:id>')
-def expenses(id):
-    with open("expense.json", "r") as f:
-        existing_expense = json.load(f)
-    with open("category.json", "r") as f:
-        existing_category = json.load(f)
-    with open("budget.json", "r") as f:
-        existing_budget = json.load(f)
+@app.route('/categories/<budget_name>', methods=['GET', 'POST'])
+def budget_detail(budget_name):
+    with open('expense.json') as f:
+        expenses = json.load(f)
+    with open('budget.json') as f:
+        budgets = json.load(f)
+    
+    budget = next((budget for budget in budgets if budget['name'] == budget_name), None)
+    if budget is None:
+        abort(404)
+    
+    budget_expenses = [expense for expense in expenses if expense['budget'] == budget['name']]
 
-    expenses = existing_expense
-    categories = existing_category
-    budgets = existing_budget
+    total_expense = sum([int(expense['amount']) for expense in budget_expenses])
+    remaining = int(budget['amount']) - total_expense
 
-    categories = update_categories_budgets(categories, budgets, expenses)
-
-    return render_template('expenses.html', categories=categories)
-
+    return render_template('expenses.html', budget=budget, budget_expenses=budget_expenses, total_expense=total_expense, remaining=remaining)
 
 
 
@@ -338,6 +344,8 @@ def login():
             return redirect(url_for('index'))
 
     return render_template("login.html")
+
+
 
 
 @app.route('/cost')

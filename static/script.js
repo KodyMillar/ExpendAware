@@ -201,3 +201,4 @@ for (let button of deleteCategoryButton) {
 
   }) 
 }
+

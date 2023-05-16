@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}ExpendAware - Category{% endblock %}
 {% block content %}
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 <main id="categories-main">
     <h2 id="categories-title">Categories</h2>
 
@@ -30,9 +29,7 @@
     <ul class="budget-dropdown" id="{{ category['category'] }}">
         {% for budget in budgets %}
         {% if budget['category'] == category['category'] %}
-        <li class="budget-item"><a href="#" class="budget-link"><div class="budget-div"><p>{{ budget['name'] }}</p><p>Budget: ${{ budget['amount'] }}</p></div></a></li>
-        <!-- <li class="budget-item"><a>Dine Out</a></li>
-        <li class="budget-item"><a>Baking</a></li> -->
+        <li class="budget-item"><a href="{{ url_for('budget_detail', budget_name=budget['name']) }}" class="budget-link"><div class="budget-div"><p>{{ budget['name'] }}</p><p>Budget: ${{ budget['amount'] }}</p></div></a></li>
         {% endif %}
         {% endfor %}
     </ul>
@@ -96,3 +93,4 @@
 </main>
 
 {% endblock %}
+
