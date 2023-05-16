@@ -134,7 +134,17 @@
         </option>
         {% endfor %}
       </select>
-      <!--select budget category can go here-->
+  
+      <!-- New budget selection dropdown -->
+      <label>Choose a budget</label>
+      <select id="expense-budget" name="budget">
+        {% for budget in budgets %}
+        <option value="{{ budget.name }}" data-category="{{ budget.category }}">
+          {{ budget.name }}
+        </option>
+        {% endfor %}
+      </select>
+  
       <button type="submit">Add Expense</button>
     </form>
     <ul id="expense-list">
