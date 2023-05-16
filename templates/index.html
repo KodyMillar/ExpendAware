@@ -9,7 +9,7 @@
 
 <div class="view-section">
   <div id="total">
-      <h3 class="summary">Overview/Summary</h3>
+      <h3 class="summary">Overview/Summary <img src="../static/images/summary-paper.png" width="40" height="40"></h3>
       <hr />
   </div>
       
@@ -36,29 +36,36 @@
       <h4 id="category-section">Category Overview</h4>
   </div>
 
+ 
   <div class="categories-container">
-      <div class="category-overview1">    
-          <div class="category1">
-              <!-- <div class="budget1"></div> -->
+    {% for category in categories %}
+      <div class="category-overview">    
+          <div class="category-view">
+            <div>
+            <h3>{{ category['category'] }}</h3>
+            <h5>Total Budget: ${{ category['total budget'] }}</h5>
+            <h5>Total Expenses: {{ category['total expenses'] }}</h5>
+            </div>
               <div class="percent-label">
-              {% for category in categories %}
               {% if category['total budget'] != 0 %}
               <label> {{ '%0.0f' | format((category['total expenses'] / category['total budget']) * 100) | int}}%</label>
+              <div class="percentage"></div>
+              {% else %}
+              <label>No budgets yet</label>
               {% endif %}
-              {% endfor %}
-              <div id="percentage1"></div>
+              <div></div>
               </div>
           </div>
       </div>
-
-      <div class="category-overview2">  
+      {% endfor %}
+    </div>
+      <!-- <div class="category-overview2">  
           <div class="category2">
               <div class="budget2"></div>
               <div id="percentage2"></div>
           </div>
-      </div>
-  </div>    
-</div>
+      </div> -->
+<!-- </div> -->
 
 
 <div class="container">
