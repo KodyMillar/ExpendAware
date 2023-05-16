@@ -241,11 +241,36 @@ body,html {
     color:#333;
   }
   
-  h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bolder;
+  
+  #add-budget {
+    width: 180px;
+    background:rgb(172, 177, 214) url(images/add-budget-icon.png) no-repeat 8px center;
+    background-size: 23%;
+    text-align: right;
+    padding-left: 20px;
+    color: black
+    
   }
   
+  #add-expense {
+    width: 193px;
+    background:rgb(189, 205, 214) url(images/add-expense-icon.png) no-repeat 8px center;
+    background-size: 25%;
+    text-align: right;
+    padding-left: 20px;
+    color: black
+    
+  }
+
+  #add-category {
+    width: 193px;
+    background:#65A5E2 url(images/add-category-icon.png) no-repeat 8px center;
+    background-size: 20%;
+    text-align: right;
+    padding-left: 20px;
+    color: black
+  }
+
   
   a.logout-link {
     margin-right: 15px;  
