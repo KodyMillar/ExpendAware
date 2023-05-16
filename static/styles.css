@@ -898,15 +898,45 @@ a {
 
 /* Expenses page 
 --------------------------------*/
-.expense-list {
-margin-left: 25px;
-color: black;
+.bt_container-grid {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
 }
-.expense-item {
-display: flex;
-flex-direction: column;
-margin-bottom: 4px;
+
+.bt_container {
+  width: 600px; /* Adjust this value according to your requirement */
+  text-align: center;
 }
+
+.bt_category-title,
+.bt_budget-name {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.bt_budget {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2em;
+  margin: 15px 0;
+}
+
+.bt_expense {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid black;
+
+}
+
+
 /*---- End of Expense Page--------
 --------------------------------*/
 
