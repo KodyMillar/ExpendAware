@@ -9,15 +9,15 @@
 
 <div class="view-section">
   <div id="total">
-      <h3 class="summary">Overview/Summary <img src="../static/images/summary-paper.png" width="50" height="50"></h3>
+      <h3 class="summary">Overview/Summary <img src="../static/images/summary-circle-icon.png" width="45" height="45"></h3>
       <hr />
   </div>
       
   <h4 class="first-h4" id="total-heading">Total</h4>
   
   <div class="expenses-section" id="totals">     
-      <h4>Budget: ${{ total_budget }}</h4>
-      <h4>Expenses: ${{ total_expenses }}</h4>
+      <h4>Total Budget: ${{ total_budget }}</h4>
+      <h4>Total Expenses: ${{ total_expenses }}</h4>
   </div>
 
   <div id="transaction">
@@ -47,8 +47,8 @@
           
               <div class="percent-label">
               {% if category['total budget'] != 0 %}
-              <label> {{ '%0.0f' | format((category['total expenses'] / category['total budget']) * 100) | int}}%</label>
-              <div class="percentage"></div>
+              <label class="calculated-percent"> {{ '%0.0f' | format((category['total expenses'] / category['total budget']) * 100) | int}}%</label>
+              <div class="percentage-bar"><div class="percentage"></div></div>
               {% else %}
               <label>No budgets yet</label>
               {% endif %}
@@ -173,11 +173,6 @@
   </div>
 </div>
 
-
-<div id="homepage-totals">
-  <p>Total Budget: {{ total_budget }}</p>
-  <p>Total Expenses: {{ total_expenses }}</p>
-</div>
 
 <a href="/login" class="logout-link">
   <button>Logout</button>

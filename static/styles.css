@@ -257,8 +257,9 @@ body,html {
   }
   
   .summary {
-    height: 20px;
+    height: 40px;
     padding-left: 15px;
+    padding-bottom: 15px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -318,7 +319,7 @@ body,html {
   }
 
   #totals h4 {
-    font-size: 20px;
+    font-size: 16px;
   }
   
   #transaction {
@@ -433,14 +434,20 @@ body,html {
     color: black;
   }
   
-  .percentage {
+  .percentage-bar {
     height: 40px;
     border: 2px solid black;
-    background-color: yellow;
+    /* background-color: yellow; */
     width: 100px;
     height: 10px;
     margin-left: 37px;
     border-radius: 0px;
+  }
+
+  .percentage {
+    background-color: yellow;
+    width: 0;
+    height: 100%;
   }
 
   .percent-label {

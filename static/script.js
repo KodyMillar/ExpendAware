@@ -1,3 +1,15 @@
+/* Overview percentage bar on homepage
+-------------------------------------------*/
+
+categoryPercentLabel = document.querySelectorAll(".percent-label");
+
+for(let category of categoryPercentLabel) {
+  percentage = category.querySelector("label").textContent;
+  percentageGauge = category.querySelector(".percentage");
+  percentageGauge.style.width = percentage;
+}
+
+
 /* side bar menu
 -------------------------------------------*/
 
