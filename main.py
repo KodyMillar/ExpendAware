@@ -2,10 +2,11 @@ from flask import Flask, request, jsonify, render_template, redirect, url_for, f
 import json
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+
 
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
 
 
 def update_categories_budgets(categories, budgets, expenses):
@@ -38,6 +39,7 @@ def check_for_existing(name_input, existing_list, criteria):
     return True
 
 @app.route('/', methods=['GET', 'POST'])
+@login_required
 def index():
     with open("expense.json", "r") as f:
         existing_expense = json.load(f)
@@ -278,14 +280,14 @@ def budget_detail(budget_name):
 
 
 
-
-
+## Transfer Page
 @app.route('/transfer', methods=['GET', 'POST'])
 def transfer():
     with open("expense.json", "r") as f:
         existing_expense = json.load(f)
     with open("category.json", "r") as f:
         existing_category = json.load(f)    
+
     with open("budget.json", "r") as f:
         existing_budget = json.load(f)
     expenses = existing_expense
@@ -324,8 +326,47 @@ def transfer():
         with open("budget.json", "w") as f:
             json.dump(budgets, f)
     return render_template('transfer.html', expenses=expenses, categories=categories, budgets=budgets)
+## End of Transfer
 
 
+## LOGIN & REGISTER CODE
+app.secret_key = 'your_secret_key'
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+@login_manager.user_loader
+def load_user(user_email):
+    return User.get(user_email)
+
+class User:
+    def __init__(self, email):
+        self.email = email
+
+    @staticmethod
+    def get(user_email):
+        with open('login.json', 'r') as file:
+            users = json.load(file)
+            for user in users:
+                if user['email'] == user_email:
+                    return User(user['email'])
+        return None
+    
+    def is_active(self):
+        return self.active
+    
+    def is_authenticated(self):
+        emailInput = request.form.get("email")
+        passwordInput = request.form.get("password")
+        with open("login.json", "r") as f:
+            users = json.load(f)
+        for user in users:
+            if check_password_hash(user["password"], passwordInput) and user["email"] == emailInput:
+                return True
+        return False
+    
+    def get_id(self):
+        return self.email
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -337,20 +378,18 @@ def login():
 
     if request.method == 'POST':
         emailInput = request.form.get("email")
-        passwordInput = request.form.get("password")
-
         nameReg = request.form.get("nickname")
         emailReg = request.form.get("reg-email")
         pwd1Reg = request.form.get("pwd1")
         
-
-        if emailInput:
-            for user in users:
-                ##check_password_hash(user["password"], passwordInput)
-                if check_password_hash(user["password"], passwordInput) and user["email"] == emailInput:
-                    return redirect(url_for("index"))
+        if not nameReg:
+            userEmail = User.get(emailInput)
+            if userEmail:
+                login_user(userEmail, remember=True)
+                return redirect(url_for("index"))
             flash('Incorrect email or password')
             return redirect(url_for('login'))
+        
         else:
             hashPwd = generate_password_hash(pwd1Reg, method="sha256")
             newUser['name'] = nameReg
@@ -362,7 +401,7 @@ def login():
             return redirect(url_for('index'))
 
     return render_template("login.html")
-
+## End of Login & Register Code
 
 @app.route('/cost')
 def cost():
@@ -387,6 +426,11 @@ def get_json():
 @app.route('/account-page')
 def account():
     return render_template('account-page.html')
+
+@app.route('/logout', methods=['GET'])
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)
