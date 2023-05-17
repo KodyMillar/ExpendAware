@@ -385,7 +385,7 @@ def login():
         if not nameReg:
             userEmail = User.get(emailInput)
             if userEmail:
-                login_user(userEmail)
+                login_user(userEmail, remember=True)
                 return redirect(url_for("index"))
             flash('Incorrect email or password')
             return redirect(url_for('login'))

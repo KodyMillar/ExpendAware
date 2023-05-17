@@ -195,14 +195,48 @@
         });
     // End of Register Alert //
 
+
+
     // Remember Me //
+        const rememberCheckbox = document.getElementById('remember-me');
         const emailInput = document.getElementById('email');
-        const rememberMe = document.getElementById('rememberMe');
-
-        if (localStorage.getItem('r')) {
-
+            
+        // Check if the checkbox parameter exists in the URL
+        // window.location.search string portion of the URL from a question mark [?]
+        // urlParams is useful when refreshing the page with a specific URL.
+        // localStorage is useful for maintaining data and state even when the browser is closed and reopened
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('remember') === 'true') {
+            rememberCheckbox.checked = true;
+            emailInput.value = localStorage.getItem('email');
+        } else if (localStorage.getItem('rememberEmail') === 'true') {
+            rememberCheckbox.checked = true;
+            emailInput.value = localStorage.getItem('email');
         }
+            
+        // Add or remove the checkbox parameter when the checkbox state changes
+        rememberCheckbox.addEventListener('change', () => {
+            if (rememberCheckbox.checked) {
+                urlParams.set('remember', 'true');
+                localStorage.setItem('rememberEmail', true);
+                //localStorage.setItem('email', emailInput.value);
+            } else {
+                urlParams.delete('remember');
+                localStorage.setItem('rememberEmail', false);
+                localStorage.removeItem('email');
+            }
 
+            // Update the URL with the modified parameters
+            const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+            window.history.replaceState({}, '', newUrl);
+        });
+
+        // This ensures input does not disappear (must have)
+        emailInput.addEventListener('input', () => {
+            if (rememberCheckbox.checked) {
+                localStorage.setItem('email', emailInput.value);
+            }
+        });
     // End of Remember Me //
     </script>
 </body>
