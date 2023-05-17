@@ -28,7 +28,7 @@
     <ul id="transaction-list">
       {% if history | length > 0 %}
       {% for action in history %}
-      <li class="transaction"> {{ action['action'] }} | {{ action['name'] }} - ${{ action['amount'] }} | {{ action['date'] }} | {{ action['description'] }}</li>
+      <li class="transaction"> {{ action['action'] }} | {{ action['name'] }} - ${{ action['amount'] }} <br> {{ action['date'] }} | {{ action['description'] }}</li>
       {% endfor %}
       {% else %}
       <p>No transactions yet</p>

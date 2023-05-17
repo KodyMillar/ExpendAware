@@ -83,8 +83,8 @@ def index():
                 }
 
                 history.insert(0, new_action)
-                if len(history) > 5:
-                    history.pop(4)
+                if len(history) > 10:
+                    history.pop(10)
 
         elif 'name' in request.form and 'amount' in request.form and 'category' in request.form:
             name = request.form['name']

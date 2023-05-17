@@ -28,5 +28,45 @@
         "descr": "Test",
         "amount": "100",
         "category": "Food"
+    },
+    {
+        "descr": "Butter Chicken",
+        "amount": "100",
+        "category": "Food"
+    },
+    {
+        "descr": "Rice",
+        "amount": "20",
+        "category": "Food"
+    },
+    {
+        "descr": "butter",
+        "amount": "10",
+        "category": "Food"
+    },
+    {
+        "descr": "Dippin Dots",
+        "amount": "5",
+        "category": "Food"
+    },
+    {
+        "descr": "last",
+        "amount": "200",
+        "category": "Food"
+    },
+    {
+        "descr": "shrooms",
+        "amount": "100",
+        "category": "Food"
+    },
+    {
+        "descr": "rocks",
+        "amount": "10",
+        "category": "Food"
+    },
+    {
+        "descr": "Amanita Mascaria",
+        "amount": "20",
+        "category": "Food"
     }
 ]
