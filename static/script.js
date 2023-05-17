@@ -13,6 +13,7 @@ for(let category of categoryPercentLabel) {
 
 /* Homepage button functionality
 -------------------------------------------*/
+/*
 const budgetButton = document.getElementById('add-budget');
 const budgetForm = document.getElementById('budget-container');
 const expenseButton = document.getElementById('add-expense');
@@ -20,8 +21,8 @@ const expenseForm = document.getElementById('expense-container');
 const catButton = document.getElementById('add-category');
 const catForm = document.getElementById('category-container');
 const overview = document.getElementsByClassName('view-section');
-const forms = document.getElementsByClassName('container')
-forms[0].style.display = "none"
+const forms = document.getElementsByClassName('container');
+forms[0].style.display = "none";
 
 // Show budget form
 budgetButton.addEventListener('click', function() {
@@ -61,7 +62,7 @@ catButton.addEventListener('click', function() {
     budgetButton.classList.remove("active")
     expenseButton.classList.remove("active")
 });
-
+*/
 
 /* side bar menu
 -------------------------------------------*/
