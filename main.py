@@ -159,6 +159,7 @@ def index():
 
 
 @app.route('/categories', methods=['GET', 'POST'])
+@login_required
 def categories():
 
     # Get information from category and budget json files
@@ -261,6 +262,7 @@ def categories():
 
 
 @app.route('/categories/<budget_name>', methods=['GET', 'POST'])
+@login_required
 def budget_detail(budget_name):
     with open('expense.json') as f:
         expenses = json.load(f)
@@ -282,6 +284,7 @@ def budget_detail(budget_name):
 
 ## Transfer Page
 @app.route('/transfer', methods=['GET', 'POST'])
+@login_required
 def transfer():
     with open("expense.json", "r") as f:
         existing_expense = json.load(f)
@@ -424,10 +427,12 @@ def get_json():
     return jsonify(existing_user)
 
 @app.route('/account-page')
+@login_required
 def account():
     return render_template('account-page.html')
 
 @app.route('/logout', methods=['GET'])
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('login'))
