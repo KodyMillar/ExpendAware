@@ -268,7 +268,7 @@ body,html {
   .view-section {
     background-color: white;
     border-radius: 20px;
-    width: 80%;
+    width: 90%;
     margin-top: 20px;
   }
   
@@ -306,7 +306,7 @@ body,html {
   
   .expenses-section {
     /* background-color: #BAF2E9; */
-    background-color: #dcfdff;;
+    /* background-color: #f4ffa5; */
     width: 90%;
     margin-left: 25px;
     border-radius: 10px;
@@ -339,11 +339,11 @@ body,html {
   
   .transaction-section {
     /* background-color: #d4f3fa; */
-    background-color: #dcfdff;
-    width: 90%;
-    margin-left: 5.5%;
+    /* background-color: #f4ffa5; */
+    width: 95%;
+    margin-left: 2%;
     border-radius: 10px;
-    margin-bottom: 30px
+    margin-bottom: 30px;
   }
 
   #transaction-list {
