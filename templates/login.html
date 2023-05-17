@@ -213,13 +213,14 @@
             rememberCheckbox.checked = true;
             emailInput.value = localStorage.getItem('email');
         }
+        
             
         // Add or remove the checkbox parameter when the checkbox state changes
         rememberCheckbox.addEventListener('change', () => {
             if (rememberCheckbox.checked) {
                 urlParams.set('remember', 'true');
                 localStorage.setItem('rememberEmail', true);
-                //localStorage.setItem('email', emailInput.value);
+                localStorage.setItem('email', emailInput.value);
             } else {
                 urlParams.delete('remember');
                 localStorage.setItem('rememberEmail', false);
