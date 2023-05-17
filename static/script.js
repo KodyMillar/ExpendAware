@@ -13,7 +13,6 @@ for(let category of categoryPercentLabel) {
 
 /* Homepage button functionality
 -------------------------------------------*/
-/*
 const budgetButton = document.getElementById('add-budget');
 const budgetForm = document.getElementById('budget-container');
 const expenseButton = document.getElementById('add-expense');
@@ -62,7 +61,6 @@ catButton.addEventListener('click', function() {
     budgetButton.classList.remove("active")
     expenseButton.classList.remove("active")
 });
-*/
 
 /* side bar menu
 -------------------------------------------*/
