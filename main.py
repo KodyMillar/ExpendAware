@@ -2,10 +2,11 @@ from flask import Flask, request, jsonify, render_template, redirect, url_for, f
 import json
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+
 
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
 
 
 def update_categories_budgets(categories, budgets, expenses):
@@ -41,6 +42,7 @@ def check_for_existing(name_input, existing_list, criteria):
     return True
 
 @app.route('/', methods=['GET', 'POST'])
+@login_required
 def index():
     with open("expense.json", "r") as f:
         existing_expense = json.load(f)
@@ -56,14 +58,16 @@ def index():
     amount = 0
     category = ''
     name = ''
+    budget = ''
     current_date = datetime.now().strftime("%d %b %Y")
 
     # Append the new data to the existing data
     if request.method == 'POST':
-        if 'descr' in request.form and 'amount' in request.form and 'category' in request.form:
+        if 'descr' in request.form and 'amount' in request.form and 'category' in request.form and 'budget' in request.form:
             descr = request.form['descr']
             amount = request.form['amount']
             category = request.form['category']
+            budget = request.form['budget']
 
             
             for categ in existing_category:
@@ -72,17 +76,20 @@ def index():
                     total_budget = categ['total budget']
 
             if validate_amount(amount, total_expenses, total_budget) == True:
+                budget_exists = any(budget_item['name'] == budget for budget_item in existing_budget)
             
                 new_expense = {
                     "descr": descr,
                     "amount": amount,
-                    "category": category
+                    "category": category,
+                    "budget": budget
                 }
                 existing_expense.append(new_expense)
                 for category in existing_category:
                     if category['category'] == new_expense['category']:
                         category['total expenses'] += int(new_expense['amount'])
 
+        
                 new_action = {
                     "action": "Created Expense",
                     "name": category['category'],
@@ -162,6 +169,7 @@ def index():
 
 
 @app.route('/categories', methods=['GET', 'POST'])
+@login_required
 def categories():
 
     # Get information from category and budget json files
@@ -263,32 +271,36 @@ def categories():
     return render_template("categories.html", categories=categories, total_budgets=total_budget_list, budgets=budgets)
 
 
-@app.route('/expenses/<int:id>')
-def expenses(id):
-    with open("expense.json", "r") as f:
-        existing_expense = json.load(f)
-    with open("category.json", "r") as f:
-        existing_category = json.load(f)
-    with open("budget.json", "r") as f:
-        existing_budget = json.load(f)
+@app.route('/categories/<budget_name>', methods=['GET', 'POST'])
+@login_required
+def budget_detail(budget_name):
+    with open('expense.json') as f:
+        expenses = json.load(f)
+    with open('budget.json') as f:
+        budgets = json.load(f)
+    
+    budget = next((budget for budget in budgets if budget['name'] == budget_name), None)
+    if budget is None:
+        abort(404)
+    
+    budget_expenses = [expense for expense in expenses if expense['budget'] == budget['name']]
 
-    expenses = existing_expense
-    categories = existing_category
-    budgets = existing_budget
+    total_expense = sum([int(expense['amount']) for expense in budget_expenses])
+    remaining = int(budget['amount']) - total_expense
 
-    categories = update_categories_budgets(categories, budgets, expenses)
-
-    return render_template('expenses.html', categories=categories)
+    return render_template('expenses.html', budget=budget, budget_expenses=budget_expenses, total_expense=total_expense, remaining=remaining)
 
 
 
-
+## Transfer Page
 @app.route('/transfer', methods=['GET', 'POST'])
+@login_required
 def transfer():
     with open("expense.json", "r") as f:
         existing_expense = json.load(f)
     with open("category.json", "r") as f:
         existing_category = json.load(f)    
+
     with open("budget.json", "r") as f:
         existing_budget = json.load(f)
     expenses = existing_expense
@@ -327,8 +339,47 @@ def transfer():
         with open("budget.json", "w") as f:
             json.dump(budgets, f)
     return render_template('transfer.html', expenses=expenses, categories=categories, budgets=budgets)
+## End of Transfer
 
 
+## LOGIN & REGISTER CODE
+app.secret_key = 'your_secret_key'
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+@login_manager.user_loader
+def load_user(user_email):
+    return User.get(user_email)
+
+class User:
+    def __init__(self, email):
+        self.email = email
+
+    @staticmethod
+    def get(user_email):
+        with open('login.json', 'r') as file:
+            users = json.load(file)
+            for user in users:
+                if user['email'] == user_email:
+                    return User(user['email'])
+        return None
+    
+    def is_active(self):
+        return self.active
+    
+    def is_authenticated(self):
+        emailInput = request.form.get("email")
+        passwordInput = request.form.get("password")
+        with open("login.json", "r") as f:
+            users = json.load(f)
+        for user in users:
+            if check_password_hash(user["password"], passwordInput) and user["email"] == emailInput:
+                return True
+        return False
+    
+    def get_id(self):
+        return self.email
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -340,20 +391,18 @@ def login():
 
     if request.method == 'POST':
         emailInput = request.form.get("email")
-        passwordInput = request.form.get("password")
-
         nameReg = request.form.get("nickname")
         emailReg = request.form.get("reg-email")
         pwd1Reg = request.form.get("pwd1")
         
-
-        if emailInput:
-            for user in users:
-                ##check_password_hash(user["password"], passwordInput)
-                if check_password_hash(user["password"], passwordInput) and user["email"] == emailInput:
-                    return redirect(url_for("index"))
+        if not nameReg:
+            userEmail = User.get(emailInput)
+            if userEmail:
+                login_user(userEmail, remember=True)
+                return redirect(url_for("index"))
             flash('Incorrect email or password')
             return redirect(url_for('login'))
+        
         else:
             hashPwd = generate_password_hash(pwd1Reg, method="sha256")
             newUser['name'] = nameReg
@@ -365,7 +414,7 @@ def login():
             return redirect(url_for('index'))
 
     return render_template("login.html")
-
+## End of Login & Register Code
 
 @app.route('/cost')
 def cost():
@@ -386,6 +435,17 @@ def get_json():
 
     # Return the JSON data as a response
     return jsonify(existing_user)
+
+@app.route('/account-page')
+@login_required
+def account():
+    return render_template('account-page.html')
+
+@app.route('/logout', methods=['GET'])
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -26,6 +26,11 @@ h2 {
     /* color: #F9F9F9; */
 }
 
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bolder;
+}
+
 
 /* Header Grid CSS -------------
 ----------------------------------------*/
@@ -241,11 +246,36 @@ body,html {
     color:#333;
   }
   
-  h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bolder;
+  
+  #add-budget {
+    width: 180px;
+    background:rgb(172, 177, 214) url(images/add-budget-icon.png) no-repeat 8px center;
+    background-size: 23%;
+    text-align: right;
+    padding-left: 20px;
+    color: black
+    
   }
   
+  #add-expense {
+    width: 193px;
+    background:rgb(189, 205, 214) url(images/add-expense-icon.png) no-repeat 8px center;
+    background-size: 25%;
+    text-align: right;
+    padding-left: 20px;
+    color: black
+    
+  }
+
+  #add-category {
+    width: 193px;
+    background:#65A5E2 url(images/add-category-icon.png) no-repeat 8px center;
+    background-size: 20%;
+    text-align: right;
+    padding-left: 20px;
+    color: black
+  }
+
   
   a.logout-link {
     margin-right: 15px;  
@@ -937,15 +967,45 @@ a {
 
 /* Expenses page 
 --------------------------------*/
-.expense-list {
-margin-left: 25px;
-color: black;
+.bt_container-grid {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
 }
-.expense-item {
-display: flex;
-flex-direction: column;
-margin-bottom: 4px;
+
+.bt_container {
+  width: 600px; /* Adjust this value according to your requirement */
+  text-align: center;
 }
+
+.bt_category-title,
+.bt_budget-name {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.bt_budget {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2em;
+  margin: 15px 0;
+}
+
+.bt_expense {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid black;
+
+}
+
+
 /*---- End of Expense Page--------
 --------------------------------*/
 
@@ -1087,6 +1147,10 @@ font-weight: bold;
 /* End of Log In Page --------
 --------------------------------*/
 
+/* Mobile-first account page */
+
+
+/* End of mobile-first account page */
 
 /* Mobile-first styles ------------
 ----------------------------------------*/

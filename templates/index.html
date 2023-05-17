@@ -2,11 +2,16 @@
 {% block title %}ExpendAware - Home{% endblock %}
 {% block content %}
 
+<div>
+  <button class="subtitle-icons" id="add-budget"><h3>Add&nbspBudget</h3></button>
+  <button class="subtitle-icons" id="add-expense"><h3>Add&nbspExpense</h3></button>
+  <button class="subtitle-icons" id="add-category"><h3>Add&nbspCategory</h3></button>
+</div>
+
 
 <!-- this is just a test button for the alert message, do not delete! -->
 <!-- <div id="liveAlertPlaceholder"></div>
 <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button> -->
-
 <div class="view-section">
   <div id="total">
       <h3 class="summary">Overview/Summary <img src="../static/images/summary-circle-icon.png" width="45" height="45"></h3>
@@ -134,7 +139,17 @@
         </option>
         {% endfor %}
       </select>
-      <!--select budget category can go here-->
+  
+      <!-- New budget selection dropdown -->
+      <label>Choose a budget</label>
+      <select id="expense-budget" name="budget">
+        {% for budget in budgets %}
+        <option value="{{ budget.name }}" data-category="{{ budget.category }}">
+          {{ budget.name }}
+        </option>
+        {% endfor %}
+      </select>
+  
       <button type="submit">Add Expense</button>
     </form>
     <ul id="expense-list">
@@ -172,11 +187,23 @@
 </div>
 
 
+<div id="homepage-totals">
+  <p>Total Budget: {{ total_budget }}</p>
+  <p>Total Expenses: {{ total_expenses }}</p>
+</div>
+
+<!-- <a href="/login" class="logout-link">
+
 <a href="/login" class="logout-link">
+main
   <button>Logout</button>
-</a>
+</a> -->
 
 <footer>
 </footer>
 
 {% endblock %}
+
+{% block script %}
+  <script src="/static/javascript/home.js"></script>
+{% endblock%}

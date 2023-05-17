@@ -134,10 +134,14 @@
 
         if (`${budgetFrObject['amount'] - amountTrValue}` >= 0) {
             amountSF.innerHTML = `$${budgetFrObject['amount'] - amountTrValue}`
-            amountST.innerHTML = `$${budgetToObject['amount'] + amountTrValue}`
+            let ccc = parseInt(budgetToObject['amount']) + amountTrValue;
+            console.log(ccc)
+            console.log(typeof budgetToObject['amount'])
+            amountST.innerHTML = `$${ccc}`
         } else {
             amountSF.innerHTML = `Insufficient\nfunds`
-            amountST.innerHTML = `$${budgetToObject['amount'] + budgetFrObject['amount']}`
+            let abc = budgetFrObject['amount'] + budgetToObject['amount']
+            amountST.innerHTML = `$${abc}`
         }
     });
 

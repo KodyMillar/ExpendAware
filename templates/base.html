@@ -10,7 +10,6 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap"
         rel="stylesheet"
     />
-    <script src="../static/script.js" defer></script>
     {% block head %}{% endblock%}
     <title>{% block title %}Base{% endblock %}</title>
 </head>
@@ -31,12 +30,12 @@
                 <a href="/"><img src="../static/images/home-button.png" width="30" height="30" alt="home-button"></a>
             </div>    
             <div id="subheadings">
-                <h3>Category</h3>
-                <h3>Transfer</h3>
-                <h3>Costs</h3>
+                <h3>category</h3>
+                <h3>transfer</h3>
+                <h3>costs</h3>
             </div>
             <div id="account-icon">
-                <a href="/"><img src="../static/images/account-icon.png" width="40" height="40" alt="home-button"></a>
+                <a href="/account-page"><img src="../static/images/account-icon.png" width="40" height="40" alt="home-button"></a>
             </div>
         </div>
     </header>
@@ -51,8 +50,11 @@
         <a href="/statistic">Statistic</a>
     </div>
 
-    {% block content %} {% endblock %}
-
+    {% block content %} 
+    {% endblock %}
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- <script src="/static/script.js"></script> -->
+    <script src="/static/javascript/base.js"></script>
+    {% block script %}
+    {% endblock%}
 </body>
