@@ -72,8 +72,10 @@
             
             <div id = "overlay">
                 <div id="alert-container">
-                    <span id="alert-message"></span>
-                    <button id="alert-okay">x</button>
+                    <div id="alert-flex">
+                        <span id="alert-message"></span>
+                        <button id="alert-okay">x</button>
+                    </div>
                 </div>
             </div>
         </form>
@@ -144,6 +146,7 @@
             alertMessage.innerHTML = message;
             alertBox.style.display = 'block';
             overlay.style.display = "flex";
+            event.preventDefault();
         }
 
         // Click the button to either login or exit alert // 
@@ -174,19 +177,14 @@
                     //overlay.style.display = "flex";
                     //showAlert("Missing Values");
                 } else if (!(regEmail.value.includes("@"))) {
-                    event.preventDefault();
                     showAlert("Incorrect Email format: no @");
                 } else if (emailExists) {
-                    event.preventDefault();
                     showAlert("This email is already used")
                 } else if (pwd1.value.length < 8) {
-                    event.preventDefault();
                     showAlert("Password must be longer than 7 characters");
                 } else if (pwd1.value !== pwd2.value) {
-                    event.preventDefault();
                     showAlert("Both passwords are not matched");
                 } else {
-                    event.preventDefault();
                     alertOkayButton.innerHTML = "login";
                     showAlert("Success!");
                 }

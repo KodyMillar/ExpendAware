@@ -108,6 +108,7 @@ button {
 /* End of /* Login & Register Form */
 
 
+
 /* Alert Message for Login */
 #flash-messages {
     opacity: 0;
@@ -125,6 +126,7 @@ button {
     opacity: 0.8;
 }
 /* End of Alert Message for Login */
+
 
 
 /* Alert Message for Register */
@@ -150,6 +152,11 @@ button {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 23px;
+    text-align: center;
+}
+
+#alert-flex {
+    display: flex;
 }
 
 #alert-okay {
@@ -160,6 +167,7 @@ button {
     padding: 0 9px;
     font-size: 23px;
     border-radius: 5px;
+    align-self: flex-start;
+    margin-left: 10px;
 }
-
 /* Alert Message for Register */
