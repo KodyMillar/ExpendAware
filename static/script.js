@@ -205,13 +205,24 @@ for (let button of editButton){
       categoryNameToEdit = categoryNameToEdit.replaceAll("'", "")
     }
 
-    console.log(categoryNameToEdit)
-    console.log(e.target.id)
-
     let editPopUp = document.querySelector("#edit-popup-" + categoryNameToEdit)
     let editBackground = document.querySelector("#edit-background-" + categoryNameToEdit)
     editPopUp.classList.toggle("category-edit-clicked")
     editBackground.classList.toggle("category-edit-clicked")
+  })
+}
+
+categoryEditPopup = document.querySelectorAll(".category-edit-popup")
+popupBackground = document.querySelectorAll(".category-edit-background")
+
+for (let background of popupBackground) {
+  background.addEventListener("click", ()=> {
+    for (let popup of categoryEditPopup) {
+      if (popup.classList.contains("category-edit-clicked")) {
+        popup.classList.toggle("category-edit-clicked")
+        background.classList.toggle("category-edit-clicked")
+      }
+    }
   })
 }
 
