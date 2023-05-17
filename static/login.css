@@ -13,7 +13,6 @@ body {
     align-items: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
 }
 
 ul {
@@ -35,8 +34,6 @@ button {
     color: #fff;
 }
 
-/*login page 
---------------------------------*/
 #outline {
     display: flex;
     flex-direction: column;
@@ -47,9 +44,30 @@ button {
 }
 
 #login-logo {
-    margin: 40px 0;
+    margin: 40px 0 0;
 }
 
+
+
+/* Tab Design */
+.login-tab {
+    width: 88px;
+    background-color: white;
+    color: rgb(131, 131, 131);
+    border-radius: 3px;
+    min-width: 80px;
+    margin: 30px 35px;
+}
+
+.active {
+    background-color: rgb(167, 223, 255);
+    color: rgb(19, 68, 152);
+}
+/* End of Tab Design*/
+
+
+
+/* Login & Register Form */
 .info-to-fill {
     display: flex;
     flex-direction: column;
@@ -61,28 +79,6 @@ button {
 .info-title {
     align-self: center;
 }
-
-#login-register-btn {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-/* Tab color */
-.login-tab {
-    width: 88px;
-    background-color: white;
-    color: rgb(131, 131, 131);
-    border-radius: 3px;
-    min-width: 80px;
-    margin: 0 35px;
-}
-
-.active {
-    background-color: rgb(167, 223, 255);
-    color: rgb(19, 68, 152);
-}
-/* End of Tab Color*/
 
 #login-button, #reg-button {
     font-size: 18px;
@@ -109,8 +105,7 @@ button {
     align-self: center;
     margin-bottom: 30px;
 }
-/* End of Log In Page --------
---------------------------------*/
+/* End of /* Login & Register Form */
 
 
 /* Alert Message for Login */
@@ -132,33 +127,7 @@ button {
 /* End of Alert Message for Login */
 
 
-.alert1 {
-    position: fixed;
-    /* top: 50%; */
-    left: 50%;
-    background-color: #e2c7c7;
-    transform: translate(-50%, -50%);
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: none;
-}
-
-.alert-content {
-    text-align: center;
-}
-
-#alert-okay {
-    color: black;
-    height: fit-content;
-    text-decoration: none;
-    line-height: normal;
-    border: black 1px solid;
-    padding: 0 9px;
-    font-size: 20px;
-    border-radius: 100%;
-}
-
+/* Alert Message for Register */
 #overlay {
     position: fixed;
     top: 0;
@@ -172,3 +141,25 @@ button {
     justify-content: center;
 }
 
+#alert-container {
+    position: fixed;
+    left: 50%;
+    background-color: #e2c7c7;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 23px;
+}
+
+#alert-okay {
+    color: black;
+    text-decoration: none;
+    line-height: normal;
+    border: black 1px solid;
+    padding: 0 9px;
+    font-size: 23px;
+    border-radius: 5px;
+}
+
+/* Alert Message for Register */

@@ -71,11 +71,9 @@
             <button type="submit" id="reg-button">Register</button>
             
             <div id = "overlay">
-                <div id="custom-alert" class="alert1">
-                    <div class="alert-content">
-                        <span id="alert-message"></span>
-                        <button id="alert-okay">x</button>
-                    </div>
+                <div id="alert-container">
+                    <span id="alert-message"></span>
+                    <button id="alert-okay">x</button>
                 </div>
             </div>
         </form>
@@ -137,7 +135,7 @@
         
         // Alert Display IDs //
         const overlay = document.getElementById('overlay');
-        const alertBox = document.getElementById('custom-alert');
+        const alertBox = document.getElementById('alert-container');
         const alertMessage = document.getElementById('alert-message');
         const alertOkayButton = document.getElementById('alert-okay');
         
