@@ -223,7 +223,12 @@ def categories():
             new_budget_amount = int(request.form[list(request.form)[0]])
             for budget in budget_list:
                 if budget_name == budget['name']:
-                    budget['amount'] = new_budget_amount
+                    total_expense = 0
+                    for expense in expenses:
+                        if expense["budget"] == budget["name"]:
+                            total_expense += int(expense["amount"])
+                    if total_expense <= new_budget_amount:
+                        budget['amount'] = new_budget_amount
             with open("budget.json", "w") as file:
                 json.dump(budget_list, file)
 

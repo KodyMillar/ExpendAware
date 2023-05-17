@@ -2,6 +2,13 @@
     {
         "action": "Created Expense",
         "name": "Food",
+        "amount": "150",
+        "description": "Grocery Shopping",
+        "date": "17 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Food",
         "amount": "100",
         "description": "Steak",
         "date": "17 May 2023"
@@ -61,12 +68,5 @@
         "amount": "50",
         "description": "Steak",
         "date": "17 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Housing",
-        "amount": "50",
-        "description": "steak",
-        "date": "16 May 2023"
     }
 ]
