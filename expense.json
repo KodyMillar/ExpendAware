@@ -1,72 +1,12 @@
 [
     {
-        "descr": "Grocery",
-        "amount": "100",
+        "descr": "Turkey",
+        "amount": "500",
         "category": "Food"
     },
     {
-        "descr": "McJunk",
-        "amount": "200",
-        "category": "Food"
-    },
-    {
-        "descr": "Fill the rest",
-        "amount": "200",
-        "category": "Food"
-    },
-    {
-        "descr": "McJunk",
-        "amount": "200",
-        "category": "Food"
-    },
-    {
-        "descr": "new expense",
-        "amount": "100",
-        "category": "Food"
-    },
-    {
-        "descr": "Test",
-        "amount": "100",
-        "category": "Food"
-    },
-    {
-        "descr": "Butter Chicken",
-        "amount": "100",
-        "category": "Food"
-    },
-    {
-        "descr": "Rice",
-        "amount": "20",
-        "category": "Food"
-    },
-    {
-        "descr": "butter",
-        "amount": "10",
-        "category": "Food"
-    },
-    {
-        "descr": "Dippin Dots",
-        "amount": "5",
-        "category": "Food"
-    },
-    {
-        "descr": "last",
-        "amount": "200",
-        "category": "Food"
-    },
-    {
-        "descr": "shrooms",
-        "amount": "100",
-        "category": "Food"
-    },
-    {
-        "descr": "rocks",
-        "amount": "10",
-        "category": "Food"
-    },
-    {
-        "descr": "Amanita Mascaria",
-        "amount": "20",
+        "descr": "steak",
+        "amount": "50",
         "category": "Food"
     }
 ]

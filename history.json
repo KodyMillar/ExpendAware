@@ -2,6 +2,20 @@
     {
         "action": "Created Expense",
         "name": "Housing",
+        "amount": "50",
+        "description": "steak",
+        "date": "16 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Housing",
+        "amount": "500",
+        "description": "Turkey",
+        "date": "16 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Housing",
         "amount": "20",
         "description": "Amanita Mascaria",
         "date": "16 May 2023"
@@ -54,19 +68,5 @@
         "amount": "100",
         "description": "Test",
         "date": "16 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Housing",
-        "amount": "100",
-        "description": "new expense",
-        "date": "15 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Housing",
-        "amount": "200",
-        "description": "McJunk",
-        "date": "15 May 2023"
     }
 ]
