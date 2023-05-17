@@ -43,6 +43,7 @@
     <div id="edit-background-{{ category['category'].strip().replace(' ', '-').replace('\'', '') }}" class="category-edit-background">
     </div>
     <div class="category-edit-popup" id="edit-popup-{{ category['category'].strip().replace(' ', '-').replace('\'', '') }}">
+        <!-- <a href="#">&timesbar;</a> -->
         <h4><b>Edit Category</b></h4>
         <label>Rename Category</label>
         <form method="POST">
@@ -63,7 +64,7 @@
             <input type="submit" value="Update" class="edit-budget-btn">
             </form>
         </div>
-        <form method="POST">
+        <form method="POST" class="remove-budget-form">
             <input type="submit" name="delete budget {{ budget['name'] }}" value="Remove Budget" class="remove-budget">
         </form>
         {% endif %}
