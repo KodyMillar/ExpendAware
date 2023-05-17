@@ -26,6 +26,11 @@ h2 {
     /* color: #F9F9F9; */
 }
 
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bolder;
+}
+
 
 /* Header Grid CSS -------------
 ----------------------------------------*/
@@ -98,7 +103,8 @@ form {
 .form-group:last-child {
     margin-bottom: 0;
 }
-input[type="text"] {
+
+.text {
     width: calc(120%);
     padding: 10px;
     margin-right: 10px;
@@ -107,7 +113,8 @@ input[type="text"] {
     outline: none;
     font-size: 16px;
 }
-input[type="number"] {
+
+.number {
     width: calc(120%);
     padding: 10px;
     border: 1px solid #ccc;
@@ -193,6 +200,8 @@ li button:hover {
     max-width: 1200px;
     padding: 30px;
 }
+
+
 /* End of Home/Index Page ---------------- 
 ----------------------------------------*/
 
@@ -237,11 +246,36 @@ body,html {
     color:#333;
   }
   
-  h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bolder;
+  
+  #add-budget {
+    width: 180px;
+    background:rgb(172, 177, 214) url(images/add-budget-icon.png) no-repeat 8px center;
+    background-size: 23%;
+    text-align: right;
+    padding-left: 20px;
+    color: black
+    
   }
   
+  #add-expense {
+    width: 193px;
+    background:rgb(189, 205, 214) url(images/add-expense-icon.png) no-repeat 8px center;
+    background-size: 25%;
+    text-align: right;
+    padding-left: 20px;
+    color: black
+    
+  }
+
+  #add-category {
+    width: 193px;
+    background:#65A5E2 url(images/add-category-icon.png) no-repeat 8px center;
+    background-size: 20%;
+    text-align: right;
+    padding-left: 20px;
+    color: black
+  }
+
   
   a.logout-link {
     margin-right: 15px;  
@@ -249,27 +283,33 @@ body,html {
   }
   
   #total {
-    margin-top: 20px;
+    margin-top: 30px;
   }
   
   .summary {
-    height: 15px;
+    height: 40px;
     padding-left: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
   }
   
   .view-section {
     background-color: white;
     border-radius: 20px;
-    height: 650px;
     width: 80%;
     margin-top: 20px;
   }
   
   .view-section h3 {
     font-size: 25px;
+    text-align: center;
     font-weight: bolder;
-    margin-left: 10px;
-    margin-bottom: 30px;
+  }
+
+  .view-section h5 {
+    margin-left: 5%;
   }
   
   hr {
@@ -291,12 +331,12 @@ body,html {
 
   #total-heading {
     color: rgb(255, 255, 255);
-    background-color: rgb(60, 123, 218);
+    background-color: rgb(64, 162, 83);
   }
   
   .expenses-section {
     /* background-color: #BAF2E9; */
-    background-color: #e5f5fa;
+    background-color: #dcfdff;;
     width: 90%;
     margin-left: 25px;
     border-radius: 10px;
@@ -308,14 +348,14 @@ body,html {
   }
 
   #totals h4 {
-    font-size: 20px;
+    font-size: 16px;
   }
   
   #transaction {
     margin-top: 20px;
-    margin-left: 25px;
+    margin-left: 5.5%;
     /* font-family: 'Montserrat', sans-serif; */
-    background-color: rgb(60, 123, 218);
+    background-color: rgb(64, 162, 83);
     border-radius: 0px;
     width: 220px;
     text-align: center;
@@ -329,19 +369,39 @@ body,html {
   
   .transaction-section {
     /* background-color: #d4f3fa; */
-    background-color: #afe3e7;
-    height: 200px;
+    background-color: #dcfdff;
+    height: 300px;
     width: 90%;
-    margin-left: 25px;
+    margin-left: 5.5%;
     border-radius: 10px;
     margin-bottom: 30px
   }
+
+  #transaction-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    height: 100%;
+    padding: 2%;
+    text-align: center;
+}
+
+.transaction {
+    font-size: 12px;
+    height: 20%;
+    width: 100%;
+    border-bottom:#333 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
   
   #category-section {
     margin-top: 20px;
     margin-left: 25px;
     color: rgb(255, 255, 255);
-    background-color: rgb(60, 123, 218);
+    background-color: rgb(64, 162, 83);
     border-radius: 5px;
     width: 220px;
     text-align: center;
@@ -374,7 +434,7 @@ body,html {
     box-shadow: 1px 1px 6px 2px darkblue inset;
   } */
 
-  .category-overview1 {
+  .category-overview {
     display: flex;
     flex-direction: row;
     margin-top: 15px;
@@ -382,36 +442,51 @@ body,html {
     align-items: center;
     background-color: #a2d2ff;
     border: solid 1px #a2d2ff;
-    width: 150px;
-    border-radius: 5px;
+    width: 300px;
+    border-radius: 2px;
     height: 120px;
-    margin-left: 20px;
     margin-bottom: 20px;
     box-shadow: 0 0 3px 1px #87b4de inset;
+    color: white;
   }
   
-  .category1 {
+  .category-view {
     height: 90px;
-    width: 150px;
-    background-color: #65A5E2;
-    border-radius: 5px;
+    width: 300px;
+    background-color: #2b86dc;
+    border-radius: 2px 2px .5px .5px;
     margin-bottom: 28px;
-    box-shadow: inset 0 0 3px 2px #4373a0;
-    
+    box-shadow: inset 0 0 3px 2px #4373a0; 
+  }
+
+  .category-view label {
+    color: black;
   }
   
-  #percentage1 {
+  .percentage-bar {
     height: 40px;
     border: 2px solid black;
-    background-color: yellow;
-    width: 100px;
+    /* background-color: yellow; */
+    width: 50%;
     height: 10px;
-    margin-top: 70px;
-    margin-left: 37px;
+    margin-left: 20px;
     border-radius: 0px;
   }
+
+  .percentage {
+    background-color: yellow;
+    width: 0;
+    height: 100%;
+  }
+
+  .percent-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 3%;
+  }
   
-  .category-overview2 {
+  /* .category-overview2 {
     display: flex;
     flex-direction: row;
     margin-top: 15px;
@@ -425,32 +500,13 @@ body,html {
     margin-left: 10px;
     margin-bottom: 20px;
     box-shadow: 1px 1px 6px 2px darkblue inset;
-  }
+  } */
   
-  .category2 {
-    height: 90px;
-    width: 150px;
-    background-color: #65A5E2;
-    border-radius: 5px;
-    margin-bottom: 29px;
-    box-shadow: 1px 1px 6px 2px darkblue inset;
-  }
-  
-  #percentage2 {
-    height: 40px;
-    border: 2px solid black;
-    background-color: yellow;
-    width: 100px;
-    height: 10px;
-    margin-top: 95px;
-    margin-left: 37px;
-    border-radius: 5px;
-  }
   
   .categories-container {
     display: flex;
-    flex-direction: row;
-    margin-left: 5px;
+    flex-direction: column;
+    align-items: center;
     gap: 20px;
   }
 
@@ -559,6 +615,7 @@ body,html {
     /* margin-left: 2.5%; */
     z-index: 0;
 }
+
 .category {
     background-color:rgb(255, 252, 241);
     height: 110px;
@@ -582,36 +639,43 @@ body,html {
 a {
     text-decoration: none;
 }
+
 .name-date {
     margin-left: 25px;
     color: black;
 }
+
 .category-name {
     text-align: start;
     font-size: 24px;
     font-weight: bold;
     color: #DA0063;
 }
+
 .category-budget {
     margin-right: 20px;
     color: rgb(45, 147, 89);
     font-weight: bold;
     font-size: 17px;
 }
+
 .category-clicked {
-    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.1), 0px -10px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1), 0px -10px 15px rgba(0, 0, 0, 0.1);
     z-index: 3;
 }
+
 .budget-dropdown {
     z-index: 1;
+    position: fixed;
     background-color: rgb(244, 244, 244);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     height: 0;
-    width: 83%;
-    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.1);
+    /* width: 83%; */
+    width: 68%;
+    box-shadow: 5px 15px 10px rgba(0, 0, 0, 0.1), -5px 0 10px rgba(0, 0, 0, 0.1);
     transition: .6s;
     overflow-x: hidden;
 }
@@ -632,6 +696,21 @@ a {
 .budget-link {
   width: 100%;
   height: 150%;
+}
+
+.budget-link p {
+    color: rgb(0, 0, 0);
+}
+
+.budget-item a {
+    padding: 10px;
+}
+
+.budget-item a:hover {
+    background-color: rgb(191, 250, 187);
+    border-radius: 2px;
+    box-shadow: 2px 2px 5px rgb(131, 131, 131);
+    transition: 0.1s;
 }
 
 .dropdown-container {
@@ -655,13 +734,17 @@ a {
 }
 
 .btn-danger {
-    background-color: rgb(231, 54, 54);
+    background-color: rgb(221, 55, 55);
     color: white;
     width: 50%;
     height: 30px;
     cursor: pointer;
     border-radius: 3px;
     border: none;
+}
+
+.btn-danger-form {
+    width: 75%;
 }
 
 .btn-secondary {
@@ -673,21 +756,217 @@ a {
     border: none;
 }
 
+/* category edit popup*/
+
+.category-edit-popup {
+    position: fixed;
+    bottom: 35%;
+    z-index: 999;
+    width: 90vw;
+    height: 60vh;
+    padding: calc(5% - 20px);
+    background-color: white;
+    display: none;
+}
+
+.category-edit-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(59, 62, 62, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.category-edit-popup h4 {
+    grid-column: 1 / 4;
+    text-align: center;
+    font-size: 20px;
+}
+
+.category-edit-popup h5 {
+    font-size: 16px;
+    grid-column: 1 / 2;
+}
+
+.category-edit-popup label {
+    grid-column: 1 / 2;
+}
+
+.rename-category-btn {
+    width: 30%;
+    margin-left: 2%;
+}
+
+.rename-category-input {
+    width: 75%;
+}
+
+.category-edit-popup form {
+    grid-column: 1 / 4;
+    height: 80%;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 1;
+}
+
+/* .category-edit-popup div form {
+    grid-column: 1 / 4;
+    height: 75%;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 1;
+} */
+
+.category-edit-popup div > form {
+    margin-right: 2%;
+}
+
+.edit-budget-forms {
+    grid-column: 1 / 4;
+    display: flex;
+}
+
+.edit-budget-forms form {
+   display: grid;
+   grid-template-columns: 50% 50%;
+}
+
+ .edit-budget-btn {
+    /* width: 40%;
+    height: 40%; */
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+.edit-budget-input {
+    /* width: 100%;
+    height: 50%; */
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+}
+
+.remove-budget {
+    font-size: 12px;
+    height: 70%;
+    padding: 1px;
+    background-color: #ca3a30;
+    color: white;
+    border-radius: 4px;
+    grid-column: 1 / 2;
+} 
+
+
+.category-edit-clicked {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: 10% 6% 10% 10%;
+    grid-auto-rows: 6% 20% 8%;
+}
+
+/*Are you sure? category deletion popup */
+
+.category-delete-popup {
+    position: fixed;
+    bottom: 35%;
+    z-index: 999;
+    width: 90vw;
+    height: 60vh;
+    padding: calc(5% - 20px);
+    background-color: white;
+    display: none;
+    padding-top: 10%;
+}
+
+.btn-danger-div {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.delete-category-2nd {
+    width: 100%;
+}
+
+.btn-cancel-div {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: 10% 0;
+}
+
+.category-delete-clicked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.category-delete-clicked h3, .category-delete-clicked h4 {
+    text-align: center;
+}
+
+.cancel-btn {
+    color: grey;
+    height: 100%;
+}
+
+.cancel-form {
+    width: 100%;
+    height: 100%;
+}
+
+
+
 /* End of Categories Page --------
 ----------------------------------------*/
 
 
 /* Expenses page 
 --------------------------------*/
-.expense-list {
-margin-left: 25px;
-color: black;
+.bt_container-grid {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
 }
-.expense-item {
-display: flex;
-flex-direction: column;
-margin-bottom: 4px;
+
+.bt_container {
+  width: 600px; /* Adjust this value according to your requirement */
+  text-align: center;
 }
+
+.bt_category-title,
+.bt_budget-name {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.bt_budget {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2em;
+  margin: 15px 0;
+}
+
+.bt_expense {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid black;
+
+}
+
+
 /*---- End of Expense Page--------
 --------------------------------*/
 
@@ -904,6 +1183,10 @@ font-weight: bold;
       font-size: 16px;
     }
 
+    .category-edit-popup {
+        width: 50vw;
+    }
+
 
     /* End of Category Page*/
     }
@@ -1042,7 +1325,7 @@ font-weight: bold;
       border-radius: 10px;
       margin-left: 80px;
       padding-top: 10px;
-      color: black;
+      color: rgb(255, 255, 255);
     }
   
     .categories-container {

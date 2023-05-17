@@ -1,1 +1,1 @@
-[{"descr": "Blazer", "amount": "500", "category": "Clothing"}, {"descr": "Chicken", "amount": "30", "category": "Food"}, {"descr": "Utilities", "amount": "300", "category": "Housing"}]
+[{"descr": "Couch", "amount": "300", "category": "Housing", "budget": "Furniture"}, {"descr": "Mconalds", "amount": "14", "category": "Food", "budget": "Dining Out"}, {"descr": "Granola Bars", "amount": "23", "category": "Food", "budget": "Groceries"}, {"descr": "Cereal", "amount": "8", "category": "Food", "budget": "Groceries"}]

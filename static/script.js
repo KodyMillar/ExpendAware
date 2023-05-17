@@ -1,3 +1,68 @@
+/* Overview percentage bar on homepage
+-------------------------------------------*/
+
+categoryPercentLabel = document.querySelectorAll(".percent-label");
+
+for(let category of categoryPercentLabel) {
+  percentage = category.querySelector("label").textContent.replace(" Spent", "");
+  if (category.querySelector(".percentage")) {
+    percentageGauge = category.querySelector(".percentage");
+    percentageGauge.style.width = percentage;
+  }
+}
+
+/* Homepage button functionality
+-------------------------------------------*/
+const budgetButton = document.getElementById('add-budget');
+const budgetForm = document.getElementById('budget-container');
+const expenseButton = document.getElementById('add-expense');
+const expenseForm = document.getElementById('expense-container');
+const catButton = document.getElementById('add-category');
+const catForm = document.getElementById('category-container');
+const overview = document.getElementsByClassName('view-section');
+const forms = document.getElementsByClassName('container')
+forms[0].style.display = "none"
+
+// Show budget form
+budgetButton.addEventListener('click', function() {
+    budgetForm.style.display = "block";
+    expenseForm.style.display = "none";
+    catForm.style.display = "none";
+    overview[0].style.display = "none";
+    forms[0].style.display = "flex"
+
+    budgetButton.classList.add("active")
+    expenseButton.classList.remove("active")
+    catButton.classList.remove("active")
+});
+
+// Show expense form
+expenseButton.addEventListener('click', function() {
+    budgetForm.style.display = "none";
+    expenseForm.style.display = "block";
+    catForm.style.display = "none";
+    overview[0].style.display = "none";
+    forms[0].style.display = "flex"
+
+    expenseButton.classList.add("active")
+    budgetButton.classList.remove("active")
+    catButton.classList.remove("active")
+});
+
+// Show category form
+catButton.addEventListener('click', function() {
+    budgetForm.style.display = "none";
+    expenseForm.style.display = "none";
+    catForm.style.display = "block";
+    overview[0].style.display = "none";
+    forms[0].style.display = "flex"
+
+    catButton.classList.add("active")
+    budgetButton.classList.remove("active")
+    expenseButton.classList.remove("active")
+});
+
+
 /* side bar menu
 -------------------------------------------*/
 
@@ -87,19 +152,47 @@ for(let category of categoriesList){
 
         category.classList.toggle("category-clicked");
         if (category.classList.contains("category-clicked")){
+
             for(let budget of budgetDropDown) {
+
+                const original_id = budget.id
+
                 if (categoryName === budget.id){
+
+                  if (budget.id.includes(" ")) {
+                    budget.id = budget.id.trim().replaceAll(" ", "-")
+                  }
+              
+                  if(budget.id.includes("'")) {
+                    budget.id = budget.id.replaceAll("'", "")
+                  }
+
                     dropDownItems = document.querySelector("#" + budget.id).querySelectorAll(".budget-item")
                     dropDownHeight = 100 * dropDownItems.length
                     document.querySelector("#" + budget.id).style.height = `${dropDownHeight}px`;
+
+                  budget.id = categoryName
                 }
             }
         }
 
         else {
         for(let budget of budgetDropDown) {
+
             if (categoryName === budget.id){
+
+              if (budget.id.includes(" ")) {
+                budget.id = budget.id.trim().replaceAll(" ", "-")
+              }
+          
+              if(budget.id.includes("'")) {
+                budget.id = budget.id.replaceAll("'", "")
+              }
+
                 document.querySelector("#" + budget.id).style.height = "0";
+
+              budget.id = categoryName
+
             }
         }
         }
@@ -109,23 +202,23 @@ for(let category of categoriesList){
 editCategories = document.getElementById("edit-categories")
 categoryButtons = document.querySelectorAll(".cat-btns-div")
 
-
 function categoryEditMode() {
   for(let button of categoryButtons){
-    if (button.style.overflow === "hidden"){
-      button.style.overflow = "visible"
-      button.style.height = "50px"
-      button.querySelector(".btn-secondary").style.height = "50px"
-      button.querySelector(".btn-danger").style.height = "50px"
-      editCategories.querySelector("button").textContent = "Quit Edit Mode"
-
-    }
-    else{
+    console.log(button.style.overflow)
+    if (button.style.overflow === "visible"){
       button.style.overflow = "hidden"
       button.style.height = "0"
       button.querySelector(".btn-secondary").style.height = "0"
       button.querySelector(".btn-danger").style.height = "0"
       editCategories.querySelector("button").textContent = "Edit Categories"
+
+    }
+    else{
+      button.style.overflow = "visible"
+      button.style.height = "50px"
+      button.querySelector(".btn-secondary").style.height = "50px"
+      button.querySelector(".btn-danger").style.height = "50px"
+      editCategories.querySelector("button").textContent = "Quit Edit Mode"
     }
 
   }
@@ -136,6 +229,73 @@ function categoryEditMode() {
 editCategories.addEventListener("click", categoryEditMode)
 
 
-function editOrDeleteCategory(e) {
+// category page popup menus
 
+const editButton = document.querySelectorAll(".edit-btn")
+
+for (let button of editButton){
+  button.addEventListener("click", (e)=> {
+    if (e.target.id.includes(" ")) {
+      e.target.id = e.target.id.trim()
+    }
+
+    if(e.target.id.includes("'")) {
+      e.target.id = e.target.id.replaceAll("'", "")
+    }
+
+    let idName = e.target.id
+    let categoryNameToEdit = idName.replace("edit-", "").trim()
+
+    console.log(categoryNameToEdit)
+
+    if (categoryNameToEdit.includes(" ")) {
+      categoryNameToEdit = categoryNameToEdit.trim().replaceAll(" ", "-")
+    }
+
+    if(categoryNameToEdit.includes("'")) {
+      categoryNameToEdit = categoryNameToEdit.replaceAll("'", "")
+    }
+
+    console.log(categoryNameToEdit)
+    console.log(e.target.id)
+
+    let editPopUp = document.querySelector("#edit-popup-" + categoryNameToEdit)
+    let editBackground = document.querySelector("#edit-background-" + categoryNameToEdit)
+    editPopUp.classList.toggle("category-edit-clicked")
+    editBackground.classList.toggle("category-edit-clicked")
+  })
+}
+
+const deleteCategoryButton = document.querySelectorAll(".delete-category")
+const deleteCategoryPopup = document.querySelectorAll(".category-delete-popup")
+
+for (let button of deleteCategoryButton) {
+  button.addEventListener("click", (e) => {
+    if (e.target.id.includes(" ")) {
+      e.target.id = e.target.id.trim().replace(" ", "-")
+    }
+
+    if(e.target.id.includes("'")) {
+      e.target.id = e.target.id.replace("'", "")
+    }
+
+    let idName = e.target.id
+    let categoryNameToDelete = idName.replace("delete-", "").trim()
+
+    if (categoryNameToDelete.includes(" ")) {
+      categoryNameToDelete = categoryNameToDelete.trim().replaceAll(" ", "-")
+    }
+
+    if(categoryNameToDelete.includes("'")) {
+      categoryNameToDelete = categoryNameToDelete.replaceAll("'", "")
+    }
+
+    console.log(categoryNameToDelete)
+
+    let deletePopUp = document.querySelector("#delete-category-" + categoryNameToDelete)
+    let deleteBackground = document.querySelector("#delete-background-" + categoryNameToDelete)
+    deletePopUp.classList.toggle("category-delete-clicked")
+    deleteBackground.classList.toggle("category-delete-clicked")
+
+  }) 
 }
