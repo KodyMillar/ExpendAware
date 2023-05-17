@@ -1,6 +1,4 @@
-/* side bar menu
--------------------------------------------*/
-
+/* Side Bar */
 closeButton = document.querySelector("#side-menu-close")
 sideMenu = document.querySelector("#menu-expand")
 menuIcon = document.querySelector(".menu-btn")
@@ -19,3 +17,4 @@ function closeMenu() {
 }
 
 closeButton.addEventListener("click", closeMenu)
+/* End of Side Bar*/
