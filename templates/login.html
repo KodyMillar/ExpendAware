@@ -15,70 +15,72 @@
 </head>
 
 <body>
-    <img id="login-logo" src="../static/images/logo.png" width="150" height="150"/>
+    <div id="outline">
+        <img id="login-logo" src="../static/images/logo.png" width="150" height="150"/>
 
-    <div id="login-register-btn">
-        <button id="login-tab" class="login-tab active" name="login-tab">Login</button>
-        <button id="reg-tab" class="login-tab">Register</button>
-    </div>
-
-    <form method="POST" action=" /login " class="info-to-fill" id="login-form">
-        <h1 class="info-title">Login</h1>
-
-        <label for="email">Email Address</label>
-        <input type="text" placeholder="Email Address" id="email" name="email" autocomplete="email" required/>
-
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" name="password" required/>
-
-        <div>
-            <ul id="flash-messages" class="show">
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </ul>
+        <div id="login-register-btn">
+            <button id="login-tab" class="login-tab active" name="login-tab">Login</button>
+            <button id="reg-tab" class="login-tab">Register</button>
         </div>
-        
-        <label for="remember-me">
-            <input type="checkbox" id="remember-me" name="rememberMe"> 
-            Remember Me
-        </label>
-        <button type="submit" id="login-button">Login</button>
-        <a href="#" id="forgot-password">Forgot Password?</a>
-    </form>
-    
-    
-    <form method="POST" action="{{ url_for('login') }}" class="info-to-fill" id="reg-form">
-        <h1 class="info-title">Register</h1>
 
-        <label for="email">Email Address</label>
-        <input type="text" placeholder="Email Address" id="reg-email" name="reg-email" required/>
-        
-        <label for="nickname">Name</label>
-        <input type="text" placeholder="Name" id="nickname" name="nickname" required/>
-        
-        <label for="pwd1">Password</label>
-        <input type="password" placeholder="Password" id="pwd1" name="pwd1" required/>
-        
-        <label for="pwd2">Confirm Password</label>
-        <input type="password" placeholder="Confirm Password" id="pwd2" name="pwd2" required/>
-        
-        <button type="submit" id="reg-button">Register</button>
+        <form method="POST" action=" /login " class="info-to-fill" id="login-form">
+            <h1 class="info-title">Login</h1>
 
-        <div id = "overlay">
-            <div id="custom-alert" class="alert1">
-                <div class="alert-content">
-                    <span id="alert-message"></span>
-                    <button id="alert-okay">x</button>
+            <label for="email">Email Address</label>
+            <input type="text" placeholder="Email Address" id="email" name="email" autocomplete="email" required/>
+
+            <label for="password">Password</label>
+            <input type="password" placeholder="Password" id="password" name="password" required/>
+
+            <div>
+                <ul id="flash-messages" class="show">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </ul>
+            </div>
+            
+            <label for="remember-me">
+                <input type="checkbox" id="remember-me" name="rememberMe"> 
+                Remember Me
+            </label>
+            <button type="submit" id="login-button">Login</button>
+            <a href="#" id="forgot-password">Forgot Password?</a>
+        </form>
+        
+        
+        <form method="POST" action="{{ url_for('login') }}" class="info-to-fill" id="reg-form">
+            <h1 class="info-title">Register</h1>
+
+            <label for="email">Email Address</label>
+            <input type="text" placeholder="Email Address" id="reg-email" name="reg-email" required/>
+            
+            <label for="nickname">Name</label>
+            <input type="text" placeholder="Name" id="nickname" name="nickname" required/>
+            
+            <label for="pwd1">Password</label>
+            <input type="password" placeholder="Password" id="pwd1" name="pwd1" required/>
+            
+            <label for="pwd2">Confirm Password</label>
+            <input type="password" placeholder="Confirm Password" id="pwd2" name="pwd2" required/>
+            
+            <button type="submit" id="reg-button">Register</button>
+            
+            <div id = "overlay">
+                <div id="custom-alert" class="alert1">
+                    <div class="alert-content">
+                        <span id="alert-message"></span>
+                        <button id="alert-okay">x</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
-
+        </form>
+    </div>
+    
     <script>
     
     // Active Tab //
@@ -196,5 +198,15 @@
             // Handle any errors
         });
     // End of Register Alert //
+
+    // Remember Me //
+        const emailInput = document.getElementById('email');
+        const rememberMe = document.getElementById('rememberMe');
+
+        if (localStorage.getItem('r')) {
+
+        }
+
+    // End of Remember Me //
     </script>
 </body>
