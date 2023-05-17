@@ -1,20 +1,5 @@
 [
     {
-        "name": "Grocery Vegetables",
-        "amount": 50,
-        "category": "Food"
-    },
-    {
-        "name": "Dine Out",
-        "amount": "200",
-        "category": "Food"
-    },
-    {
-        "name": "Bakery",
-        "amount": "100",
-        "category": "Food"
-    },
-    {
         "name": "Casual",
         "amount": "200",
         "category": "Clothing"
@@ -25,8 +10,8 @@
         "category": "Transit"
     },
     {
-        "name": "Delivery",
-        "amount": "200",
+        "name": "Groceries",
+        "amount": "500",
         "category": "Food"
     }
 ]

@@ -1,72 +1,72 @@
 [
     {
         "action": "Created Expense",
-        "name": "Housing",
-        "amount": "50",
-        "description": "steak",
-        "date": "16 May 2023"
+        "name": "Food",
+        "amount": "100",
+        "description": "Steak",
+        "date": "17 May 2023"
     },
     {
         "action": "Created Expense",
-        "name": "Housing",
-        "amount": "500",
-        "description": "Turkey",
-        "date": "16 May 2023"
+        "name": "food",
+        "amount": "50",
+        "description": "Steak",
+        "date": "17 May 2023"
     },
     {
         "action": "Created Expense",
         "name": "Housing",
         "amount": "20",
-        "description": "Amanita Mascaria",
-        "date": "16 May 2023"
+        "description": "fruit",
+        "date": "17 May 2023"
     },
     {
         "action": "Created Expense",
         "name": "Housing",
-        "amount": "10",
-        "description": "rocks",
-        "date": "16 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Housing",
-        "amount": "100",
-        "description": "shrooms",
-        "date": "16 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Housing",
-        "amount": "200",
-        "description": "last",
-        "date": "16 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Housing",
-        "amount": "5",
-        "description": "Dippin Dots",
-        "date": "16 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Housing",
-        "amount": "10",
-        "description": "butter",
-        "date": "16 May 2023"
+        "amount": "30",
+        "description": "Steak",
+        "date": "17 May 2023"
     },
     {
         "action": "Created Expense",
         "name": "Housing",
         "amount": "100",
-        "description": "Butter Chicken",
-        "date": "16 May 2023"
+        "description": "Groceries",
+        "date": "17 May 2023"
     },
     {
         "action": "Created Expense",
         "name": "Housing",
-        "amount": "100",
-        "description": "Test",
+        "amount": "20",
+        "description": "Ramen",
+        "date": "17 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Housing",
+        "amount": "50",
+        "description": "The Keg Steakhouse",
+        "date": "17 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Housing",
+        "amount": "15",
+        "description": "Ramen",
+        "date": "17 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Housing",
+        "amount": "50",
+        "description": "Steak",
+        "date": "17 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Housing",
+        "amount": "50",
+        "description": "steak",
         "date": "16 May 2023"
     }
 ]

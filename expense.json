@@ -1,12 +1,8 @@
 [
     {
-        "descr": "Turkey",
-        "amount": "500",
-        "category": "Food"
-    },
-    {
-        "descr": "steak",
-        "amount": "50",
-        "category": "Food"
+        "descr": "Steak",
+        "amount": "100",
+        "category": "Food",
+        "budget": "Groceries"
     }
 ]
