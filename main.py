@@ -384,6 +384,7 @@ def login():
         nameReg = request.form.get("nickname")
         emailReg = request.form.get("reg-email")
         pwd1Reg = request.form.get("pwd1")
+        newPwd = request.form.get("new-pwd-1")
         
         if not nameReg:
             userEmail = User.get(emailInput)
@@ -392,6 +393,10 @@ def login():
                 return redirect(url_for("index"))
             flash('Incorrect email or password')
             return redirect(url_for('login'))
+        
+        elif newPwd: 
+            
+        
         
         else:
             hashPwd = generate_password_hash(pwd1Reg, method="sha256")
@@ -402,6 +407,7 @@ def login():
             with open("login.json", "w") as file:
                 json.dump(users, file, indent=4)
             return redirect(url_for('index'))
+        
 
     return render_template("login.html")
 ## End of Login & Register Code
