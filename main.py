@@ -82,7 +82,8 @@ def index():
                     "descr": descr,
                     "amount": amount,
                     "category": category,
-                    "budget": budget
+                    "budget": budget,
+                    "date": current_date
                 }
                 existing_expense.append(new_expense)
                 for category in existing_category:
@@ -290,7 +291,7 @@ def categories():
 
     return render_template("categories.html", categories=categories, total_budgets=total_budget_list, budgets=budgets)
 
-
+# Expense Page
 @app.route('/categories/<budget_name>', methods=['GET', 'POST'])
 @login_required
 def budget_detail(budget_name):
@@ -310,6 +311,18 @@ def budget_detail(budget_name):
 
     return render_template('expenses.html', budget=budget, budget_expenses=budget_expenses, total_expense=total_expense, remaining=remaining)
 
+@app.route('/clear_expenses/<budget_name>', methods=['DELETE'])
+@login_required
+def clear_expenses(budget_name):
+    with open('expense.json', 'r') as f:
+        expenses = json.load(f)
+        
+    filtered_expenses = [expense for expense in expenses if expense['budget'] != budget_name]
+    
+    with open('expense.json', 'w') as f:
+        json.dump(filtered_expenses, f)
+    
+    return jsonify({'status': 'success'}), 200
 
 
 ## Transfer Page

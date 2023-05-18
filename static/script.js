@@ -175,7 +175,7 @@ function categoryEditMode() {
 
 }
 
-editCategories.addEventListener("click", categoryEditMode)
+// editCategories.addEventListener("click", categoryEditMode)
 
 
 // category page popup menus
@@ -259,3 +259,20 @@ for (let button of deleteCategoryButton) {
 
   }) 
 }
+
+// Expense page
+document.addEventListener('DOMContentLoaded', (event) => {
+  let budgetNames = document.querySelectorAll(".clear-expenses-button").forEach((button) => {
+      button.addEventListener('click', () => {
+          let budgetName = button.id.replace('clear-expenses-', '');
+          fetch(`${window.location.origin}/clear_expenses/${budgetName}`, {method: 'DELETE'})
+              .then(response => response.json())
+              .then(data => {
+                  if (data.status === 'success') {
+                      location.reload();
+                  }
+              })
+              .catch(error => console.error('Error:', error));
+      });
+  });
+});
