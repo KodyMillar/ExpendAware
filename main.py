@@ -379,28 +379,38 @@ def login():
     users = existing_user
     newUser = {}
 
+
+    # for user in users:
+    #     # if user['email'] == secEmail and newPwd != "":
+    #         user['password'] = 'generate_password_hash(newPwd, method="sha256")'
+    #         # return redirect(url_for('login'))
+    # with open("login.json", "w") as file:
+    #     json.dump(users, file, indent=4)
+        
     if request.method == 'POST':
         emailInput = request.form.get("email")
         nameReg = request.form.get("nickname")
         emailReg = request.form.get("reg-email")
         pwd1Reg = request.form.get("pwd1")
-        newPwd = request.form.get("new-pwd-1")
-        secEmail = request.form.get("sec-email")
         secQeustion = request.form.get("security-question")
         secAnswer = request.form.get("security-answer")
+        secEmail = request.form.get("sec-email")
+        newPwd = request.form.get("newPwd1")           
         
-        if not nameReg:
+        if not nameReg and not newPwd:
             userEmail = User.get(emailInput)
             if userEmail:
                 login_user(userEmail, remember=True)
                 return redirect(url_for("index"))
             flash('Incorrect email or password')
             return redirect(url_for('login'))
-        elif newPwd: 
+        elif newPwd:
             for user in users:
                 if user['email'] == secEmail:
                     user['password'] = generate_password_hash(newPwd, method="sha256")
-                    return redirect(url_for('login'))
+            with open("login.json", "w") as file:
+                json.dump(users, file, indent=4)
+            ##return redirect(url_for('login'))
         else:
             hashPwd = generate_password_hash(pwd1Reg, method="sha256")
             newUser['name'] = nameReg

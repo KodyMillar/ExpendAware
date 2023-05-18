@@ -97,7 +97,7 @@
 
     <div id="fgt-overlay">
         <div id="fgt-flex">
-            <form id="fgt-container">
+            <form method="POST" id="fgt-container">
                 <div id="email-check">
                     <label for="sec-email">Your Email</label>
                     <input type="text" id="sec-email" placeholder="email" name="sec-email"></input>
@@ -330,12 +330,10 @@
                 const findUser = data.find(x => x.email === secEmail.value);
                 const securityCheck = document.getElementById("security-check");
                 const pwdCheck = document.getElementById("pwd-check");
-                console.log(emailExists);
-                console.log(securityCheck.style.display);
                 if (emailExists && securityCheck.style.display === "") {
                     event.preventDefault();
                     securityCheck.style.display = "block";
-                    const securityQ = findUser.security;
+                    const securityQ = findUser.question;
                     document.getElementById('sec-q').innerHTML = securityQ;
                     console.log('inside');
                 }
