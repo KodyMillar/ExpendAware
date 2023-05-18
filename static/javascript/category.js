@@ -119,6 +119,20 @@ for (let button of editButton){
     })
 }
 
+categoryEditPopup = document.querySelectorAll(".category-edit-popup")
+popupBackground = document.querySelectorAll(".category-edit-background")
+
+for (let background of popupBackground) {
+  background.addEventListener("click", ()=> {
+    for (let popup of categoryEditPopup) {
+      if (popup.classList.contains("category-edit-clicked")) {
+        popup.classList.toggle("category-edit-clicked")
+        background.classList.toggle("category-edit-clicked")
+      }
+    }
+  })
+}
+
 const deleteCategoryButton = document.querySelectorAll(".delete-category")
 const deleteCategoryPopup = document.querySelectorAll(".category-delete-popup")
 
