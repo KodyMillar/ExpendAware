@@ -80,7 +80,7 @@ button {
     align-self: center;
 }
 
-#login-button, #reg-button {
+#login-button, #reg-button, #fgt-btn {
     font-size: 18px;
     font-weight: bold;
     margin: 20px 0;
@@ -130,7 +130,7 @@ button {
 
 
 /* Alert Message for Register */
-#overlay {
+#overlay, #fgt-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -171,3 +171,43 @@ button {
     margin-left: 10px;
 }
 /* Alert Message for Register */
+
+
+/* Forgot password */
+#fgt-flex {
+    display: flex;
+    border: solid 2px rgb(131, 131, 131, 0.5);
+    margin-bottom: 30px;
+
+
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    background-color: #e2c7c7;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 23px;
+    text-align: center;
+}
+
+#fgt-container {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+
+#fgt-exit {
+    align-self: flex-start;
+}
+
+#forgot-password {
+    cursor: pointer;
+}
+
+#security-check, #pwd-check {
+    display: none;
+}
+
+/* End of Forgot Password */
