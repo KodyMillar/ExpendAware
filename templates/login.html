@@ -68,39 +68,52 @@
             <label for="pwd2">Confirm Password</label>
             <input type="password" placeholder="Confirm Password" id="pwd2" name="pwd2" required/>
             
+            <label for="security-question">Pick one question</label>
+            <select id="security-question" name="security-question">
+                <option>What was your childhood nickname?</option>
+                <option>What is your favourite food?</option>
+                <option>When was your first penta kill?</option>
+                <option>In what city or town was your first job?</option>
+                <option>What was the name of your first stuffed animal?</option>
+                <option>What was your childhood nickname?</option>
+            </select>
+
+            <label for="security-answer">Answer</label>
+            <input id="security-answer" name="security-answer" required/>
+
             <button type="submit" id="reg-button">Register</button>
             
+            <div id = "overlay">
+                <div id="alert-container">
+                    <div id="alert-flex">
+                        <span id="alert-message"></span>
+                        <button id="alert-okay">x</button>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 
-    <div id = "overlay">
-        <div id="alert-container">
-            <div id="alert-flex">
-                <span id="alert-message"></span>
-                <button id="alert-okay">x</button>
-            </div>
-        </div>
-    </div>
 
     <div id="fgt-overlay">
         <div id="fgt-flex">
             <form id="fgt-container">
                 <div id="email-check">
-                <label for="sec-email">Your Email</label>
-                <input type="text" id="sec-email" placeholder="email" name="sec-email"></input>
+                    <label for="sec-email">Your Email</label>
+                    <input type="text" id="sec-email" placeholder="email" name="sec-email"></input>
                 </div>
 
                 <div id="security-check">
-                <label for="sec-a" id="sec-q"></label>
-                <input type="text" id="sec-a" placeholder="answer"></input>
+                    <label for="sec-a" id="sec-q"></label>
+                    <input type="text" id="sec-a" placeholder="answer"></input>
                 </div>
 
                 <div id="pwd-check">
-                <label for="new-pwd-1">New Password</label>
-                <input type="password" id="new-pwd-1" name="newPwd1"></input>
+                    <label for="new-pwd-1">New Password</label>
+                    <input type="password" id="new-pwd-1" name="newPwd1"></input>
 
-                <label for="new-pwd-2">Confirm new Password</label>
-                <input type="password" id="new-pwd-2"></input>
+                    <label for="new-pwd-2">Confirm new Password</label>
+                    <input type="password" id="new-pwd-2"></input>
                 </div>
 
                 <button type="submit" id="fgt-btn">Submit</button>
@@ -109,10 +122,6 @@
             <button id="fgt-exit">x</button>
         </div>
     </div>
-    <form>
-        <button type="submit">Submit</button>
-    </form>
-
 
     
     <script>
@@ -168,6 +177,7 @@
         const nickname = document.getElementById('nickname');
         const regEmail = document.getElementById('reg-email');
         const regBtn = document.getElementById('reg-button');
+        const secAnswerInput = document.getElementById('security-answer')
         
         // Alert Display IDs //
         const overlay = document.getElementById('overlay');
@@ -187,7 +197,9 @@
         alertOkayButton.addEventListener('click', function(event) {
             if (alertMessage.innerHTML !== "Success!") {
                 event.preventDefault();
+                console.log("inside")
             }
+            console.log("outside")
             overlay.style.display = 'none';
         });
         
@@ -206,7 +218,7 @@
             regBtn.addEventListener('click', function(event) {
                 const emailExists = data.some(x => x.email === regEmail.value);
                 alertOkayButton.innerHTML = "x";
-                if (pwd1.value === "" || pwd2.value === "" || nickname.value === "" || regEmail.value == "") {
+                if (pwd1.value === "" || pwd2.value === "" || nickname.value === "" || regEmail.value == "" || secAnswerInput.value == "") {
                     //event.preventDefault();
                     //overlay.style.display = "flex";
                     //showAlert("Missing Values");

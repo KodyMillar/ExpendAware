@@ -386,6 +386,8 @@ def login():
         pwd1Reg = request.form.get("pwd1")
         newPwd = request.form.get("new-pwd-1")
         secEmail = request.form.get("sec-email")
+        secQeustion = request.form.get("security-question")
+        secAnswer = request.form.get("security-answer")
         
         if not nameReg:
             userEmail = User.get(emailInput)
@@ -404,9 +406,13 @@ def login():
             newUser['name'] = nameReg
             newUser['password'] = hashPwd
             newUser['email'] = emailReg
+            newUser['question'] = secQeustion
+            newUser['answer'] = secAnswer
             users.append(newUser)
             with open("login.json", "w") as file:
                 json.dump(users, file, indent=4)
+            userEmail = User.get(emailReg)
+            login_user(userEmail)
             return redirect(url_for('index'))
         
 
