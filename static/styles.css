@@ -181,6 +181,8 @@ li button:hover {
     margin-bottom: 30px;
     width: calc(33.333% - 20px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: auto;
+    margin-left: auto;
 }
 #budget-container {
     background-color: #ACB1D6;
@@ -199,6 +201,19 @@ li button:hover {
     width: 100%;
     max-width: 1200px;
     padding: 30px;
+}
+
+#category-names {
+    display: none;
+}
+
+#budget-names {
+    display: none;
+}
+
+.alert-primary {
+    left: 35%;
+    bottom: 20%;
 }
 
 
@@ -1182,7 +1197,8 @@ font-weight: bold;
 /* Media queries for larger screens */
 @media screen and (min-width: 768px) {
     #budget-container, #expense-container, #category-container {
-        width: calc(33.333% - 20px);
+        width: calc(66.66% - 20px);
+        height: 120%;
         margin-bottom: 30px;
     }
     h1 {

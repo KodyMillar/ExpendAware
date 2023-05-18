@@ -74,7 +74,7 @@ const appendAlert = (message, type) => {
                 <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
             </svg>
             <div>
-                Cannot make this transaction
+                ${message}
             </div>
         </div>`
 
@@ -90,9 +90,40 @@ const appendAlert = (message, type) => {
 }
 
 
-const alertTrigger = document.getElementById('liveAlertBtn')
-if (alertTrigger) {
-    alertTrigger.addEventListener('click', () => {
-    appendAlert("", 'success')
-    })
+// const alertTrigger = document.getElementById('liveAlertBtn')
+// if (alertTrigger) {
+//     alertTrigger.addEventListener('click', () => {
+//     appendAlert("", 'success')
+//     })
+// }
+
+const addCategoryForm = document.forms["add-category-form"]
+const addBudgetForm = document.forms["add-budget-form"]
+const addExpenseForm = document.forms["add-expense-form"]
+
+const categoryNames = document.querySelectorAll(".category-name")
+const budgetNames = document.querySelectorAll(".budget-name")
+
+addCategoryForm.onsubmit = function(e) {
+    
+    let newCategoryName = addCategoryForm.category.value
+
+    console.log(newCategoryName.trim().toLowerCase())
+
+    for (let category of categoryNames) {
+        if (category.textContent.trim().toLowerCase() === newCategoryName.trim().toLowerCase()) {
+            appendAlert("Category already exists")
+            e.preventDefault();
+        }
+    }
+}
+
+addBudgetForm.onsubmit = function(e) {
+    
+    for (let budget of budgetNames) {
+        if(budget.textContent.trim().toLowerCase() === addBudgetForm.name.value.trim().toLowerCase()) {
+            appendAlert("Budget already exists");
+            e.preventDefault();
+        }
+    }
 }
