@@ -101,14 +101,6 @@
       </select>
       <button type="submit">Add Budget</button>
     </form>
-    <ul id="budget-list">
-      {% for b in budgets %}
-      <li class="transaction-list">
-        <p>{{ b.category }} - {{ b.name }}</p>
-        <p>${{ b.amount }}</p>
-      </li>
-      {% endfor %}
-    </ul>
   </div>
 
   <div id="expense-container">
@@ -152,14 +144,6 @@
   
       <button type="submit">Add Expense</button>
     </form>
-    <ul id="expense-list">
-      {% for e in expenses %}
-      <li class="transaction-list">
-        <p>{{ e.category }} - {{ e.descr }}</p>
-        <p>${{ e.amount }}</p>
-      </li>
-      {% endfor %}
-    </ul>
   </div>
 
   <div id="category-container">
@@ -177,27 +161,9 @@
       <button type="submit">Add Category</button>
     </form>
     <ul id="added-category-list">
-      {% for category in categories %}
-      <li class="transaction-list">
-        <p>{{ category.category }}</p>
-      </li>
-      {% endfor %}
     </ul>
   </div>
 </div>
-
-
-<div id="homepage-totals">
-  <p>Total Budget: {{ total_budget }}</p>
-  <p>Total Expenses: {{ total_expenses }}</p>
-</div>
-
-<!-- <a href="/login" class="logout-link">
-
-<a href="/login" class="logout-link">
-main
-  <button>Logout</button>
-</a> -->
 
 <footer>
 </footer>

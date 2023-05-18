@@ -82,7 +82,8 @@ def index():
                     "descr": descr,
                     "amount": amount,
                     "category": category,
-                    "budget": budget
+                    "budget": budget,
+                    "date": current_date
                 }
                 existing_expense.append(new_expense)
                 for category in existing_category:
@@ -92,7 +93,7 @@ def index():
         
                 new_action = {
                     "action": "Created Expense",
-                    "name": category['category'],
+                    "name": new_expense["category"],
                     "amount": amount,
                     "description": descr,
                     "date": current_date
@@ -223,19 +224,39 @@ def categories():
             new_budget_amount = int(request.form[list(request.form)[0]])
             for budget in budget_list:
                 if budget_name == budget['name']:
-                    budget['amount'] = new_budget_amount
+                    total_expense = 0
+                    for expense in expenses:
+                        if expense["budget"] == budget["name"]:
+                            total_expense += int(expense["amount"])
+                    if total_expense <= new_budget_amount:
+                        budget['amount'] = new_budget_amount
             with open("budget.json", "w") as file:
                 json.dump(budget_list, file)
 
         elif "delete budget" in list(request.form)[0]:
             budget_to_delete = list(request.form)[0][14:]
             new_budget_list = []
+            new_expense_list = []
             for budget in budget_list:
                 if budget_to_delete != budget["name"]:
                     new_budget_list.append(budget)
+                elif budget_to_delete == budget["name"]:
+                    for category in categories:
+                        if category["category"] == budget["category"]:
+                            category["total budget"] -= int(budget["amount"])
+                            for expense in expenses:
+                                if expense["budget"] == budget["name"]:
+                                    category["total expenses"] -= int(expense["amount"])
+                                else:
+                                    new_expense_list.append(expense)
+
             with open("budget.json", "w") as file:
                 json.dump(new_budget_list, file)
             budget_list = new_budget_list
+            with open("category.json", "w") as file:
+                json.dump(categories, file)
+            with open("expense.json", "w") as file:
+                json.dump(new_expense_list, file)
 
         elif "delete category" in list(request.form)[0]:
             category_list = categories
@@ -270,7 +291,7 @@ def categories():
 
     return render_template("categories.html", categories=categories, total_budgets=total_budget_list, budgets=budgets)
 
-
+# Expense Page
 @app.route('/categories/<budget_name>', methods=['GET', 'POST'])
 @login_required
 def budget_detail(budget_name):
@@ -290,6 +311,18 @@ def budget_detail(budget_name):
 
     return render_template('expenses.html', budget=budget, budget_expenses=budget_expenses, total_expense=total_expense, remaining=remaining)
 
+@app.route('/clear_expenses/<budget_name>', methods=['DELETE'])
+@login_required
+def clear_expenses(budget_name):
+    with open('expense.json', 'r') as f:
+        expenses = json.load(f)
+        
+    filtered_expenses = [expense for expense in expenses if expense['budget'] != budget_name]
+    
+    with open('expense.json', 'w') as f:
+        json.dump(filtered_expenses, f)
+    
+    return jsonify({'status': 'success'}), 200
 
 
 ## Transfer Page
