@@ -41,8 +41,11 @@ for(let category of categoriesList){
                     dropDownHeight = 100 * dropDownItems.length
                     document.querySelector("#" + budget.id).style.height = `${dropDownHeight}px`;
                     budget.id = categoryName
+
+                    
                 }
             }
+
         }
 
         else {
@@ -62,6 +65,8 @@ for(let category of categoriesList){
                 }
             }
         }
+
+        // if (category.classList.)
     });
 }
 

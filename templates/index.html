@@ -33,7 +33,7 @@
     <ul id="transaction-list">
       {% if history | length > 0 %}
       {% for action in history %}
-      <li class="transaction"> {{ action['action'] }} | {{ action['name'] }} - ${{ action['amount'] }} | {{ action['date'] }} {{ action['description'] }}</li>
+      <li class="transaction"> {{ action['action'] }} | {{ action['name'] }} - ${{ action['amount'] }} | {{ action['date'] }} <br> {{ action['description'] }}</li>
       {% endfor %}
       {% else %}
       <p>No transactions yet</p>
@@ -52,18 +52,18 @@
           <div class="category-view">
             <h3>{{ category['category'] }}</h3>
             <h5>Total Budget: ${{ category['total budget'] }}</h5>
-            <h5>Total Expenses: {{ category['total expenses'] }}</h5>
+            <h5>Total Expenses: ${{ category['total expenses'] }}</h5>
           
-              <div class="percent-label">
-              {% if category['total budget'] != 0 %}
-              <label class="calculated-percent"> {{ '%0.0f' | format((category['total expenses'] / category['total budget']) * 100) | int}}% Spent</label>
-              <div class="percentage-bar"><div class="percentage"></div></div>
-              {% else %}
-              <label>No budgets yet</label>
-              {% endif %}
-              <div></div>
-              </div>
+              
           </div>
+          <div class="percent-label">
+            {% if category['total budget'] != 0 %}
+            <label class="calculated-percent"> {{ '%0.0f' | format((category['total expenses'] / category['total budget']) * 100) | int}}% Spent</label>
+            <div class="percentage-bar"><div class="percentage"></div></div>
+            {% else %}
+            <label>No budgets yet</label>
+            {% endif %}
+            </div>
       </div>
       {% endfor %}
     </div>
