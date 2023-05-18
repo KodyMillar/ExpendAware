@@ -971,39 +971,61 @@ a {
 .bt_container-grid {
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  margin-top: 50px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .bt_container {
-  width: 600px; /* Adjust this value according to your requirement */
+  width: 1000px;
   text-align: center;
+  padding: 40px;
+  position: relative;
 }
 
 .bt_category-title,
 .bt_budget-name {
   font-size: 2em;
   font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .bt_budget {
   display: flex;
   justify-content: space-between;
   font-size: 1.2em;
-  margin: 15px 0;
+  margin-top: 50px;
+  padding-bottom: 15px;
 }
 
 .bt_expense {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 30%;
+  justify-items: start;
   font-size: 1em;
-  margin: 10px 0;
+  padding-bottom: 20px;
 }
+
+
+.bt_date {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
 
 hr {
   border: none;
   border-top: 1px solid black;
+  width: 1000px; 
+  max-width: 100%;  
+}
 
+.clear-expenses-button {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  padding: 10px;
 }
 
 
@@ -1417,6 +1439,7 @@ font-weight: bold;
     .expenses-section h4 {
       font-size: 30px;
     }
+
 }
 /* End of home page desktop design */
 
