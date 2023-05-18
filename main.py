@@ -385,6 +385,7 @@ def login():
         emailReg = request.form.get("reg-email")
         pwd1Reg = request.form.get("pwd1")
         newPwd = request.form.get("new-pwd-1")
+        secEmail = request.form.get("sec-email")
         
         if not nameReg:
             userEmail = User.get(emailInput)
@@ -393,11 +394,11 @@ def login():
                 return redirect(url_for("index"))
             flash('Incorrect email or password')
             return redirect(url_for('login'))
-        
         elif newPwd: 
-            
-        
-        
+            for user in users:
+                if user['email'] == secEmail:
+                    user['password'] = generate_password_hash(newPwd, method="sha256")
+                    return redirect(url_for('login'))
         else:
             hashPwd = generate_password_hash(pwd1Reg, method="sha256")
             newUser['name'] = nameReg

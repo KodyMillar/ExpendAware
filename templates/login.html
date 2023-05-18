@@ -87,7 +87,7 @@
             <form id="fgt-container">
                 <div id="email-check">
                 <label for="sec-email">Your Email</label>
-                <input type="text" id="sec-email" placeholder="email"></input>
+                <input type="text" id="sec-email" placeholder="email" name="sec-email"></input>
                 </div>
 
                 <div id="security-check">
@@ -342,6 +342,9 @@
                 if (newPwd1.value !== newPwd2.value && newPwd1.value !== "") {
                     event.preventDefault();
                     alert("password not match")
+                } else if (newPwd1.value.length < 8 && newPwd1.value !== "") {
+                    event.preventDefault();
+                    alert("Password must be longer than 8 characters");
                 }
                 
             });
