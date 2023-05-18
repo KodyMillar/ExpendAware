@@ -97,10 +97,10 @@
 
                 <div id="pwd-check">
                 <label for="new-pwd-1">New Password</label>
-                <input id="new-pwd-1" disabled></input>
+                <input type="password" id="new-pwd-1"></input>
 
                 <label for="new-pwd-2">Confirm new Password</label>
-                <input id="new-pwd-2" disabled></input>
+                <input type="password" id="new-pwd-2"></input>
                 </div>
 
                 <button type="submit" id="fgt-btn">Submit</button>
@@ -319,23 +319,31 @@
                 const securityCheck = document.getElementById("security-check");
                 const pwdCheck = document.getElementById("pwd-check");
                 console.log(emailExists);
-                if (emailExists) {
+                console.log(securityCheck.style.display);
+                if (emailExists && securityCheck.style.display === "") {
                     event.preventDefault();
                     securityCheck.style.display = "block";
                     const securityQ = findUser.security;
-                    document.getElementById('sec-q').innerHTML = securityQ
-                    
-                    console.log(secAnswer.value);
-                    
+                    document.getElementById('sec-q').innerHTML = securityQ;
+                    console.log('inside');
                 }
                 
                 const securtyA = findUser.answer;
-                if (securtyA === secAnswer.value) {
+                if (securtyA === secAnswer.value && pwdCheck.style.display === "") {
+                    event.preventDefault();
                     pwdCheck.style.display = "flex";
                     pwdCheck.style.flexDirection = "column";
                     //    alert("wrong answer");
                     //    event.preventDefault();
                 }
+
+                console.log(pwdCheck.style.display)
+
+                if (newPwd1.value !== newPwd2.value && newPwd1.value !== "") {
+                    event.preventDefault();
+                    alert("password not match")
+                }
+                
             });
         })
         .catch(error => {
