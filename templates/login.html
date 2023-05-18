@@ -49,7 +49,7 @@
                 Remember Me
             </label>
             <button type="submit" id="login-button">Login</button>
-            <a href="#" id="forgot-password">Forgot Password?</a>
+            <span id="forgot-password">Forgot Password?</span>
         </form>
         
         
@@ -70,16 +70,50 @@
             
             <button type="submit" id="reg-button">Register</button>
             
-            <div id = "overlay">
-                <div id="alert-container">
-                    <div id="alert-flex">
-                        <span id="alert-message"></span>
-                        <button id="alert-okay">x</button>
-                    </div>
-                </div>
-            </div>
         </form>
     </div>
+
+    <div id = "overlay">
+        <div id="alert-container">
+            <div id="alert-flex">
+                <span id="alert-message"></span>
+                <button id="alert-okay">x</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="fgt-overlay">
+        <div id="fgt-flex">
+            <form id="fgt-container">
+                <div id="email-check">
+                <label for="sec-email">Your Email</label>
+                <input type="text" id="sec-email" placeholder="email"></input>
+                </div>
+
+                <div id="security-check">
+                <label for="sec-a" id="sec-q"></label>
+                <input type="text" id="sec-a" placeholder="answer"></input>
+                </div>
+
+                <div id="pwd-check">
+                <label for="new-pwd-1">New Password</label>
+                <input id="new-pwd-1" disabled></input>
+
+                <label for="new-pwd-2">Confirm new Password</label>
+                <input id="new-pwd-2" disabled></input>
+                </div>
+
+                <button type="submit" id="fgt-btn">Submit</button>
+            </form>
+
+            <button id="fgt-exit">x</button>
+        </div>
+    </div>
+    <form>
+        <button type="submit">Submit</button>
+    </form>
+
+
     
     <script>
     
@@ -239,5 +273,75 @@
             }
         });
     // End of Remember Me //
+
+
+    // Forget Password //
+        // User input in Reset Form //
+        const newPwd1 = document.getElementById('new-pwd-1');
+        const newPwd2 = document.getElementById('new-pwd-2');
+        const secEmail = document.getElementById('sec-email');
+        const secAnswer = document.getElementById('sec-a')
+        const fgtBtn = document.getElementById('fgt-btn');
+        const fgtPwd = document.getElementById('forgot-password');
+        
+        // Alert Display IDs //
+        const fgtOverlay = document.getElementById('fgt-overlay');
+        const fgtFlex = document.getElementById('fgt-flex');
+        const fgtContainer = document.getElementById('fgt-container');
+        const fgtExit = document.getElementById('fgt-exit');
+        
+        // Click to exit form // 
+        fgtExit.addEventListener('click', function(event) {
+            event.preventDefault();
+            fgtOverlay.style.display = 'none';
+        });
+        
+        // Click overlay to exit alert  //
+        overlay.addEventListener('click', function(event) {
+            if (event.target === overlay) {
+                overlay.style.display = 'none';
+            }
+        });
+
+        // Click forgot link to show form
+        fgtPwd.addEventListener('click', () => {
+            fgtOverlay.style.display = "block"
+        });
+
+        // Fetch login JSON and Rest Password //
+        fetch('login.json')
+        .then(response => response.json())
+        .then(data => {
+            // Handle the retrieved JSON data
+            fgtBtn.addEventListener('click', function(event) {
+                const emailExists = data.some(x => x.email === secEmail.value);
+                const findUser = data.find(x => x.email === secEmail.value);
+                const securityCheck = document.getElementById("security-check");
+                const pwdCheck = document.getElementById("pwd-check");
+                console.log(emailExists);
+                if (emailExists) {
+                    event.preventDefault();
+                    securityCheck.style.display = "block";
+                    const securityQ = findUser.security;
+                    document.getElementById('sec-q').innerHTML = securityQ
+                    
+                    console.log(secAnswer.value);
+                    
+                }
+                
+                const securtyA = findUser.answer;
+                if (securtyA === secAnswer.value) {
+                    pwdCheck.style.display = "flex";
+                    pwdCheck.style.flexDirection = "column";
+                    //    alert("wrong answer");
+                    //    event.preventDefault();
+                }
+            });
+        })
+        .catch(error => {
+            // Handle any errors
+        });
+
+    // End of Forget Password //
     </script>
 </body>
