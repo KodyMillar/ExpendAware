@@ -23,7 +23,7 @@ def update_categories_budgets(categories, budgets, expenses):
     return categories
 
 # Check for errors in user input
-def validate_amount(amount, name, total_expense=None, total_budget=None):
+def validate_amount(amount, total_expense=None, total_budget=None):
     try:
         int(amount)
     except ValueError:
@@ -33,7 +33,6 @@ def validate_amount(amount, name, total_expense=None, total_budget=None):
     if total_expense and total_budget:
         if (int(total_expense) + int(amount)) > int(total_budget):
             return False
-    
     return True
 
 def check_for_existing(name_input, existing_list, criteria):
@@ -109,7 +108,7 @@ def index():
             amount = request.form['amount']
             category = request.form['category']
 
-            if validate_amount(amount) == True and name != "":
+            if validate_amount(amount) == True and name != "" and check_for_existing(name, existing_budget, 'name') == True:
             
                 new_budget = {
                     'name': name,
@@ -117,6 +116,7 @@ def index():
                     'category': category
                 }
                 existing_budget.append(new_budget)
+
         elif 'category' in request.form:
             category = request.form['category']
             

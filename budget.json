@@ -1,1 +1,17 @@
-[{"name": "Casual", "amount": "200", "category": "Clothing"}, {"name": "Transit", "amount": "100", "category": "Transit"}, {"name": "Groceries", "amount": "200", "category": "Food"}]
+[
+    {
+        "name": "Casual",
+        "amount": "200",
+        "category": "Clothing"
+    },
+    {
+        "name": "Transit",
+        "amount": "100",
+        "category": "Transit"
+    },
+    {
+        "name": "Groceries",
+        "amount": "200",
+        "category": "Food"
+    }
+]
