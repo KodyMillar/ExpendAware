@@ -327,7 +327,7 @@ def transfer():
     
         # Update budgets.json
         with open("budget.json", "w") as f:
-            json.dump(budgets, f)
+            json.dump(budgets, f, indent=4)
     return render_template('transfer.html', expenses=expenses, categories=categories, budgets=budgets)
 ## End of Transfer
 
