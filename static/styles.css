@@ -29,7 +29,10 @@ h2 {
 h3 {
   font-family: 'Montserrat', sans-serif;
   font-weight: bolder;
+  display: flex;
+  
 }
+
 
 
 /* Header Grid CSS -------------
@@ -258,6 +261,15 @@ body,html {
     color:#333;
   }
   
+
+  .home-icon-row {
+    margin-top: 25px;
+  }
+  
+  button h3 {
+    margin-left: 55px;
+    line-height: 1.6em;
+  }
   
   #add-budget {
     width: 180px;
@@ -265,7 +277,7 @@ body,html {
     background-size: 23%;
     text-align: right;
     padding-left: 20px;
-    color: black
+    color: black;
     
   }
   
@@ -281,11 +293,16 @@ body,html {
 
   #add-category {
     width: 193px;
-    background:#65A5E2 url(images/add-category-icon.png) no-repeat 8px center;
+    background: #93bfcf url(images/add-category-icon.png) no-repeat 8px center;
     background-size: 20%;
     text-align: right;
     padding-left: 20px;
     color: black
+  }
+
+  .subtitle-icons:hover {
+    background-color: #2EE59D;
+    transform: translateY(-15px);
   }
 
   
