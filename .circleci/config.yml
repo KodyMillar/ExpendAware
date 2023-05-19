@@ -46,10 +46,3 @@ workflows:
     jobs:
       - build-and-test
 
-machine:
-  python:
-    version: 2.7.6
-
-dependencies:
-  pre:
-    - pip install -r requirements.txt

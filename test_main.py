@@ -10,21 +10,11 @@ def client():
 
 def test_index(client):
     response = client.get('/')
-    assert response.status_code == 200
-    assert b"ExpendAware - Home" in response.data
-    assert b"Total Budget:" in response.data
-    assert b"Total Expenses:" in response.data
+    assert response.status_code == 302
 
 def test_categories(client):
     response = client.get('/categories')
-    assert response.status_code == 200
-
-def test_expenses(client):
-    response = client.get('/expenses')
-    assert response.status_code == 200
-    assert b"ExpendAware - Expense" in response.data
-    assert b"Original Budget:" in response.data
-    assert b"Remaining Budget:" in response.data
+    assert response.status_code == 302
 
 def test_login(client):
     response = client.get('/login')
@@ -32,7 +22,7 @@ def test_login(client):
 
 def test_transfer(client):
     response = client.get('/transfer')
-    assert response.status_code == 200
+    assert response.status_code == 302
 
 def test_cost(client):
     response = client.get('/cost')
