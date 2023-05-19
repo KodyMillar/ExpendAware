@@ -104,17 +104,17 @@
     background-size: 23%;
     text-align: right;
     padding-left: 20px;
-    color: black
+    color: black;
     
   }
   
   #add-expense {
     width: 193px;
     background:rgb(189, 205, 214) url(images/add-expense-icon.png) no-repeat 8px center;
-    background-size: 25%;
+    background-size: 10%;
     text-align: right;
     padding-left: 20px;
-    color: black
+    color: black;
     
   }
 
@@ -124,7 +124,7 @@
     background-size: 20%;
     text-align: right;
     padding-left: 20px;
-    color: black
+    color: black;
   }
 
   a.logout-link {

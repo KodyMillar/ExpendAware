@@ -29,7 +29,10 @@ h2 {
 h3 {
   font-family: 'Montserrat', sans-serif;
   font-weight: bolder;
+  display: flex;
+  
 }
+
 
 
 /* Header Grid CSS -------------
@@ -39,11 +42,12 @@ header {
     color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     grid-template-areas: 
         "menu title ."
         "subtitle subtitle subtitle";
     width: 100%;
+    padding-bottom: 25px;
 }
 .h1 {
     grid-area: title;
@@ -71,17 +75,7 @@ header {
     display: flex;
     justify-content: flex-end;
 }
-.subtitle {
-  grid-area:subtitle;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  background-color: #fff;
-  padding-bottom: 10px;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
+
 /* End of Header Grid CSS ---------------
 --------------------------------------------*/
 
@@ -243,21 +237,31 @@ body,html {
 
   
   #home-icon {
-    margin-left: 10px;
+    position: absolute;
+    padding-top:30px;
+    top: 8px;
+    left:0px;
   }
-  
+
   #subheadings {
     display: flex;
-    flex-direction: row;
     gap: 10px;
     align-items: center;
     right: 10px;
     font-size: 20px;
     margin-right: 0px;
-    margin-left: 70px;
     color:#333;
   }
   
+
+  .home-icon-row {
+    margin-top: 25px;
+  }
+  
+  button h3 {
+    margin-left: 55px;
+    line-height: 1.6em;
+  }
   
   #add-budget {
     width: 180px;
@@ -265,7 +269,7 @@ body,html {
     background-size: 23%;
     text-align: right;
     padding-left: 20px;
-    color: black
+    color: black;
     
   }
   
@@ -281,11 +285,16 @@ body,html {
 
   #add-category {
     width: 193px;
-    background:#65A5E2 url(images/add-category-icon.png) no-repeat 8px center;
+    background: #93bfcf url(images/add-category-icon.png) no-repeat 8px center;
     background-size: 20%;
     text-align: right;
     padding-left: 20px;
     color: black
+  }
+
+  .subtitle-icons:hover {
+    background-color: #2EE59D;
+    transform: translateY(-15px);
   }
 
   
@@ -1333,7 +1342,7 @@ font-weight: bold;
     
     #home-icon {
       position: absolute;
-      margin-left: 35px;
+      margin-left: 32px;
       margin-top: 10px;
     }
   
