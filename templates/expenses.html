@@ -3,20 +3,24 @@
 {% block content %}
 <div class="bt_container-grid">
     <div class="bt_container">
+        <button id="clear-expenses-{{ budget['name'] }}" class="clear-expenses-button">Clear expenses</button>
         <div class="bt_category-title">{{ budget['category'] }}</div>
         <div class="bt_budget-name">{{ budget['name'] }}</div>
         <div class="bt_budget">
             <div>Original Budget: ${{ budget['amount'] }}</div>
+            <div>Date Added: {{ budget['date'] }}</div>
             <div>Remaining Amount: ${{ remaining }}</div>
         </div>
         <hr/>
         {% for expense in budget_expenses %}
         <div class="bt_expense">
             <div>{{ expense['descr'] }}</div>
+            <div>{{ expense['date'] }}</div>
             <div>${{ expense['amount'] }}</div>
         </div>
         <hr/>
         {% endfor %}
     </div>
 </div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 {% endblock %}

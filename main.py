@@ -23,13 +23,16 @@ def update_categories_budgets(categories, budgets, expenses):
     return categories
 
 # Check for errors in user input
-def validate_amount(amount):
+def validate_amount(amount, total_expense=None, total_budget=None):
     try:
         int(amount)
     except ValueError:
         return False
     if int(amount) < 0 or amount == "":
         return False
+    if total_expense and total_budget:
+        if (int(total_expense) + int(amount)) > int(total_budget):
+            return False
     return True
 
 def check_for_existing(name_input, existing_list, criteria):
@@ -66,14 +69,21 @@ def index():
             category = request.form['category']
             budget = request.form['budget']
 
-            if validate_amount(amount) == True:
+            
+            for categ in existing_category:
+                if categ['category'] == category:
+                    total_expenses = categ['total expenses']
+                    total_budget = categ['total budget']
+
+            if validate_amount(amount, total_expenses, total_budget) == True:
                 budget_exists = any(budget_item['name'] == budget for budget_item in existing_budget)
             
                 new_expense = {
                     "descr": descr,
                     "amount": amount,
                     "category": category,
-                    "budget": budget
+                    "budget": budget,
+                    "date": current_date
                 }
                 existing_expense.append(new_expense)
                 for category in existing_category:
@@ -83,15 +93,15 @@ def index():
         
                 new_action = {
                     "action": "Created Expense",
-                    "name": category['category'],
+                    "name": new_expense["category"],
                     "amount": amount,
                     "description": descr,
                     "date": current_date
                 }
 
                 history.insert(0, new_action)
-                if len(history) > 5:
-                    history.pop(4)
+                if len(history) > 10:
+                    history.pop(10)
 
         elif 'name' in request.form and 'amount' in request.form and 'category' in request.form:
             name = request.form['name']
@@ -119,15 +129,16 @@ def index():
                 }
                 existing_category.append(new_category)
 
-    # Write the entire data object back to the file
-    with open("expense.json", "w") as f:
-        json.dump(existing_expense, f)
-    with open("category.json", "w") as f:
-        json.dump(existing_category, f)
-    with open("budget.json", "w") as f:
-        json.dump(existing_budget, f)
-    with open("history.json", "w") as file:
-        json.dump(history, file)
+        # Write the entire data object back to the file
+        with open("expense.json", "w") as f:
+            json.dump(existing_expense, f, indent=4)
+        with open("category.json", "w") as f:
+            json.dump(existing_category, f, indent=4)
+        with open("budget.json", "w") as f:
+            json.dump(existing_budget, f, indent=4)
+        with open("history.json", "w") as file:
+            json.dump(history, file, indent=4)
+            return redirect(url_for("index"))
     expenses = existing_expense
     categories = existing_category
     budgets = existing_budget
@@ -193,11 +204,11 @@ def categories():
                 if category_name == expense['category']:
                     expense['category'] = new_category_name
             with open("category.json", "w") as file:
-                json.dump(categories, file)
+                json.dump(categories, file, indent=4)
             with open("budget.json", "w") as file:
-                json.dump(budget_list, file)
+                json.dump(budget_list, file, indent=4)
             with open("expense.json", "w") as file:
-                json.dump(expenses, file)
+                json.dump(expenses, file, indent=4)
 
         elif "rename budget" in list(request.form)[0]:
             budget_name = list(request.form)[0][14:]
@@ -206,26 +217,46 @@ def categories():
                 if budget_name == budget['name']:
                     budget['name'] = new_budget_name
             with open("budget.json", "w") as file:
-                json.dump(budget_list, file)
+                json.dump(budget_list, file, indent=4)
 
         elif "edit budget" in list(request.form)[0]:
             budget_name = list(request.form)[0][12:]
             new_budget_amount = int(request.form[list(request.form)[0]])
             for budget in budget_list:
                 if budget_name == budget['name']:
-                    budget['amount'] = new_budget_amount
+                    total_expense = 0
+                    for expense in expenses:
+                        if expense["budget"] == budget["name"]:
+                            total_expense += int(expense["amount"])
+                    if total_expense <= new_budget_amount:
+                        budget['amount'] = new_budget_amount
             with open("budget.json", "w") as file:
                 json.dump(budget_list, file)
 
         elif "delete budget" in list(request.form)[0]:
             budget_to_delete = list(request.form)[0][14:]
             new_budget_list = []
+            new_expense_list = []
             for budget in budget_list:
                 if budget_to_delete != budget["name"]:
                     new_budget_list.append(budget)
+                elif budget_to_delete == budget["name"]:
+                    for category in categories:
+                        if category["category"] == budget["category"]:
+                            category["total budget"] -= int(budget["amount"])
+                            for expense in expenses:
+                                if expense["budget"] == budget["name"]:
+                                    category["total expenses"] -= int(expense["amount"])
+                                else:
+                                    new_expense_list.append(expense)
+
             with open("budget.json", "w") as file:
                 json.dump(new_budget_list, file)
             budget_list = new_budget_list
+            with open("category.json", "w") as file:
+                json.dump(categories, file)
+            with open("expense.json", "w") as file:
+                json.dump(new_expense_list, file)
 
         elif "delete category" in list(request.form)[0]:
             category_list = categories
@@ -260,7 +291,7 @@ def categories():
 
     return render_template("categories.html", categories=categories, total_budgets=total_budget_list, budgets=budgets)
 
-
+# Expense Page
 @app.route('/categories/<budget_name>', methods=['GET', 'POST'])
 @login_required
 def budget_detail(budget_name):
@@ -280,6 +311,18 @@ def budget_detail(budget_name):
 
     return render_template('expenses.html', budget=budget, budget_expenses=budget_expenses, total_expense=total_expense, remaining=remaining)
 
+@app.route('/clear_expenses/<budget_name>', methods=['DELETE'])
+@login_required
+def clear_expenses(budget_name):
+    with open('expense.json', 'r') as f:
+        expenses = json.load(f)
+        
+    filtered_expenses = [expense for expense in expenses if expense['budget'] != budget_name]
+    
+    with open('expense.json', 'w') as f:
+        json.dump(filtered_expenses, f)
+    
+    return jsonify({'status': 'success'}), 200
 
 
 ## Transfer Page
