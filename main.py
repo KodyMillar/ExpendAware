@@ -359,12 +359,12 @@ class User:
         return self.active
     
     def is_authenticated(self):
-        emailInput = request.form.get("email")
-        passwordInput = request.form.get("password")
+        loginEmail = request.form.get("login-email")
+        passwordInput = request.form.get("loginPwd")
         with open("login.json", "r") as f:
             users = json.load(f)
         for user in users:
-            if check_password_hash(user["password"], passwordInput) and user["email"] == emailInput:
+            if check_password_hash(user["password"], passwordInput) and user["email"] == loginEmail:
                 return True
         return False
     
@@ -381,47 +381,47 @@ def login():
 
 
     # for user in users:
-    #     # if user['email'] == secEmail and newPwd != "":
-    #         user['password'] = 'generate_password_hash(newPwd, method="sha256")'
+    #     # if user['email'] == fgtEmail and fgtPwd1 != "":
+    #         user['password'] = 'generate_password_hash(fgtPwd1, method="sha256")'
     #         # return redirect(url_for('login'))
     # with open("login.json", "w") as file:
     #     json.dump(users, file, indent=4)
         
     if request.method == 'POST':
-        emailInput = request.form.get("email")
-        nameReg = request.form.get("nickname")
-        emailReg = request.form.get("reg-email")
-        pwd1Reg = request.form.get("pwd1")
-        secQeustion = request.form.get("security-question")
-        secAnswer = request.form.get("security-answer")
-        secEmail = request.form.get("sec-email")
-        newPwd = request.form.get("newPwd1")           
+        loginEmail = request.form.get("login-email")
+        regName = request.form.get("reg-name")
+        regEmail = request.form.get("reg-email")
+        regPwd1 = request.form.get("reg-pwd1")
+        regSecurityQ = request.form.get("reg-security-q")
+        regSecurityA = request.form.get("reg-security-a")
+        fgtEmail = request.form.get("fgt-email")
+        fgtPwd1 = request.form.get("fgt-pwd1")           
         
-        if not nameReg and not newPwd:
-            userEmail = User.get(emailInput)
+        if loginEmail:
+            userEmail = User.get(loginEmail)
             if userEmail:
                 login_user(userEmail, remember=True)
                 return redirect(url_for("index"))
             flash('Incorrect email or password')
             return redirect(url_for('login'))
-        elif newPwd:
+        elif fgtEmail:
             for user in users:
-                if user['email'] == secEmail:
-                    user['password'] = generate_password_hash(newPwd, method="sha256")
+                if user['email'] == fgtEmail:
+                    user['password'] = generate_password_hash(fgtPwd1, method="sha256")
             with open("login.json", "w") as file:
                 json.dump(users, file, indent=4)
-            ##return redirect(url_for('login'))
-        else:
-            hashPwd = generate_password_hash(pwd1Reg, method="sha256")
-            newUser['name'] = nameReg
+            return redirect(url_for('login'))
+        elif regEmail:
+            hashPwd = generate_password_hash(regPwd1, method="sha256")
+            newUser['name'] = regName
             newUser['password'] = hashPwd
-            newUser['email'] = emailReg
-            newUser['question'] = secQeustion
-            newUser['answer'] = secAnswer
+            newUser['email'] = regEmail
+            newUser['question'] = regSecurityQ
+            newUser['answer'] = regSecurityA
             users.append(newUser)
             with open("login.json", "w") as file:
                 json.dump(users, file, indent=4)
-            userEmail = User.get(emailReg)
+            userEmail = User.get(regEmail)
             login_user(userEmail)
             return redirect(url_for('index'))
         
