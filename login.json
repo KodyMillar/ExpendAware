@@ -1,12 +1,16 @@
 [
     {
         "name": "teemo",
-        "password": "sha256$qi9YAgcALA3svwSQ$937edff9e695784499832daf59eebdc0723f22edc868a512a1c5c64fb9dee6a9",
-        "email": "teemo@riot.com"
+        "password": "sha256$9NtEdzdqGjfUnKQE$c6dd5894b000d59ed4d70c8973527335eea7f973c492eeec19602babe68a8551",
+        "email": "teemo@riot.com",
+        "question": "What is your favourite food?",
+        "answer": "mushroom"
     },
     {
-        "name": "asdf",
-        "password": "sha256$CxJmouCYoV7DqfkU$c2310f357491b4556897a23abb14e14a3f3b29f71d831ebeb24166a5f13430a3",
-        "email": "asdf@"
+        "name": "test",
+        "password": "sha256$KeQhGhX2BPYlZtvt$c2f670093b7e5582e33df8ff2139bb124ebafbafce1e71108384cf594de72d32",
+        "email": "test@",
+        "question": "What is your favourite food?",
+        "answer": "apple"
     }
 ]

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,19 +17,19 @@
     <div id="outline">
         <img id="login-logo" src="../static/images/logo.png" width="150" height="150"/>
 
-        <div id="login-register-btn">
-            <button id="login-tab" class="login-tab active" name="login-tab">Login</button>
+        <div>
+            <button id="login-tab" class="login-tab active">Login</button>
             <button id="reg-tab" class="login-tab">Register</button>
         </div>
 
         <form method="POST" action=" /login " class="info-to-fill" id="login-form">
             <h1 class="info-title">Login</h1>
 
-            <label for="email">Email Address</label>
-            <input type="text" placeholder="Email Address" id="email" name="email" autocomplete="email" required/>
+            <label for="login-email">Email Address</label>
+            <input type="email" placeholder="Email Address" id="login-email" name="login-email" required/>
 
-            <label for="password">Password</label>
-            <input type="password" placeholder="Password" id="password" name="password" required/>
+            <label for="login-pwd">Password</label>
+            <input type="password" placeholder="Password" id="login-pwd" name="login-pwd" required/>
 
             <div>
                 <ul id="flash-messages" class="show">
@@ -44,50 +43,97 @@
                 </ul>
             </div>
             
-            <label for="remember-me">
-                <input type="checkbox" id="remember-me" name="rememberMe"> 
+            <label for="rmb-me">
+                <input type="checkbox" id="rmb-me" name="rmb-me"> 
                 Remember Me
             </label>
-            <button type="submit" id="login-button">Login</button>
-            <a href="#" id="forgot-password">Forgot Password?</a>
+            <button type="submit" id="login-btn">Login</button>
+            <span id="login-fgt-link">Forgot Password?</span>
         </form>
         
         
         <form method="POST" action="{{ url_for('login') }}" class="info-to-fill" id="reg-form">
             <h1 class="info-title">Register</h1>
 
-            <label for="email">Email Address</label>
-            <input type="text" placeholder="Email Address" id="reg-email" name="reg-email" required/>
+            <label for="reg-email">Email Address</label>
+            <input type="email" placeholder="Email Address" id="reg-email" name="reg-email" required/>
             
-            <label for="nickname">Name</label>
-            <input type="text" placeholder="Name" id="nickname" name="nickname" required/>
+            <label for="reg-name">Name</label>
+            <input type="text" placeholder="Name" id="reg-name" name="reg-name" required/>
             
-            <label for="pwd1">Password</label>
-            <input type="password" placeholder="Password" id="pwd1" name="pwd1" required/>
+            <label for="reg-pwd1">Password</label>
+            <input type="password" placeholder="Password" id="reg-pwd1" name="reg-pwd1" required/>
             
-            <label for="pwd2">Confirm Password</label>
-            <input type="password" placeholder="Confirm Password" id="pwd2" name="pwd2" required/>
+            <label for="reg-pwd2">Confirm Password</label>
+            <input type="password" placeholder="Confirm Password" id="reg-pwd2" name="reg-pwd2" required/>
             
-            <button type="submit" id="reg-button">Register</button>
+            <label for="reg-security-q">Pick one question</label>
+            <select id="reg-security-q" name="reg-security-q">
+                <option>What was your childhood nickname?</option>
+                <option>What is your favourite food?</option>
+                <option>When was your first penta kill?</option>
+                <option>In what city or town was your first job?</option>
+                <option>What was the name of your first stuffed animal?</option>
+                <option>What was your childhood nickname?</option>
+            </select>
+
+            <label for="reg-security-a">Answer</label>
+            <input id="reg-security-a" name="reg-security-a" required/>
+
+            <button type="submit" id="reg-btn">Register</button>
             
-            <div id = "overlay">
-                <div id="alert-container">
-                    <div id="alert-flex">
-                        <span id="alert-message"></span>
-                        <button id="alert-okay">x</button>
-                    </div>
+            <div id="reg-overlay">
+                <div id="reg-alert-box">
+                    <span id="reg-alert-message"></span>
+                    <button id="reg-alert-exit-btn">x</button>
                 </div>
             </div>
         </form>
     </div>
+
+
+    <div id="fgt-overlay">
+        <form method="POST" id="fgt-box">
+            <div id="fgt-flex">
+                <div id="fgt-email-box">
+                    <label for="fgt-email">Your Email</label>
+                    <input type="email" id="fgt-email" placeholder="email" name="fgt-email">
+                    <div id="fgt-email-error"></div>
+                </div>
+
+                <div id="fgt-security-box">
+                    <label for="fgt-security-a" id="fgt-security-q"></label>
+                    <input type="text" id="fgt-security-a" placeholder="answer" name="fgt-security-a">
+                    <div id="fgt-security-error"></div>
+                </div>
+
+                <div id="fgt-pwd-box">
+                    <label for="fgt-pwd1">New Password</label>
+                    <input type="password" id="fgt-pwd1" name="fgt-pwd1" placeholder="Password">
+
+                    <label for="fgt-pwd2">Confirm new Password</label>
+                    <input type="password" id="fgt-pwd2" placeholder="Confirm Password">
+
+                    <div id="fgt-pwd-error"></div>
+                </div>
+                
+                <div id="fgt-btn-box">
+                    <button type="submit" id="fgt-btn">Submit</button>
+                    <button id="fgt-exit-btn" onclick="refreshPage()">Exit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
     
     <script>
     
     // Active Tab //
-    const regForm = document.getElementById('reg-form');
         const loginTab = document.getElementById('login-tab');
         const regTab = document.getElementById('reg-tab');
+
         const loginForm = document.getElementById('login-form');
+        const regForm = document.getElementById('reg-form');
         regForm.style.display = "none";
 
         // Show Login Form & Hide Register Form//
@@ -127,41 +173,41 @@
     // End of Login Alert //
 
 
+
     // Register Alert //
         // User input in Register Form //
-        const pwd1 = document.getElementById('pwd1');
-        const pwd2 = document.getElementById('pwd2');
-        const nickname = document.getElementById('nickname');
+        const regPwd1 = document.getElementById('reg-pwd1');
+        const regPwd2 = document.getElementById('reg-pwd2');
+        const regName = document.getElementById('reg-name');
         const regEmail = document.getElementById('reg-email');
-        const regBtn = document.getElementById('reg-button');
+        const regBtn = document.getElementById('reg-btn');
+        const regSecurityA = document.getElementById('reg-security-a');
         
         // Alert Display IDs //
-        const overlay = document.getElementById('overlay');
-        const alertBox = document.getElementById('alert-container');
-        const alertMessage = document.getElementById('alert-message');
-        const alertOkayButton = document.getElementById('alert-okay');
+        const regOverlay = document.getElementById('reg-overlay');
+        const regAlertBox = document.getElementById('reg-alert-box');
+        const regAlertMessage = document.getElementById('reg-alert-message');
+        const regAlertExitBtn = document.getElementById('reg-alert-exit-btn');
         
         // Alert Function //
         function showAlert(message) {
-            alertMessage.innerHTML = message;
-            alertBox.style.display = 'block';
-            overlay.style.display = "flex";
+            regAlertMessage.innerHTML = message;
+            regAlertBox.style.display = 'block';
+            regOverlay.style.display = "flex";
             event.preventDefault();
         }
 
         // Click the button to either login or exit alert // 
-        alertOkayButton.addEventListener('click', function(event) {
-            if (alertMessage.innerHTML !== "Success!") {
+        regAlertExitBtn.addEventListener('click', function(event) {
+            if (regAlertMessage.innerHTML !== "Success!") {
                 event.preventDefault();
             }
-            overlay.style.display = 'none';
+            regOverlay.style.display = 'none';
         });
         
         // Click overlay to exit alert  //
-        overlay.addEventListener('click', function(event) {
-            if (event.target === overlay) {
-                overlay.style.display = 'none';
-            }
+        regOverlay.addEventListener('click', function(event) {
+            regOverlay.style.display = 'none';
         });
 
         // Fetch login JSON and Use Alert Function //
@@ -171,21 +217,21 @@
             // Handle the retrieved JSON data
             regBtn.addEventListener('click', function(event) {
                 const emailExists = data.some(x => x.email === regEmail.value);
-                alertOkayButton.innerHTML = "x";
-                if (pwd1.value === "" || pwd2.value === "" || nickname.value === "" || regEmail.value == "") {
-                    //event.preventDefault();
-                    //overlay.style.display = "flex";
-                    //showAlert("Missing Values");
-                } else if (!(regEmail.value.includes("@"))) {
-                    showAlert("Incorrect Email format: no @");
+                regAlertExitBtn.innerHTML = "x";
+                if (regPwd1.value === "" || 
+                    regPwd2.value === "" || 
+                    regName.value === "" || 
+                    regEmail.value === "" || 
+                    regSecurityA.value == "") {
+
                 } else if (emailExists) {
                     showAlert("This email is already used")
-                } else if (pwd1.value.length < 8) {
+                } else if (regPwd1.value.length < 8) {
                     showAlert("Password must be longer than 7 characters");
-                } else if (pwd1.value !== pwd2.value) {
+                } else if (regPwd1.value !== regPwd2.value) {
                     showAlert("Both passwords are not matched");
                 } else {
-                    alertOkayButton.innerHTML = "login";
+                    regAlertExitBtn.innerHTML = "login";
                     showAlert("Success!");
                 }
             });
@@ -198,8 +244,8 @@
 
 
     // Remember Me //
-        const rememberCheckbox = document.getElementById('remember-me');
-        const emailInput = document.getElementById('email');
+        const rmbMe = document.getElementById('rmb-me');
+        const loginEmail = document.getElementById('login-email');
             
         // Check if the checkbox parameter exists in the URL
         // window.location.search string portion of the URL from a question mark [?]
@@ -207,20 +253,20 @@
         // localStorage is useful for maintaining data and state even when the browser is closed and reopened
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('remember') === 'true') {
-            rememberCheckbox.checked = true;
-            emailInput.value = localStorage.getItem('email');
+            rmbMe.checked = true;
+            loginEmail.value = localStorage.getItem('email');
         } else if (localStorage.getItem('rememberEmail') === 'true') {
-            rememberCheckbox.checked = true;
-            emailInput.value = localStorage.getItem('email');
+            rmbMe.checked = true;
+            loginEmail.value = localStorage.getItem('email');
         }
         
             
         // Add or remove the checkbox parameter when the checkbox state changes
-        rememberCheckbox.addEventListener('change', () => {
-            if (rememberCheckbox.checked) {
+        rmbMe.addEventListener('change', () => {
+            if (rmbMe.checked) {
                 urlParams.set('remember', 'true');
                 localStorage.setItem('rememberEmail', true);
-                localStorage.setItem('email', emailInput.value);
+                localStorage.setItem('email', loginEmail.value);
             } else {
                 urlParams.delete('remember');
                 localStorage.setItem('rememberEmail', false);
@@ -233,11 +279,118 @@
         });
 
         // This ensures input does not disappear (must have)
-        emailInput.addEventListener('input', () => {
-            if (rememberCheckbox.checked) {
-                localStorage.setItem('email', emailInput.value);
+        loginEmail.addEventListener('input', () => {
+            if (rmbMe.checked) {
+                localStorage.setItem('email', loginEmail.value);
             }
         });
     // End of Remember Me //
+
+
+    // Forget Password //
+        // User input in Reset Form //
+        const fgtPwd1 = document.getElementById('fgt-pwd1');
+        const fgtPwd2 = document.getElementById('fgt-pwd2');
+        const fgtEmail = document.getElementById('fgt-email');
+        const fgtSecurityA = document.getElementById('fgt-security-a');
+        const fgtBtn = document.getElementById('fgt-btn');
+        const loginFgtLink = document.getElementById('login-fgt-link');
+        
+        // Alert Display IDs //
+        const fgtOverlay = document.getElementById('fgt-overlay');
+        const fgtBox = document.getElementById('fgt-box');
+        const fgtExitBtn = document.getElementById('fgt-exit-btn');
+        
+        // Click to exit form // 
+        fgtExitBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            fgtOverlay.style.display = 'none';
+        });
+        
+        // Click overlay to exit alert  //
+        fgtOverlay.addEventListener('click', function(event) {
+            if (event.target === fgtOverlay) {
+                //fgtOverlay.style.display = 'none';
+                //refreshPage();
+            }
+        });
+
+        // Click forgot link to show form
+        loginFgtLink.addEventListener('click', () => {
+            fgtOverlay.style.display = "block";
+        });
+
+        // Fetch login JSON and Rest Password //
+        fetch('login.json')
+        .then(response => response.json())
+        .then(data => {
+            // Handle the retrieved JSON data
+            fgtBtn.addEventListener('click', function(event) {
+                const emailExists = data.some(x => x.email === fgtEmail.value);
+                const findUser = data.find(x=> x.email === fgtEmail.value)
+                const fgtEmailError = document.getElementById('fgt-email-error');
+
+                if (fgtEmail.value === "" || !findUser) {
+                    fgtEmailError.textContent = "email does not exist";
+                    event.preventDefault();
+                    return;
+                }
+                fgtEmailError.textContent = "";
+                fgtEmail.disabled = true;
+
+                const fgtSecurityBox = document.getElementById("fgt-security-box");
+                const fgtPwdBox = document.getElementById("fgt-pwd-box");
+                const fgtSecurityQ = document.getElementById('fgt-security-q')
+                const fgtSecurityError = document.getElementById("fgt-security-error");
+                const jsonSecurityA = findUser.answer;
+                const jsonSecurityQ = findUser.question;
+                
+
+                if (fgtSecurityBox.style.display === "") {
+                    event.preventDefault();
+                    fgtSecurityBox.style.display = "block";
+                    fgtSecurityQ.innerHTML = jsonSecurityQ;
+
+                } 
+
+                if (fgtSecurityA.value === "" ) {
+                    event.preventDefault();
+                    return;
+                } else if (jsonSecurityA !== fgtSecurityA.value) {
+                    event.preventDefault();
+                    fgtSecurityError.textContent = "Incorrect Answer!";
+                    return;
+                } 
+                
+                if (jsonSecurityA === fgtSecurityA.value) {
+                    //event.preventDefault();
+                    fgtSecurityA.disabled = true;
+                    fgtPwdBox.style.display = "flex";
+                    fgtPwdBox.style.flexDirection = "column";
+                    fgtSecurityError.textContent = "";
+                }
+                
+                if (fgtPwd1.value === "") {
+                    event.preventDefault();
+                }
+                if (fgtPwd1.value !== fgtPwd2.value) {
+                    event.preventDefault();
+                    document.getElementById("fgt-pwd-error").textContent = "Passwords are not matched!"
+                } else if (fgtPwd1.value.length < 8 && fgtPwd1.value !== "") {
+                    event.preventDefault();
+                    document.getElementById("fgt-pwd-error").textContent = "Password must be longer than 8 characters"
+                }
+            });
+        })
+        .catch(error => {
+            // Handle any errors
+        });
+
+    // End of Forget Password //
+
+
+    function refreshPage() {
+        location.reload();
+    }
     </script>
 </body>

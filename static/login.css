@@ -19,7 +19,7 @@ ul {
     list-style: none;
 }
 
-input {
+input, select {
     padding: 10px;
     margin: 5px 0 20px;
     border: 1px solid #ccc;
@@ -80,10 +80,10 @@ button {
     align-self: center;
 }
 
-#login-button, #reg-button {
+#login-btn, #reg-btn, #fgt-btn, #fgt-exit-btn {
     font-size: 18px;
     font-weight: bold;
-    margin: 20px 0;
+    margin: 20px 10px;
     background-color: #ed344c;
     border-radius: 5px;
     width: 15vw;
@@ -92,20 +92,20 @@ button {
     align-self: center;
 }
 
-#remember-me {
+#rmb-me {
     width: 30px;
     transform: scale(1.5);
     margin-top: 20px;
 }
 
-#forgot-password {
-    text-decoration: none;
+#login-fgt-link {
     color: blue;
     font-size: 18px;
     align-self: center;
     margin-bottom: 30px;
+    cursor: pointer;
 }
-/* End of /* Login & Register Form */
+/* End of Login & Register Form */
 
 
 
@@ -130,7 +130,7 @@ button {
 
 
 /* Alert Message for Register */
-#overlay {
+#reg-overlay, #fgt-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -143,7 +143,7 @@ button {
     justify-content: center;
 }
 
-#alert-container {
+#reg-alert-box {
     position: fixed;
     left: 50%;
     background-color: #e2c7c7;
@@ -153,13 +153,10 @@ button {
     border-radius: 5px;
     font-size: 23px;
     text-align: center;
-}
-
-#alert-flex {
     display: flex;
 }
 
-#alert-okay {
+#reg-alert-exit-btn {
     color: black;
     text-decoration: none;
     line-height: normal;
@@ -171,3 +168,63 @@ button {
     margin-left: 10px;
 }
 /* Alert Message for Register */
+
+
+/* Forgot password */
+#fgt-box {
+    display: flex;
+    border: solid 2px rgb(131, 131, 131, 0.5);
+    margin-bottom: 30px;
+
+
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    background-color: #e2c7c7;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 23px;
+    text-align: center;
+
+    display: flex;
+    /* flex-direction: column; */
+}
+
+/* #fgt-box {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+} */
+
+#fgt-exit-btn {
+    /* align-self: flex-start;
+    padding: 0 10px;
+    margin-left: 10px;
+    margin-right: -10px;
+    background-color: #333;
+    border-radius: 3px; */
+    background-color: #333;
+
+}
+
+#fgt-security-box, #fgt-pwd-box {
+    display: none;
+}
+
+#fgt-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+#fgt-btn-box {
+    display: flex;
+    justify-content: space-around;
+}
+/* End of Forgot Password */
+
+#fgt-pwd-error, #fgt-security-error, #fgt-email-error {
+    color: green;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
