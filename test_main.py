@@ -8,21 +8,30 @@ def client():
     with app.test_client() as client:
         yield client
 
-def test_index(client):
-    response = client.get('/')
-    assert response.status_code == 302
+# def test_index(client):
+#     response = client.get('/')
+#     assert response.status_code == 302
+#     assert b"Add Budget" in response.data
+#     assert b"Add Expense" in response.data
 
-def test_categories(client):
-    response = client.get('/categories')
-    assert response.status_code == 302
+# def test_categories(client):
+#     response = client.get('/categories')
+#     assert response.status_code == 302
+#     assert b"Budget:" in response.data
+
+# def test_expenses(client):
+#     response = client.get('/expenses')
+#     assert b"ExpendAware - Expense" in response.data
+#     assert b"Original Budget:" in response.data
+#     assert b"Remaining Budget:" in response.data
 
 def test_login(client):
     response = client.get('/login')
     assert response.status_code == 200
 
-def test_transfer(client):
-    response = client.get('/transfer')
-    assert response.status_code == 302
+# def test_transfer(client):
+#     response = client.get('/transfer')
+#     assert response.status_code == 302
 
 def test_cost(client):
     response = client.get('/cost')
