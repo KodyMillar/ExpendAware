@@ -2,71 +2,81 @@
     {
         "action": "Created Expense",
         "name": "Food",
-        "amount": "150",
-        "description": "Grocery Shopping",
-        "date": "17 May 2023"
+        "amount": "50",
+        "description": "jkl",
+        "date": "18 May 2023"
     },
     {
         "action": "Created Expense",
         "name": "Food",
-        "amount": "100",
-        "description": "Steak",
-        "date": "17 May 2023"
+        "amount": "450",
+        "description": "s",
+        "date": "18 May 2023"
     },
     {
         "action": "Created Expense",
-        "name": "food",
-        "amount": "50",
-        "description": "Steak",
-        "date": "17 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Housing",
+        "name": "Food",
         "amount": "20",
-        "description": "fruit",
-        "date": "17 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Housing",
-        "amount": "30",
         "description": "Steak",
-        "date": "17 May 2023"
+        "date": "18 May 2023"
     },
     {
         "action": "Created Expense",
-        "name": "Housing",
-        "amount": "100",
-        "description": "Groceries",
-        "date": "17 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Housing",
-        "amount": "20",
-        "description": "Ramen",
-        "date": "17 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Housing",
-        "amount": "50",
-        "description": "The Keg Steakhouse",
-        "date": "17 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Housing",
-        "amount": "15",
-        "description": "Ramen",
-        "date": "17 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Housing",
-        "amount": "50",
+        "name": "Food",
+        "amount": "450",
         "description": "Steak",
-        "date": "17 May 2023"
+        "date": "18 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": {
+            "category": "new food    ",
+            "total budget": 0,
+            "total expenses": 0,
+            "date": "18 May 2023"
+        },
+        "amount": "450",
+        "description": "Steak",
+        "date": "18 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": {
+            "category": "new food    ",
+            "total budget": 0,
+            "total expenses": 0,
+            "date": "18 May 2023"
+        },
+        "amount": "450",
+        "description": "Steak",
+        "date": "18 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Food",
+        "amount": "450",
+        "description": "Steak",
+        "date": "18 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Food",
+        "amount": "450",
+        "description": "Steak",
+        "date": "18 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Food",
+        "amount": "55",
+        "description": "Steak",
+        "date": "18 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Food",
+        "amount": "55",
+        "description": "Steak",
+        "date": "18 May 2023"
     }
 ]

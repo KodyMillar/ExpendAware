@@ -1,8 +1,16 @@
 [
     {
-        "descr": "Grocery Shopping",
-        "amount": "150",
+        "descr": "s",
+        "amount": "450",
         "category": "Food",
-        "budget": "Groceries"
+        "budget": "Groceries",
+        "date": "18 May 2023"
+    },
+    {
+        "descr": "jkl",
+        "amount": "50",
+        "category": "Food",
+        "budget": "Groceries",
+        "date": "18 May 2023"
     }
 ]
