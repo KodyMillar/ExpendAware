@@ -38,7 +38,7 @@ for(let category of categoriesList){
                         budget.id = budget.id.replaceAll("'", "")
                     }
                     dropDownItems = document.querySelector("#" + budget.id).querySelectorAll(".budget-item")
-                    dropDownHeight = 100 * dropDownItems.length
+                    dropDownHeight = 150 * dropDownItems.length
                     document.querySelector("#" + budget.id).style.height = `${dropDownHeight}px`;
                     budget.id = categoryName
 

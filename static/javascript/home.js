@@ -103,6 +103,8 @@ const addExpenseForm = document.forms["add-expense-form"]
 
 const categoryNames = document.querySelectorAll(".category-name")
 const budgetNames = document.querySelectorAll(".budget-name")
+const budgetAmount = document.querySelectorAll(".budget-amount")
+
 
 addCategoryForm.onsubmit = function(e) {
     
@@ -127,3 +129,33 @@ addBudgetForm.onsubmit = function(e) {
         }
     }
 }
+
+for (let budget of budgetAmount) {
+    let expenses = budget.querySelectorAll(".totals-expense-amount");
+            let expense_total = 0;
+            for (let expense of expenses) {
+                expense_total += parseInt(expense.textContent);
+            }
+            
+}
+
+addExpenseForm.onsubmit = function(e) {
+
+    for (let budget of budgetAmount) {
+        if (addExpenseForm.budget.value === budget.querySelector(".totals-budget-name").textContent) {
+            
+            let expenses = budget.querySelectorAll(".totals-expense-amount");
+            let expense_total = 0;
+            for (let expense of expenses) {
+                expense_total += parseInt(expense.textContent);
+            }
+            if ((parseInt(addExpenseForm.amount.value) + expense_total) > parseInt(budget.querySelector(".totals-budget-amount").textContent)) {
+                appendAlert("Cannot spend more than budget limit");
+                e.preventDefault();
+            }
+        }
+    }
+}
+
+
+

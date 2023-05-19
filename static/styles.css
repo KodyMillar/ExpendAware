@@ -203,16 +203,13 @@ li button:hover {
     padding: 30px;
 }
 
-#category-names {
-    display: none;
-}
-
-#budget-names {
+.hidden-lists {
     display: none;
 }
 
 .alert-primary {
-    left: 35%;
+    left: 25%;
+    right: 25%;
     bottom: 20%;
 }
 
@@ -733,6 +730,10 @@ a {
 }
 .dropdown-display {
     overflow-x: visible;
+}
+
+#budget-dropdown-header {
+    color: #118C4F;
 }
 
 .category-btns {

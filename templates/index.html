@@ -164,22 +164,31 @@
   </div>
 </div>
 
-<ul id="category-names">
+<ul class="hidden-lists">
   {% for category in categories %}
   <li class="category-name">{{ category["category"] }}</li>
   {% endfor %}
 </ul>
 
-<ul id="budget-names">
+<ul class="hidden-lists">
   {% for budget in budgets %}
   <li class="budget-name">{{ budget["name"] }}</li>
   {% endfor %}
 </ul>
 
-<ul id="expense-amount">
-  <li class="expense-amount"></li>
+<ul class="hidden-lists">
+  {% for budget in budgets %}
+  <li class="budget-amount">
+    <p class="totals-budget-name">{{ budget["name"] }}</p>
+    <p class="totals-budget-amount">{{ budget["amount"] }}</p>
+    {% for expense in expenses %}
+    {% if expense["budget"] == budget["name"] %}
+    <p class="totals-expense-amount">{{ expense["amount"] }}
+    {% endif %}
+    {% endfor %}
+  </li>
+  {% endfor %}
 </ul>
-
 
 
 <footer>
