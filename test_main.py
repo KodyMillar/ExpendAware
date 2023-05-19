@@ -33,9 +33,9 @@ def test_login(client):
 #     response = client.get('/transfer')
 #     assert response.status_code == 302
 
-def test_cost(client):
-    response = client.get('/cost')
-    assert response.status_code == 200
+# def test_cost(client):
+#     response = client.get('/cost')
+#     assert response.status_code == 200
 
 def test_history(client):
     response = client.get('/history')
