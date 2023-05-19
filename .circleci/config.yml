@@ -45,3 +45,11 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
+
+machine:
+  python:
+    version: 2.7.6
+
+dependencies:
+  pre:
+    - pip install -r requirements.txt
