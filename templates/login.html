@@ -94,32 +94,35 @@
 
     <div id="fgt-overlay">
         <form method="POST" id="fgt-box">
-            <div id="fgt-email-box">
-                <label for="fgt-email">Your Email</label>
-                <input type="email" id="fgt-email" placeholder="email" name="fgt-email">
-                <div id="fgt-email-error"></div>
+            <div id="fgt-flex">
+                <div id="fgt-email-box">
+                    <label for="fgt-email">Your Email</label>
+                    <input type="email" id="fgt-email" placeholder="email" name="fgt-email">
+                    <div id="fgt-email-error"></div>
+                </div>
+
+                <div id="fgt-security-box">
+                    <label for="fgt-security-a" id="fgt-security-q"></label>
+                    <input type="text" id="fgt-security-a" placeholder="answer" name="fgt-security-a">
+                    <div id="fgt-security-error"></div>
+                </div>
+
+                <div id="fgt-pwd-box">
+                    <label for="fgt-pwd1">New Password</label>
+                    <input type="password" id="fgt-pwd1" name="fgt-pwd1" placeholder="Password">
+
+                    <label for="fgt-pwd2">Confirm new Password</label>
+                    <input type="password" id="fgt-pwd2" placeholder="Confirm Password">
+
+                    <div id="fgt-pwd-error"></div>
+                </div>
+                
+                <div id="fgt-btn-box">
+                    <button type="submit" id="fgt-btn">Submit</button>
+                    <button id="fgt-exit-btn" onclick="refreshPage()">Exit</button>
+                </div>
             </div>
-
-            <div id="fgt-security-box">
-                <label for="fgt-security-a" id="fgt-security-q"></label>
-                <input type="text" id="fgt-security-a" placeholder="answer" name="fgt-security-a">
-                <div id="fgt-security-error"></div>
-            </div>
-
-            <div id="fgt-pwd-box">
-                <label for="fgt-pwd1">New Password</label>
-                <input type="password" id="fgt-pwd1" name="fgt-pwd1" placeholder="Password">
-
-                <label for="fgt-pwd2">Confirm new Password</label>
-                <input type="password" id="fgt-pwd2" placeholder="Confirm Password">
-
-                <div id="fgt-pwd-error"></div>
-            </div>
-
-            <button type="submit" id="fgt-btn">Submit</button>
         </form>
-
-        <button id="fgt-exit-btn">x</button>
     </div>
 
     
@@ -307,13 +310,14 @@
         // Click overlay to exit alert  //
         fgtOverlay.addEventListener('click', function(event) {
             if (event.target === fgtOverlay) {
-                fgtOverlay.style.display = 'none';
+                //fgtOverlay.style.display = 'none';
+                //refreshPage();
             }
         });
 
         // Click forgot link to show form
         loginFgtLink.addEventListener('click', () => {
-            fgtOverlay.style.display = "block"
+            fgtOverlay.style.display = "block";
         });
 
         // Fetch login JSON and Rest Password //
@@ -383,5 +387,10 @@
         });
 
     // End of Forget Password //
+
+
+    function refreshPage() {
+        location.reload();
+    }
     </script>
 </body>

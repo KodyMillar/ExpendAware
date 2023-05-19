@@ -378,14 +378,6 @@ def login():
 
     users = existing_user
     newUser = {}
-
-
-    # for user in users:
-    #     # if user['email'] == fgtEmail and fgtPwd1 != "":
-    #         user['password'] = 'generate_password_hash(fgtPwd1, method="sha256")'
-    #         # return redirect(url_for('login'))
-    # with open("login.json", "w") as file:
-    #     json.dump(users, file, indent=4)
         
     if request.method == 'POST':
         loginEmail = request.form.get("login-email")
