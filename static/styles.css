@@ -42,11 +42,12 @@ header {
     color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     grid-template-areas: 
         "menu title ."
         "subtitle subtitle subtitle";
     width: 100%;
+    padding-bottom: 25px;
 }
 .h1 {
     grid-area: title;
@@ -74,17 +75,7 @@ header {
     display: flex;
     justify-content: flex-end;
 }
-.subtitle {
-  grid-area:subtitle;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  background-color: #fff;
-  padding-bottom: 10px;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
+
 /* End of Header Grid CSS ---------------
 --------------------------------------------*/
 
@@ -246,18 +237,19 @@ body,html {
 
   
   #home-icon {
-    margin-left: 10px;
+    position: absolute;
+    padding-top:30px;
+    top: 8px;
+    left:0px;
   }
-  
+
   #subheadings {
     display: flex;
-    flex-direction: row;
     gap: 10px;
     align-items: center;
     right: 10px;
     font-size: 20px;
     margin-right: 0px;
-    margin-left: 70px;
     color:#333;
   }
   
@@ -1349,7 +1341,7 @@ font-weight: bold;
     
     #home-icon {
       position: absolute;
-      margin-left: 35px;
+      margin-left: 32px;
       margin-top: 10px;
     }
   
