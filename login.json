@@ -5,19 +5,5 @@
         "email": "teemo@riot.com",
         "question": "What is your favourite food?",
         "answer": "mushroom"
-    },
-    {
-        "name": "test",
-        "password": "sha256$KeQhGhX2BPYlZtvt$c2f670093b7e5582e33df8ff2139bb124ebafbafce1e71108384cf594de72d32",
-        "email": "test@",
-        "question": "What is your favourite food?",
-        "answer": "apple"
-    },
-    {
-        "name": "asdf",
-        "password": "sha256$FRVX9mZklcEUD57l$5a6506aac5bc827caa8d7bc1f62eec3bb6656a6ae9ea2728b1ac12a28e3002ab",
-        "email": "asdf@sdf",
-        "question": "What was your childhood nickname?",
-        "answer": "asdf"
     }
 ]

@@ -407,11 +407,11 @@ class User:
     
     def is_authenticated(self):
         loginEmail = request.form.get("login-email")
-        passwordInput = request.form.get("loginPwd")
+        passwordInput = request.form.get("login-pwd")
         with open("login.json", "r") as f:
             users = json.load(f)
         for user in users:
-            if check_password_hash(user["password"], passwordInput) and user["email"] == loginEmail:
+            if user["email"] == loginEmail and check_password_hash(user["password"], passwordInput):
                 return True
         return False
     
@@ -428,6 +428,7 @@ def login():
         
     if request.method == 'POST':
         loginEmail = request.form.get("login-email")
+        loginPwd = request.form.get("login-pwd")
         regName = request.form.get("reg-name")
         regEmail = request.form.get("reg-email")
         regPwd1 = request.form.get("reg-pwd1")
@@ -438,9 +439,11 @@ def login():
         
         if loginEmail:
             userEmail = User.get(loginEmail)
-            if userEmail:
-                login_user(userEmail, remember=True)
-                return redirect(url_for("index"))
+            for user in users:
+                if userEmail:
+                    if check_password_hash(user["password"], loginPwd):
+                        login_user(userEmail)
+                        return redirect(url_for("index"))
             flash('Incorrect email or password')
             return redirect(url_for('login'))
         elif fgtEmail:
