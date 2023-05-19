@@ -448,6 +448,7 @@ def login():
             return redirect(url_for('login'))
         elif fgtEmail:
             for user in users:
+                print(user)
                 if user['email'] == fgtEmail:
                     user['password'] = generate_password_hash(fgtPwd1, method="sha256")
             with open("login.json", "w") as file:

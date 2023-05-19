@@ -1,7 +1,7 @@
 [
     {
         "name": "teemo",
-        "password": "sha256$9NtEdzdqGjfUnKQE$c6dd5894b000d59ed4d70c8973527335eea7f973c492eeec19602babe68a8551",
+        "password": "sha256$K8RfaTGMxl3Epoyr$53edc2fb4e4ed48cc8761a6c0cc1a51d577aa1a459b3a21141ed7f03cdae5e23",
         "email": "teemo@riot.com",
         "question": "What is your favourite food?",
         "answer": "mushroom"
