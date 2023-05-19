@@ -222,7 +222,8 @@
                     regPwd2.value === "" || 
                     regName.value === "" || 
                     regEmail.value === "" || 
-                    regSecurityA.value == "") {
+                    regSecurityA.value == "" ||
+                    !regEmail.value.includes('@')) {
 
                 } else if (emailExists) {
                     showAlert("This email is already used")

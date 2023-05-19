@@ -12,5 +12,12 @@
         "email": "test@",
         "question": "What is your favourite food?",
         "answer": "apple"
+    },
+    {
+        "name": "asdf",
+        "password": "sha256$FRVX9mZklcEUD57l$5a6506aac5bc827caa8d7bc1f62eec3bb6656a6ae9ea2728b1ac12a28e3002ab",
+        "email": "asdf@sdf",
+        "question": "What was your childhood nickname?",
+        "answer": "asdf"
     }
 ]
