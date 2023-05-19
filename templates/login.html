@@ -380,6 +380,8 @@
                 } else if (fgtPwd1.value.length < 8 && fgtPwd1.value !== "") {
                     event.preventDefault();
                     document.getElementById("fgt-pwd-error").textContent = "Password must be longer than 8 characters"
+                } else if (fgtPwd1.value === fgtPwd2.value && fgtPwd1.value !== "") {
+                    fgtEmail.disabled = false;
                 }
             });
         })
