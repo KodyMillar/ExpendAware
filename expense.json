@@ -1,16 +1,23 @@
 [
     {
-        "descr": "s",
-        "amount": "450",
+        "descr": "Grocery Shopping",
+        "amount": "150",
         "category": "Food",
         "budget": "Groceries",
-        "date": "18 May 2023"
+        "date": "19 May 2023"
     },
     {
-        "descr": "jkl",
+        "descr": "Steak",
         "amount": "50",
         "category": "Food",
+        "budget": "Restaurant",
+        "date": "19 May 2023"
+    },
+    {
+        "descr": "food",
+        "amount": "400",
+        "category": "Food",
         "budget": "Groceries",
-        "date": "18 May 2023"
+        "date": "19 May 2023"
     }
 ]

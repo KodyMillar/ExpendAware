@@ -29,7 +29,6 @@ h2 {
 h3 {
   font-family: 'Montserrat', sans-serif;
   font-weight: bolder;
-  display: flex;
   
 }
 
@@ -256,6 +255,7 @@ body,html {
 
   .home-icon-row {
     margin-top: 25px;
+    width: 90%;
   }
   
   button h3 {
@@ -264,7 +264,7 @@ body,html {
   }
   
   #add-budget {
-    width: 180px;
+    width: 32%;
     background:rgb(172, 177, 214) url(images/add-budget-icon.png) no-repeat 8px center;
     background-size: 23%;
     text-align: right;
@@ -274,17 +274,16 @@ body,html {
   }
   
   #add-expense {
-    width: 193px;
+    width: 32%;
     background:rgb(189, 205, 214) url(images/add-expense-icon.png) no-repeat 8px center;
     background-size: 25%;
     text-align: right;
     padding-left: 20px;
     color: black
-    
   }
 
   #add-category {
-    width: 193px;
+    width: 32%;
     background: #93bfcf url(images/add-category-icon.png) no-repeat 8px center;
     background-size: 20%;
     text-align: right;
@@ -297,6 +296,14 @@ body,html {
     transform: translateY(-15px);
   }
 
+  .subtitle-icons {
+    height: 30vw;
+  }
+  
+  .subtitle-icons h3 {
+    display: flex;
+    margin-left: 50%;
+  }
   
   a.logout-link {
     margin-right: 15px;  
@@ -537,7 +544,7 @@ body,html {
 /* alert */
 
 #alert-box {
-  background-color: rgb(190, 214, 253);
+  background-color: rgb(232, 221, 102);
   height: 50px;
   width: 300px; 
   border-radius: 5px;
@@ -1134,7 +1141,8 @@ margin-right: 10%;
 font-size: 18px;
 font-weight: bold;
 margin-top: 20px;
-background-color: #ed344c;
+/* background-color: #ed344c; */
+background-color: #118C4F;
 border-radius: 5px;
 margin-left: 7%;
 width: calc(60vw + 30px);
@@ -1469,6 +1477,10 @@ font-weight: bold;
 
     hr {
         margin-top: 40px;
+    }
+
+    #transaction-list {
+        margin-left: 0;
     }
 
 }

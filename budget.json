@@ -1,17 +1,17 @@
 [
     {
-        "name": "Casual",
-        "amount": "200",
-        "category": "Clothing"
-    },
-    {
-        "name": "Transit",
-        "amount": "100",
-        "category": "Transit"
-    },
-    {
         "name": "Groceries",
-        "amount": "500",
+        "amount": 600,
+        "category": "Food"
+    },
+    {
+        "name": "Restaurant",
+        "amount": "200",
+        "category": "Food"
+    },
+    {
+        "name": "Bakery",
+        "amount": "100",
         "category": "Food"
     }
 ]

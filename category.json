@@ -1,44 +1,8 @@
 [
     {
         "category": "Food",
-        "total budget": 500,
-        "total expenses": 500,
-        "date": "15 May 2023"
-    },
-    {
-        "category": "Transit",
-        "total budget": 100,
-        "total expenses": 0,
-        "date": "15 May 2023"
-    },
-    {
-        "category": "Clothing",
-        "total budget": 200,
-        "total expenses": 0,
-        "date": "15 May 2023"
-    },
-    {
-        "category": "Housing",
-        "total budget": 0,
-        "total expenses": 0,
-        "date": "15 May 2023"
-    },
-    {
-        "category": "fd",
-        "total budget": 0,
-        "total expenses": 0,
-        "date": "17 May 2023"
-    },
-    {
-        "category": "food    ",
-        "total budget": 0,
-        "total expenses": 0,
-        "date": "18 May 2023"
-    },
-    {
-        "category": "new food    ",
-        "total budget": 0,
-        "total expenses": 0,
-        "date": "18 May 2023"
+        "total budget": 900,
+        "total expenses": 600,
+        "date": "19 May 2023"
     }
 ]
