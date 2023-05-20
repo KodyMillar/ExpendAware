@@ -5,6 +5,15 @@
     box-sizing: border-box;
 }
 
+html {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+html::-webkit-scrollbar {
+    display: none;
+  }
+
 body {
     background-color: #e1F5ff;
     color: #333;
@@ -544,7 +553,7 @@ body,html {
 /* alert */
 
 #alert-box {
-  background-color: rgb(232, 221, 102);
+  background-color: rgb(221, 176, 255);
   height: 50px;
   width: 300px; 
   border-radius: 5px;
@@ -695,6 +704,7 @@ a {
 
 .budget-dropdown {
     z-index: 1;
+    overflow-y: hidden;
     position: absolute;
     background-color: rgb(244, 244, 244);
     display: flex;
