@@ -666,7 +666,8 @@ body,html {
 
 .category {
     background-color:rgb(255, 252, 241);
-    background-color:rgb(162, 142, 236);
+    background-color: rgb(201, 201, 100);
+    background-color: white;
     height: 110px;
     width: 95vw;
     border-radius: 33px;
@@ -705,6 +706,8 @@ a {
     font-size: 24px;
     font-weight: bold;
     color: #DA0063;
+    color: rgb(54, 174, 110);
+    color: rgb(88, 54, 174);
 }
 
 .category-budget {

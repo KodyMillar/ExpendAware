@@ -9,7 +9,6 @@ let compareIndex = 0;
 for(let category of categoriesList){
     category.addEventListener("click", (e) => {
         let categoryName = ""
-        console.log(e.target)
         if (e.target.classList.contains("category")) {
             categoryName = e.target.querySelector(".left-side").querySelector("h4").textContent
         }
@@ -19,10 +18,15 @@ for(let category of categoriesList){
             console.log(categoryName)
         }
 
-        else {
-            categoryName = e.target.parentElement.parentElement.querySelector(".left-side").querySelector("h4").textContent
+        else if(e.target.classList.contains("left-side")){
+            categoryName = e.target.querySelector("h4").textContent
         }
 
+        else {
+            categoryName = e.target.parentElement.querySelector("h4").textContent
+        }
+
+        console.log(e.target)
         category.classList.toggle("category-clicked");
         if (category.classList.contains("category-clicked")) {
 
