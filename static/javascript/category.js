@@ -26,12 +26,10 @@ for(let category of categoriesList){
             categoryName = e.target.parentElement.querySelector("h4").textContent
         }
 
-        console.log(e.target)
         category.classList.toggle("category-clicked");
         if (category.classList.contains("category-clicked")) {
 
             for(let budget of budgetDropDown) {
-                const original_id = budget.id
 
                 if (categoryName === budget.id) {
                     if (budget.id.includes(" ")) {
@@ -41,11 +39,11 @@ for(let category of categoriesList){
                     if (budget.id.includes("'")) {
                         budget.id = budget.id.replaceAll("'", "")
                     }
+
                     dropDownItems = document.querySelector("#" + budget.id).querySelectorAll(".budget-item")
                     dropDownHeight = 115 * dropDownItems.length
                     document.querySelector("#" + budget.id).style.height = `${dropDownHeight}px`;
                     budget.id = categoryName
-
                     
                 }
             }
