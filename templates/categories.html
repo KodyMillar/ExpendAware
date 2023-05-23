@@ -15,10 +15,21 @@
     <div class="categorylist-container">
     <div class="category-container">
     <div class="category-link"><div class="category">
+        <div class="left-side">
+        {% if "food" in category["category"].strip().lower() %}
+        <img src="../static/images/food-icon.png" width="65" height="65">
+        {% elif "clothing" in category["category"].strip().lower() %}
+        <img src="../static/images/clothing-icon.png" width="65" height="65">
+        {% elif "housing" in category["category"].strip().lower() or "house" in category["category"].strip().lower() or "home" in category["category"].strip().lower() or "living" in category["category"].strip().lower() %}
+        <img src="../static/images/house-icon.png" with="75" height="75">
+        {% else %}
+        <img src="../static/images/icon-blue.png" width="65" height="65">
+        {% endif %}
         <div class="name-date">
             <h4 class="category-name">{{ category['category'] }}</h4>
             <p>Created {{ category['date'] }}</p>
         </div>
+    </div>
         {% for budget in total_budgets %}
         {% if budget['category'] == category['category'] %}
         <p class="category-budget {{ category['category'] }}">Budget: ${{ budget['total budget'] }}</p>
@@ -28,7 +39,7 @@
     </div>
     <div class="dropdown-container">
     <ul class="budget-dropdown" id="{{ category['category'] }}">
-        <h4 id="budget-dropdown-header">Budgets</h4>
+        <h4 class="budget-dropdown-header">Budgets</h4>
         {% for budget in budgets %}
         {% if budget['category'] == category['category'] %}
         <li class="budget-item"><a href="{{ url_for('budget_detail', budget_name=budget['name']) }}" class="budget-link"><div class="budget-div"><p>{{ budget['name'] }}</p><p>Budget: ${{ budget['amount'] }}</p></div></a></li>

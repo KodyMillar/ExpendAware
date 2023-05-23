@@ -1,17 +1,1 @@
-[
-    {
-        "name": "Groceries",
-        "amount": 600,
-        "category": "Food"
-    },
-    {
-        "name": "Restaurant",
-        "amount": "200",
-        "category": "Food"
-    },
-    {
-        "name": "Bakery",
-        "amount": "100",
-        "category": "Food"
-    }
-]
+[]

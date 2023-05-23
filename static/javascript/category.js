@@ -11,16 +11,16 @@ for(let category of categoriesList){
         let categoryName = ""
         console.log(e.target)
         if (e.target.classList.contains("category")) {
-            categoryName = e.target.querySelector("h4").textContent
+            categoryName = e.target.querySelector(".left-side").querySelector("h4").textContent
         }
 
         else if (e.target.classList.contains("category-budget")){
-            categoryName = e.target.parentElement.querySelector("h4").textContent
+            categoryName = e.target.parentElement.querySelector(".left-side").querySelector("h4").textContent
             console.log(categoryName)
         }
 
         else {
-            categoryName = e.target.parentElement.parentElement.querySelector("h4").textContent
+            categoryName = e.target.parentElement.parentElement.querySelector(".left-side").querySelector("h4").textContent
         }
 
         category.classList.toggle("category-clicked");
@@ -38,7 +38,7 @@ for(let category of categoriesList){
                         budget.id = budget.id.replaceAll("'", "")
                     }
                     dropDownItems = document.querySelector("#" + budget.id).querySelectorAll(".budget-item")
-                    dropDownHeight = 150 * dropDownItems.length
+                    dropDownHeight = 115 * dropDownItems.length
                     document.querySelector("#" + budget.id).style.height = `${dropDownHeight}px`;
                     budget.id = categoryName
 

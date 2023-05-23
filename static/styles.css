@@ -430,10 +430,21 @@ body,html {
     font-size: 18px;
     height: 20%;
     width: 100%;
+    padding: 2% 0;
     border-bottom:#333 2px solid;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.transaction-amount {
+  color: #2ea86b;
+}
+
+.action {
+  color: rgb(91, 72, 139);
 }
   
   #category-section {
@@ -655,6 +666,7 @@ body,html {
 
 .category {
     background-color:rgb(255, 252, 241);
+    background-color:rgb(162, 142, 236);
     height: 110px;
     width: 95vw;
     border-radius: 33px;
@@ -675,6 +687,12 @@ body,html {
 
 a {
     text-decoration: none;
+}
+
+.left-side {
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
 }
 
 .name-date {
@@ -760,7 +778,7 @@ a {
     overflow-x: visible;
 }
 
-#budget-dropdown-header {
+.budget-dropdown-header {
     color: #118C4F;
 }
 
@@ -1423,6 +1441,20 @@ font-weight: bold;
         margin: 2% 0;
     } */
 
+    /* .transaction {
+      display: flex;
+      justify-content: flex-start;
+    } */
+
+    .transaction {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .transaction p {
+      text-align: center;
+    }
+
     #category-section {
       font-size: 25px;
       width: 240px;
@@ -1491,6 +1523,10 @@ font-weight: bold;
 
     #transaction-list {
         margin-left: 0;
+    }
+
+    .budget-dropdown-header {
+        margin-top: 25px;
     }
 
 }
