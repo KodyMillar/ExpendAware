@@ -147,7 +147,7 @@ def index():
             elif budget['recurring'] == "Bi-Weekly":
                 pass
             elif budget['recurring'] == "Monthly":
-                if (datetime.strptime(current_date, "%d %b %Y") - datetime.strptime(budget['date'], "%d %b %Y")).days == 30:
+                if (datetime.strptime(current_date, "%d %b %Y") - datetime.strptime(budget['date'], "%d %b %Y")).days == 31:
                     new_expense_list = []
                     for expense in existing_expense:
                         if expense['budget'] != budget['name']:
