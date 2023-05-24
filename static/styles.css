@@ -216,23 +216,29 @@ li button:hover {
 /* New Home/Index design by Bon -----
 -----------------------------------*/
 body,html {
-    width: 100%;
+    width: 103.8%;
     height: 100%;
     margin: 0;
     padding: 0;
   } 
 
   h1 {
-    margin-right: 20px;
+    text-align: center;
+    font-size: 40px;
+    
   }
+
+  
   
   #account-icon {
+    position: absolute;
     width: 45px;
     height: 45px;
-    left: 20%;
+    /* left: 50%; */
     cursor: pointer;
-    margin-left: 20px;
+    margin-left: 85%;
     margin-top: 10px;
+    padding-top: 0px;
   }
   
 
@@ -240,8 +246,8 @@ body,html {
   #home-icon {
     position: absolute;
     padding-top:30px;
-    top: 8px;
-    left:0px;
+    top: 20px;
+    left: 12px;
   }
 
   #subheadings {
@@ -335,9 +341,10 @@ body,html {
   }
   
   hr {
-    width: 90%;
+    width: 50%;
     border: 1px solid black;
-    margin-left: 25px;
+    margin-left: 0px;
+    /* position: relative; */
   }
   
   .first-h4 {
@@ -1295,7 +1302,7 @@ font-weight: bold;
 /* Home page desktop design */
 @media screen and (min-width: 768px) {
     body,html {
-      width: 100%;
+      width: 101%;
       height: 100%;
       margin: 0;
       padding: 0;
@@ -1337,14 +1344,14 @@ font-weight: bold;
   
     #account-icon {
       position: absolute;
-      margin-left: 75%;
+      margin-left: 95%;
       margin-bottom: -10px;
     }
     
     #home-icon {
       position: absolute;
-      margin-left: 32px;
-      margin-top: 10px;
+      margin-left: 20px;
+      margin-top: 0px;
     }
   
     .view-section {
@@ -1363,6 +1370,7 @@ font-weight: bold;
     hr {
       width: 90%;
       margin-bottom: 30px;
+      margin-left: 45px;
     }
   
     .first-h4 {
