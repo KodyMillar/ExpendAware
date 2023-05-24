@@ -110,6 +110,7 @@ def index():
             name = request.form['name']
             amount = request.form['amount']
             category = request.form['category']
+            recurring = request.form['recurring budget']
 
             if validate_amount(amount) == True and name != "" and check_for_existing(name, existing_budget, 'name') == True:
             
@@ -117,6 +118,8 @@ def index():
                     'name': name,
                     'amount': amount,
                     'category': category,
+                    'reccurring': recurring,
+                    'date': current_date
                 }
                 existing_budget.append(new_budget)
 
@@ -132,6 +135,28 @@ def index():
                     'date': current_date
                 }
                 existing_category.append(new_category)
+
+        # check for recurring budget 
+        for budget in existing_budget:
+            if budget['recurring'] == "None":
+                continue
+            elif budget['recurring'] == "Daily":
+                pass
+            elif budget['recurring'] == "Weekly":
+                pass
+            elif budget['recurring'] == "Bi-Weekly":
+                pass
+            elif budget['recurring'] == "Monthly":
+                if (datetime.strptime(current_date, "%d %b %Y") - datetime.strptime(budget['date'], "%d %b %Y")).days == 30:
+                    new_expense_list = []
+                    for expense in existing_expense:
+                        if expense['budget'] != budget['name']:
+                            new_expense_list.append(expense)
+                    existing_expense = new_expense_list
+                    budget['date'] = current_date
+
+            elif budget['recurring'] == "Yearly":
+                pass
 
         # Write the entire data object back to the file
         with open("expense.json", "w") as f:
