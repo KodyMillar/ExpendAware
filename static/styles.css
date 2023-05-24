@@ -296,7 +296,7 @@ body,html {
   #add-category {
     width: 32%;
     background: #93bfcf url(images/add-category-icon.png) no-repeat 8px center;
-    background: #40a6cb url(images/add-category-icon.png) no-repeat 8px center;
+    background: #3da1c6 url(images/add-category-icon.png) no-repeat 8px center;
     background-size: 20%;
     text-align: right;
     padding-left: 20px;
