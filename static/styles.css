@@ -55,6 +55,7 @@ header {
     align-items: center;
     justify-content: center;
     font-size: 8vw;
+    color: black;
 }
 .menu-btn {
     grid-area: menu;
@@ -228,10 +229,10 @@ body,html {
   #account-icon {
     width: 45px;
     height: 45px;
-    left: 17%;
+    left: 20%;
     cursor: pointer;
     margin-left: 20px;
-    margin-top: 5px;
+    margin-top: 10px;
   }
   
 
@@ -1309,6 +1310,7 @@ font-weight: bold;
         height: 5px;
         margin: 2px;
         margin-left: 40px;
+        cursor: pointer;
     }
     
     /* .menu-btn {
