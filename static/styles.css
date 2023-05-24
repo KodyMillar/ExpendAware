@@ -769,7 +769,7 @@ a {
     width: 75%;
     justify-content: space-between;
     border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
-    padding-bottom: 5%;
+    padding-bottom: 1%;
 }
 
 .budget-div {
@@ -779,7 +779,7 @@ a {
 
 .budget-link {
   width: 100%;
-  height: 150%;
+  height: 110%;
 }
 
 .budget-link p {
@@ -1325,7 +1325,6 @@ font-weight: bold;
         width: 80%;
         justify-content: space-between;
         border-bottom: .25px rgba(184, 184, 184, 0.6) solid;
-        /* padding-bottom: 5%; */
     }
     
     .budget-div {
@@ -1334,6 +1333,10 @@ font-weight: bold;
 
     .category-edit-popup {
         width: 50vw;
+    }
+
+    .left-side {
+      width: 100%;
     }
 
 
@@ -1459,17 +1462,8 @@ font-weight: bold;
       margin-left: 2.5%;
       margin-bottom: 25px;
       border-radius: 10px;
-      /* height: 75%; */
     }
 
-    /* .transaction {
-        margin: 2% 0;
-    } */
-
-    /* .transaction {
-      display: flex;
-      justify-content: flex-start;
-    } */
 
     .transaction {
       display: grid;
@@ -1520,19 +1514,6 @@ font-weight: bold;
     .view-section h5 {
         font-size: 1em;
     }
-
-    /* .percentage {
-      height: 40px;
-      border: 2px solid black;
-      background-color: yellow;
-      height: 10px;
-      margin-top: 110px;
-      margin-left: 190px;
-      margin-right: 10px;
-      border-radius: 5px;
-      width: 190px;
-    }
-     */
   
     .expenses-section h4 {
       font-size: 30px;

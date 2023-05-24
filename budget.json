@@ -1,12 +1,30 @@
 [
     {
         "name": "Groceries",
-        "amount": 200,
-        "category": "Food"
+        "amount": "200",
+        "category": "Food",
+        "recurring": "Monthly",
+        "date": "24 May 2023"
+    },
+    {
+        "name": "Dine Out",
+        "amount": "100",
+        "category": "Food",
+        "recurring": "None",
+        "date": "24 May 2023"
     },
     {
         "name": "Casual",
-        "amount": 300,
-        "category": "Clothing"
+        "amount": "100",
+        "category": "Clothing",
+        "recurring": "Daily",
+        "date": "24 May 2023"
+    },
+    {
+        "name": "Formal",
+        "amount": "200",
+        "category": "Clothing",
+        "recurring": "None",
+        "date": "24 May 2023"
     }
 ]
