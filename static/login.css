@@ -85,7 +85,8 @@ button {
     font-size: 18px;
     font-weight: bold;
     margin: 20px 10px;
-    background-color: #ed344c;
+    /* background-color: #ed344c; */
+    background-color: #118C4F;
     border-radius: 5px;
     width: 15vw;
     min-width: 100px;

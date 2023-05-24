@@ -2,6 +2,27 @@
     {
         "action": "Created Expense",
         "name": "Food",
+        "amount": "400",
+        "description": "food",
+        "date": "19 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "All Food",
+        "amount": "50",
+        "description": "Steak",
+        "date": "19 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Food",
+        "amount": "150",
+        "description": "Grocery Shopping",
+        "date": "19 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Food",
         "amount": "50",
         "description": "jkl",
         "date": "18 May 2023"
@@ -29,30 +50,6 @@
     },
     {
         "action": "Created Expense",
-        "name": {
-            "category": "new food    ",
-            "total budget": 0,
-            "total expenses": 0,
-            "date": "18 May 2023"
-        },
-        "amount": "450",
-        "description": "Steak",
-        "date": "18 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": {
-            "category": "new food    ",
-            "total budget": 0,
-            "total expenses": 0,
-            "date": "18 May 2023"
-        },
-        "amount": "450",
-        "description": "Steak",
-        "date": "18 May 2023"
-    },
-    {
-        "action": "Created Expense",
         "name": "Food",
         "amount": "450",
         "description": "Steak",
@@ -62,13 +59,6 @@
         "action": "Created Expense",
         "name": "Food",
         "amount": "450",
-        "description": "Steak",
-        "date": "18 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Food",
-        "amount": "55",
         "description": "Steak",
         "date": "18 May 2023"
     },
