@@ -5,5 +5,12 @@
         "email": "teemo@riot.com",
         "question": "What is your favourite food?",
         "answer": "mushroom"
+    },
+    {
+        "name": "adadasd",
+        "password": "sha256$pvxpd0XIYuQOSPKY$651b69c9c249c759917e87bda4193fd05c60d2819d5ccc2e02c20b357f6fbd5c",
+        "email": "asdsdad@gmail.com",
+        "question": "What was your childhood nickname?",
+        "answer": "fef"
     }
 ]
