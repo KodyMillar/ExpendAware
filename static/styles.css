@@ -275,6 +275,7 @@ body,html {
   #add-budget {
     width: 32%;
     background:rgb(172, 177, 214) url(images/add-budget-icon.png) no-repeat 8px center;
+    background:rgb(123, 133, 207) url(images/add-budget-icon.png) no-repeat 8px center;
     background-size: 23%;
     text-align: right;
     padding-left: 20px;
@@ -285,6 +286,7 @@ body,html {
   #add-expense {
     width: 32%;
     background:rgb(189, 205, 214) url(images/add-expense-icon.png) no-repeat 8px center;
+    background:rgb(135, 188, 219) url(images/add-expense-icon.png) no-repeat 8px center;
     background-size: 25%;
     text-align: right;
     padding-left: 20px;
@@ -294,6 +296,7 @@ body,html {
   #add-category {
     width: 32%;
     background: #93bfcf url(images/add-category-icon.png) no-repeat 8px center;
+    background: #40a6cb url(images/add-category-icon.png) no-repeat 8px center;
     background-size: 20%;
     text-align: right;
     padding-left: 20px;
@@ -306,7 +309,7 @@ body,html {
   }
 
   .subtitle-icons {
-    height: 30vw;
+    height: 26vw;
   }
   
   .subtitle-icons h3 {
@@ -1257,8 +1260,8 @@ font-weight: bold;
     }
 
     .view-section {
-      width: 75%;
-      margin-top: 75px;
+      width: 80%;
+      margin-top: 40px;
       background-color: white;
       border-radius: 20px;
   }
@@ -1385,10 +1388,6 @@ font-weight: bold;
       margin-top: 10px;
     }
   
-    .view-section {
-      width: 80%;
-      border-radius: 10px;
-    }
   
     .summary {
       /* padding-left: 80px; */
@@ -1532,6 +1531,28 @@ font-weight: bold;
         margin-top: 25px;
     }
 
+    .subtitle-icons {
+      height: 15vw;
+    }
+
+    #add-budget {
+      width: 20%;
+    }
+
+    #add-expense {
+      width: 20%;
+    }
+
+    #add-category {
+      width: 20%;
+    }
+
+    .home-icon-row {
+      width: 80%;
+      height: 60%;
+      display: flex;
+      justify-content: space-evenly;
+    }
 }
 /* End of home page desktop design */
 
