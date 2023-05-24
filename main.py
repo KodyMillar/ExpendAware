@@ -344,6 +344,8 @@ def transfer():
     categories = existing_category
     budgets = existing_budget
 
+    current_date = datetime.now().strftime("%d %b %Y")
+
     if request.method == 'POST':
 
         # Get user input
@@ -371,6 +373,25 @@ def transfer():
                     budget["amount"] = budget_from_dict["amount"]
                 if budget["name"] == budget_to_dict["name"] and budget["category"] == budget_to_dict["category"]:
                     budget["amount"] = budget_to_dict["amount"]
+            
+        # Write to history.json
+        with open("history.json", "r") as file:
+            latest_transaction = json.load(file)
+        
+        new_transaction = {
+            "action": "Transfer",
+            "name": budget_from_dict["name"] + " to " + budget_to_dict["name"],
+            "amount": int(transfer_amount),
+            "description": "",
+            "date": current_date
+        }
+
+        latest_transaction.insert(0, new_transaction)
+        if len(latest_transaction) > 10:
+            latest_transaction.pop(10)
+
+        with open("history.json", "w") as file:
+            json.dump(latest_transaction, file, indent=4)
     
         # Update budgets.json
         with open("budget.json", "w") as f:

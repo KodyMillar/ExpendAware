@@ -30,7 +30,7 @@
   
   <div class="transaction-section">
     <ul id="transaction-list">
-      <li class="latest-transaction-heading transaction"><p>Transaction</p><p>Budget & Amount</p><p>Date</p><p>Description</p></li>
+      <li id="latest-transaction-heading" class="transaction"><p>Transaction</p><p id="budget-and-amount">Budget & Amount</p><p>Date</p><p>Description</p></li>
       {% if history | length > 0 %}
       {% for action in history %}
       <li class="transaction"> <p class="action">{{ action['action'] }} </p><p class="transaction-amount"> {{ action['name'] }} - ${{ action['amount'] }} </p><p> {{ action['date'] }} </p><p> {{ action['description'] }}</p></li>

@@ -389,7 +389,7 @@ body,html {
   }
 
   #totals h4 {
-    font-size: 20px;
+    font-size: 17px;
     color: #118C4F;
   }
   
@@ -432,13 +432,20 @@ body,html {
     margin-top: 20px;
 }
 
-.latest-transaction-heading {
+#latest-transaction-heading {
   /* background-color: rgb(145, 211, 158); */
   background-color: rgb(197, 182, 245);
+  padding: 2%;
+  width: 102%;
+  font-size: 18px;
+}
+
+#budget-and-amount {
+  margin-left: 12%;
 }
 
 .transaction {
-    font-size: 18px;
+    font-size: 17px;
     height: 20%;
     width: 100%;
     padding: 2% 0;
@@ -448,6 +455,10 @@ body,html {
     justify-content: center; */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.transaction p {
+  padding: 0 10%;
 }
 
 .transaction-amount {

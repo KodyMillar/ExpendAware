@@ -1,12 +1,12 @@
 [
     {
         "name": "Groceries",
-        "amount": "200",
+        "amount": 200,
         "category": "Food"
     },
     {
         "name": "Casual",
-        "amount": "300",
+        "amount": 300,
         "category": "Clothing"
     }
 ]

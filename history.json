@@ -1,5 +1,12 @@
 [
     {
+        "action": "Transfer",
+        "name": "Groceries to Casual",
+        "amount": 100,
+        "description": "",
+        "date": "23 May 2023"
+    },
+    {
         "action": "Created Expense",
         "name": "Food",
         "amount": "200",
@@ -45,13 +52,6 @@
         "action": "Created Expense",
         "name": "Food",
         "amount": "20",
-        "description": "Steak",
-        "date": "18 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Food",
-        "amount": "450",
         "description": "Steak",
         "date": "18 May 2023"
     },
