@@ -30,6 +30,7 @@
   
   <div class="transaction-section">
     <ul id="transaction-list">
+      <li class="latest-transaction-heading transaction"><p>Transaction</p><p>Budget & Amount</p><p>Date</p><p>Description</p></li>
       {% if history | length > 0 %}
       {% for action in history %}
       <li class="transaction"> <p class="action">{{ action['action'] }} </p><p class="transaction-amount"> {{ action['name'] }} - ${{ action['amount'] }} </p><p> {{ action['date'] }} </p><p> {{ action['description'] }}</p></li>
@@ -43,7 +44,6 @@
   <div>
       <h4 id="category-section">Category Overview</h4>
   </div>
-
  
   <div class="categories-container">
     {% for category in categories %}
@@ -52,7 +52,6 @@
             <h3>{{ category['category'] }}</h3>
             <h5>Total Budget: ${{ category['total budget'] }}</h5>
             <h5>Total Expenses: ${{ category['total expenses'] }}</h5>
-          
               
           </div>
           <div class="percent-label">

@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "descr": "Steak",
+        "amount": "200",
+        "category": "Food",
+        "budget": "Groceries",
+        "date": "23 May 2023"
+    }
+]
