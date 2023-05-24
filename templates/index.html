@@ -33,7 +33,11 @@
       <li id="latest-transaction-heading" class="transaction"><p>Transaction</p><p id="budget-and-amount">Budget & Amount</p><p>Date</p><p>Description</p></li>
       {% if history | length > 0 %}
       {% for action in history %}
+      {% if history[history | length - 1] != action  %}
       <li class="transaction"> <p class="action">{{ action['action'] }} </p><p class="transaction-amount"> {{ action['name'] }} - ${{ action['amount'] }} </p><p> {{ action['date'] }} </p><p> {{ action['description'] }}</p></li>
+      {% elif history[history | length - 1] == action %}
+      <li class="transaction" id="transaction-list-bottom"> <p class="action">{{ action['action'] }} </p><p class="transaction-amount"> {{ action['name'] }} - ${{ action['amount'] }} </p><p> {{ action['date'] }} </p><p> {{ action['description'] }}</p></li>
+      {% endif %}
       {% endfor %}
       {% else %}
       <p>No transactions yet</p>

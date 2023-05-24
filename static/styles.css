@@ -503,6 +503,10 @@ body,html {
     box-shadow: 1px 1px 6px 2px darkblue inset;
   } */
 
+  #transaction-list-bottom {
+    border-bottom: none;
+  }
+
   .category-overview {
     display: flex;
     flex-direction: column;
