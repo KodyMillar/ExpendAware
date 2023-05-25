@@ -41,6 +41,22 @@ def check_for_existing(name_input, existing_list, criteria):
             return False
     return True
 
+def reset_expenses(existing_expense, budget, current_date):
+    new_expense_list = []
+    for expense in existing_expense:
+        if expense['budget'] != budget['name']:
+            new_expense_list.append(expense)
+    return new_expense_list
+
+def recalculate_total_expenses(existing_category, budget, existing_expense):
+    new_expense_total = 0
+    for category in existing_category:
+        if category['category'] == budget['category']:
+            for expense in existing_expense:
+                if expense['category'] == budget['category'] and expense['budget'] != budget['name']:
+                    new_expense_total += int(expense['amount'])
+    return new_expense_total
+
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
@@ -110,6 +126,7 @@ def index():
             name = request.form['name']
             amount = request.form['amount']
             category = request.form['category']
+            recurring = request.form['recurring budget']
 
             if validate_amount(amount) == True and name != "" and check_for_existing(name, existing_budget, 'name') == True:
             
@@ -117,6 +134,8 @@ def index():
                     'name': name,
                     'amount': amount,
                     'category': category,
+                    'recurring': recurring,
+                    'date': current_date
                 }
                 existing_budget.append(new_budget)
 
@@ -143,11 +162,92 @@ def index():
         with open("history.json", "w") as file:
             json.dump(history, file, indent=4)
             return redirect(url_for("index"))
+        
+     # check for recurring budget 
+    for budget in existing_budget:
+        if budget['recurring'] == "None":
+            continue
+        elif budget['recurring'] == "Daily":
+            if (datetime.strptime(current_date, "%d %b %Y") - datetime.strptime(budget['date'], "%d %b %Y")).days == 1:
+                new_expense_list = []
+                for expense in existing_expense:
+                    if expense['budget'] != budget['name']:
+                        new_expense_list.append(expense)
+                existing_expense = new_expense_list
+                budget['date'] = current_date
+
+                budget_expense_total = 0
+                for expense in existing_expense:
+                    if expense['budget'] == budget['name']:
+                        budget_expense_total += expense['amount']
+
+                for category in existing_category:
+                    if category['category'] == budget['category']:
+                        category['total expenses'] = recalculate_total_expenses(existing_category, budget, existing_expense)
+
+                new_action = {
+                    "action": "Reset Recurring Budget",
+                    "name": budget['name'],
+                    "amount": budget_expense_total,
+                    "description": budget['recurring'] + " budget",
+                    "date": current_date
+                }
+
+                history.insert(0, new_action)
+                if len(history) > 10:
+                    history.pop(10)
+
+
+        elif budget['recurring'] == "Weekly":
+            pass
+        elif budget['recurring'] == "Bi-Weekly":
+            pass
+        elif budget['recurring'] == "Monthly":
+            if (datetime.strptime(current_date, "%d %b %Y") - datetime.strptime(budget['date'], "%d %b %Y")).days == 31:
+                new_expense_list = []
+                for expense in existing_expense:
+                    if expense['budget'] != budget['name']:
+                        new_expense_list.append(expense)
+                existing_expense = new_expense_list
+                budget['date'] = current_date
+
+                budget_expense_total = 0
+                for expense in existing_expense:
+                    if expense['budget'] == budget['name']:
+                        budget_expense_total += expense['amount']
+
+                new_action = {
+                    "action": "Reset Recurring Budget",
+                    "name": budget['name'],
+                    "amount": budget_expense_total,
+                    "description": budget['recurring'] + " budget",
+                    "date": current_date
+                }
+
+                history.insert(0, new_action)
+                if len(history) > 10:
+                    history.pop(10)
+
+
+        # elif budget['recurring'] == "Yearly":
+        #     pass
+
+        with open("expense.json", "w") as f:
+            json.dump(existing_expense, f, indent=4)
+        with open("budget.json", "w") as f:
+            json.dump(existing_budget, f, indent=4)
+        with open("category.json", "w") as f:
+            json.dump(existing_category, f, indent=4)
+        with open("history.json", "w") as f:
+            json.dump(history, f, indent=4)
+        # with open("history.json", "w") as file:
+        #     json.dump(history, file, indent=4)
+
     expenses = existing_expense
     categories = existing_category
     budgets = existing_budget
 
-    #get total budget 
+    # get total budget 
     total_budget = 0
     with open("category.json", "r") as file:
         categories = json.load(file)
@@ -155,12 +255,11 @@ def index():
     for category in categories:
         total_budget += category['total budget']
 
-    #get total expenses
+    # get total expenses
     total_expenses = 0
 
     for category in categories:
         total_expenses += category['total expenses']
-    
 
     categories = update_categories_budgets(categories, budgets, expenses)
     return render_template('index.html', 
@@ -344,6 +443,8 @@ def transfer():
     categories = existing_category
     budgets = existing_budget
 
+    current_date = datetime.now().strftime("%d %b %Y")
+
     if request.method == 'POST':
 
         # Get user input
@@ -371,6 +472,25 @@ def transfer():
                     budget["amount"] = budget_from_dict["amount"]
                 if budget["name"] == budget_to_dict["name"] and budget["category"] == budget_to_dict["category"]:
                     budget["amount"] = budget_to_dict["amount"]
+            
+        # Write to history.json
+        with open("history.json", "r") as file:
+            latest_transaction = json.load(file)
+        
+        new_transaction = {
+            "action": "Transfer",
+            "name": budget_from_dict["name"] + " to " + budget_to_dict["name"],
+            "amount": int(transfer_amount),
+            "description": "",
+            "date": current_date
+        }
+
+        latest_transaction.insert(0, new_transaction)
+        if len(latest_transaction) > 10:
+            latest_transaction.pop(10)
+
+        with open("history.json", "w") as file:
+            json.dump(latest_transaction, file, indent=4)
     
         # Update budgets.json
         with open("budget.json", "w") as f:
