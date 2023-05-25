@@ -1,8 +1,38 @@
 [
     {
         "category": "Food",
-        "total budget": 900,
-        "total expenses": 600,
+        "total budget": 200,
+        "total expenses": 0,
+        "date": "19 May 2023"
+    },
+    {
+        "category": "Clothing",
+        "total budget": 300,
+        "total expenses": 0,
+        "date": "19 May 2023"
+    },
+    {
+        "category": "Housing",
+        "total budget": 0,
+        "total expenses": 0,
+        "date": "19 May 2023"
+    },
+    {
+        "category": "Living Expenses",
+        "total budget": 0,
+        "total expenses": 0,
+        "date": "19 May 2023"
+    },
+    {
+        "category": "Random Stuff",
+        "total budget": 0,
+        "total expenses": 0,
+        "date": "19 May 2023"
+    },
+    {
+        "category": "Not a common category",
+        "total budget": 0,
+        "total expenses": 0,
         "date": "19 May 2023"
     }
 ]

@@ -5,6 +5,15 @@
     box-sizing: border-box;
 }
 
+html {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+html::-webkit-scrollbar {
+    display: none;
+  }
+
 body {
     background-color: #e1F5ff;
     color: #333;
@@ -215,23 +224,29 @@ li button:hover {
 /* New Home/Index design by Bon -----
 -----------------------------------*/
 body,html {
-    width: 100%;
+    width: 103.8%;
     height: 100%;
     margin: 0;
     padding: 0;
   } 
 
   h1 {
-    margin-right: 20px;
+    text-align: center;
+    font-size: 40px;
+    
   }
+
+  
   
   #account-icon {
+    position: absolute;
     width: 45px;
     height: 45px;
-    left: 20%;
+    /* left: 50%; */
     cursor: pointer;
-    margin-left: 20px;
+    margin-left: 85%;
     margin-top: 10px;
+    padding-top: 0px;
   }
   
 
@@ -239,8 +254,8 @@ body,html {
   #home-icon {
     position: absolute;
     padding-top:30px;
-    top: 8px;
-    left:0px;
+    top: 20px;
+    left: 12px;
   }
 
   #subheadings {
@@ -267,6 +282,7 @@ body,html {
   #add-budget {
     width: 32%;
     background:rgb(172, 177, 214) url(images/add-budget-icon.png) no-repeat 8px center;
+    background:rgb(123, 133, 207) url(images/add-budget-icon.png) no-repeat 8px center;
     background-size: 23%;
     text-align: right;
     padding-left: 20px;
@@ -277,6 +293,7 @@ body,html {
   #add-expense {
     width: 32%;
     background:rgb(189, 205, 214) url(images/add-expense-icon.png) no-repeat 8px center;
+    background:rgb(135, 188, 219) url(images/add-expense-icon.png) no-repeat 8px center;
     background-size: 25%;
     text-align: right;
     padding-left: 20px;
@@ -286,6 +303,7 @@ body,html {
   #add-category {
     width: 32%;
     background: #93bfcf url(images/add-category-icon.png) no-repeat 8px center;
+    background: #3da1c6 url(images/add-category-icon.png) no-repeat 8px center;
     background-size: 20%;
     text-align: right;
     padding-left: 20px;
@@ -298,7 +316,7 @@ body,html {
   }
 
   .subtitle-icons {
-    height: 30vw;
+    height: 26vw;
   }
   
   .subtitle-icons h3 {
@@ -342,9 +360,10 @@ body,html {
   }
   
   hr {
-    width: 90%;
+    width: 50%;
     border: 1px solid black;
-    margin-left: 25px;
+    margin-left: 0px;
+    /* position: relative; */
   }
   
   .first-h4 {
@@ -422,10 +441,21 @@ body,html {
     font-size: 18px;
     height: 20%;
     width: 100%;
+    padding: 2% 0;
     border-bottom:#333 2px solid;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.transaction-amount {
+  color: #2ea86b;
+}
+
+.action {
+  color: rgb(91, 72, 139);
 }
   
   #category-section {
@@ -545,7 +575,7 @@ body,html {
 /* alert */
 
 #alert-box {
-  background-color: rgb(232, 221, 102);
+  background-color: rgb(221, 176, 255);
   height: 50px;
   width: 300px; 
   border-radius: 5px;
@@ -647,6 +677,8 @@ body,html {
 
 .category {
     background-color:rgb(255, 252, 241);
+    background-color: rgb(201, 201, 100);
+    background-color: white;
     height: 110px;
     width: 95vw;
     border-radius: 33px;
@@ -669,6 +701,12 @@ a {
     text-decoration: none;
 }
 
+.left-side {
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+}
+
 .name-date {
     margin-left: 25px;
     color: black;
@@ -679,6 +717,8 @@ a {
     font-size: 24px;
     font-weight: bold;
     color: #DA0063;
+    color: rgb(54, 174, 110);
+    color: rgb(88, 54, 174);
 }
 
 .category-budget {
@@ -696,6 +736,7 @@ a {
 
 .budget-dropdown {
     z-index: 1;
+    overflow-y: hidden;
     position: absolute;
     background-color: rgb(244, 244, 244);
     display: flex;
@@ -751,7 +792,7 @@ a {
     overflow-x: visible;
 }
 
-#budget-dropdown-header {
+.budget-dropdown-header {
     color: #118C4F;
 }
 
@@ -1227,8 +1268,8 @@ font-weight: bold;
     }
 
     .view-section {
-      width: 75%;
-      margin-top: 75px;
+      width: 80%;
+      margin-top: 40px;
       background-color: white;
       border-radius: 20px;
   }
@@ -1304,7 +1345,7 @@ font-weight: bold;
 /* Home page desktop design */
 @media screen and (min-width: 768px) {
     body,html {
-      width: 100%;
+      width: 101%;
       height: 100%;
       margin: 0;
       padding: 0;
@@ -1346,20 +1387,16 @@ font-weight: bold;
   
     #account-icon {
       position: absolute;
-      margin-left: 75%;
+      margin-left: 95%;
       margin-bottom: -10px;
     }
     
     #home-icon {
       position: absolute;
-      margin-left: 32px;
-      margin-top: 10px;
+      margin-left: 20px;
+      margin-top: 0px;
     }
   
-    .view-section {
-      width: 80%;
-      border-radius: 10px;
-    }
   
     .summary {
       /* padding-left: 80px; */
@@ -1372,6 +1409,7 @@ font-weight: bold;
     hr {
       width: 90%;
       margin-bottom: 30px;
+      margin-left: 45px;
     }
   
     .first-h4 {
@@ -1414,6 +1452,20 @@ font-weight: bold;
     /* .transaction {
         margin: 2% 0;
     } */
+
+    /* .transaction {
+      display: flex;
+      justify-content: flex-start;
+    } */
+
+    .transaction {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .transaction p {
+      text-align: center;
+    }
 
     #category-section {
       font-size: 25px;
@@ -1485,6 +1537,32 @@ font-weight: bold;
         margin-left: 0;
     }
 
+    .budget-dropdown-header {
+        margin-top: 25px;
+    }
+
+    .subtitle-icons {
+      height: 15vw;
+    }
+
+    #add-budget {
+      width: 20%;
+    }
+
+    #add-expense {
+      width: 20%;
+    }
+
+    #add-category {
+      width: 20%;
+    }
+
+    .home-icon-row {
+      width: 80%;
+      height: 60%;
+      display: flex;
+      justify-content: space-evenly;
+    }
 }
 /* End of home page desktop design */
 

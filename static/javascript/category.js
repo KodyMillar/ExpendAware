@@ -9,25 +9,27 @@ let compareIndex = 0;
 for(let category of categoriesList){
     category.addEventListener("click", (e) => {
         let categoryName = ""
-        console.log(e.target)
         if (e.target.classList.contains("category")) {
-            categoryName = e.target.querySelector("h4").textContent
+            categoryName = e.target.querySelector(".left-side").querySelector("h4").textContent
         }
 
         else if (e.target.classList.contains("category-budget")){
-            categoryName = e.target.parentElement.querySelector("h4").textContent
+            categoryName = e.target.parentElement.querySelector(".left-side").querySelector("h4").textContent
             console.log(categoryName)
         }
 
+        else if(e.target.classList.contains("left-side")){
+            categoryName = e.target.querySelector("h4").textContent
+        }
+
         else {
-            categoryName = e.target.parentElement.parentElement.querySelector("h4").textContent
+            categoryName = e.target.parentElement.querySelector("h4").textContent
         }
 
         category.classList.toggle("category-clicked");
         if (category.classList.contains("category-clicked")) {
 
             for(let budget of budgetDropDown) {
-                const original_id = budget.id
 
                 if (categoryName === budget.id) {
                     if (budget.id.includes(" ")) {
@@ -37,11 +39,11 @@ for(let category of categoriesList){
                     if (budget.id.includes("'")) {
                         budget.id = budget.id.replaceAll("'", "")
                     }
+
                     dropDownItems = document.querySelector("#" + budget.id).querySelectorAll(".budget-item")
-                    dropDownHeight = 150 * dropDownItems.length
+                    dropDownHeight = 115 * dropDownItems.length
                     document.querySelector("#" + budget.id).style.height = `${dropDownHeight}px`;
                     budget.id = categoryName
-
                     
                 }
             }
