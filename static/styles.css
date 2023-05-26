@@ -784,12 +784,13 @@ a {
 .category-btns {
     display: flex;
     flex-direction: row;
+    margin-top: 2%;
 }
 
 .cat-btns-div {
     overflow: hidden;
     height: 0;
-    transition: 0.1s;
+    transition: 0.3s;
     
 }
 
@@ -801,6 +802,7 @@ a {
     cursor: pointer;
     border-radius: 3px;
     border: none;
+    transition: 0.2s;
 }
 
 .btn-danger-form {
@@ -814,6 +816,7 @@ a {
     cursor: pointer;
     border-radius: 3px;
     border: none;
+    transition: 0.2s;
 }
 
 /* category edit popup*/
@@ -826,7 +829,7 @@ a {
     height: 75vh;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: calc(10% - 20px);
+    padding: calc(7% - 20px) calc(10% - 20px) calc(10% - 20px) calc(10% - 20px);
     background-color: rgb(235, 255, 255);
     display: none;
     border-radius: 10px;
@@ -963,7 +966,7 @@ a {
     display: block;
     display: grid;
     grid-template-columns: 30% 40% 30%;
-    grid-template-rows: 10% 6% 10% 10%;
+    grid-template-rows: 5% 10% 6% 10% 10%;
     grid-auto-rows: 6% 20% 15%;
 }
 

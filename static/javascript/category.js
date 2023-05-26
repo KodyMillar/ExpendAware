@@ -183,6 +183,23 @@ for (let background of popupBackground) {
   })
 }
 
+categoryEditExit = document.querySelectorAll(".edit-popup-exit")
+
+for (let exitButton of categoryEditExit) {
+    exitButton.addEventListener("click", ()=> {
+        for (let popup of categoryEditPopup) {
+            if (popup.classList.contains("category-edit-clicked")) {
+                popup.classList.toggle("category-edit-clicked")
+            }
+        }
+        for (let background of popupBackground) {
+            if (background.classList.contains("category-edit-clicked")) {
+                background.classList.toggle("category-edit-clicked")
+            }
+        }
+    })
+}
+
 const deleteCategoryButton = document.querySelectorAll(".delete-category")
 const deleteCategoryPopup = document.querySelectorAll(".category-delete-popup")
 
