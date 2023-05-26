@@ -1,7 +1,7 @@
 /* Side Bar */
 closeButton = document.querySelector("#side-menu-close")
 sideMenu = document.querySelector("#menu-expand")
-menuIcon = document.querySelector(".menu-btn")
+menuIcon = document.querySelector("#menu-btn")
 
 function openMenu() {
     sideMenu.style.width = "200px";
