@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "descr": "Shirts",
+        "amount": "50",
+        "category": "Clothing",
+        "budget": "Casual",
+        "date": "25 May 2023"
+    }
+]

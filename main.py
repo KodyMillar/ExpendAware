@@ -112,7 +112,7 @@ def index():
 
                 new_action = {
                     "action": "Created Expense",
-                    "name": new_expense["category"],
+                    "name": new_expense["budget"],
                     "amount": amount,
                     "description": descr,
                     "date": current_date

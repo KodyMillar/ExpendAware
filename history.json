@@ -1,5 +1,19 @@
 [
     {
+        "action": "Created Expense",
+        "name": "Casual",
+        "amount": "50",
+        "description": "Shirts",
+        "date": "25 May 2023"
+    },
+    {
+        "action": "Reset Recurring Budget",
+        "name": "Casual",
+        "amount": 0,
+        "description": "Daily budget",
+        "date": "25 May 2023"
+    },
+    {
         "action": "Reset Recurring Budget",
         "name": "Casual",
         "amount": 0,

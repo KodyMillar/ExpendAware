@@ -125,6 +125,7 @@ form {
     outline: none;
     font-size: 16px;
 }
+
 select {
     width: 100%;
     padding: 10px;
@@ -223,26 +224,18 @@ li button:hover {
 
 /* New Home/Index design by Bon -----
 -----------------------------------*/
-body,html {
-    width: 103.8%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  } 
 
   h1 {
     text-align: center;
     font-size: 40px;
-    
+    color: white;
   }
 
-  
   
   #account-icon {
     position: absolute;
     width: 45px;
     height: 45px;
-    /* left: 50%; */
     cursor: pointer;
     margin-left: 85%;
     margin-top: 10px;
@@ -360,10 +353,9 @@ body,html {
   }
   
   hr {
-    width: 50%;
+    width: 95%;
     border: 1px solid black;
-    margin-left: 0px;
-    /* position: relative; */
+    margin-left: 2.5%;
   }
   
   .first-h4 {
@@ -398,7 +390,7 @@ body,html {
 
   #totals h4 {
     font-size: 17px;
-    color: #118C4F;
+    color: #0f7b45;
   }
   
   #transaction {
@@ -458,9 +450,6 @@ body,html {
     width: 100%;
     padding: 2% 0;
     border-bottom:#333 2px solid;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
@@ -470,7 +459,7 @@ body,html {
 }
 
 .transaction-amount {
-  color: #2ea86b;
+  color: #23915a;
 }
 
 .action {
@@ -485,31 +474,6 @@ body,html {
     font-size: 20px;
     border-radius: 3px;
   }
-  
-  /* .category-overview1 {
-    display: flex;
-    flex-direction: row;
-    margin-top: 15px;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #a2d2ff;
-    border: solid 1px #a2d2ff;
-    width: 150px;
-    border-radius: 5px;
-    height: 120px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    box-shadow: 1px 1px 6px 2px darkblue inset;
-  }
-  
-  .category1 {
-    height: 90px;
-    width: 150px;
-    background-color: #65A5E2;
-    border-radius: 5px;
-    margin-bottom: 28px;
-    box-shadow: 1px 1px 6px 2px darkblue inset;
-  } */
 
   #transaction-list-bottom {
     border-bottom: none;
@@ -1369,7 +1333,6 @@ font-weight: bold;
 /* Home page desktop design */
 @media screen and (min-width: 768px) {
     body,html {
-      width: 101%;
       height: 100%;
       margin: 0;
       padding: 0;
