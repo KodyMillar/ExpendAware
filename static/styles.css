@@ -73,6 +73,7 @@ header {
     cursor: pointer;
     width: 40px;
     margin: 8px;
+    height: 30%;
 }
 .home-btn {
     grid-area: home;
@@ -141,6 +142,7 @@ select {
 }
 button {
     background-color: #65647C;
+    background-color:rgb(78, 126, 82);
     color: white;
     padding: 10px 20px;
     border: none;
@@ -264,57 +266,74 @@ li button:hover {
 
   .home-icon-row {
     margin-top: 25px;
-    width: 90%;
+    width: 93%;
+    display: flex;
+    justify-content: center;
   }
   
   button h3 {
-    margin-left: 55px;
     line-height: 1.6em;
   }
   
   #add-budget {
     width: 32%;
     background:rgb(172, 177, 214) url(images/add-budget-icon.png) no-repeat 8px center;
-    background:rgb(123, 133, 207) url(images/add-budget-icon.png) no-repeat 8px center;
-    background-size: 23%;
-    text-align: right;
-    padding-left: 20px;
+    background:rgb(123, 133, 207) url(images/add-budget-icon.png) no-repeat 50% 30%;
+    background-size: auto;
+    background-color: white;
+    background-size: 40%;
+    text-align: center;
     color: black;
-    
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
   }
   
   #add-expense {
     width: 32%;
     background:rgb(189, 205, 214) url(images/add-expense-icon.png) no-repeat 8px center;
-    background:rgb(135, 188, 219) url(images/add-expense-icon.png) no-repeat 8px center;
-    background-size: 25%;
+    background:rgb(135, 188, 219) url(images/add-expense-icon.png) no-repeat 50% 30%;
+    background-color: white;
+    background-size: 40%;
     text-align: right;
-    padding-left: 20px;
-    color: black
+    color: black;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   #add-category {
     width: 32%;
     background: #93bfcf url(images/add-category-icon.png) no-repeat 8px center;
-    background: #3da1c6 url(images/add-category-icon.png) no-repeat 8px center;
-    background-size: 20%;
+    background: #3da1c6 url(images/add-category-icon.png) no-repeat 50% 30%;
+    background-color: white;
+    background-size: 40%;
     text-align: right;
-    padding-left: 20px;
-    color: black
+    color: black;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   .subtitle-icons:hover {
     background-color: #2EE59D;
-    transform: translateY(-15px);
+    transform: translateY(-10px);
   }
 
   .subtitle-icons {
-    height: 26vw;
+    height: 32vw;
   }
   
   .subtitle-icons h3 {
     display: flex;
-    margin-left: 50%;
   }
   
   a.logout-link {
@@ -569,9 +588,13 @@ li button:hover {
   align-items: center;
   z-index: 10;
   position: fixed;
-  top: 90;
-  transition: .6s;
+  left: 30px;
 }
+
+#liveAlertPlaceholder div {
+  transition-timing-function: ease-out;
+}
+
 
 
 /* Side Menu ----------------
@@ -701,8 +724,6 @@ a {
     text-align: start;
     font-size: 24px;
     font-weight: bold;
-    color: #DA0063;
-    color: rgb(54, 174, 110);
     color: rgb(88, 54, 174);
 }
 
@@ -754,8 +775,16 @@ a {
   height: 110%;
 }
 
-.budget-link p {
-    color: rgb(0, 0, 0);
+.budget-name {
+  color: rgb(88, 54, 174);
+}
+
+.budget-amount {
+  color: #118C4F;
+}
+
+.recurring {
+  color: black;
 }
 
 .budget-item a {
@@ -779,6 +808,7 @@ a {
 
 .budget-dropdown-header {
     color: #118C4F;
+    color: black;
 }
 
 .category-btns {
@@ -1185,8 +1215,14 @@ line-height: 3;
 color: #fff;
 padding: 0 15px;
 background-color: #375f68;
+/* background-color:rgb(89, 147, 114); */
 border-radius: 10px;
 /* box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6); */
+}
+
+button:hover {
+  /* background-color: #2b444a; */
+  box-shadow: 2px 2px 5px rgb(147, 146, 146);
 }
 
 #login-register, #login-register-btn {

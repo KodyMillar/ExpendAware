@@ -1,6 +1,27 @@
 [
     {
         "action": "Created Expense",
+        "name": "Appliances",
+        "amount": "2000",
+        "description": "Appliances",
+        "date": "26 May 2023"
+    },
+    {
+        "action": "Created Expense",
+        "name": "Random",
+        "amount": "5000",
+        "description": "fill",
+        "date": "26 May 2023"
+    },
+    {
+        "action": "Reset Recurring Budget",
+        "name": "Casual",
+        "amount": 0,
+        "description": "Daily budget",
+        "date": "26 May 2023"
+    },
+    {
+        "action": "Created Expense",
         "name": "Casual",
         "amount": "50",
         "description": "Shirts",
@@ -45,20 +66,6 @@
         "action": "Created Expense",
         "name": "Clothing",
         "amount": "100",
-        "description": "Shirts",
-        "date": "24 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Clothing",
-        "amount": "25",
-        "description": "Pants",
-        "date": "24 May 2023"
-    },
-    {
-        "action": "Created Expense",
-        "name": "Clothing",
-        "amount": "50",
         "description": "Shirts",
         "date": "24 May 2023"
     }

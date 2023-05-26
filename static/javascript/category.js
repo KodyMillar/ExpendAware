@@ -153,15 +153,13 @@ for (let button of editButton){
         }
         let idName = e.target.id
         let categoryNameToEdit = idName.replace("edit-", "").trim()
-        console.log(categoryNameToEdit)
+        
         if (categoryNameToEdit.includes(" ")) {
             categoryNameToEdit = categoryNameToEdit.trim().replaceAll(" ", "-")
         }
         if(categoryNameToEdit.includes("'")) {
             categoryNameToEdit = categoryNameToEdit.replaceAll("'", "")
         }
-        console.log(categoryNameToEdit)
-        console.log(e.target.id)
         let editPopUp = document.querySelector("#edit-popup-" + categoryNameToEdit)
         let editBackground = document.querySelector("#edit-background-" + categoryNameToEdit)
         editPopUp.classList.toggle("category-edit-clicked")
@@ -225,7 +223,7 @@ for (let button of deleteCategoryButton) {
         }
 
         console.log(categoryNameToDelete)
-
+        console.log(document.querySelector("#delete-category-Living-Expenses"))
         let deletePopUp = document.querySelector("#delete-category-" + categoryNameToDelete)
         let deleteBackground = document.querySelector("#delete-background-" + categoryNameToDelete)
         deletePopUp.classList.toggle("category-delete-clicked")

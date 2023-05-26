@@ -16,12 +16,14 @@
     <div class="category-container">
     <div class="category-link"><div class="category">
         <div class="left-side">
-        {% if "food" in category["category"].strip().lower() %}
+        {% if "food" in category["category"].strip().lower() or "grocer" in category["category"].strip().lower() %}
         <img src="../static/images/food-icon.png" width="65" height="65">
         {% elif "clothing" in category["category"].strip().lower() %}
         <img src="../static/images/clothing-icon.png" width="65" height="65">
         {% elif "housing" in category["category"].strip().lower() or "house" in category["category"].strip().lower() or "home" in category["category"].strip().lower() or "living" in category["category"].strip().lower() %}
-        <img src="../static/images/house-icon.png" with="75" height="75">
+        <img src="../static/images/house-icon.png" width="60" height="60">
+        {% elif "travel" in category["category"].strip().lower() %}
+        <img src="../static/images/travel-icon.png" width="50" height="50">
         {% else %}
         <img src="../static/images/icon-blue.png" width="65" height="65">
         {% endif %}
@@ -45,10 +47,10 @@
         <li class="budget-item">
             <a href="{{ url_for('budget_detail', budget_name=budget['name']) }}" class="budget-link">
                 <div class="budget-div">
-                    <p>{{ budget['name'] }}</p>
-                    <p>Budget: ${{ budget['amount'] }}</p>
+                    <p class="budget-name">{{ budget['name'] }}</p>
+                    <p class="budget-amount">Budget: ${{ budget['amount'] }}</p>
                 </div>
-                <p>Recurring: {{ budget['recurring'] }}</p>
+                <p class="recurring">Recurring: {{ budget['recurring'] }}</p>
             </a>
         </li>
         {% endif %}
@@ -96,7 +98,7 @@
     </div>
     <div id="delete-background-{{ category['category'].strip().replace(' ', '-').replace('\'', '') }}" class="category-edit-background">
     </div>
-    <div class="category-delete-popup" id="delete-category-{{ category['category'] }}"> 
+    <div class="category-delete-popup" id="delete-category-{{ category['category'].strip().replace(' ', '-').replace('\'', '') }}"> 
         <div>
         <h3>Delete {{ category['category'] }} category?</h3>
         <h4><strong>This will delete all the budgets and expenses in this category.</strong></h4>
