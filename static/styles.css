@@ -1,3 +1,9 @@
+@font-face {
+  font-family:Gravitica;
+  src: url(gravitica.otf) format(truetype);
+}
+
+
 /* Reset */
 * {
     margin: 0;
@@ -25,6 +31,7 @@ body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
 
 h2 {
@@ -33,12 +40,13 @@ h2 {
     font-size: 30px;
     text-align: left;
     color: black;
+    font-family:Gravitica;
 }
 
 h3 {
   font-family: 'Montserrat', sans-serif;
   font-weight: bolder;
-  
+  font-family:Gravitica;
 }
 
 
@@ -50,12 +58,10 @@ header {
     color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(1, 1fr);
     grid-template-areas: 
-        "menu title ."
-        "subtitle subtitle subtitle";
+        "menu title account";
     width: 100%;
-    padding-bottom: 25px;
+    /* padding-bottom: 25px; */
 }
 .h1 {
     grid-area: title;
@@ -64,25 +70,24 @@ header {
     justify-content: center;
     font-size: 8vw;
     color: black;
+    font-family:Gravitica;
 }
-.menu-btn {
+#menu-btn {
     grid-area: menu;
     display: flex;
     flex-direction: column;
-    align-items: center;
     cursor: pointer;
     width: 40px;
     margin: 8px;
 }
-.home-btn {
-    grid-area: home;
-    display: flex;
-    justify-content: flex-start;
+#home-btn {
+    margin-top: 10px;
 }
-.account-btn {
+#account-btn {
     grid-area: account;
     display: flex;
     justify-content: flex-end;
+    margin: 8px;
 }
 
 /* End of Header Grid CSS ---------------
@@ -236,16 +241,15 @@ body,html {
   h1 {
     text-align: center;
     font-size: 40px;
-    
   }
 
   
   
-  #account-icon {
+  /* #account-icon {
     position: absolute;
     width: 45px;
     height: 45px;
-    /* left: 50%; */
+    left: 50%;
     cursor: pointer;
     margin-left: 85%;
     margin-top: 10px;
@@ -259,7 +263,7 @@ body,html {
     padding-top:30px;
     top: 20px;
     left: 12px;
-  }
+  } */
 
   #subheadings {
     display: flex;
@@ -375,10 +379,12 @@ body,html {
     width: 80px;
     height: 35px;
     text-align: center;
-    font-size: 20px;
+    font-size: 28px;
     border-radius: 4px;
-
+    font-family:Gravitica;
+    font-weight: bolder;
   }
+
 
   #total-heading {
     color: #118C4F;
@@ -416,6 +422,8 @@ body,html {
 
   #transaction > h4 {
     color: #118C4F;
+    font-family:Gravitica;
+    font-size: 27px;
   }
   
   .transaction-section {
@@ -468,8 +476,9 @@ body,html {
     border-radius: 5px;
     width: 220px;
     text-align: center;
-    font-size: 20px;
+    font-size: 25px;
     border-radius: 3px;
+    font-family:Gravitica;
   }
   
   /* .category-overview1 {
@@ -596,7 +605,7 @@ body,html {
 --------------------------------*/
 #menu-expand {
     overflow-x: hidden;
-    height: 100vh;
+    height: 100%;
     width: 0;
     background-color: #0e6683;
     position: fixed;
@@ -629,7 +638,7 @@ body,html {
     background-color: black;
     border-radius: 5px;
     margin: 2px;
-    /* cursor: pointer; */
+    cursor: pointer;
 }
 /* End of Side Menu --------
 --------------------------------*/
@@ -722,6 +731,7 @@ a {
     color: #DA0063;
     color: rgb(54, 174, 110);
     color: rgb(88, 54, 174);
+    font-family:Gravitica;
 }
 
 .category-budget {
@@ -1056,45 +1066,49 @@ a {
 
 .bt_container {
   width: 1000px;
+  max-width: 100%;
   text-align: center;
   padding: 40px;
   position: relative;
+  margin: 0 auto; /* This centers the block-level container */
 }
-
 .bt_category-title,
 .bt_budget-name {
   font-size: 2em;
   font-weight: bold;
+  color: rgb(88, 54, 174);
+  font-family:Gravitica;
 }
 
-.bt_budget {
-  display: flex;
-  justify-content: space-between;
+.bt_budget, .bt_expense {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   font-size: 1.2em;
   margin-top: 50px;
   padding-bottom: 15px;
+  
+}
+
+.bt_budget {
+  color: #118C4F;
 }
 
 .bt_expense {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 30%;
-  justify-items: start;
   font-size: 1em;
   padding-bottom: 20px;
 }
-
 
 .bt_date {
   font-size: 1.2em;
   margin-bottom: 15px;
 }
 
-
 hr {
   border: none;
   border-top: 1px solid black;
-  max-width: 100%;  
+  width: 100%; /* This will allow the hr to take up the full width of its container */
+  margin: 0 auto; /* This centers the hr within its container */
 }
 
 .clear-expenses-button {
@@ -1102,6 +1116,32 @@ hr {
   top: 30px;
   right: 30px;
   padding: 10px;
+}
+
+@media (max-width: 600px) {
+  .bt_container {
+    width: 100%;
+  }
+  .bt_category-title,
+  .bt_budget-name {
+    text-align: left;
+  }
+  .bt_budget, .bt_expense {
+    grid-template-columns: repeat(1, 1fr);
+    text-align: left;
+    justify-items: start; /* Aligns the items to the start (left) in mobile view */
+  }
+  .clear-expenses-button {
+    top: 25px;
+    right: 10px;
+    padding: 5px;
+    font-size: 0.8em;
+  }
+}
+@media screen and (max-width: 768px) {
+  .date-added {
+    display: none;
+  }
 }
 
 
@@ -1348,7 +1388,7 @@ font-weight: bold;
 /* Home page desktop design */
 @media screen and (min-width: 768px) {
     body,html {
-      width: 101%;
+      width: 100%;
       height: 100%;
       margin: 0;
       padding: 0;
@@ -1359,11 +1399,11 @@ font-weight: bold;
     }
 
     .bar {
-        width: 25px;
+        /* width: 25px;
         height: 5px;
         margin: 2px;
         margin-left: 40px;
-        cursor: pointer;
+        cursor: pointer; */
     }
     
     /* .menu-btn {
