@@ -11,7 +11,8 @@ The user is able to log in to their own account and keep their expenses to thems
 * Flask Web Framework
 
 ### Hardware Requirements
-* Any modern computer (Windows, Mac, Linux) or mobile device with internet access
+* Any modern computer (Windows, Mac, Linux) with internet access
+* Any modern mobile device (Android, IOS)
 
 ## Configuring the App
 
