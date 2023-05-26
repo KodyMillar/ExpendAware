@@ -2,9 +2,16 @@
 
 const categoriesList = document.querySelectorAll(".category")
 const budgetDropDown = document.querySelectorAll(".budget-dropdown")
+editCategories = document.getElementById("edit-categories").querySelector("button")
 
 let categoryIndex = 0;
 let compareIndex = 0;
+
+for (let budget of budgetDropDown) {
+    budget.style.height = "0"
+    console.log(budget.style.height)
+}
+
 
 for(let category of categoriesList){
     category.addEventListener("click", (e) => {
@@ -26,12 +33,33 @@ for(let category of categoriesList){
             categoryName = e.target.parentElement.querySelector("h4").textContent
         }
 
-        category.classList.toggle("category-clicked");
+        if (editCategories.textContent === "Edit Categories"){
+            for (let budget of budgetDropDown) {
+                if (categoryName === budget.id) {
+                    if (budget.querySelectorAll(".budget-item")){
+                    dropDownItems = budget.querySelectorAll(".budget-item")
+                        if (dropDownItems.length > 0) {
+                            category.classList.toggle("category-clicked");
+                        }
+                    }
+                }
+            }
+        }
+
         if (category.classList.contains("category-clicked")) {
 
             for(let budget of budgetDropDown) {
 
-                if (categoryName === budget.id) {
+                if (categoryName === budget.id && editCategories.textContent === "Edit Categories") {
+
+                    for (otherBudget of budgetDropDown) {
+                        if (otherBudget.style.height !== "0px") {
+                            otherBudget.style.height = "0"
+                            otherBudget.style.zIndex = "0"
+                            otherBudget.parentElement.parentElement.querySelector(".category").classList.toggle("category-clicked")
+                        }
+                    }
+
                     if (budget.id.includes(" ")) {
                         budget.id = budget.id.trim().replaceAll(" ", "-")
                     }
@@ -43,6 +71,9 @@ for(let category of categoriesList){
                     dropDownItems = document.querySelector("#" + budget.id).querySelectorAll(".budget-item")
                     dropDownHeight = 115 * dropDownItems.length
                     document.querySelector("#" + budget.id).style.height = `${dropDownHeight}px`;
+                    budget.style.zIndex = "100"
+                    budget.parentElement.style.zIndex = "100"
+                    // document.querySelector("#" + budget.id).style.zIndex = "10"
                     budget.id = categoryName
                     
                 }
@@ -63,17 +94,18 @@ for(let category of categoriesList){
                     }
                     
                     document.querySelector("#" + budget.id).style.height = "0";
+                    budget.style.zIndex = "0"
                     budget.id = categoryName
                 }
             }
         }
 
-        // if (category.classList.)
     });
 }
 
-editCategories = document.getElementById("edit-categories")
+
 categoryButtons = document.querySelectorAll(".cat-btns-div")
+
 
 function categoryEditMode() {
     for(let button of categoryButtons){
@@ -83,17 +115,28 @@ function categoryEditMode() {
             button.style.height = "0"
             button.querySelector(".btn-secondary").style.height = "0"
             button.querySelector(".btn-danger").style.height = "0"
-            editCategories.querySelector("button").textContent = "Edit Categories"
+            editCategories.textContent = "Edit Categories"
         }
         else{
             button.style.overflow = "visible"
             button.style.height = "50px"
             button.querySelector(".btn-secondary").style.height = "50px"
             button.querySelector(".btn-danger").style.height = "50px"
-            editCategories.querySelector("button").textContent = "Quit Edit Mode"
+            editCategories.textContent = "Quit Edit Mode"
+            for(let budget of budgetDropDown) {
+                if (budget.style.height !== "0") {
+                    budget.style.height = "0"
+                }
+            }
+            for(let category of categoriesList) {
+                if (category.classList.contains("category-clicked")){
+                    category.classList.toggle("category-clicked")
+                }
+            }
         }
     }
 }
+
 editCategories.addEventListener("click", categoryEditMode)
 
 
