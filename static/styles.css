@@ -32,7 +32,7 @@ h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 30px;
     text-align: left;
-    /* color: #F9F9F9; */
+    color: black;
 }
 
 h3 {
@@ -188,13 +188,16 @@ li button:hover {
     margin-left: auto;
 }
 #budget-container {
-    background-color: #ACB1D6;
+    background-color: rgb(172, 177, 214);
+    background-color:rgb(150, 162, 227);
 }
 #expense-container {
-    background-color: #BDCDD6;
+  background-color:rgb(189, 205, 214);
+  background-color:rgb(135, 188, 219);
 }
 #category-container {
-    background-color: #93BFCF;
+  background-color: #93bfcf;
+  background-color: #3da1c6;
 }
 .container {
     display: flex;
