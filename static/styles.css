@@ -1053,11 +1053,12 @@ a {
 
 .bt_container {
   width: 1000px;
+  max-width: 100%;
   text-align: center;
   padding: 40px;
   position: relative;
+  margin: 0 auto; /* This centers the block-level container */
 }
-
 .bt_category-title,
 .bt_budget-name {
   font-size: 2em;
@@ -1092,7 +1093,8 @@ a {
 hr {
   border: none;
   border-top: 1px solid black;
-  max-width: 100%;  
+  width: 100%; /* This will allow the hr to take up the full width of its container */
+  margin: 0 auto; /* This centers the hr within its container */
 }
 
 .clear-expenses-button {
