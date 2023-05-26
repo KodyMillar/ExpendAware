@@ -16,12 +16,14 @@
     <div class="category-container">
     <div class="category-link"><div class="category">
         <div class="left-side">
-        {% if "food" in category["category"].strip().lower() %}
+        {% if "food" in category["category"].strip().lower() or "grocer" in category["category"].strip().lower() %}
         <img src="../static/images/food-icon.png" width="65" height="65">
         {% elif "clothing" in category["category"].strip().lower() %}
         <img src="../static/images/clothing-icon.png" width="65" height="65">
         {% elif "housing" in category["category"].strip().lower() or "house" in category["category"].strip().lower() or "home" in category["category"].strip().lower() or "living" in category["category"].strip().lower() %}
-        <img src="../static/images/house-icon.png" with="75" height="75">
+        <img src="../static/images/house-icon.png" width="60" height="60">
+        {% elif "travel" in category["category"].strip().lower() %}
+        <img src="../static/images/travel-icon.png" width="50" height="50">
         {% else %}
         <img src="../static/images/icon-blue.png" width="65" height="65">
         {% endif %}
@@ -40,11 +42,25 @@
     <div class="dropdown-container">
     <ul class="budget-dropdown" id="{{ category['category'] }}">
         <h4 class="budget-dropdown-header">Budgets</h4>
+        {% if category['total budget'] != 0 %}
         {% for budget in budgets %}
         {% if budget['category'] == category['category'] %}
-        <li class="budget-item"><a href="{{ url_for('budget_detail', budget_name=budget['name']) }}" class="budget-link"><div class="budget-div"><p>{{ budget['name'] }}</p><p>Budget: ${{ budget['amount'] }}</p></div></a></li>
+        <li class="budget-item">
+            <a href="{{ url_for('budget_detail', budget_name=budget['name']) }}" class="budget-link">
+                <div class="budget-div">
+                    <p class="budget-name">{{ budget['name'] }}</p>
+                    <p class="budget-amount">Budget: ${{ budget['amount'] }}</p>
+                </div>
+                <p class="recurring">Recurring: {{ budget['recurring'] }}</p>
+            </a>
+        </li>
         {% endif %}
         {% endfor %}
+        {% else %}
+        <li class="budget-item">
+            <p>No Budgets Yet</p>
+        </li>
+        {% endif %}
     </ul>
     </div>
     <div class="cat-btns-div"><div class="category-btns">
@@ -55,11 +71,7 @@
     <div id="edit-background-{{ category['category'].strip().replace(' ', '-').replace('\'', '') }}" class="category-edit-background">
     </div>
     <div class="category-edit-popup" id="edit-popup-{{ category['category'].strip().replace(' ', '-').replace('\'', '') }}">
-        <!-- <a href="#">&timesbar;</a> -->
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-        </svg> -->
+        <a href="#" class="edit-popup-exit">&timesbar;</a>
         <h4><b>Edit Category</b></h4>
         <label>Rename Category</label>
         <form method="POST">
@@ -92,7 +104,7 @@
     </div>
     <div id="delete-background-{{ category['category'].strip().replace(' ', '-').replace('\'', '') }}" class="category-edit-background">
     </div>
-    <div class="category-delete-popup" id="delete-category-{{ category['category'] }}"> 
+    <div class="category-delete-popup" id="delete-category-{{ category['category'].strip().replace(' ', '-').replace('\'', '') }}"> 
         <div>
         <h3>Delete {{ category['category'] }} category?</h3>
         <h4><strong>This will delete all the budgets and expenses in this category.</strong></h4>

@@ -79,14 +79,13 @@ const appendAlert = (message, type) => {
         </div>`
 
     alertPlaceholder.append(wrapper)
+    alertPlaceholder.classList.add("fade")
 
     setTimeout(() => {
         // removes element from DOM
-        wrapper.style.display = "none"
+        wrapper.style.display = "none";
 
-        // hides element (still takes up space on page)
-        // box.style.visibility = 'hidden';
-    }, 3000); // time in milliseconds
+    }, 3000); 
 }
 
 

@@ -2,11 +2,43 @@
     {
         "name": "Groceries",
         "amount": "200",
-        "category": "Food"
+        "category": "Food",
+        "recurring": "Monthly",
+        "date": "24 May 2023"
+    },
+    {
+        "name": "Dine Out",
+        "amount": "100",
+        "category": "Food",
+        "recurring": "None",
+        "date": "24 May 2023"
     },
     {
         "name": "Casual",
-        "amount": "300",
-        "category": "Clothing"
+        "amount": "100",
+        "category": "Clothing",
+        "recurring": "Daily",
+        "date": "26 May 2023"
+    },
+    {
+        "name": "Formal",
+        "amount": "200",
+        "category": "Clothing",
+        "recurring": "None",
+        "date": "24 May 2023"
+    },
+    {
+        "name": "Random",
+        "amount": "5000",
+        "category": "Random Stuff",
+        "recurring": "Bi-Weekly",
+        "date": "26 May 2023"
+    },
+    {
+        "name": "Appliances",
+        "amount": "5000",
+        "category": "Housing",
+        "recurring": "None",
+        "date": "26 May 2023"
     }
 ]

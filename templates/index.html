@@ -30,9 +30,14 @@
   
   <div class="transaction-section">
     <ul id="transaction-list">
+      <li id="latest-transaction-heading" class="transaction"><p>Transaction</p><p id="budget-and-amount">Budget & Amount</p><p>Date</p><p>Description</p></li>
       {% if history | length > 0 %}
       {% for action in history %}
-      <li class="transaction"> <p class="action">{{ action['action'] }} </p><p class="transaction-amount"> {{ action['name'] }} - ${{ action['amount'] }} </p><p> {{ action['date'] }} </p><p> {{ action['description'] }}</p></li>
+      {% if loop.index0 != history | length - 1 %}
+      <li class="transaction"> <p class="action">{{ action['action'] }}</p><p class="transaction-amount"> {{ action['name'] }} - ${{ action['amount'] }} </p><p> {{ action['date'] }} </p><p> {{ action['description'] }}</p></li>
+      {% elif history[history | length - 1] == action %}
+      <li class="transaction" id="transaction-list-bottom"> <p class="action">{{ action['action'] }} </p><p class="transaction-amount"> {{ action['name'] }} - ${{ action['amount'] }} </p><p> {{ action['date'] }} </p><p> {{ action['description'] }}</p></li>
+      {% endif %}
       {% endfor %}
       {% else %}
       <p>No transactions yet</p>
@@ -43,7 +48,6 @@
   <div>
       <h4 id="category-section">Category Overview</h4>
   </div>
-
  
   <div class="categories-container">
     {% for category in categories %}
@@ -52,7 +56,6 @@
             <h3>{{ category['category'] }}</h3>
             <h5>Total Budget: ${{ category['total budget'] }}</h5>
             <h5>Total Expenses: ${{ category['total expenses'] }}</h5>
-          
               
           </div>
           <div class="percent-label">
@@ -97,6 +100,15 @@
           {{ category.category }}
         </option>
         {% endfor %}
+      </select>
+      <label>Choose a recurring period</label>
+      <select id="recurring-budget-select" name="recurring budget">
+        <option>None</option>
+        <option>Daily</option>
+        <option>Weekly</option>
+        <option>Bi-Weekly</option>
+        <option>Monthly</option>
+        <option>Yearly</option>
       </select>
       <button type="submit">Add Budget</button>
     </form>
