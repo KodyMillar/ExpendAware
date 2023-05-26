@@ -1,1 +1,16 @@
-[]
+[
+    {
+        "descr": "fill",
+        "amount": "5000",
+        "category": "Random Stuff",
+        "budget": "Random",
+        "date": "26 May 2023"
+    },
+    {
+        "descr": "Appliances",
+        "amount": "2000",
+        "category": "Housing",
+        "budget": "Appliances",
+        "date": "26 May 2023"
+    }
+]

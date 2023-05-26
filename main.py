@@ -112,7 +112,7 @@ def index():
 
                 new_action = {
                     "action": "Created Expense",
-                    "name": new_expense["category"],
+                    "name": new_expense["budget"],
                     "amount": amount,
                     "description": descr,
                     "date": current_date
@@ -199,9 +199,57 @@ def index():
 
 
         elif budget['recurring'] == "Weekly":
-            pass
+             if (datetime.strptime(current_date, "%d %b %Y") - datetime.strptime(budget['date'], "%d %b %Y")).days == 7:
+                new_expense_list = []
+                for expense in existing_expense:
+                    if expense['budget'] != budget['name']:
+                        new_expense_list.append(expense)
+                existing_expense = new_expense_list
+                budget['date'] = current_date
+
+                budget_expense_total = 0
+                for expense in existing_expense:
+                    if expense['budget'] == budget['name']:
+                        budget_expense_total += expense['amount']
+
+                new_action = {
+                    "action": "Reset Recurring Budget",
+                    "name": budget['name'],
+                    "amount": budget_expense_total,
+                    "description": budget['recurring'] + " budget",
+                    "date": current_date
+                }
+
+                history.insert(0, new_action)
+                if len(history) > 10:
+                    history.pop(10)
+
         elif budget['recurring'] == "Bi-Weekly":
-            pass
+             if (datetime.strptime(current_date, "%d %b %Y") - datetime.strptime(budget['date'], "%d %b %Y")).days == 14:
+                new_expense_list = []
+                for expense in existing_expense:
+                    if expense['budget'] != budget['name']:
+                        new_expense_list.append(expense)
+                existing_expense = new_expense_list
+                budget['date'] = current_date
+
+                budget_expense_total = 0
+                for expense in existing_expense:
+                    if expense['budget'] == budget['name']:
+                        budget_expense_total += expense['amount']
+
+                new_action = {
+                    "action": "Reset Recurring Budget",
+                    "name": budget['name'],
+                    "amount": budget_expense_total,
+                    "description": budget['recurring'] + " budget",
+                    "date": current_date
+                }
+
+                history.insert(0, new_action)
+                if len(history) > 10:
+                    history.pop(10)
+
         elif budget['recurring'] == "Monthly":
             if (datetime.strptime(current_date, "%d %b %Y") - datetime.strptime(budget['date'], "%d %b %Y")).days == 31:
                 new_expense_list = []
@@ -229,8 +277,31 @@ def index():
                     history.pop(10)
 
 
-        # elif budget['recurring'] == "Yearly":
-        #     pass
+        elif budget['recurring'] == "Yearly":
+             if (datetime.strptime(current_date, "%d %b %Y") - datetime.strptime(budget['date'], "%d %b %Y")).days == 365:
+                new_expense_list = []
+                for expense in existing_expense:
+                    if expense['budget'] != budget['name']:
+                        new_expense_list.append(expense)
+                existing_expense = new_expense_list
+                budget['date'] = current_date
+
+                budget_expense_total = 0
+                for expense in existing_expense:
+                    if expense['budget'] == budget['name']:
+                        budget_expense_total += expense['amount']
+
+                new_action = {
+                    "action": "Reset Recurring Budget",
+                    "name": budget['name'],
+                    "amount": budget_expense_total,
+                    "description": budget['recurring'] + " budget",
+                    "date": current_date
+                }
+
+                history.insert(0, new_action)
+                if len(history) > 10:
+                    history.pop(10)
 
         with open("expense.json", "w") as f:
             json.dump(existing_expense, f, indent=4)
