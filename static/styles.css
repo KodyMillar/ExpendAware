@@ -82,7 +82,7 @@ header {
     height: 30%;
 }
 #home-btn {
-    margin-top: 10px;
+    margin-left: 8%;
 }
 #account-btn {
     grid-area: account;
