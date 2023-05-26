@@ -60,7 +60,7 @@ header {
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: 
         "menu title account";
-    width: 100vw;
+    width: 100%;
     /* padding-bottom: 25px; */
 }
 .h1 {
