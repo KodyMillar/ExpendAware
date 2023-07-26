@@ -1,4 +1,4 @@
-# ACIT2911 Agile Project - ExpendAware
+# ExpendAware
 This is an agile development project for the ACIT2911 agile development course. Our group is named "One Byte" and our project is a mobile expense tracker application. 
 ## Functionality
 ExpendAware allows users to keep track of their expenses by organizing them into different categories. Each category can have multiple budgets and it is up to the user to decide. The user can add expenses to each budget, and the app will keep track of the expenses and let the user know of when they have gone over budget. 
