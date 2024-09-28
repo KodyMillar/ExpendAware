@@ -13,6 +13,8 @@ The tools we used to build the application are as follows:
 * Python3
 * Flask
 * JSON
+* Pytest
+* CircleCI
 
 ## Requirements
 ### Software Requirements
