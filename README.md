@@ -1,9 +1,18 @@
 # ExpendAware
-This is an agile development project for the ACIT2911 agile development course. Our group is named "One Byte" and our project is a mobile expense tracker application. 
+ExpendAware is a mobile-first expense tracker application for users to add, update, delete, and manage their expenses on the app.
 ## Functionality
 ExpendAware allows users to keep track of their expenses by organizing them into different categories. Each category can have multiple budgets and it is up to the user to decide. The user can add expenses to each budget, and the app will keep track of the expenses and let the user know of when they have gone over budget. 
 
 The user is able to log in to their own account and keep their expenses to themselves. On the homepage, they are able to see their total budgets and expenses overall, their most recent transactions, and a summary of their categories. Users can view their categories by going to the category page. There, they can see a list of all their categories and the total budget for each category. They can see their budgets within each category and can click on a budget to view their expenses for that budget. They can see a list of all their expenses they've added as well as a remaining amount. The user can also transfer between budgets to take away from one budget and add to the other. 
+
+## Tools
+The tools we used to build the application are as follows:
+* HTML
+* CSS
+* JavaScript
+* Python3
+* Flask
+* JSON
 
 ## Requirements
 ### Software Requirements
